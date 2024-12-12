@@ -1,0 +1,6 @@
+1.	Objectif principal : améliorer et refactoriser le Script Python actuel, utilisé pour générer des propositions de BRs potentiels en regroupant des entitlements existants. Ces propositions sont ensuite analysées, validées ou ajustées par les managers, avant d’être éventuellement assignées aux membres de leurs équipes.
+
+2.	Problèmes actuels : 
+
+-	temps de compilation du fichier long (principalement dû à l’extraction et à la lecture de plusieurs fichiers plats – proposition de solution par Grigory avec DuckDB en Python pour stocker temporellement les fichiers en local – à vérifier la faisabilité)
+-	maintenabilité et évolutivité du code (améliorer l’algorithme de clustering et potentiellement d’autres parties du code).
