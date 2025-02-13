@@ -1,18 +1,20 @@
 Step 1 = 
-CALCULATE(
-    MAX('Table'[Step Status]), 
-    FILTER(
-        'Table', 
-        'Table'[Role Name] = EARLIER('Table'[Role Name]) && 
-        'Table'[Step] = "Step 1" && 
-        'Table'[Latest Completion Date] = 
-            CALCULATE(MAX('Table'[Latest Completion Date]), 
-                FILTER(
-                    'Table', 
-                    'Table'[Role Name] = EARLIER('Table'[Role Name]) && 
-                    'Table'[Step] = "Step 1"
-                )
-            )
+VAR LatestCompletionDate = 
+    CALCULATE(
+        MAX('Table'[Latest Completion Date]), 
+        FILTER(
+            'Table', 
+            'Table'[Role Name] = EARLIER('Table'[Role Name]) && 
+            'Table'[Step] = "Step 1"
+        )
     )
-)
-
+RETURN
+    CALCULATE(
+        MAX('Table'[Step Status]), 
+        FILTER(
+            'Table', 
+            'Table'[Role Name] = EARLIER('Table'[Role Name]) && 
+            'Table'[Step] = "Step 1" && 
+            'Table'[Latest Completion Date] = LatestCompletionDate
+        )
+    )
