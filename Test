@@ -1,1 +1,18 @@
+Step 1 = 
+CALCULATE(
+    MAX('Table'[Step Status]), 
+    FILTER(
+        'Table', 
+        'Table'[Role Name] = EARLIER('Table'[Role Name]) && 
+        'Table'[Step] = "Step 1" && 
+        'Table'[Latest Completion Date] = 
+            CALCULATE(MAX('Table'[Latest Completion Date]), 
+                FILTER(
+                    'Table', 
+                    'Table'[Role Name] = EARLIER('Table'[Role Name]) && 
+                    'Table'[Step] = "Step 1"
+                )
+            )
+    )
+)
 
