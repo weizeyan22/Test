@@ -52,3 +52,42 @@ RETURN
         Operation_Type = "remove", "Removed from role",
         "Unknown"
     )
+
+
+Entitlement Status = 
+VAR Step3_Status = 'Table'[Step 3]
+VAR Step2_Status = 'Table'[Step 2]
+VAR Step1_Status = 'Table'[Step 1]
+VAR Operation_Type = 'Table'[operation]
+
+RETURN 
+    SWITCH(TRUE(),
+        -- Si Step 3 est "Approved" et l'opération est "add"
+        Step3_Status = "Approved" && Operation_Type = "add", "Added to role",
+        
+        -- Si Step 3 est "Approved" et l'opération est "remove"
+        Step3_Status = "Approved" && Operation_Type = "remove", "Removed from role",
+        
+        -- Si Step 3 est "Denied"
+        Step3_Status = "Denied", "Rejected by Step 3",
+
+        -- Si Step 3 est "Undecided"
+        Step3_Status = "Undecided", "Pending at Step 3",
+
+        -- Si Step 2 est "Denied"
+        Step2_Status = "Denied", "Rejected by Step 2",
+
+        -- Si Step 2 est "Undecided"
+        Step2_Status = "Undecided", "Pending at Step 2",
+
+        -- Si Step 1 est "Denied"
+        Step1_Status = "Denied", "Rejected by Step 1",
+
+        -- Si Step 1 est "Undecided"
+        Step1_Status = "Undecided", "Pending at Step 1",
+
+        -- Si aucun des cas précédents ne s'applique
+        "Unknown"
+    )
+
+
