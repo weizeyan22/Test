@@ -1,63 +1,7 @@
-Step 1 = 
-VAR LatestCompletionDate = 
-    CALCULATE(
-        MAX('Table'[Latest Completion Date]), 
-        FILTER(
-            'Table', 
-            'Table'[Role Name] = EARLIER('Table'[Role Name]) && 
-            'Table'[Step] = "Step 1"
-        )
-    )
-RETURN
-    CALCULATE(
-        MAX('Table'[Step Status]), 
-        FILTER(
-            'Table', 
-            'Table'[Role Name] = EARLIER('Table'[Role Name]) && 
-            'Table'[Step] = "Step 1" && 
-            'Table'[Latest Completion Date] = LatestCompletionDate
-        )
-    )
-
-
-
-
-
 Entitlement Status = 
-VAR LastStep = 
-    MAXX(
-        FILTER(
-            'Table',
-            'Table'[Rôle] = EARLIER('Table'[Rôle]) &&
-            'Table'[App] = EARLIER('Table'[App]) &&
-            'Table'[Ent] = EARLIER('Table'[Ent])
-        ),
-        'Table'[Completion Date]
-    )
-
-VAR Step3_Status = 'Table'[Step 3]
-VAR Step2_Status = 'Table'[Step 2]
 VAR Step1_Status = 'Table'[Step 1]
-VAR Operation_Type = 'Table'[operation]
-
-RETURN 
-    SWITCH(TRUE(),
-        Step3_Status = "Approved", "Added to role",
-        Step3_Status = "Denied", "Rejected by Step 3",
-        Step3_Status = "Undecided", "Pending at Step 3",
-        Step2_Status = "Denied", "Rejected by Step 2",
-        Step2_Status = "Undecided", "Pending at Step 2",
-        Step1_Status = "Denied", "Rejected by Step 1",
-        Step1_Status = "Undecided", "Pending at Step 1",
-        Operation_Type = "remove", "Removed from role",
-        "Unknown"
-    )
-
-
-Entitlement Status = 
-VAR Step3_Status = 'Table'[Step 3]
 VAR Step2_Status = 'Table'[Step 2]
-VAR Step1_Status = 'Table'[Step 1]
+VAR Step3_Status = 'Table'[Step 3]
 VAR Operation_Type = 'Table'[operation]
 
 RETURN 
@@ -86,8 +30,12 @@ RETURN
         -- Si Step 1 est "Undecided"
         Step1_Status = "Undecided", "Pending at Step 1",
 
+        -- Si Step 1 est "Approved" et Step 2 & 3 sont vides
+        Step1_Status = "Approved" && ISBLANK(Step2_Status) && ISBLANK(Step3_Status), "Pending for Step 2",
+
+        -- Si Step 1 & 2 sont "Approved" et Step 3 est vide
+        Step1_Status = "Approved" && Step2_Status = "Approved" && ISBLANK(Step3_Status), "Pending for Step 3",
+
         -- Si aucun des cas précédents ne s'applique
         "Unknown"
     )
-
-
