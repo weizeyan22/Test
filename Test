@@ -1,15 +1,39 @@
-VAR Step2Status = 
-    CALCULATE(
-        MAX('Table'[Status]), 
+Step 2 = 
+VAR CurrentRole = SELECTEDVALUE('Table'[Role])
+VAR CurrentApp = SELECTEDVALUE('Table'[App])
+VAR CurrentEnt = SELECTEDVALUE('Table'[Ent])
+VAR CurrentOp = SELECTEDVALUE('Table'[Operation])
+
+-- Récupérer la dernière date de Step 2
+VAR LastCompletionDate = 
+    MAXX(
         FILTER(
-            'Table', 
+            'Table',
+            'Table'[Role] = CurrentRole &&
+            'Table'[App] = CurrentApp &&
+            'Table'[Ent] = CurrentEnt &&
+            'Table'[Step] = "Step 2" &&
+            'Table'[Operation] = CurrentOp
+        ),
+        'Table'[Completion Date]
+    )
+
+-- Récupérer le statut correspondant à la dernière date
+VAR Step2Status = 
+    TOPN(
+        1,
+        FILTER(
+            'Table',
             'Table'[Role] = CurrentRole &&
             'Table'[App] = CurrentApp &&
             'Table'[Ent] = CurrentEnt &&
             'Table'[Step] = "Step 2" &&
             'Table'[Operation] = CurrentOp &&
             'Table'[Completion Date] = LastCompletionDate
-        )
+        ),
+        'Table'[Completion Date], 
+        DESC
     )
 
-RETURN Step2Status
+RETURN
+    IF(ISBLANK(LastCompletionDate), BLANK(), MAXX(Step2Status, 'Table'[Status]))
