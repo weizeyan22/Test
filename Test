@@ -1,42 +1,30 @@
 Step 2 Status = 
-VAR CurrentRole = SELECTEDVALUE('BR'[RoleDisplayName])
-VAR CurrentApp = SELECTEDVALUE('BR'[ApplicationName])
-VAR CurrentEnt = SELECTEDVALUE('BR'[EntitlementName])
-VAR CurrentOp = SELECTEDVALUE('BR'[Operation])
-
--- Obtenir la dernière date de Step 1
-VAR Step1Date = 
+VAR Step2Status = 
     CALCULATE(
-        MAX('BR'[ArchivedDate]),
-        'BR'[RoleDisplayName] = CurrentRole,
-        'BR'[ApplicationName] = CurrentApp,
-        'BR'[EntitlementName] = CurrentEnt,
-        'BR'[Step] = "Step1",
-        'BR'[Operation] = CurrentOp
-    )
-
--- Obtenir la dernière date de Step 2
-VAR Step2Date = 
-    CALCULATE(
-        MAX('BR'[ArchivedDate]),
-        'BR'[RoleDisplayName] = CurrentRole,
-        'BR'[ApplicationName] = CurrentApp,
-        'BR'[EntitlementName] = CurrentEnt,
-        'BR'[Step] = "Step2",
-        'BR'[Operation] = CurrentOp
-    )
-
--- Si Step 1 est plus récent que Step 2, vider Step 2
-RETURN 
-    IF(
-        Step1Date > Step2Date, 
-        BLANK(), 
-        CALCULATE(
-            MAX('BR'[Status]),
-            'BR'[RoleDisplayName] = CurrentRole,
-            'BR'[ApplicationName] = CurrentApp,
-            'BR'[EntitlementName] = CurrentEnt,
-            'BR'[Step] = "Step2",
-            'BR'[Operation] = CurrentOp
+        MAX('BR'[Status]), 
+        FILTER(
+            'BR', 
+            'BR'[Role] = EARLIER('BR'[Role]) &&
+            'BR'[Step] = "Step 2"
         )
     )
+VAR Step1Date = 
+    CALCULATE(
+        MAX('BR'[Completion Date]), 
+        FILTER(
+            'BR', 
+            'BR'[Role] = EARLIER('BR'[Role]) &&
+            'BR'[Step] = "Step 1"
+        )
+    )
+VAR Step2Date = 
+    CALCULATE(
+        MAX('BR'[Completion Date]), 
+        FILTER(
+            'BR', 
+            'BR'[Role] = EARLIER('BR'[Role]) &&
+            'BR'[Step] = "Step 2"
+        )
+    )
+RETURN 
+    IF(Step1Date > Step2Date, BLANK(), Step2Status)
