@@ -1,52 +1,17 @@
-Step 2 Status = 
-VAR CurrentRole = SELECTEDVALUE('BR'[RoleDisplayName])
-VAR CurrentApp = SELECTEDVALUE('BR'[ApplicationName])
-VAR CurrentEnt = SELECTEDVALUE('BR'[EntitlementName])
-VAR CurrentOp = SELECTEDVALUE('BR'[Operation])
-
--- Récupérer la date de Step 1
+Step2_AdjustedStatus = 
 VAR Step1Date = 
-    MAXX(
-        FILTER(
-            'BR',
-            'BR'[RoleDisplayName] = CurrentRole &&
-            'BR'[ApplicationName] = CurrentApp &&
-            'BR'[EntitlementName] = CurrentEnt &&
+    CALCULATE(
+        MAX('BR'[ArchivedDate]),
+        FILTER('BR', 
+            'BR'[RoleDisplayName] = EARLIER('BR'[RoleDisplayName]) &&
+            'BR'[ApplicationName] = EARLIER('BR'[ApplicationName]) &&
+            'BR'[EntitlementName] = EARLIER('BR'[EntitlementName]) &&
             'BR'[Step] = "Step1" &&
-            'BR'[Operation] = CurrentOp
-        ),
-        'BR'[ArchivedDate]
+            'BR'[Operation] = EARLIER('BR'[Operation])
+        )
     )
 
--- Récupérer la date de Step 2
-VAR Step2Date = 
-    MAXX(
-        FILTER(
-            'BR',
-            'BR'[RoleDisplayName] = CurrentRole &&
-            'BR'[ApplicationName] = CurrentApp &&
-            'BR'[EntitlementName] = CurrentEnt &&
-            'BR'[Step] = "Step2" &&
-            'BR'[Operation] = CurrentOp
-        ),
-        'BR'[ArchivedDate]
-    )
+VAR Step2Date = 'BR'[ArchivedDate]
 
--- Récupérer le dernier statut de Step 2
-VAR Step2Status = 
-    MAXX(
-        FILTER(
-            'BR',
-            'BR'[RoleDisplayName] = CurrentRole &&
-            'BR'[ApplicationName] = CurrentApp &&
-            'BR'[EntitlementName] = CurrentEnt &&
-            'BR'[Step] = "Step2" &&
-            'BR'[Operation] = CurrentOp &&
-            'BR'[ArchivedDate] = Step2Date
-        ),
-        'BR'[Status]
-    )
-
--- Vérifier la condition pour afficher ou non Step 2
 RETURN 
-    IF(Step1Date > Step2Date, BLANK(), Step2Status)
+    IF(Step1Date > Step2Date, BLANK(), 'BR'[Status])
