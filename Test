@@ -1,29 +1,15 @@
-Step 1 = 
-VAR CurrentRole = SELECTEDVALUE('Table'[Role])
-VAR CurrentApp = SELECTEDVALUE('Table'[App])
-VAR CurrentEnt = SELECTEDVALUE('Table'[Ent])
-VAR CurrentOp = SELECTEDVALUE('Table'[Operation])
-
-VAR LastCompletionDate = 
+VAR Step2Status = 
     CALCULATE(
-        MAX('Table'[Completion Date]), 
+        MAX('Table'[Status]), 
         FILTER(
             'Table', 
             'Table'[Role] = CurrentRole &&
             'Table'[App] = CurrentApp &&
             'Table'[Ent] = CurrentEnt &&
-            'Table'[Step] = "Step 1" &&
-            'Table'[Operation] = CurrentOp
+            'Table'[Step] = "Step 2" &&
+            'Table'[Operation] = CurrentOp &&
+            'Table'[Completion Date] = LastCompletionDate
         )
     )
 
-RETURN 
-    LOOKUPVALUE(
-        'Table'[Status], 
-        'Table'[Role], CurrentRole,
-        'Table'[App], CurrentApp,
-        'Table'[Ent], CurrentEnt,
-        'Table'[Step], "Step 1", 
-        'Table'[Completion Date], LastCompletionDate,
-        'Table'[Operation], CurrentOp
-    )
+RETURN Step2Status
