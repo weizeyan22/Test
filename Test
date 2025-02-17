@@ -40,51 +40,17 @@ RETURN
         "Unknown"
     )
 ==================================================================
-
-Entitlement Status = 
+Step 3 = 
 VAR Operation_Type = SELECTEDVALUE('Table'[Operation])
-VAR Step1_Status = 
-    CALCULATE(
-        MAX('Table'[Status]),
-        'Table'[Step] = "Step 1",
-        'Table'[Operation] = Operation_Type
-    )
-VAR Step2_Status = 
-    CALCULATE(
-        MAX('Table'[Status]),
-        'Table'[Step] = "Step 2",
-        'Table'[Operation] = Operation_Type
-    )
-VAR Step3_Status = 
+RETURN 
     CALCULATE(
         MAX('Table'[Status]),
         'Table'[Step] = "Step 3",
-        'Table'[Operation] = Operation_Type
+        'Table'[Operation] = Operation_Type,
+        'Table'[Completion Date] = 
+            CALCULATE(MAX('Table'[Completion Date]), 
+                     'Table'[Step] = "Step 3", 
+                     'Table'[Operation] = Operation_Type
+            )
     )
 
-RETURN 
-    SWITCH(TRUE(),
-        -- Rejet à Step 3
-        Step3_Status = "Denied", "Rejected by Step 3",
-
-        -- Rejet à Step 2
-        Step2_Status = "Denied", "Rejected by Step 2",
-
-        -- Rejet à Step 1
-        Step1_Status = "Denied", "Rejected by Step 1",
-
-        -- Tout est approuvé et l'opération est "Add"
-        Step3_Status = "Approved" && Operation_Type = "Add", "Added to role",
-
-        -- Tout est approuvé et l'opération est "Remove"
-        Step3_Status = "Approved" && Operation_Type = "Remove", "Removed from role",
-
-        -- Step 1 & 2 Approved mais Step 3 vide
-        Step1_Status = "Approved" && Step2_Status = "Approved" && ISBLANK(Step3_Status), "Pending for Step 3",
-
-        -- Step 1 Approved mais Step 2 & 3 vides
-        Step1_Status = "Approved" && ISBLANK(Step2_Status) && ISBLANK(Step3_Status), "Pending for Step 2",
-
-        -- Sinon
-        "Unknown"
-    )
