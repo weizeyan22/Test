@@ -1,30 +1,57 @@
 Step 2 Status = 
+VAR LatestCreationDate = 
+    CALCULATE(
+        MAX('BR'[Creation Date]), 
+        FILTER(
+            'BR', 
+            'BR'[Role] = EARLIER('BR'[Role]) && 
+            'BR'[Step] = "Step 2"
+        )
+    )
+VAR LatestCompletionDate = 
+    CALCULATE(
+        MAX('BR'[Completion Date]), 
+        FILTER(
+            'BR', 
+            'BR'[Role] = EARLIER('BR'[Role]) && 
+            'BR'[Step] = "Step 2" &&
+            'BR'[Creation Date] = LatestCreationDate
+        )
+    )
+VAR Step1CreationDate = 
+    CALCULATE(
+        MAX('BR'[Creation Date]), 
+        FILTER(
+            'BR', 
+            'BR'[Role] = EARLIER('BR'[Role]) && 
+            'BR'[Step] = "Step 1"
+        )
+    )
+VAR Step1CompletionDate = 
+    CALCULATE(
+        MAX('BR'[Completion Date]), 
+        FILTER(
+            'BR', 
+            'BR'[Role] = EARLIER('BR'[Role]) && 
+            'BR'[Step] = "Step 1" &&
+            'BR'[Creation Date] = Step1CreationDate
+        )
+    )
 VAR Step2Status = 
     CALCULATE(
         MAX('BR'[Status]), 
         FILTER(
             'BR', 
-            'BR'[Role] = EARLIER('BR'[Role]) &&
-            'BR'[Step] = "Step 2"
-        )
-    )
-VAR Step1Date = 
-    CALCULATE(
-        MAX('BR'[Completion Date]), 
-        FILTER(
-            'BR', 
-            'BR'[Role] = EARLIER('BR'[Role]) &&
-            'BR'[Step] = "Step 1"
-        )
-    )
-VAR Step2Date = 
-    CALCULATE(
-        MAX('BR'[Completion Date]), 
-        FILTER(
-            'BR', 
-            'BR'[Role] = EARLIER('BR'[Role]) &&
-            'BR'[Step] = "Step 2"
+            'BR'[Role] = EARLIER('BR'[Role]) && 
+            'BR'[Step] = "Step 2" && 
+            'BR'[Creation Date] = LatestCreationDate && 
+            'BR'[Completion Date] = LatestCompletionDate
         )
     )
 RETURN 
-    IF(Step1Date > Step2Date, BLANK(), Step2Status)
+    IF(
+        Step1CreationDate > LatestCreationDate || 
+        (Step1CreationDate = LatestCreationDate && Step1CompletionDate > LatestCompletionDate),
+        BLANK(), 
+        Step2Status
+    )
