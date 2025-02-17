@@ -21,3 +21,27 @@ VAR LastOwner =
         )
     )
 RETURN LastOwner
+======================================
+Latest Comment = 
+VAR LatestDate = 
+    CALCULATE(
+        MAX('Table'[Completion Date]),
+        FILTER(
+            'Table',
+            'Table'[Role] = EARLIER('Table'[Role]) &&
+            'Table'[App] = EARLIER('Table'[App]) &&
+            'Table'[Ent] = EARLIER('Table'[Ent])
+        )
+    )
+VAR LastComment = 
+    CALCULATE(
+        MAX('Table'[Comment]),
+        FILTER(
+            'Table',
+            'Table'[Role] = EARLIER('Table'[Role]) &&
+            'Table'[App] = EARLIER('Table'[App]) &&
+            'Table'[Ent] = EARLIER('Table'[Ent]) &&
+            'Table'[Completion Date] = LatestDate
+        )
+    )
+RETURN LastComment
