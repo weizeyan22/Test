@@ -1,82 +1,41 @@
-Step 3 Status = 
-VAR LatestCreationDateStep3 = 
-    CALCULATE(
-        MAX('BR'[Creation Date]), 
-        FILTER(
-            'BR', 
-            'BR'[Role] = EARLIER('BR'[Role]) && 
-            'BR'[Step] = "Step 3"
-        )
-    )
-VAR LatestCompletionDateStep3 = 
-    CALCULATE(
-        MAX('BR'[Completion Date]), 
-        FILTER(
-            'BR', 
-            'BR'[Role] = EARLIER('BR'[Role]) && 
-            'BR'[Step] = "Step 3" &&
-            'BR'[Creation Date] = LatestCreationDateStep3
-        )
-    )
-VAR Step1CreationDate = 
-    CALCULATE(
-        MAX('BR'[Creation Date]), 
-        FILTER(
-            'BR', 
-            'BR'[Role] = EARLIER('BR'[Role]) && 
-            'BR'[Step] = "Step 1"
-        )
-    )
-VAR Step1CompletionDate = 
-    CALCULATE(
-        MAX('BR'[Completion Date]), 
-        FILTER(
-            'BR', 
-            'BR'[Role] = EARLIER('BR'[Role]) && 
-            'BR'[Step] = "Step 1" &&
-            'BR'[Creation Date] = Step1CreationDate
-        )
-    )
-VAR Step2CreationDate = 
-    CALCULATE(
-        MAX('BR'[Creation Date]), 
-        FILTER(
-            'BR', 
-            'BR'[Role] = EARLIER('BR'[Role]) && 
-            'BR'[Step] = "Step 2"
-        )
-    )
-VAR Step2CompletionDate = 
-    CALCULATE(
-        MAX('BR'[Completion Date]), 
-        FILTER(
-            'BR', 
-            'BR'[Role] = EARLIER('BR'[Role]) && 
-            'BR'[Step] = "Step 2" &&
-            'BR'[Creation Date] = Step2CreationDate
-        )
-    )
-VAR Step3Status = 
-    CALCULATE(
-        MAX('BR'[Status]), 
-        FILTER(
-            'BR', 
-            'BR'[Role] = EARLIER('BR'[Role]) && 
-            'BR'[Step] = "Step 3" && 
-            'BR'[Creation Date] = LatestCreationDateStep3 && 
-            'BR'[Completion Date] = LatestCompletionDateStep3
-        )
-    )
+Entitlement Status = 
+VAR Step1_Status = 'Table'[Step 1]
+VAR Step2_Status = 'Table'[Step 2]
+VAR Step3_Status = 'Table'[Step 3]
+VAR Operation_Type = 'Table'[operation]
+
 RETURN 
-    IF(
-        Step3Status = "Undecided", 
-        "Undecided",
-        IF(
-            (Step1CreationDate > LatestCreationDateStep3 || 
-             (Step1CreationDate = LatestCreationDateStep3 && Step1CompletionDate > LatestCompletionDateStep3)) ||
-            (Step2CreationDate > LatestCreationDateStep3 || 
-             (Step2CreationDate = LatestCreationDateStep3 && Step2CompletionDate > LatestCompletionDateStep3)),
-            BLANK(), 
-            Step3Status
-        )
+    SWITCH(TRUE(),
+        -- Si Step 3 est "Approved" et l'opération est "add"
+        Step3_Status = "Approved" && Operation_Type = "add", "Added to role",
+        
+        -- Si Step 3 est "Approved" et l'opération est "remove"
+        Step3_Status = "Approved" && Operation_Type = "remove", "Removed from role",
+        
+        -- Si Step 3 est "Denied"
+        Step3_Status = "Denied", "Rejected by Step 3",
+
+        -- Si Step 3 est "Undecided"
+        Step3_Status = "Undecided", "Pending at Step 3",
+
+        -- Si Step 2 est "Denied"
+        Step2_Status = "Denied", "Rejected by Step 2",
+
+        -- Si Step 2 est "Undecided"
+        Step2_Status = "Undecided", "Pending at Step 2",
+
+        -- Si Step 1 est "Denied"
+        Step1_Status = "Denied", "Rejected by Step 1",
+
+        -- Si Step 1 est "Undecided"
+        Step1_Status = "Undecided", "Pending at Step 1",
+
+        -- Si Step 1 est "Approved" et Step 2 & 3 sont vides
+        Step1_Status = "Approved" && ISBLANK(Step2_Status) && ISBLANK(Step3_Status), "Pending for Step 2",
+
+        -- Si Step 2 est "Approved" et Step 3 est vide (peu importe si Step 1 est vide ou approuvé)
+        (ISBLANK(Step1_Status) || Step1_Status = "Approved") && Step2_Status = "Approved" && ISBLANK(Step3_Status), "Pending for Step 3",
+
+        -- Si aucun des cas précédents ne s'applique
+        "Unknown"
     )
