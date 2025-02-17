@@ -1,21 +1,21 @@
-Step 2 Status = 
-VAR LatestCreationDate = 
+Step 3 Status = 
+VAR LatestCreationDateStep3 = 
     CALCULATE(
         MAX('BR'[Creation Date]), 
         FILTER(
             'BR', 
             'BR'[Role] = EARLIER('BR'[Role]) && 
-            'BR'[Step] = "Step 2"
+            'BR'[Step] = "Step 3"
         )
     )
-VAR LatestCompletionDate = 
+VAR LatestCompletionDateStep3 = 
     CALCULATE(
         MAX('BR'[Completion Date]), 
         FILTER(
             'BR', 
             'BR'[Role] = EARLIER('BR'[Role]) && 
-            'BR'[Step] = "Step 2" &&
-            'BR'[Creation Date] = LatestCreationDate
+            'BR'[Step] = "Step 3" &&
+            'BR'[Creation Date] = LatestCreationDateStep3
         )
     )
 VAR Step1CreationDate = 
@@ -37,21 +37,46 @@ VAR Step1CompletionDate =
             'BR'[Creation Date] = Step1CreationDate
         )
     )
-VAR Step2Status = 
+VAR Step2CreationDate = 
+    CALCULATE(
+        MAX('BR'[Creation Date]), 
+        FILTER(
+            'BR', 
+            'BR'[Role] = EARLIER('BR'[Role]) && 
+            'BR'[Step] = "Step 2"
+        )
+    )
+VAR Step2CompletionDate = 
+    CALCULATE(
+        MAX('BR'[Completion Date]), 
+        FILTER(
+            'BR', 
+            'BR'[Role] = EARLIER('BR'[Role]) && 
+            'BR'[Step] = "Step 2" &&
+            'BR'[Creation Date] = Step2CreationDate
+        )
+    )
+VAR Step3Status = 
     CALCULATE(
         MAX('BR'[Status]), 
         FILTER(
             'BR', 
             'BR'[Role] = EARLIER('BR'[Role]) && 
-            'BR'[Step] = "Step 2" && 
-            'BR'[Creation Date] = LatestCreationDate && 
-            'BR'[Completion Date] = LatestCompletionDate
+            'BR'[Step] = "Step 3" && 
+            'BR'[Creation Date] = LatestCreationDateStep3 && 
+            'BR'[Completion Date] = LatestCompletionDateStep3
         )
     )
 RETURN 
     IF(
-        Step1CreationDate > LatestCreationDate || 
-        (Step1CreationDate = LatestCreationDate && Step1CompletionDate > LatestCompletionDate),
-        BLANK(), 
-        Step2Status
+        Step3Status = "Undecided", 
+        "Undecided",
+        IF(
+            (Step1CreationDate > LatestCreationDateStep3 || 
+             (Step1CreationDate = LatestCreationDateStep3 && Step1CompletionDate > LatestCompletionDateStep3)) ||
+            (Step2CreationDate > LatestCreationDateStep3 || 
+             (Step2CreationDate = LatestCreationDateStep3 && Step2CompletionDate > LatestCompletionDateStep3)),
+            BLANK(), 
+            Step3Status
+        )
     )
