@@ -1,5 +1,5 @@
-Latest Completion Date = 
-VAR LatestDate =
+Last WorkItem Owner = 
+VAR LatestDate = 
     CALCULATE(
         MAX('Table'[Completion Date]),
         FILTER(
@@ -9,4 +9,15 @@ VAR LatestDate =
             'Table'[Ent] = EARLIER('Table'[Ent])
         )
     )
-RETURN LatestDate
+VAR LastOwner = 
+    CALCULATE(
+        MAX('Table'[WorkItem Owner]),
+        FILTER(
+            'Table',
+            'Table'[Role] = EARLIER('Table'[Role]) &&
+            'Table'[App] = EARLIER('Table'[App]) &&
+            'Table'[Ent] = EARLIER('Table'[Ent]) &&
+            'Table'[Completion Date] = LatestDate
+        )
+    )
+RETURN LastOwner
