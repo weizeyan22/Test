@@ -1,8 +1,11 @@
 Groups Concatenated = 
-CONCATENATEX(
-    VALUES('VotreTable'[Group]), 
-    'VotreTable'[Group], 
-    ", ", 
-    'VotreTable'[Group], 
-    ASC
+CALCULATE(
+    CONCATENATEX(
+        VALUES('VotreTable'[Group]), 
+        'VotreTable'[Group], 
+        ", ", 
+        'VotreTable'[Group], 
+        ASC
+    ),
+    ALLEXCEPT('VotreTable', 'VotreTable'[MyIAM ent], 'VotreTable'[IT Role])
 )
