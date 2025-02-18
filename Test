@@ -1,22 +1,20 @@
-Cardinality = 
+Criticality = 
 VAR CountMyIAM = 
     CALCULATE(
-        DISTINCTCOUNT('VotreTable'[MyIAM Ent]), 
-        ALLEXCEPT('VotreTable', 'VotreTable'[IT Role Ent]),
-        NOT(ISBLANK('VotreTable'[IT Role Ent])) -- Exclure les valeurs vides
+        DISTINCTCOUNT('VotreTable'[MyIAM ent]), 
+        ALLEXCEPT('VotreTable', 'VotreTable'[IT Role], 'VotreTable'[Group])
     )
 
-VAR CountITRole = 
+VAR CountGroup = 
     CALCULATE(
-        DISTINCTCOUNT('VotreTable'[IT Role Ent]), 
-        ALLEXCEPT('VotreTable', 'VotreTable'[MyIAM Ent]),
-        NOT(ISBLANK('VotreTable'[IT Role Ent])) -- Exclure les valeurs vides
+        DISTINCTCOUNT('VotreTable'[Group]), 
+        ALLEXCEPT('VotreTable', 'VotreTable'[MyIAM ent], 'VotreTable'[IT Role])
     )
 
 RETURN 
-    IF(CountMyIAM = 1 && CountITRole = 1, "1-1",
-        IF(CountMyIAM = 1 && CountITRole > 1, "1-N",
-            IF(CountMyIAM > 1 && CountITRole = 1, "N-1",
+    IF(CountMyIAM = 1 && CountGroup = 1, "1-1",
+        IF(CountMyIAM = 1 && CountGroup > 1, "1-N",
+            IF(CountMyIAM > 1 && CountGroup = 1, "N-1",
                 "Autre Cas"
             )
         )
