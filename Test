@@ -11,8 +11,14 @@ VAR CountEntitlementsPerITRole =
         ALLEXCEPT('VotreTable', 'VotreTable'[IT Role], 'VotreTable'[Group])
     )
 
+VAR CheckSingleGroupPerEntitlement = 
+    CALCULATE(
+        COUNTROWS('VotreTable'),
+        ALLEXCEPT('VotreTable', 'VotreTable'[MyIAM ent], 'VotreTable'[Group])
+    ) = 1
+
 RETURN 
-    IF(CountGroupsPerEntitlement = 1 && CountEntitlementsPerITRole = 1, "1-1",
+    IF(CountGroupsPerEntitlement = 1 && CheckSingleGroupPerEntitlement, "1-1",
         IF(CountGroupsPerEntitlement > 1, "1-N",
             IF(CountEntitlementsPerITRole > 1, "N-1",
                 "Autre Cas"
