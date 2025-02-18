@@ -1,20 +1,26 @@
 Criticality = 
-VAR CountMyIAM = 
+VAR CountITRolePerMyIAM = 
     CALCULATE(
-        DISTINCTCOUNT('VotreTable'[MyIAM ent]), 
-        ALLEXCEPT('VotreTable', 'VotreTable'[IT Role], 'VotreTable'[Group])
+        DISTINCTCOUNT('VotreTable'[IT Role]), 
+        ALLEXCEPT('VotreTable', 'VotreTable'[MyIAM ent])
     )
 
-VAR CountGroup = 
+VAR CountGroupPerMyIAM = 
     CALCULATE(
         DISTINCTCOUNT('VotreTable'[Group]), 
-        ALLEXCEPT('VotreTable', 'VotreTable'[MyIAM ent], 'VotreTable'[IT Role])
+        ALLEXCEPT('VotreTable', 'VotreTable'[MyIAM ent])
+    )
+
+VAR CountMyIAMPerITRole = 
+    CALCULATE(
+        DISTINCTCOUNT('VotreTable'[MyIAM ent]), 
+        ALLEXCEPT('VotreTable', 'VotreTable'[IT Role])
     )
 
 RETURN 
-    IF(CountMyIAM = 1 && CountGroup = 1, "1-1",
-        IF(CountMyIAM = 1 && CountGroup > 1, "1-N",
-            IF(CountMyIAM > 1 && CountGroup = 1, "N-1",
+    IF(CountGroupPerMyIAM = 1 && CountMyIAMPerITRole = 1, "1-1",
+        IF(CountGroupPerMyIAM > 1, "1-N",
+            IF(CountMyIAMPerITRole > 1, "N-1",
                 "Autre Cas"
             )
         )
