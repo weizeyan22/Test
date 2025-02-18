@@ -32,8 +32,19 @@ VAR LatestDate =
             'Table'[App] = EARLIER('Table'[App]) &&
             'Table'[Ent] = EARLIER('Table'[Ent])
         )
+
+
+
     )
 VAR LastComment = 
+
+
+
+
+
+
+
+
     CALCULATE(
         MAX('Table'[Comment]),
         FILTER(
@@ -45,3 +56,23 @@ VAR LastComment =
         )
     )
 RETURN LastComment
+
+
+
+
+
+
+
+
+Cardinality = 
+VAR CountMyIAM = CALCULATE(DISTINCTCOUNT('VotreTable'[MyIAM Ent]), ALLEXCEPT('VotreTable', 'VotreTable'[IT Role Ent]))
+VAR CountITRole = CALCULATE(DISTINCTCOUNT('VotreTable'[IT Role Ent]), ALLEXCEPT('VotreTable', 'VotreTable'[MyIAM Ent]))
+
+RETURN 
+    IF(CountMyIAM = 1 && CountITRole = 1, "1-1",
+        IF(CountMyIAM = 1 && CountITRole > 1, "1-N",
+            IF(CountMyIAM > 1 && CountITRole = 1, "N-1",
+                "Autre Cas"
+            )
+        )
+    )
