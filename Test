@@ -1,72 +1,17 @@
-Last WorkItem Owner = 
-VAR LatestDate = 
-    CALCULATE(
-        MAX('Table'[Completion Date]),
-        FILTER(
-            'Table',
-            'Table'[Role] = EARLIER('Table'[Role]) &&
-            'Table'[App] = EARLIER('Table'[App]) &&
-            'Table'[Ent] = EARLIER('Table'[Ent])
-        )
-    )
-VAR LastOwner = 
-    CALCULATE(
-        MAX('Table'[WorkItem Owner]),
-        FILTER(
-            'Table',
-            'Table'[Role] = EARLIER('Table'[Role]) &&
-            'Table'[App] = EARLIER('Table'[App]) &&
-            'Table'[Ent] = EARLIER('Table'[Ent]) &&
-            'Table'[Completion Date] = LatestDate
-        )
-    )
-RETURN LastOwner
-======================================
-Latest Comment = 
-VAR LatestDate = 
-    CALCULATE(
-        MAX('Table'[Completion Date]),
-        FILTER(
-            'Table',
-            'Table'[Role] = EARLIER('Table'[Role]) &&
-            'Table'[App] = EARLIER('Table'[App]) &&
-            'Table'[Ent] = EARLIER('Table'[Ent])
-        )
-
-
-
-    )
-VAR LastComment = 
-
-
-
-
-
-
-
-
-    CALCULATE(
-        MAX('Table'[Comment]),
-        FILTER(
-            'Table',
-            'Table'[Role] = EARLIER('Table'[Role]) &&
-            'Table'[App] = EARLIER('Table'[App]) &&
-            'Table'[Ent] = EARLIER('Table'[Ent]) &&
-            'Table'[Completion Date] = LatestDate
-        )
-    )
-RETURN LastComment
-
-
-
-
-
-
-
-
 Cardinality = 
-VAR CountMyIAM = CALCULATE(DISTINCTCOUNT('VotreTable'[MyIAM Ent]), ALLEXCEPT('VotreTable', 'VotreTable'[IT Role Ent]))
-VAR CountITRole = CALCULATE(DISTINCTCOUNT('VotreTable'[IT Role Ent]), ALLEXCEPT('VotreTable', 'VotreTable'[MyIAM Ent]))
+VAR CountMyIAM = 
+    CALCULATE(
+        DISTINCTCOUNT('VotreTable'[MyIAM Ent]), 
+        ALLEXCEPT('VotreTable', 'VotreTable'[IT Role Ent]),
+        NOT(ISBLANK('VotreTable'[IT Role Ent])) -- Exclure les valeurs vides
+    )
+
+VAR CountITRole = 
+    CALCULATE(
+        DISTINCTCOUNT('VotreTable'[IT Role Ent]), 
+        ALLEXCEPT('VotreTable', 'VotreTable'[MyIAM Ent]),
+        NOT(ISBLANK('VotreTable'[IT Role Ent])) -- Exclure les valeurs vides
+    )
 
 RETURN 
     IF(CountMyIAM = 1 && CountITRole = 1, "1-1",
