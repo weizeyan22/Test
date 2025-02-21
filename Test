@@ -37,6 +37,17 @@ RETURN
     )
 
 
+Latest WorkItem Owner Members =
+VAR LatestCompletionDate = 'Table'[Latest Completion Date]
+VAR LatestOwner = 'Table'[Last WorkItem Owner]
+VAR FilteredTable = 
+    SUMMARIZE(
+        FILTER('Table', 'Table'[WorkItem Owner] = LatestOwner && 'Table'[Completion Date] = LatestCompletionDate),
+        'Table'[WorkItem Owner Members]
+    )
+RETURN 
+    CONCATENATEX(FilteredTable, 'Table'[WorkItem Owner Members], UNICHAR(10))
+
 
 
 
