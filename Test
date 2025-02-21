@@ -24,3 +24,19 @@ RETURN
         'Workgroup Members Table'[Member Name], 
         UNICHAR(10)  -- Séparateur de ligne
     )
+
+
+Latest WorkItem Owner Members = 
+VAR LatestOwner = 'Table'[Last WorkItem Owner]
+VAR FilteredTable = FILTER('Table', 'Table'[WorkItem Owner] = LatestOwner)
+RETURN 
+    IF(
+        ISBLANK(LatestOwner), 
+        BLANK(), 
+        CONCATENATEX(FilteredTable, 'Table'[WorkItem Owner Members], UNICHAR(10))
+    )
+
+
+
+
+
