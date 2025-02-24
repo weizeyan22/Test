@@ -1,53 +1,17 @@
-Groups Concatenated = 
-CALCULATE(
-    CONCATENATEX(
-        VALUES('VotreTable'[Group]), 
-        'VotreTable'[Group], 
-        ", ", 
-        'VotreTable'[Group], 
-        ASC
-    ),
-    ALLEXCEPT('VotreTable', 'VotreTable'[MyIAM ent], 'VotreTable'[IT Role])
-)
-
-
-
-Latest WorkItem Owner Members = 
-VAR LatestOwner =
-    'Table'[Last WorkItem Owner]  -- Récupérer le dernier propriétaire
-RETURN
-    CONCATENATEX(
-        FILTER(        FILTER(
-            'Workgroup Members Table', 
-            'Workgroup Members Table'[WorkItem Owner] = LatestOwner
-        ), 
-        'Workgroup Members Table'[Member Name], 
-        UNICHAR(10)  -- Séparateur de ligne
+Is Latest WorkItem =
+VAR MaxCompletionDate =
+    CALCULATE(
+        MAX('Table'[Completion Date]),
+        ALLEXCEPT('Table', 'Table'[WorkItem Owner])
     )
-
-
-Latest WorkItem Owner Members = 
-VAR LatestOwner = 'Table'[Last WorkItem Owner]
-VAR FilteredTable = FILTER('Table', 'Table'[WorkItem Owner] = LatestOwner)
-RETURN 
-    IF(
-        ISBLANK(LatestOwner), 
-        BLANK(), 
-        CONCATENATEX(FilteredTable, 'Table'[WorkItem Owner Members], UNICHAR(10))
-    )
+RETURN IF('Table'[Completion Date] = MaxCompletionDate, 1, 0)
 
 
 Latest WorkItem Owner Members =
-VAR LatestCompletionDate = 'Table'[Latest Completion Date]
-VAR LatestOwner = 'Table'[Last WorkItem Owner]
-VAR FilteredTable = 
-    SUMMARIZE(
-        FILTER('Table', 'Table'[WorkItem Owner] = LatestOwner && 'Table'[Completion Date] = LatestCompletionDate),
-        'Table'[WorkItem Owner Members]
+VAR FilteredTable =
+    FILTER(
+        'Table',
+        'Table'[Is Latest WorkItem] = 1
     )
-RETURN 
+RETURN
     CONCATENATEX(FilteredTable, 'Table'[WorkItem Owner Members], UNICHAR(10))
-
-
-
-
