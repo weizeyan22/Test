@@ -15,3 +15,20 @@ VAR FilteredTable =
     )
 RETURN
     CONCATENATEX(FilteredTable, 'Table'[WorkItem Owner Members], UNICHAR(10))
+=============================================
+WorkItemOwner_Members_Table =
+SUMMARIZE(
+    'Table',
+    'Table'[WorkItem Owner],
+    'Table'[Latest Completion Date],
+    "All Members", CONCATENATEX(VALUES('Table'[WorkItem Owner Members]), 'Table'[WorkItem Owner Members], UNICHAR(10))
+)
+
+
+
+Latest WorkItem Owner Members =
+LOOKUPVALUE(
+    WorkItemOwner_Members_Table[All Members],
+    WorkItemOwner_Members_Table[WorkItem Owner], 'Table'[WorkItem Owner],
+    WorkItemOwner_Members_Table[Latest Completion Date], 'Table'[Latest Completion Date]
+)
