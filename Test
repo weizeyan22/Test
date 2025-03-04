@@ -1,46 +1,52 @@
 
-VAR LatestNonBlankCompletionDate =
-    CALCULATE(
-        MAX('BR'[CompletionDate]),
-        'BR'[RoleDisplayName] = EARLIER('BR'[RoleDisplayName]) &&
-        'BR'[ApplicationName] = EARLIER('BR'[ApplicationName]) &&
-        'BR'[EntitlementName] = EARLIER('BR'[EntitlementName]) &&
-        'BR'[Step2] = "1st Step - Business Role Owner" &&
-        NOT(ISBLANK('BR'[CompletionDate])) // Exclut les valeurs vides
+VAR LatestCompletionDate =
+    MAXX(
+        FILTER(
+            'BR',
+            'BR'[RoleDisplayName] = EARLIER('BR'[RoleDisplayName]) &&
+            'BR'[ApplicationName] = EARLIER('BR'[ApplicationName]) &&
+            'BR'[EntitlementName] = EARLIER('BR'[EntitlementName]) &&
+            'BR'[Step2] = "1st Step - Business Role Owner"
+        ),
+        'BR'[ArchivedDate] // On cherche la Completion Date la plus récente
+    )
+
+VAR LatestDecision_Completion =
+    LOOKUPVALUE(
+        'BR'[Decision.1],
+        'BR'[RoleDisplayName], EARLIER('BR'[RoleDisplayName]),
+        'BR'[ApplicationName], EARLIER('BR'[ApplicationName]),
+        'BR'[EntitlementName], EARLIER('BR'[EntitlementName]),
+        'BR'[Step2], "1st Step - Business Role Owner",
+        'BR'[ArchivedDate], LatestCompletionDate
     )
 
 VAR LatestCreationDate =
-    CALCULATE(
-        MAX('BR'[CreationDate]),
-        'BR'[RoleDisplayName] = EARLIER('BR'[RoleDisplayName]) &&
-        'BR'[ApplicationName] = EARLIER('BR'[ApplicationName]) &&
-        'BR'[EntitlementName] = EARLIER('BR'[EntitlementName]) &&
-        'BR'[Step2] = "1st Step - Business Role Owner" &&
-        ISBLANK('BR'[CompletionDate]) // Ne prend que les CompletionDate vides
-    )
-
-VAR HasBlankCompletion =
-    CALCULATE(
-        COUNTROWS('BR'),
-        'BR'[RoleDisplayName] = EARLIER('BR'[RoleDisplayName]) &&
-        'BR'[ApplicationName] = EARLIER('BR'[ApplicationName]) &&
-        'BR'[EntitlementName] = EARLIER('BR'[EntitlementName]) &&
-        'BR'[Step2] = "1st Step - Business Role Owner" &&
-        ISBLANK('BR'[CompletionDate])
-    ) > 0
-
-RETURN 
-    CALCULATE(
-        SELECTEDVALUE('BR'[Decision.1]), 
+    MAXX(
         FILTER(
             'BR',
             'BR'[RoleDisplayName] = EARLIER('BR'[RoleDisplayName]) &&
             'BR'[ApplicationName] = EARLIER('BR'[ApplicationName]) &&
             'BR'[EntitlementName] = EARLIER('BR'[EntitlementName]) &&
             'BR'[Step2] = "1st Step - Business Role Owner" &&
-            (
-                (NOT(ISBLANK('BR'[CompletionDate])) && 'BR'[CompletionDate] = LatestNonBlankCompletionDate) ||
-                (HasBlankCompletion && 'BR'[CreationDate] = LatestCreationDate)
-            )
-        )
+            ISBLANK('BR'[ArchivedDate]) // On prend les cases où Completion Date est vide
+        ),
+        'BR'[CreationDate] // Prend la Création Date la plus récente si Completion Date est vide
+    )
+
+VAR LatestDecision_Creation =
+    LOOKUPVALUE(
+        'BR'[Decision.1],
+        'BR'[RoleDisplayName], EARLIER('BR'[RoleDisplayName]),
+        'BR'[ApplicationName], EARLIER('BR'[ApplicationName]),
+        'BR'[EntitlementName], EARLIER('BR'[EntitlementName]),
+        'BR'[Step2], "1st Step - Business Role Owner",
+        'BR'[CreationDate], LatestCreationDate
+    )
+
+RETURN
+    IF(
+        ISBLANK(LatestCompletionDate),
+        LatestDecision_Creation, // Si Completion Date est vide, on prend la décision avec Création Date la plus récente
+        LatestDecision_Completion // Sinon, on prend la décision avec la Completion Date la plus récente
     )
