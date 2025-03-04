@@ -1,42 +1,31 @@
-Step1 Status = 
-VAR LatestCreationDateStep1 = 
+VAR LatestCreationDate =
     CALCULATE(
-        MAX('BR'[Creation Date]), 
+        MAX('BR'[Creation Date]),
         FILTER(
-            'BR', 
-            'BR'[Role] = EARLIER('BR'[Role]) && 
-            'BR'[Entitlement] = EARLIER('BR'[Entitlement]) && 
-            'BR'[Step] = "Step 1"
+            'BR',
+            'BR'[Role] = EARLIER('BR'[Role]) &&
+            'BR'[Entitlement] = EARLIER('BR'[Entitlement]) &&
+            'BR'[Step] = EARLIER('BR'[Step])
         )
     )
-VAR LatestCompletionDateStep1 = 
+
+VAR LatestCompletionDate =
     CALCULATE(
-        MAX('BR'[Completion Date]), 
+        MAX('BR'[Completion Date]),
         FILTER(
-            'BR', 
-            'BR'[Role] = EARLIER('BR'[Role]) && 
-            'BR'[Entitlement] = EARLIER('BR'[Entitlement]) && 
-            'BR'[Step] = "Step 1" &&
-            'BR'[Creation Date] = LatestCreationDateStep1
+            'BR',
+            'BR'[Role] = EARLIER('BR'[Role]) &&
+            'BR'[Entitlement] = EARLIER('BR'[Entitlement]) &&
+            'BR'[Step] = EARLIER('BR'[Step]) &&
+            'BR'[Creation Date] = LatestCreationDate
         )
     )
-VAR FinalDate = 
+
+VAR FinalDate =
     IF(
-        ISBLANK(LatestCompletionDateStep1),
-        LatestCreationDateStep1,
-        LatestCompletionDateStep1
+        ISBLANK(LatestCompletionDate),
+        LatestCreationDate,
+        LatestCompletionDate
     )
-VAR Step1Status = 
-    CALCULATE(
-        MAX('BR'[Status]), 
-        FILTER(
-            'BR', 
-            'BR'[Role] = EARLIER('BR'[Role]) && 
-            'BR'[Entitlement] = EARLIER('BR'[Entitlement]) && 
-            'BR'[Step] = "Step 1" && 
-            'BR'[Creation Date] = LatestCreationDateStep1 && 
-            'BR'[Completion Date] = LatestCompletionDateStep1
-        )
-    )
-RETURN 
-    Step1Status
+
+RETURN FinalDate
