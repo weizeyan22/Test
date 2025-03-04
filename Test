@@ -4,7 +4,7 @@ VAR CurrentApp = 'BR'[ApplicationName]
 VAR CurrentEntitlement = 'BR'[EntitlementName]
 VAR CurrentStep = 'BR'[Step2]
 
--- Vérifier s'il existe au moins une ligne avec Completion Date vide
+-- Vérifier s'il existe une ligne avec une Completion Date vide
 VAR HasEmptyCompletionDate =
     CALCULATE(
         COUNTROWS('BR'),
@@ -14,19 +14,6 @@ VAR HasEmptyCompletionDate =
         'BR'[Step2] = "1st Step - Business Role Owner" &&
         ISBLANK('BR'[ArchivedDate]) -- Vérifie si au moins une Completion Date est vide
     ) > 0
-
--- Si toutes les Completion Dates sont remplies, prendre la plus récente
-VAR LatestCompletionDate =
-    IF(
-        NOT HasEmptyCompletionDate,
-        CALCULATE(
-            MAX('BR'[ArchivedDate]),
-            'BR'[RoleDisplayName] = CurrentRole &&
-            'BR'[ApplicationName] = CurrentApp &&
-            'BR'[EntitlementName] = CurrentEntitlement &&
-            'BR'[Step2] = "1st Step - Business Role Owner"
-        )
-    )
 
 -- Si une Completion Date est vide, prendre la ligne avec la Creation Date la plus récente
 VAR LatestCreationDate =
@@ -42,15 +29,20 @@ VAR LatestCreationDate =
         )
     )
 
--- Sélectionner la date finale (Completion Date si elle existe, sinon Creation Date)
-VAR FinalDate = 
+-- Si aucune Completion Date n'est vide, prendre la plus récente Completion Date
+VAR LatestCompletionDate =
     IF(
         NOT HasEmptyCompletionDate,
-        LatestCompletionDate,
-        LatestCreationDate
+        CALCULATE(
+            MAX('BR'[ArchivedDate]),
+            'BR'[RoleDisplayName] = CurrentRole &&
+            'BR'[ApplicationName] = CurrentApp &&
+            'BR'[EntitlementName] = CurrentEntitlement &&
+            'BR'[Step2] = "1st Step - Business Role Owner"
+        )
     )
 
--- Trouver la décision associée à la bonne date
+-- Sélectionner la décision associée à la bonne date
 VAR SelectedDecision =
     CALCULATE(
         MAX('BR'[Decision.1]), 
@@ -59,8 +51,8 @@ VAR SelectedDecision =
         'BR'[EntitlementName] = CurrentEntitlement &&
         'BR'[Step2] = "1st Step - Business Role Owner" &&
         (
-            ('BR'[ArchivedDate] = FinalDate && NOT HasEmptyCompletionDate) || 
-            ('BR'[CreationDate] = FinalDate && HasEmptyCompletionDate)
+            ('BR'[ArchivedDate] = LatestCompletionDate && NOT HasEmptyCompletionDate) || 
+            ('BR'[CreationDate] = LatestCreationDate && HasEmptyCompletionDate)
         )
     )
 
