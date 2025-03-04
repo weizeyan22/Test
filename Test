@@ -11,10 +11,10 @@ VAR HasEmptyCompletionDate =
         'BR'[ApplicationName] = CurrentApp &&
         'BR'[EntitlementName] = CurrentEntitlement &&
         'BR'[Step2] = "1st Step - Business Role Owner" &&
-        ISBLANK('BR'[ArchivedDate]) -- Vérifie si au moins une completion date est vide
+        ISBLANK('BR'[ArchivedDate])
     ) > 0
 
--- Si une completion date est vide, prendre la ligne avec la création date la plus récente
+-- Si une Completion Date est vide, prendre la ligne avec la Creation Date la plus récente
 VAR LatestCreationDate =
     IF(
         HasEmptyCompletionDate,
@@ -24,11 +24,11 @@ VAR LatestCreationDate =
             'BR'[ApplicationName] = CurrentApp &&
             'BR'[EntitlementName] = CurrentEntitlement &&
             'BR'[Step2] = "1st Step - Business Role Owner" &&
-            ISBLANK('BR'[ArchivedDate]) -- Filtrer uniquement les lignes où Completion Date est vide
+            ISBLANK('BR'[ArchivedDate])
         )
     )
 
--- Si toutes les completion dates sont remplies, prendre la plus récente
+-- Si toutes les Completion Dates sont remplies, prendre la plus récente
 VAR LatestCompletionDate =
     IF(
         NOT HasEmptyCompletionDate,
@@ -44,15 +44,51 @@ VAR LatestCompletionDate =
 -- Trouver la décision associée à la bonne date
 VAR SelectedDecision =
     CALCULATE(
-        MAX('BR'[Decision.1]), 
+        MAX('BR'[Decision.1]),
         'BR'[RoleDisplayName] = CurrentRole &&
         'BR'[ApplicationName] = CurrentApp &&
         'BR'[EntitlementName] = CurrentEntitlement &&
         'BR'[Step2] = "1st Step - Business Role Owner" &&
         (
-            ('BR'[ArchivedDate] = LatestCompletionDate && NOT HasEmptyCompletionDate) || 
+            ('BR'[ArchivedDate] = LatestCompletionDate && NOT HasEmptyCompletionDate) ||
             ('BR'[CreationDate] = LatestCreationDate && HasEmptyCompletionDate)
         )
     )
 
-RETURN SelectedDecision
+-- Retourner les résultats dans un format consolidé
+RETURN 
+    IF(
+        HasEmptyCompletionDate,
+        SELECTCOLUMNS(
+            FILTER(
+                'BR',
+                'BR'[RoleDisplayName] = CurrentRole &&
+                'BR'[ApplicationName] = CurrentApp &&
+                'BR'[EntitlementName] = CurrentEntitlement &&
+                'BR'[Step2] = "1st Step - Business Role Owner" &&
+                ('BR'[CreationDate] = LatestCreationDate || ISBLANK('BR'[ArchivedDate]))
+            ),
+            "Rôle", 'BR'[RoleDisplayName],
+            "Application", 'BR'[ApplicationName],
+            "Entitlement", 'BR'[EntitlementName],
+            "Step 1 Decision", SelectedDecision,
+            "Completion Date", 'BR'[ArchivedDate],
+            "Création Date", 'BR'[CreationDate]
+        ),
+        SELECTCOLUMNS(
+            FILTER(
+                'BR',
+                'BR'[RoleDisplayName] = CurrentRole &&
+                'BR'[ApplicationName] = CurrentApp &&
+                'BR'[EntitlementName] = CurrentEntitlement &&
+                'BR'[Step2] = "1st Step - Business Role Owner" &&
+                'BR'[ArchivedDate] = LatestCompletionDate
+            ),
+            "Rôle", 'BR'[RoleDisplayName],
+            "Application", 'BR'[ApplicationName],
+            "Entitlement", 'BR'[EntitlementName],
+            "Step 1 Decision", SelectedDecision,
+            "Completion Date", 'BR'[ArchivedDate],
+            "Création Date", 'BR'[CreationDate]
+        )
+    )
