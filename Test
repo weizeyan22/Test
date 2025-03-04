@@ -12,7 +12,7 @@ VAR HasEmptyCompletionDate =
         'BR'[ApplicationName] = CurrentApp &&
         'BR'[EntitlementName] = CurrentEntitlement &&
         'BR'[Step2] = "1st Step - Business Role Owner" &&
-        ISBLANK('BR'[ArchivedDate])
+        ISBLANK('BR'[ArchivedDate]) -- Vérifie si au moins une Completion Date est vide
     ) > 0
 
 -- Si toutes les Completion Dates sont remplies, prendre la plus récente
@@ -38,21 +38,29 @@ VAR LatestCreationDate =
             'BR'[ApplicationName] = CurrentApp &&
             'BR'[EntitlementName] = CurrentEntitlement &&
             'BR'[Step2] = "1st Step - Business Role Owner" &&
-            ISBLANK('BR'[ArchivedDate])
+            ISBLANK('BR'[ArchivedDate]) -- Filtrer uniquement les lignes où Completion Date est vide
         )
+    )
+
+-- Sélectionner la date finale (Completion Date si elle existe, sinon Creation Date)
+VAR FinalDate = 
+    IF(
+        NOT HasEmptyCompletionDate,
+        LatestCompletionDate,
+        LatestCreationDate
     )
 
 -- Trouver la décision associée à la bonne date
 VAR SelectedDecision =
     CALCULATE(
-        MAX('BR'[Decision.1]),
+        MAX('BR'[Decision.1]), 
         'BR'[RoleDisplayName] = CurrentRole &&
         'BR'[ApplicationName] = CurrentApp &&
         'BR'[EntitlementName] = CurrentEntitlement &&
         'BR'[Step2] = "1st Step - Business Role Owner" &&
         (
-            ('BR'[ArchivedDate] = LatestCompletionDate && NOT HasEmptyCompletionDate) || 
-            ('BR'[CreationDate] = LatestCreationDate && HasEmptyCompletionDate)
+            ('BR'[ArchivedDate] = FinalDate && NOT HasEmptyCompletionDate) || 
+            ('BR'[CreationDate] = FinalDate && HasEmptyCompletionDate)
         )
     )
 
