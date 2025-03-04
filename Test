@@ -1,3 +1,4 @@
+Step1 Status = 
 VAR CurrentRole = 'BR'[RoleDisplayName]
 VAR CurrentApp = 'BR'[ApplicationName]
 VAR CurrentEntitlement = 'BR'[EntitlementName]
@@ -14,6 +15,19 @@ VAR HasEmptyCompletionDate =
         ISBLANK('BR'[ArchivedDate])
     ) > 0
 
+-- Si toutes les Completion Dates sont remplies, prendre la plus récente
+VAR LatestCompletionDate =
+    IF(
+        NOT HasEmptyCompletionDate,
+        CALCULATE(
+            MAX('BR'[ArchivedDate]),
+            'BR'[RoleDisplayName] = CurrentRole &&
+            'BR'[ApplicationName] = CurrentApp &&
+            'BR'[EntitlementName] = CurrentEntitlement &&
+            'BR'[Step2] = "1st Step - Business Role Owner"
+        )
+    )
+
 -- Si une Completion Date est vide, prendre la ligne avec la Creation Date la plus récente
 VAR LatestCreationDate =
     IF(
@@ -28,19 +42,6 @@ VAR LatestCreationDate =
         )
     )
 
--- Si toutes les Completion Dates sont remplies, prendre la plus récente
-VAR LatestCompletionDate =
-    IF(
-        NOT HasEmptyCompletionDate,
-        CALCULATE(
-            MAX('BR'[ArchivedDate]),
-            'BR'[RoleDisplayName] = CurrentRole &&
-            'BR'[ApplicationName] = CurrentApp &&
-            'BR'[EntitlementName] = CurrentEntitlement &&
-            'BR'[Step2] = "1st Step - Business Role Owner"
-        )
-    )
-
 -- Trouver la décision associée à la bonne date
 VAR SelectedDecision =
     CALCULATE(
@@ -50,45 +51,9 @@ VAR SelectedDecision =
         'BR'[EntitlementName] = CurrentEntitlement &&
         'BR'[Step2] = "1st Step - Business Role Owner" &&
         (
-            ('BR'[ArchivedDate] = LatestCompletionDate && NOT HasEmptyCompletionDate) ||
+            ('BR'[ArchivedDate] = LatestCompletionDate && NOT HasEmptyCompletionDate) || 
             ('BR'[CreationDate] = LatestCreationDate && HasEmptyCompletionDate)
         )
     )
 
--- Retourner les résultats dans un format consolidé
-RETURN 
-    IF(
-        HasEmptyCompletionDate,
-        SELECTCOLUMNS(
-            FILTER(
-                'BR',
-                'BR'[RoleDisplayName] = CurrentRole &&
-                'BR'[ApplicationName] = CurrentApp &&
-                'BR'[EntitlementName] = CurrentEntitlement &&
-                'BR'[Step2] = "1st Step - Business Role Owner" &&
-                ('BR'[CreationDate] = LatestCreationDate || ISBLANK('BR'[ArchivedDate]))
-            ),
-            "Rôle", 'BR'[RoleDisplayName],
-            "Application", 'BR'[ApplicationName],
-            "Entitlement", 'BR'[EntitlementName],
-            "Step 1 Decision", SelectedDecision,
-            "Completion Date", 'BR'[ArchivedDate],
-            "Création Date", 'BR'[CreationDate]
-        ),
-        SELECTCOLUMNS(
-            FILTER(
-                'BR',
-                'BR'[RoleDisplayName] = CurrentRole &&
-                'BR'[ApplicationName] = CurrentApp &&
-                'BR'[EntitlementName] = CurrentEntitlement &&
-                'BR'[Step2] = "1st Step - Business Role Owner" &&
-                'BR'[ArchivedDate] = LatestCompletionDate
-            ),
-            "Rôle", 'BR'[RoleDisplayName],
-            "Application", 'BR'[ApplicationName],
-            "Entitlement", 'BR'[EntitlementName],
-            "Step 1 Decision", SelectedDecision,
-            "Completion Date", 'BR'[ArchivedDate],
-            "Création Date", 'BR'[CreationDate]
-        )
-    )
+RETURN SelectedDecision
