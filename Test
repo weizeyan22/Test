@@ -1,34 +1,58 @@
-Is Latest WorkItem =
-VAR MaxCompletionDate =
+VAR LatestCompletionDate =
     CALCULATE(
-        MAX('Table'[Completion Date]),
-        ALLEXCEPT('Table', 'Table'[WorkItem Owner])
+        MAX('BR'[CompletionDate]),
+        FILTER(
+            'BR',
+            'BR'[RoleDisplayName] = EARLIER('BR'[RoleDisplayName]) &&
+            'BR'[ApplicationName] = EARLIER('BR'[ApplicationName]) &&
+            'BR'[EntitlementName] = EARLIER('BR'[EntitlementName]) &&
+            'BR'[Step2] = "1st Step - Business Role Owner" &&
+            NOT(ISBLANK('BR'[CompletionDate]))  // On ne prend que les dates non vides
+        )
     )
-RETURN IF('Table'[Completion Date] = MaxCompletionDate, 1, 0)
 
+VAR HasBlankCompletion =
+    CALCULATE(
+        COUNTROWS('BR'),
+        FILTER(
+            'BR',
+            'BR'[RoleDisplayName] = EARLIER('BR'[RoleDisplayName]) &&
+            'BR'[ApplicationName] = EARLIER('BR'[ApplicationName]) &&
+            'BR'[EntitlementName] = EARLIER('BR'[EntitlementName]) &&
+            'BR'[Step2] = "1st Step - Business Role Owner" &&
+            ISBLANK('BR'[CompletionDate])  // Vérifie s'il existe au moins une CompletionDate vide
+        )
+    ) > 0
 
-Latest WorkItem Owner Members =
-VAR FilteredTable =
-    FILTER(
-        'Table',
-        'Table'[Is Latest WorkItem] = 1
+VAR LatestCreationDate =
+    IF(
+        HasBlankCompletion,
+        CALCULATE(
+            MAX('BR'[CreationDate]),
+            FILTER(
+                'BR',
+                'BR'[RoleDisplayName] = EARLIER('BR'[RoleDisplayName]) &&
+                'BR'[ApplicationName] = EARLIER('BR'[ApplicationName]) &&
+                'BR'[EntitlementName] = EARLIER('BR'[EntitlementName]) &&
+                'BR'[Step2] = "1st Step - Business Role Owner" &&
+                ISBLANK('BR'[CompletionDate])  // On ne prend que ceux avec CompletionDate vide
+            )
+        ),
+        BLANK()
     )
-RETURN
-    CONCATENATEX(FilteredTable, 'Table'[WorkItem Owner Members], UNICHAR(10))
-=============================================
-WorkItemOwner_Members_Table =
-SUMMARIZE(
-    'Table',
-    'Table'[WorkItem Owner],
-    'Table'[Latest Completion Date],
-    "All Members", CONCATENATEX(VALUES('Table'[WorkItem Owner Members]), 'Table'[WorkItem Owner Members], UNICHAR(10))
-)
 
-
-
-Latest WorkItem Owner Members =
-LOOKUPVALUE(
-    WorkItemOwner_Members_Table[All Members],
-    WorkItemOwner_Members_Table[WorkItem Owner], 'Table'[WorkItem Owner],
-    WorkItemOwner_Members_Table[Latest Completion Date], 'Table'[Latest Completion Date]
-)
+RETURN 
+    CALCULATE(
+        MAX('BR'[Decision.1]), 
+        FILTER(
+            'BR',
+            'BR'[RoleDisplayName] = EARLIER('BR'[RoleDisplayName]) &&
+            'BR'[ApplicationName] = EARLIER('BR'[ApplicationName]) &&
+            'BR'[EntitlementName] = EARLIER('BR'[EntitlementName]) &&
+            'BR'[Step2] = "1st Step - Business Role Owner" &&
+            (
+                (NOT(ISBLANK('BR'[CompletionDate])) && 'BR'[CompletionDate] = LatestCompletionDate) ||
+                (ISBLANK('BR'[CompletionDate]) && 'BR'[CreationDate] = LatestCreationDate)
+            )
+        )
+    )
