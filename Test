@@ -1,4 +1,4 @@
-VAR LatestCompletionDate =
+VAR LatestNonBlankCompletionDate =
     CALCULATE(
         MAX('BR'[CompletionDate]),
         FILTER(
@@ -7,7 +7,7 @@ VAR LatestCompletionDate =
             'BR'[ApplicationName] = EARLIER('BR'[ApplicationName]) &&
             'BR'[EntitlementName] = EARLIER('BR'[EntitlementName]) &&
             'BR'[Step2] = "1st Step - Business Role Owner" &&
-            NOT(ISBLANK('BR'[CompletionDate]))  // On ne prend que les dates non vides
+            NOT(ISBLANK('BR'[CompletionDate]))  // Exclut les valeurs vides
         )
     )
 
@@ -20,25 +20,21 @@ VAR HasBlankCompletion =
             'BR'[ApplicationName] = EARLIER('BR'[ApplicationName]) &&
             'BR'[EntitlementName] = EARLIER('BR'[EntitlementName]) &&
             'BR'[Step2] = "1st Step - Business Role Owner" &&
-            ISBLANK('BR'[CompletionDate])  // Vérifie s'il existe au moins une CompletionDate vide
+            ISBLANK('BR'[CompletionDate])  // Vérifie s'il y a au moins une CompletionDate vide
         )
     ) > 0
 
 VAR LatestCreationDate =
-    IF(
-        HasBlankCompletion,
-        CALCULATE(
-            MAX('BR'[CreationDate]),
-            FILTER(
-                'BR',
-                'BR'[RoleDisplayName] = EARLIER('BR'[RoleDisplayName]) &&
-                'BR'[ApplicationName] = EARLIER('BR'[ApplicationName]) &&
-                'BR'[EntitlementName] = EARLIER('BR'[EntitlementName]) &&
-                'BR'[Step2] = "1st Step - Business Role Owner" &&
-                ISBLANK('BR'[CompletionDate])  // On ne prend que ceux avec CompletionDate vide
-            )
-        ),
-        BLANK()
+    CALCULATE(
+        MAX('BR'[CreationDate]),
+        FILTER(
+            'BR',
+            'BR'[RoleDisplayName] = EARLIER('BR'[RoleDisplayName]) &&
+            'BR'[ApplicationName] = EARLIER('BR'[ApplicationName]) &&
+            'BR'[EntitlementName] = EARLIER('BR'[EntitlementName]) &&
+            'BR'[Step2] = "1st Step - Business Role Owner" &&
+            ISBLANK('BR'[CompletionDate])  // Ne prend que les CompletionDate vides
+        )
     )
 
 RETURN 
@@ -51,8 +47,8 @@ RETURN
             'BR'[EntitlementName] = EARLIER('BR'[EntitlementName]) &&
             'BR'[Step2] = "1st Step - Business Role Owner" &&
             (
-                (NOT(ISBLANK('BR'[CompletionDate])) && 'BR'[CompletionDate] = LatestCompletionDate) ||
-                (ISBLANK('BR'[CompletionDate]) && 'BR'[CreationDate] = LatestCreationDate)
+                (NOT(ISBLANK('BR'[CompletionDate])) && 'BR'[CompletionDate] = LatestNonBlankCompletionDate) ||
+                (HasBlankCompletion && 'BR'[CreationDate] = LatestCreationDate)
             )
         )
     )
