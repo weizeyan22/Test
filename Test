@@ -1,33 +1,40 @@
+VAR CurrentRole = 'BR'[RoleDisplayName]
+VAR CurrentApp = 'BR'[ApplicationName]
+VAR CurrentEntitlement = 'BR'[EntitlementName]
+VAR CurrentStep = 'BR'[Step2]
 
 VAR LatestCompletionDate =
     MAXX(
         FILTER(
             'BR',
-            'BR'[RoleDisplayName] = EARLIER('BR'[RoleDisplayName]) &&
-            'BR'[ApplicationName] = EARLIER('BR'[ApplicationName]) &&
-            'BR'[EntitlementName] = EARLIER('BR'[EntitlementName]) &&
+            'BR'[RoleDisplayName] = CurrentRole &&
+            'BR'[ApplicationName] = CurrentApp &&
+            'BR'[EntitlementName] = CurrentEntitlement &&
             'BR'[Step2] = "1st Step - Business Role Owner"
         ),
         'BR'[ArchivedDate] // On cherche la Completion Date la plus récente
     )
 
 VAR LatestDecision_Completion =
-    LOOKUPVALUE(
-        'BR'[Decision.1],
-        'BR'[RoleDisplayName], EARLIER('BR'[RoleDisplayName]),
-        'BR'[ApplicationName], EARLIER('BR'[ApplicationName]),
-        'BR'[EntitlementName], EARLIER('BR'[EntitlementName]),
-        'BR'[Step2], "1st Step - Business Role Owner",
-        'BR'[ArchivedDate], LatestCompletionDate
+    MAXX(
+        FILTER(
+            'BR',
+            'BR'[RoleDisplayName] = CurrentRole &&
+            'BR'[ApplicationName] = CurrentApp &&
+            'BR'[EntitlementName] = CurrentEntitlement &&
+            'BR'[Step2] = "1st Step - Business Role Owner" &&
+            'BR'[ArchivedDate] = LatestCompletionDate
+        ),
+        'BR'[Decision.1] // Récupérer la décision correspondante
     )
 
 VAR LatestCreationDate =
     MAXX(
         FILTER(
             'BR',
-            'BR'[RoleDisplayName] = EARLIER('BR'[RoleDisplayName]) &&
-            'BR'[ApplicationName] = EARLIER('BR'[ApplicationName]) &&
-            'BR'[EntitlementName] = EARLIER('BR'[EntitlementName]) &&
+            'BR'[RoleDisplayName] = CurrentRole &&
+            'BR'[ApplicationName] = CurrentApp &&
+            'BR'[EntitlementName] = CurrentEntitlement &&
             'BR'[Step2] = "1st Step - Business Role Owner" &&
             ISBLANK('BR'[ArchivedDate]) // On prend les cases où Completion Date est vide
         ),
@@ -35,13 +42,16 @@ VAR LatestCreationDate =
     )
 
 VAR LatestDecision_Creation =
-    LOOKUPVALUE(
-        'BR'[Decision.1],
-        'BR'[RoleDisplayName], EARLIER('BR'[RoleDisplayName]),
-        'BR'[ApplicationName], EARLIER('BR'[ApplicationName]),
-        'BR'[EntitlementName], EARLIER('BR'[EntitlementName]),
-        'BR'[Step2], "1st Step - Business Role Owner",
-        'BR'[CreationDate], LatestCreationDate
+    MAXX(
+        FILTER(
+            'BR',
+            'BR'[RoleDisplayName] = CurrentRole &&
+            'BR'[ApplicationName] = CurrentApp &&
+            'BR'[EntitlementName] = CurrentEntitlement &&
+            'BR'[Step2] = "1st Step - Business Role Owner" &&
+            'BR'[CreationDate] = LatestCreationDate
+        ),
+        'BR'[Decision.1] // Récupérer la décision correspondante
     )
 
 RETURN
