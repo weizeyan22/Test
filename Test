@@ -3,60 +3,56 @@ VAR CurrentApp = 'BR'[ApplicationName]
 VAR CurrentEntitlement = 'BR'[EntitlementName]
 VAR CurrentStep = 'BR'[Step2]
 
+-- Vérifier s'il existe au moins une ligne avec Completion Date vide
+VAR HasEmptyCompletionDate =
+    CALCULATE(
+        COUNTROWS('BR'),
+        'BR'[RoleDisplayName] = CurrentRole &&
+        'BR'[ApplicationName] = CurrentApp &&
+        'BR'[EntitlementName] = CurrentEntitlement &&
+        'BR'[Step2] = "1st Step - Business Role Owner" &&
+        ISBLANK('BR'[ArchivedDate]) -- Vérifie si au moins une completion date est vide
+    ) > 0
+
+-- Si une completion date est vide, prendre la ligne avec la création date la plus récente
+VAR LatestCreationDate =
+    IF(
+        HasEmptyCompletionDate,
+        CALCULATE(
+            MAX('BR'[CreationDate]),
+            'BR'[RoleDisplayName] = CurrentRole &&
+            'BR'[ApplicationName] = CurrentApp &&
+            'BR'[EntitlementName] = CurrentEntitlement &&
+            'BR'[Step2] = "1st Step - Business Role Owner" &&
+            ISBLANK('BR'[ArchivedDate]) -- Filtrer uniquement les lignes où Completion Date est vide
+        )
+    )
+
+-- Si toutes les completion dates sont remplies, prendre la plus récente
 VAR LatestCompletionDate =
-    MAXX(
-        FILTER(
-            'BR',
+    IF(
+        NOT HasEmptyCompletionDate,
+        CALCULATE(
+            MAX('BR'[ArchivedDate]),
             'BR'[RoleDisplayName] = CurrentRole &&
             'BR'[ApplicationName] = CurrentApp &&
             'BR'[EntitlementName] = CurrentEntitlement &&
             'BR'[Step2] = "1st Step - Business Role Owner"
-        ),
-        'BR'[ArchivedDate] // On cherche la Completion Date la plus récente
+        )
     )
 
-VAR LatestDecision_Completion =
-    MAXX(
-        FILTER(
-            'BR',
-            'BR'[RoleDisplayName] = CurrentRole &&
-            'BR'[ApplicationName] = CurrentApp &&
-            'BR'[EntitlementName] = CurrentEntitlement &&
-            'BR'[Step2] = "1st Step - Business Role Owner" &&
-            'BR'[ArchivedDate] = LatestCompletionDate
-        ),
-        'BR'[Decision.1] // Récupérer la décision correspondante
+-- Trouver la décision associée à la bonne date
+VAR SelectedDecision =
+    CALCULATE(
+        MAX('BR'[Decision.1]), 
+        'BR'[RoleDisplayName] = CurrentRole &&
+        'BR'[ApplicationName] = CurrentApp &&
+        'BR'[EntitlementName] = CurrentEntitlement &&
+        'BR'[Step2] = "1st Step - Business Role Owner" &&
+        (
+            ('BR'[ArchivedDate] = LatestCompletionDate && NOT HasEmptyCompletionDate) || 
+            ('BR'[CreationDate] = LatestCreationDate && HasEmptyCompletionDate)
+        )
     )
 
-VAR LatestCreationDate =
-    MAXX(
-        FILTER(
-            'BR',
-            'BR'[RoleDisplayName] = CurrentRole &&
-            'BR'[ApplicationName] = CurrentApp &&
-            'BR'[EntitlementName] = CurrentEntitlement &&
-            'BR'[Step2] = "1st Step - Business Role Owner" &&
-            ISBLANK('BR'[ArchivedDate]) // On prend les cases où Completion Date est vide
-        ),
-        'BR'[CreationDate] // Prend la Création Date la plus récente si Completion Date est vide
-    )
-
-VAR LatestDecision_Creation =
-    MAXX(
-        FILTER(
-            'BR',
-            'BR'[RoleDisplayName] = CurrentRole &&
-            'BR'[ApplicationName] = CurrentApp &&
-            'BR'[EntitlementName] = CurrentEntitlement &&
-            'BR'[Step2] = "1st Step - Business Role Owner" &&
-            'BR'[CreationDate] = LatestCreationDate
-        ),
-        'BR'[Decision.1] // Récupérer la décision correspondante
-    )
-
-RETURN
-    IF(
-        ISBLANK(LatestCompletionDate),
-        LatestDecision_Creation, // Si Completion Date est vide, on prend la décision avec Création Date la plus récente
-        LatestDecision_Completion // Sinon, on prend la décision avec la Completion Date la plus récente
-    )
+RETURN SelectedDecision
