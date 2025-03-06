@@ -28,4 +28,17 @@ VAR FinalDate =
         LatestCompletionDate
     )
 
-RETURN FinalDate
+VAR LatestWorkitemOwner =
+    CALCULATE(
+        MAX('BR'[Workitem Owner]),
+        FILTER(
+            'BR',
+            'BR'[Role] = EARLIER('BR'[Role]) &&
+            'BR'[Entitlement] = EARLIER('BR'[Entitlement]) &&
+            'BR'[Step] = EARLIER('BR'[Step]) &&
+            'BR'[Creation Date] = LatestCreationDate &&
+            'BR'[Completion Date] = LatestCompletionDate
+        )
+    )
+
+RETURN LatestWorkitemOwner
