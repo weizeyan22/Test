@@ -21,13 +21,6 @@ VAR LatestCompletionDate =
         )
     )
 
-VAR FinalDate =
-    IF(
-        ISBLANK(LatestCompletionDate),
-        LatestCreationDate,
-        LatestCompletionDate
-    )
-
 VAR LatestWorkitemOwner =
     CALCULATE(
         MAX('BR'[Workitem Owner]),
@@ -37,7 +30,10 @@ VAR LatestWorkitemOwner =
             'BR'[Entitlement] = EARLIER('BR'[Entitlement]) &&
             'BR'[Step] = EARLIER('BR'[Step]) &&
             'BR'[Creation Date] = LatestCreationDate &&
-            'BR'[Completion Date] = LatestCompletionDate
+            (
+                ISBLANK(LatestCompletionDate) || 
+                'BR'[Completion Date] = LatestCompletionDate
+            )
         )
     )
 
