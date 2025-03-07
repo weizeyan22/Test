@@ -1,20 +1,57 @@
-IsMaxStepAndAction = 
-VAR LatestCompletionDate = 
-    CALCULATE(
-        MAX('BR'[completion date]),
-        ALLEXCEPT('BR', 'BR'[Rôle])
-    )
-
 VAR LatestCreationDate =
     CALCULATE(
-        MAX('BR'[creation date]),
-        ALLEXCEPT('BR', 'BR'[Rôle])
+        MAX('BR'[Creation Date]),
+        FILTER(
+            'BR',
+            'BR'[Role] = EARLIER('BR'[Role]) &&
+            'BR'[Application] = EARLIER('BR'[Application]) &&
+            'BR'[Entitlement] = EARLIER('BR'[Entitlement]) &&
+            'BR'[Operation] = EARLIER('BR'[Operation]) &&
+            'BR'[Action] = EARLIER('BR'[Action])
+        )
     )
 
-RETURN
+VAR LatestCompletionDate =
+    CALCULATE(
+        MAX('BR'[Completion Date]),
+        FILTER(
+            'BR',
+            'BR'[Role] = EARLIER('BR'[Role]) &&
+            'BR'[Application] = EARLIER('BR'[Application]) &&
+            'BR'[Entitlement] = EARLIER('BR'[Entitlement]) &&
+            'BR'[Operation] = EARLIER('BR'[Operation]) &&
+            'BR'[Action] = EARLIER('BR'[Action]) &&
+            'BR'[Creation Date] = LatestCreationDate
+        )
+    )
+
+VAR FinalDate =
     IF(
-        'BR'[completion date] = LatestCompletionDate &&
-        'BR'[creation date] = LatestCreationDate,
+        ISBLANK(LatestCompletionDate),
+        LatestCreationDate,
+        LatestCompletionDate
+    )
+
+VAR MaxActionPerRole =
+    CALCULATE(
+        MAX('BR'[Action Index]),
+        ALLEXCEPT('BR', 'BR'[Role])
+    )
+
+VAR MaxStepPerMaxAction =
+    CALCULATE(
+        MAX('BR'[Step Index]),
+        ALLEXCEPT('BR', 'BR'[Role]),
+        'BR'[Action Index] = MaxActionPerRole
+    )
+
+VAR IsMaxStepAndAction =
+    IF(
+        'BR'[Action Index] = MaxActionPerRole &&
+        'BR'[Step Index] = MaxStepPerMaxAction &&
+        'BR'[Creation Date] = FinalDate,
         "Yes",
         "No"
     )
+
+RETURN IsMaxStepAndAction
