@@ -21,20 +21,33 @@ VAR LatestCompletionDate =
         )
     )
 
-VAR LatestWorkitemOwner =
-    CALCULATE(
-        MAX('BR'[Workitem Owner]),
-        FILTER(
-            'BR',
-            'BR'[Role] = EARLIER('BR'[Role]) &&
-            'BR'[Entitlement] = EARLIER('BR'[Entitlement]) &&
-            'BR'[Step] = EARLIER('BR'[Step]) &&
-            'BR'[Creation Date] = LatestCreationDate &&
-            (
-                ISBLANK(LatestCompletionDate) || 
-                'BR'[Completion Date] = LatestCompletionDate
-            )
-        )
+VAR FinalDate =
+    IF(
+        ISBLANK(LatestCompletionDate),
+        LatestCreationDate,
+        LatestCompletionDate
     )
 
-RETURN LatestWorkitemOwner
+VAR MaxActionPerRole =
+    CALCULATE(
+        MAX(BR[Action Index]),
+        ALLEXCEPT(BR, BR[RoleDisplayName])
+    )
+
+VAR MaxStepPerMaxAction =
+    CALCULATE(
+        MAX(BR[Step Index]),
+        ALLEXCEPT(BR, BR[RoleDisplayName]),
+        BR[Action Index] = MaxActionPerRole
+    )
+
+VAR IsMaxStepAndAction =
+    IF(
+        BR[Action Index] = MaxActionPerRole &&
+        BR[Step Index] = MaxStepPerMaxAction &&
+        BR[Creation Date] = FinalDate,
+        "Yes",
+        "No"
+    )
+
+RETURN IsMaxStepAndAction
