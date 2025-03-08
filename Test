@@ -1,14 +1,14 @@
-FiltreWorkItemsMesure = 
-VAR SelectedUser = SELECTEDVALUE('Users'[UserID])  -- Slicer pour sélectionner l'utilisateur
-VAR IsOwner = 
-    CALCULATE(
-        COUNTROWS('BR'),
-        'BR'[WorkItem Owner UID] = SelectedUser
-    )
+FiltreWorkItems = 
+VAR UserID = SELECTEDVALUE('Users'[UserID])  -- Utilisation d'un slicer pour sélectionner l'utilisateur
 VAR IsMember = 
     CALCULATE(
-        COUNTROWS('BR'),
-        'BR'[WorkItem Owner Member UID] = SelectedUser
+        COUNTROWS('WorkItem Owner Members'),
+        CONTAINSSTRING('WorkItem Owner Members'[WorkItem Owner Members], UserID)
+    )
+VAR IsOwner = 
+    CALCULATE(
+        COUNTROWS('WorkItem Owner Members'),
+        'WorkItem Owner Members'[WorkItem Owner] = UserID
     )
 RETURN
     IF(IsOwner > 0 || IsMember > 0, 1, 0)
