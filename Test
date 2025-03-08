@@ -1,23 +1,14 @@
-WorkItemOwner_Expanded = 
-SELECTCOLUMNS(
-    GENERATE(
-        WorkItemOwner_Members_Table,
-        VAR MembersList = 
-            SUBSTITUTE(WorkItemOwner_Members_Table[All Members], UNICHAR(10), "|") 
-        VAR MembersTable = 
-            ADDCOLUMNS( 
-                ADDCOLUMNS( 
-                    FILTER( 
-                        GENERATESERIES(1, LEN(MembersList) - LEN(SUBSTITUTE(MembersList, "|", "")) + 1), 
-                        TRUE 
-                    ), 
-                    "Name", TRIM(PATHITEM(MembersList, [Value], TEXT))
-                ), 
-                "WorkItem Owner", WorkItemOwner_Members_Table[WorkItem Owner]
-            ) 
-        RETURN 
-            MembersTable
+User_WorkItemOwnership = 
+UNION(
+    // 1. Ajouter les workitems des utilisateurs individuels
+    SELECTCOLUMNS('BR',
+        "User", 'BR'[Latest Workitem Owner],
+        "Role", 'BR'[Role]
     ),
-    "User", [Name],
-    "WorkItem Owner", [WorkItem Owner]
+
+    // 2. Ajouter les workitems des membres des workgroups
+    SELECTCOLUMNS('BR',
+        "User", 'BR'[WorkItem Owner Member], 
+        "Role", 'BR'[Role]
+    )
 )
