@@ -1,11 +1,14 @@
-IsWorkItemVisible = 
-VAR SelectedUser = SELECTEDVALUE('Users'[UserName]) // Récupère l’utilisateur sélectionné
-VAR WorkItemOwner = 'BR'[Latest Workitem Owner] // Dernier propriétaire du workitem
-VAR AllMembers = 'BR'[All Members] // Membres du workgroup concaténés
-
+FiltreWorkItemsMesure = 
+VAR SelectedUser = SELECTEDVALUE('Users'[UserID])  -- Slicer pour sélectionner l'utilisateur
+VAR IsOwner = 
+    CALCULATE(
+        COUNTROWS('BR'),
+        'BR'[WorkItem Owner UID] = SelectedUser
+    )
+VAR IsMember = 
+    CALCULATE(
+        COUNTROWS('BR'),
+        'BR'[WorkItem Owner Member UID] = SelectedUser
+    )
 RETURN
-IF(
-    WorkItemOwner = SelectedUser || CONTAINSSTRING(AllMembers, SelectedUser),
-    1, 
-    0
-)
+    IF(IsOwner > 0 || IsMember > 0, 1, 0)
