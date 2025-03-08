@@ -1,57 +1,10 @@
-VAR LatestCreationDate =
-    CALCULATE(
-        MAX('BR'[Creation Date]),
-        FILTER(
-            'BR',
-            'BR'[Role] = EARLIER('BR'[Role]) &&
-            'BR'[Application] = EARLIER('BR'[Application]) &&
-            'BR'[Entitlement] = EARLIER('BR'[Entitlement]) &&
-            'BR'[Operation] = EARLIER('BR'[Operation]) &&
-            'BR'[Action] = EARLIER('BR'[Action])
+Users_Workgroups = 
+VAR UniqueUsers =
+    DISTINCT(
+        UNION(
+            SELECTCOLUMNS('BR', "User", 'BR'[Latest WorkItem Owner]),
+            SELECTCOLUMNS('BR', "User", 'BR'[All Members])
         )
     )
-
-VAR LatestCompletionDate =
-    CALCULATE(
-        MAX('BR'[Completion Date]),
-        FILTER(
-            'BR',
-            'BR'[Role] = EARLIER('BR'[Role]) &&
-            'BR'[Application] = EARLIER('BR'[Application]) &&
-            'BR'[Entitlement] = EARLIER('BR'[Entitlement]) &&
-            'BR'[Operation] = EARLIER('BR'[Operation]) &&
-            'BR'[Action] = EARLIER('BR'[Action]) &&
-            'BR'[Creation Date] = LatestCreationDate
-        )
-    )
-
-VAR FinalDate =
-    IF(
-        ISBLANK(LatestCompletionDate),
-        LatestCreationDate,
-        LatestCompletionDate
-    )
-
-VAR MaxActionPerRole =
-    CALCULATE(
-        MAX('BR'[Action Index]),
-        ALLEXCEPT('BR', 'BR'[Role])
-    )
-
-VAR MaxStepPerMaxAction =
-    CALCULATE(
-        MAX('BR'[Step Index]),
-        ALLEXCEPT('BR', 'BR'[Role]),
-        'BR'[Action Index] = MaxActionPerRole
-    )
-
-VAR IsMaxStepAndAction =
-    IF(
-        'BR'[Action Index] = MaxActionPerRole &&
-        'BR'[Step Index] = MaxStepPerMaxAction &&
-        'BR'[Creation Date] = FinalDate,
-        "Yes",
-        "No"
-    )
-
-RETURN IsMaxStepAndAction
+RETURN
+    UniqueUsers
