@@ -1,14 +1,11 @@
-User_WorkItemOwnership = 
-UNION(
-    // 1. Ajouter les workitems des utilisateurs individuels
-    SELECTCOLUMNS('BR',
-        "User", 'BR'[Latest Workitem Owner],
-        "Role", 'BR'[Role]
-    ),
+IsWorkItemVisible = 
+VAR SelectedUser = SELECTEDVALUE('Users'[UserName]) // Récupère l’utilisateur sélectionné
+VAR WorkItemOwner = 'BR'[Latest Workitem Owner] // Dernier propriétaire du workitem
+VAR AllMembers = 'BR'[All Members] // Membres du workgroup concaténés
 
-    // 2. Ajouter les workitems des membres des workgroups
-    SELECTCOLUMNS('BR',
-        "User", 'BR'[WorkItem Owner Member], 
-        "Role", 'BR'[Role]
-    )
+RETURN
+IF(
+    WorkItemOwner = SelectedUser || CONTAINSSTRING(AllMembers, SelectedUser),
+    1, 
+    0
 )
