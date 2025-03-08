@@ -1,10 +1,23 @@
-Users_Workgroups = 
-VAR UniqueUsers =
-    DISTINCT(
-        UNION(
-            SELECTCOLUMNS('BR', "User", 'BR'[Latest WorkItem Owner]),
-            SELECTCOLUMNS('BR', "User", 'BR'[All Members])
-        )
-    )
-RETURN
-    UniqueUsers
+WorkItemOwner_Expanded = 
+SELECTCOLUMNS(
+    GENERATE(
+        WorkItemOwner_Members_Table,
+        VAR MembersList = 
+            SUBSTITUTE(WorkItemOwner_Members_Table[All Members], UNICHAR(10), "|") 
+        VAR MembersTable = 
+            ADDCOLUMNS( 
+                ADDCOLUMNS( 
+                    FILTER( 
+                        GENERATESERIES(1, LEN(MembersList) - LEN(SUBSTITUTE(MembersList, "|", "")) + 1), 
+                        TRUE 
+                    ), 
+                    "Name", TRIM(PATHITEM(MembersList, [Value], TEXT))
+                ), 
+                "WorkItem Owner", WorkItemOwner_Members_Table[WorkItem Owner]
+            ) 
+        RETURN 
+            MembersTable
+    ),
+    "User", [Name],
+    "WorkItem Owner", [WorkItem Owner]
+)
