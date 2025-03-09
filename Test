@@ -1,15 +1,16 @@
-IsVisible = 
-VAR SelectedUser = SELECTEDVALUE('BR'[WorkItem Owner Member]) -- Utilisateur sélectionné dans le filtre  
-VAR LatestOwner = 'BR'[Latest WorkItem Owner] 
-VAR AllMembers = 'BR'[All Members]  
+Filtrage Dynamique = 
+VAR SelectedUser = SELECTEDVALUE('WorkItem Owner Members'[Filtre]) 
 
-RETURN 
+RETURN
 IF(
-    -- Cas 1: L'utilisateur est directement Latest WorkItem Owner
-    LatestOwner = SelectedUser 
+    NOT(ISBLANK(SelectedUser)) &&
+    (
+        -- Cas 1 : L'utilisateur est le Latest WorkItem Owner
+        SELECTEDVALUE('BR'[Latest WorkItem Owner]) = SelectedUser
 
-    -- Cas 2: L'utilisateur appartient à un Workgroup (présent dans All Members)
-    || CONTAINSSTRING(AllMembers, SelectedUser), 
-
-    1, 0
+        -- Cas 2 : L'utilisateur fait partie d'un groupe qui est Latest WorkItem Owner
+        || SEARCH(SelectedUser, CONCATENATEX(VALUES('BR'[WorkItem Owner Members]), 'BR'[WorkItem Owner Members], ", "), 1, 0) > 0
+    ), 
+    1, 
+    0
 )
