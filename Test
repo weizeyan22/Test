@@ -1,16 +1,16 @@
-Filtrage Dynamique = 
-VAR SelectedUser = SELECTEDVALUE('WorkItem Owner Members'[Filtre]) 
+IsLatestDateMeasure = 
+VAR LatestCreationDate =
+    CALCULATE(
+        MAX('BR'[Creation Date]),
+        ALLEXCEPT('BR', 'BR'[Role], 'BR'[Application], 'BR'[Entitlement], 'BR'[Operation], 'BR'[Action])
+    )
 
-RETURN
-IF(
-    NOT(ISBLANK(SelectedUser)) &&
-    (
-        -- Cas 1 : L'utilisateur est le Latest WorkItem Owner
-        SELECTEDVALUE('BR'[Latest WorkItem Owner]) = SelectedUser
+VAR LatestCompletionDate =
+    CALCULATE(
+        MAX('BR'[Completion Date]),
+        ALLEXCEPT('BR', 'BR'[Role], 'BR'[Application], 'BR'[Entitlement], 'BR'[Operation], 'BR'[Action]),
+        'BR'[Creation Date] = LatestCreationDate
+    )
 
-        -- Cas 2 : L'utilisateur fait partie d'un groupe qui est Latest WorkItem Owner
-        || SEARCH(SelectedUser, CONCATENATEX(VALUES('BR'[WorkItem Owner Members]), 'BR'[WorkItem Owner Members], ", "), 1, 0) > 0
-    ), 
-    1, 
-    0
-)
+RETURN 
+IF(SELECTEDVALUE('BR'[Completion Date]) = LatestCompletionDate, "Yes", "No")
