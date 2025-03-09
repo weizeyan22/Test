@@ -1,14 +1,15 @@
-FiltreWorkItems = 
-VAR UserID = SELECTEDVALUE('Users'[UserID])  -- Utilisation d'un slicer pour sélectionner l'utilisateur
-VAR IsMember = 
-    CALCULATE(
-        COUNTROWS('WorkItem Owner Members'),
-        CONTAINSSTRING('WorkItem Owner Members'[WorkItem Owner Members], UserID)
-    )
-VAR IsOwner = 
-    CALCULATE(
-        COUNTROWS('WorkItem Owner Members'),
-        'WorkItem Owner Members'[WorkItem Owner] = UserID
-    )
-RETURN
-    IF(IsOwner > 0 || IsMember > 0, 1, 0)
+IsVisible = 
+VAR SelectedUser = SELECTEDVALUE('BR'[WorkItem Owner Member]) -- Utilisateur sélectionné dans le filtre  
+VAR LatestOwner = 'BR'[Latest WorkItem Owner] 
+VAR AllMembers = 'BR'[All Members]  
+
+RETURN 
+IF(
+    -- Cas 1: L'utilisateur est directement Latest WorkItem Owner
+    LatestOwner = SelectedUser 
+
+    -- Cas 2: L'utilisateur appartient à un Workgroup (présent dans All Members)
+    || CONTAINSSTRING(AllMembers, SelectedUser), 
+
+    1, 0
+)
