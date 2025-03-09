@@ -1,16 +1,30 @@
-IsLatestDateMeasure = 
+IsLatestDate = 
 VAR LatestCreationDate =
     CALCULATE(
         MAX('BR'[Creation Date]),
-        ALLEXCEPT('BR', 'BR'[Role], 'BR'[Application], 'BR'[Entitlement], 'BR'[Operation], 'BR'[Action])
+        FILTER(
+            'BR',
+            'BR'[Role] = EARLIER('BR'[Role]) &&
+            'BR'[Application] = EARLIER('BR'[Application]) &&
+            'BR'[Entitlement] = EARLIER('BR'[Entitlement]) &&
+            'BR'[Operation] = EARLIER('BR'[Operation]) &&
+            'BR'[Action] = EARLIER('BR'[Action])
+        )
     )
 
 VAR LatestCompletionDate =
     CALCULATE(
         MAX('BR'[Completion Date]),
-        ALLEXCEPT('BR', 'BR'[Role], 'BR'[Application], 'BR'[Entitlement], 'BR'[Operation], 'BR'[Action]),
-        'BR'[Creation Date] = LatestCreationDate
+        FILTER(
+            'BR',
+            'BR'[Role] = EARLIER('BR'[Role]) &&
+            'BR'[Application] = EARLIER('BR'[Application]) &&
+            'BR'[Entitlement] = EARLIER('BR'[Entitlement]) &&
+            'BR'[Operation] = EARLIER('BR'[Operation]) &&
+            'BR'[Action] = EARLIER('BR'[Action]) &&
+            'BR'[Creation Date] = LatestCreationDate
+        )
     )
 
 RETURN 
-IF(SELECTEDVALUE('BR'[Completion Date]) = LatestCompletionDate, "Yes", "No")
+IF('BR'[Completion Date] = LatestCompletionDate, "Yes", "No")
