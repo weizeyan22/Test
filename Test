@@ -1,14 +1,10 @@
-IsLatestDate = 
+Total Ongoing =
 VAR LatestCreationDate =
     CALCULATE(
         MAX('BR'[Creation Date]),
         FILTER(
             'BR',
-            'BR'[Role] = EARLIER('BR'[Role]) &&
-            'BR'[Application] = EARLIER('BR'[Application]) &&
-            'BR'[Entitlement] = EARLIER('BR'[Entitlement]) &&
-            'BR'[Operation] = EARLIER('BR'[Operation]) &&
-            'BR'[Action] = EARLIER('BR'[Action])
+            'BR'[Role] = EARLIER('BR'[Role]) 
         )
     )
 
@@ -18,13 +14,23 @@ VAR LatestCompletionDate =
         FILTER(
             'BR',
             'BR'[Role] = EARLIER('BR'[Role]) &&
-            'BR'[Application] = EARLIER('BR'[Application]) &&
-            'BR'[Entitlement] = EARLIER('BR'[Entitlement]) &&
-            'BR'[Operation] = EARLIER('BR'[Operation]) &&
-            'BR'[Action] = EARLIER('BR'[Action]) &&
             'BR'[Creation Date] = LatestCreationDate
         )
     )
 
+VAR IsLatestStep =
+    'BR'[Creation Date] = LatestCreationDate &&
+    (ISBLANK(LatestCompletionDate) || 'BR'[Completion Date] = LatestCompletionDate)
+
+VAR TotalOngoingCount =
+    CALCULATE(
+        DISTINCTCOUNT( 'BR'[App_Ent_WorkItemID] ),
+        FILTER(
+            'BR',
+            'BR'[Role] = EARLIER('BR'[Role]) &&
+            'BR'[Decision.1] = "Undecided"
+        )
+    )
+
 RETURN 
-IF('BR'[Completion Date] = LatestCompletionDate, "Yes", "No")
+    IF(IsLatestStep, TotalOngoingCount, BLANK())
