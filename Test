@@ -1,1 +1,11 @@
-= DateTime.FromText(Text.Middle([signedon], 6, 4) & "-" & Text.Start([signedon], 2) & "-" & Text.Middle([signedon], 3, 2) & " " & Text.End([signedon], 5))
+let
+    parts = Text.Split([SignedOn], " "),
+    datePart = Text.Split(parts{0}, "/"),
+    month = Number.FromText(datePart{0}),
+    day = Number.FromText(datePart{1}),
+    year = Number.FromText(datePart{2}),
+    timePart = if List.Count(parts) > 1 then parts{1} else "00:00",
+    dateString = Text.From(year) & "-" & Text.PadStart(Text.From(month), 2, "0") & "-" & Text.PadStart(Text.From(day), 2, "0") & " " & timePart,
+    result = DateTime.FromText(dateString)
+in
+    result
