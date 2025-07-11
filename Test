@@ -1,11 +1,13 @@
-let
-    parts = Text.Split([SignedOn], " "),
-    datePart = Text.Split(parts{0}, "/"),
-    month = Number.FromText(datePart{0}),
-    day = Number.FromText(datePart{1}),
-    year = Number.FromText(datePart{2}),
-    timePart = if List.Count(parts) > 1 then parts{1} else "00:00",
-    dateString = Text.From(year) & "-" & Text.PadStart(Text.From(month), 2, "0") & "-" & Text.PadStart(Text.From(day), 2, "0") & " " & timePart,
-    result = DateTime.FromText(dateString)
-in
-    result
+id_cols = ["UID", "Application", "Entitlement", "Last Request ID"]
+
+frc_mapping = (
+    df[df["EntitlementFRC"].notnull()]
+    .groupby(id_cols)["EntitlementFRC"]
+    .apply(lambda x: ', '.join(dict.fromkeys(i.strip() for i in x if pd.notnull(i) and i.strip() != "")))
+    .reset_index()
+    .rename(columns={"EntitlementFRC": "EntitlementFRC_Cleaned"})
+)
+
+df_cleaned = df.drop(columns=["EntitlementFRC"]).merge(frc_mapping, on=id_cols, how="left")
+
+df_cleaned = df_cleaned.rename(columns={"EntitlementFRC_Cleaned": "EntitlementFRC"})
