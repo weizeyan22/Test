@@ -1,47 +1,124 @@
-As suggested by Patrick, please find below the global summary of the AI Summer School 2025. Detailed summaries and insights for each keynote are provided in the attached document.
-
-The central theme this year was Responsible AI, presented as the core pillar of BNPP’s transformation and the necessary foundation for deploying AI at scale, particularly for the upcoming wave of Agentic AI.
-
-The following are the key takeaways most relevant to our scope :
-At Group Level:
-1.	BNPP Strategic Priorities
-o	Focus on high-value AI use cases and mutualization of AI assets across entities.
-	Objective: reduce redundant developments and maximize reuse.
-o	Priority shift → cost savings (Agentic AI -> as a key driver).
-o	Real business value = business ownership of AI.
-2.	Responsible AI and Governance
-o	Group-wide governance structure: 1 central AI Committee + 4 intermediary committees, supported by a common framework.
-o	Alignment with the EU AI Act.
-3.	Role of IT
-o	IT is central to AI deployment and usage.
-o	No separate AI governance within IT → existing IT governance will be refreshed with AI-specific components.
-
-At CIB Level:
-   4. AI as BAU
-	AI must now become part of CIB’s day-to-day business operations.
-5.	Split of Responsibilities : AI Lab vs. IT
-o	AI Lab: innovation, data science, exploration of emerging technologies (e.g., Agentic AI).
-o	IT: integration of AI into business processes, and autonomous operations/maintenance.
-6.	Prerequisites for Agentic AI
-o	Deploying Agentic AI often requires reengineering processes, not just automating the existing ones.
-	Example: instead of automating an outdated workflow, build a new process where Agentic AI plays a core role.
-7.	Security and Data Governance
-o	Agentic AI depends on robust workflows, databases, compliant and high-quality data.
-o	Security is critical: for an AI use case answering client requests automatically, the system must first ensure the requester is entitled to receive the information (it must verify the requester’s identity and entitlements) → requiring strong security layer and controls.
-
-At Employee Level:
-8. Human-in-the-Loop
-•	AI should remain an enabler of human judgment, not a substitute.
-•	Protocols must ensure that humans supervise, validate, and make final decisions.
-9.	Agentic AI = the Next Step
-•	not only answering questions in real time (like LLMs), but also taking actions (e.g., sending emails, classifying documents) and managing processes rather than simply executing isolated tasks
-10.	Skill-up across org and employee empowerment
-•	Strong encouragement for employees to adopt AI tools (LLMs, Tech Academy, AI House, etc.) to boost productivity and efficiency.
+1.	ExCo AI Vision :
 
 
-Some of the more technical keynotes are not included here, as they mainly covered AI/DS techniques, practical deployment aspects, and implementations across different domains. For those interested, the replay is available. Below is the full list of keynotes from this year’s two-day AI Summer School 
+1.	AI : 1 of the central topic for BNPP
+•	Banking = perfect ground for AI (data and process-heavy business)
+•	AI = core pillar of BNPP’s transformation today, across all business functions 
+
+2.	 AI value creation in BNPP
+•	Mid-2025 : ≈ 900 use cases already in production => €570M value. 
+	Breakdown: 71% revenue, 14% cost avoidance, 7% cost savings, 7% risk
+	Only 70 use cases = 80% of value; ~50% use cases < €50k
+•	Target 2026 : +€250M, with at least half from cost savings. 
+	Strategic Priorities : Rationalize portfolio: focus on high-value cases & mutualization -> reduce similar solution redevelopment (shared AI assets: LLM, IDP, speech to text, RAG -> must be reused across entities)
+	Priority shift → cost savings (AgenticAI as main driver)
+	Real value = business ownership
+•	Agentic AI: potential for automation of complex processes → productivity & savings. (Challenges: adoption, trust, governance)
+
+3.	Responsible AI 
+•	Group-wide AI governance (1 central Group AI committee + 4 intermediary committees) + common AI framework. 
+•	alignment with EU AI Act.
+•	Focus on transparency, bias/fairness, data privacy/security, accountability. 
+
+4.	Employee empowerment
+•	800+ data scientists/AI analysts
+•	Tech Academy launched for all employees (training from awareness → expert level, incl. GenAI best practices)
 
 
-Best regards,
 
-Weize
+2.	AI Leads RoundTable (CIB part)
+
+Q1. CIB’s transformation journey with AI
+•	AI becoming BAU in CIB → Today, AI must become part of day-to-day business operations, embedded in processes
+•	Split between AI Lab and IT :
+	The AI Lab now focuses on innovation, data science, and exploring new technologies (ex Agentic AI).
+	The IT teams are responsible for integrating AI into core business processes and being autonomous in running and maintaining AI.
+•	GenAI adoption: LLMs deployed to all CIB staff → encourage testing and integration AI tools into processes and daily work.
+•	AI Lab role: 
+•	selecting the right models, evaluating approaches, and testing emerging technologies (eg Agentic AI).
+•	Act as a coordinator between IT and business lines to ensure innovation can be implemented.
+•	Transformation :
+•	AI is not only about replacing manual tasks with automation, it often requires rethinking and redesigning entire processes.
+•	the AI Lab is expanding its scope to include upstream and downstream process analysis, not just modeling.
+
+Q2. CIB’s governance practices for AI
+
+1.	 Multi-layer governance
+•	Governance involves not only technical teams but also control functions (risk, compliance, etc.).
+•	A dedicated CIB AI control team was created to oversee AI strategy and governance.
+2.  Business involvement
+Business units are no longer just “users” of AI, they must act as AI model owners ->  responsible for monitoring performance, tracking value creation, and ensuring long-term relevance of models.
+3. Skill-up across org
+•	It’s not enough for IT and Lab teams to understand AI, Control functions and business stakeholders must also develop AI knowledge (risks and governance requirements).
+
+Q3. What needs to be in place before deploying Agentic AI at CIB
+1.	Process understanding & redesign
+•	Before applying Agentic AI, teams must deeply analyze and understand the process. It’s not enough to simply add Agentic AI to an existing workflow.
+•	Sometimes, introducing Agentic AI means the process itself needs to be re-engineered or redesigned.
+	Example: instead of automating the old process, it may need to build a new process where Agentic AI plays a core role.
+2.	IT, data, and security requirements
+•	Agentic AI relies on tools, workflows, databases, and high-quality data.
+•	Security is critical:
+	Example: in one of the use cases, AgenticAI automatically answer client requests. Before providing any information, the system must ensure that the requester is entitled to receive the answer (it must verify the requester’s identity and entitlements) -> requires a strong security layer.
+	This means the referentials (who can see what, who is authorized) must be accurate and up-to-date. Ensuring these access rights are properly defined and enforced is a prerequisite for deploying Agentic AI
+3.	Monitoring and control of Agentic AI behavior
+•	Once Agentic AI is deployed, there must be continuous monitoring to detect and prevent unintended or risky behaviors.
+
+
+
+
+3	. Articulatory Agentic AI in CIB
+
+1.	Agentic AI : From Hype to Reality
+•	Today, Agentic AI is at the top of the hype cycle, widely discussed in banking and beyond. The challenge: current approaches are not delivering the expected value.
+•	There is a massive gap between what we can build and what the business actually needs.
+•	A better way: Start with technology-centric prototypes -> do many fast iterations towards business goals -> build small but useful components instead of massive projects -> engage early with users to manage expectations -> Later, combine components into bigger assistants with better UX.
+2.	Agentic AI in CIB : Current Initiatives
+•	Major transformation projects already integrating Agentic AI :
+•	Global Markets: use Agentic to generate insights and cross-analyze market data.
+•	Global Banking: smarter document processing → extracting, mapping, and interacting with information.
+•	Client Support: automate query handling and autonomously answer client requests.
+•	Key use cases : Sales Assistant (helps sales navigate huge, complex datasets), Web Agent (extract in an autonomous way from company websites and generate structured summaries), Smart Query Manager (automates large part of client queries -> verify client identity and entitlements).
+3.	Risks and Governance of AgenticAI
+•	LLM risks + new risks due to autonomy : resource misuse, uncontrolled or excessive app access, conflicting actions between multiple agents, compounding errors → amplified hallucinations, reward hacking → unintended behaviors, over-delegation → human in the loop.
+4. AI Trends in Financial Sector (Artefact)
+1. Responsible AI: The necessary pillar before going any further
+Responsible AI in the financial sector is the foundation -> 6 pillars :
+•	Human Agency, Accountability & Oversight : AI should remain an enabler of human judgment, not a substitute. Define protocols ensuring that humans are “in the loop” to supervise, validate, and make final decisions.
+•	Privacy & Data Governance : AI must rely on compliant, high-quality data.
+•	Technical Robustness, Accuracy & Safety : AgenticAI is powerful but can sometimes produce errors -> implement observability platforms to continuously monitor AI systems
+•	Transparency and Copyright 
+•	Diversity, Fairness & Non-Discrimination
+•	Societal, Environmental & Cost Oversight
+2.Traditional AI vs Agentic AI
+•	Traditional AI (today’s AI) : mainly answers questions in real time (eg : LLMs, Chatbots)
+•	Agentic AI : goes beyond answering, it can take actions (e.g., send emails, classify document).
+•	Agent Process Automation (APA) : manage processes instead of simply executing predefined tasks.
+
+3.Types of Agents
+•	Task Agents: perform a single, well-defined action (e.g., send an email, classify a document).
+•	Workflow Agents: Coordinate multiple Task Agents to complete a multi-step process (e.g., fraud case resolution, credit approval, account opening).
+
+
+
+5. Reimagining Customer Engagement with Smarter Digital Assistants in Financial Sector
+•	Amazon products demo (demonstrates the application scenarios of AWS/GenAI in the financial industry).
+•	Financial services challenges:
+	Security and compliance = the biggest concerns.
+	Banks need to build digital systems with layered application architectures for safety.
+
+
+
+
+6.28th August Introduction
+
+•	IT is the key component of AI strategy and AI usage.
+•	IT will not create a new AI governance, but will refresh existing IT governance with AI-specific components.
+•	The role of IT governance is to map Group AI strategy into real capabilities.
+•	IT is responsible for ensuring business needs are aligned with long-term sustainable infrastructure.
+
+7. The Future of AI Assets for BNPP
+
+•	ITG products announcements : AI assets becoming standardized services (STTaaS = Speech-to-Text as a Service, RaGaaS = Retrieval-Augmented Generation as a Service).
+•	AI marketplace (“AI House”) for all entities.
+•	Fortis project → automated meeting minutes (LLM-based), delivery planned for early 2026.
