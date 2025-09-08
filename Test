@@ -1,13 +1,47 @@
-id_cols = ["UID", "Application", "Entitlement", "Last Request ID"]
+As suggested by Patrick, please find below the global summary of the AI Summer School 2025. Detailed summaries and insights for each keynote are provided in the attached document.
 
-frc_mapping = (
-    df[df["EntitlementFRC"].notnull()]
-    .groupby(id_cols)["EntitlementFRC"]
-    .apply(lambda x: ', '.join(dict.fromkeys(i.strip() for i in x if pd.notnull(i) and i.strip() != "")))
-    .reset_index()
-    .rename(columns={"EntitlementFRC": "EntitlementFRC_Cleaned"})
-)
+The central theme this year was Responsible AI, presented as the core pillar of BNPP’s transformation and the necessary foundation for deploying AI at scale, particularly for the upcoming wave of Agentic AI.
 
-df_cleaned = df.drop(columns=["EntitlementFRC"]).merge(frc_mapping, on=id_cols, how="left")
+The following are the key takeaways most relevant to our scope :
+At Group Level:
+1.	BNPP Strategic Priorities
+o	Focus on high-value AI use cases and mutualization of AI assets across entities.
+	Objective: reduce redundant developments and maximize reuse.
+o	Priority shift → cost savings (Agentic AI -> as a key driver).
+o	Real business value = business ownership of AI.
+2.	Responsible AI and Governance
+o	Group-wide governance structure: 1 central AI Committee + 4 intermediary committees, supported by a common framework.
+o	Alignment with the EU AI Act.
+3.	Role of IT
+o	IT is central to AI deployment and usage.
+o	No separate AI governance within IT → existing IT governance will be refreshed with AI-specific components.
 
-df_cleaned = df_cleaned.rename(columns={"EntitlementFRC_Cleaned": "EntitlementFRC"})
+At CIB Level:
+   4. AI as BAU
+	AI must now become part of CIB’s day-to-day business operations.
+5.	Split of Responsibilities : AI Lab vs. IT
+o	AI Lab: innovation, data science, exploration of emerging technologies (e.g., Agentic AI).
+o	IT: integration of AI into business processes, and autonomous operations/maintenance.
+6.	Prerequisites for Agentic AI
+o	Deploying Agentic AI often requires reengineering processes, not just automating the existing ones.
+	Example: instead of automating an outdated workflow, build a new process where Agentic AI plays a core role.
+7.	Security and Data Governance
+o	Agentic AI depends on robust workflows, databases, compliant and high-quality data.
+o	Security is critical: for an AI use case answering client requests automatically, the system must first ensure the requester is entitled to receive the information (it must verify the requester’s identity and entitlements) → requiring strong security layer and controls.
+
+At Employee Level:
+8. Human-in-the-Loop
+•	AI should remain an enabler of human judgment, not a substitute.
+•	Protocols must ensure that humans supervise, validate, and make final decisions.
+9.	Agentic AI = the Next Step
+•	not only answering questions in real time (like LLMs), but also taking actions (e.g., sending emails, classifying documents) and managing processes rather than simply executing isolated tasks
+10.	Skill-up across org and employee empowerment
+•	Strong encouragement for employees to adopt AI tools (LLMs, Tech Academy, AI House, etc.) to boost productivity and efficiency.
+
+
+Some of the more technical keynotes are not included here, as they mainly covered AI/DS techniques, practical deployment aspects, and implementations across different domains. For those interested, the replay is available. Below is the full list of keynotes from this year’s two-day AI Summer School 
+
+
+Best regards,
+
+Weize
