@@ -1,1 +1,201 @@
+Objet : Datalake – Première analyse et pistes de réflexion
 
+Bonjour [N+2 prénom] et [N+1 prénom],
+
+Je souhaite vous partager ma première compréhension du projet Datalake, ainsi qu’une proposition de structure d’analyse pour cadrer les prochaines étapes.
+L’objectif est d’assurer une vision commune avant d’approfondir les aspects techniques et organisationnels.
+
+ 
+
+Définition du Datalake 
+
+Un datalake est un référentiel centralisé permettant de stocker d’immenses volumes de données de tout type (structurées, semi-structurées, non structurées) dans leur format brut. 
+
+Caractéristiques du datalake : 
+
+Flexibilité : schema on read -> sans imposer de modèle rigide à l’ingestion contrairement au schema on write ; stocker tout type de données 
+
+Scalabilité : l’infrastructure d’un datalake peut s’adapter facilement à la croissance du volume de données (souvent basée sur des environnements cloud ou distribués). 
+
+Par exemple : l’intégration future de logs applicatifs, de traces d’accès ou d’audits etc. peut se faire sans contrainte majeure de capacité. 
+
+Centralisation : regrouper dans un même espace des données de sources multiples : MyIAM, MyAccess, Active Directory, OPAL, d’autres fichiers plats sharepoints etc. 
+
+Séparation des zones fonctionnelles : les données sont stockées dans des zones selon leur niveau de traitement : “Row” (brutes), “Curated” (nettoyées), “Analytics” (prêtes à l’analyse) -> permet de gérer la gouvernance, la sécurité et la réutilisation de manière plus fine. 
+
+Conçu pour s’intégrer à différents outils : outils de ETL, outils de BI (Power BI) etc.  
+
+->fondation flexible pour les cas d’usage analytiques, le reporting consolidé etc. 
+
+Gouvernance intégrée :  plateforme gouvernée avec catalogues des données, rôles et accès, audits etc. 
+
+ 
+
+Datalake VS Datawarehouse 
+
+ 
+
+Critère 
+
+Datalake 
+
+Datawarehouse traditionnel 
+
+Structure des données 
+
+Schema on read (flexible) 
+
+Schema on write (rigide) 
+
+Type de données 
+
+Tous types (Structurées, semi-structurées, non structurées) 
+
+Structurées 
+
+Objectif principal / Cas d’usage typiques 
+
+Consolidation multi-sources IAM, logs, accès, référentiels; stockage de données; exploration et analyse de données (ML, DS, AI), audit et conformité 
+
+Reporting et analyse BI 
+
+Technologies 
+
+Hadoop, Amazon S3, Microsoft Azure Data Lake, Oracle Object Storage etc. 
+
+Oracle DB, BigQuery etc. 
+
+Coût 
+
+Relativement faible 
+
+Elevé (ETL et modélisation couteux) 
+
+ 
+
+ 
+
+Best Practices clés 
+
+Data ingestion : définir les connecteurs et le modèle d’ingestion -> batch ou stream. Batch processing (traitement par lots) -> traiter des volumes de données à intervalles réguliers (par exemple chaque nuit comme la bd de reporting). Avantages : simple à mettre en place et à maintenir, idéal pour les traitements volumineux et non urgents, moins coûteux en ressources. Inconvénients : délai entre la collecte et la disponibilité des données. Exemple MyIAM:  générer chaque nuit des tables consolidées pour le reporting quotidien.  
+
+Stream processing (traitement des flux) -> traiter les lots de données en continu, au fur à mesure qu’elles arrivent. Avantages : permettre d’avoir une vision en quasi temps réels des événements ou des changements, utile pour la détection d’anomalies ou d’incidents de sécurité. Inconvénients : architecture plus complexe à maintenir, nécessite des outils spécialisés (par ex Kafka, Spark Streaming, Flink etc.), coût plus élevé en ressources et supervision. Exemple : déclencher une alerte instantanée lorsqu’un user obtient un accès critique non autorisé (tox).  
+
+ 
+
+Data catalogue : centralise la description de toutes les données présentes dans le datalake -> leur source, leur format, leur fréquence de mise à jour, leurs propriétaires (Data Owners), leur usage et leur sensibilité etc. Il permet d’assurer la traçabilité complète du cycle de vie des données, de faciliter la recherche et la compréhension des jeux de données par les différents acteurs (Data Scientists, Analysts, Data Owners, Audits etc.) et d’éviter les divergences de définitions, les erreurs d’interprétation.   
+
+ 
+
+Sécurité et gouvernance : définir les rôles, les niveaux d’accès et les mécanismes d’audit. Chaque donnée doit avoir un Data Owner, un Data Steward et un cadre d’accès défini selon la sensibilité -> définir qui peut consulter, modifier, valider ou publier les données ; appliquer le principe du least priviledge. Conformité : alignement avec les standards du Groupe (Data Protection, GDPR, Cybersecurity Policies). 
+
+ 
+
+Qualité des données : standardiser les formats, les métadonnées et la validation, ajouter des métriques de qualité dans le data catalogue (ex. completeness, validity). 
+
+La qualité des données est un enjeu majeur pour la fiabilité des analyses et des contrôles. 
+
+Architecture : prévoir une zone Raw, Curated et Analytics (3-layer approach). 
+
+Zone Raw (brute) : données telles qu’elles sont collectées depuis les sources (sans transformation) -> sert de base d’audit et de sauvegarde complète. 
+
+Zone Curated (nettoyée / normalisée) : données transformées, nettoyées et enrichies -> c’est ici qu’interviennent les règles de qualité, la normalisation et les jointures entre sources. 
+
+Zone Analytics (BI) : données prêtes à être utilisées pour les analyses, les dashboards ou les modèles (comme la BO Report) -> structure souvent plus proche d’un data warehouse. 
+
+ 
+
+Premières pistes de mise en œuvre suggérées 
+
+Confirmer la plateforme cible (Oracle / hybride) : 
+
+Faisabilité d’une solution Oracle : Data Lake sur Object Storage : 
+
+-> Oracle OCI prend explicitement en charge la construction de datalakes en s’appuyant sur OCI Object Storage (stockage scalable, multi-format) : usage recommandé pour stocker les données brutes et comme couche de stockage d’un datalake. 
+
+-> Oracle propose aussi des services et patterns orientés Data Lakehouse (combinaison lake + capacités d’entrepôt) sur OCI, avec composants pour métadonnées, requêtage et intégration. 
+
+-> Oracle propose par ailleurs un catalogue/plateforme de data intelligence et intégration avec Object Storage (catalogue, gouvernance) -> facilite la gouvernance et la traçabilité sans tout redévelopper. 
+
+=> Conséquences pratiques pour nous : un datalake sur OCI (Object Storage) est techniquement standard et supporté ; si on veut transactions/ACID, schéma imposé et performances de requêtes similaires à un entrepôt, on regardera la couche lakehouse. 
+
+ 
+
+Data Lake vs Data Lakehouse : 
+
+Data Lake : Avantages -> très économique pour volumes massifs, accepte tout format, flexibilité (schema-on-read). Inconvénients -> pas nativement d’ACID, gestion des métadonnées et des transactions plus difficiles ; les optimisations de requêtes nécessitent moteurs externes (par ex Spark). 
+
+Data Lakehouse : permet à la fois de stocker les données brutes comme dans un Data Lake, et d’appliquer une structure (schéma, gouvernance, transactions ACID) pour faciliter l’analyse directe, le reporting et le machine learning. Avantages : simplifie le pipeline (moins de copies), permet schéma/transactions, meilleur support pour BI/ML dans la même couche. Inconvénients : coût/complexité potentiellement supérieurs ; dépend fortement du choix de la couche metadata/transaction (ex : moteur qui implémente ACID). 
+
+En pratique :
+Aspect	Data Lake	Data Lakehouse
+Type de données	Brutes, non structurées	Brutes + structurées
+Schéma	Souple, défini à la lecture (schema-on-read)	Structuré, défini à l’écriture (schema-on-write)
+Performance analytique	Limitée, nécessite un entrepôt séparé	Élevée, grâce à une couche de métadonnées unifiée
+Gouvernance et sécurité	Plus complexes à gérer	Intégrées nativement
+Outils typiques	Hadoop, Oracle Object Storage, S3	Databricks, Snowflake, BigQuery, Oracle Autonomous Data Warehouse
+🔹 Exemple concret
+
+Dans un Data Lake, on dépose les fichiers CSV/JSON des logs IAM ou des référentiels ITG.
+→ Pour les exploiter, il faut ensuite les transformer via des scripts ou un ETL avant de faire du reporting.
+
+Dans un Data Lakehouse, ces mêmes données peuvent être consultées directement via un moteur SQL (par ex. Delta Lake, BigLake, ou Oracle ADW), sans étape intermédiaire lourde.
+
+
+Si votre objectif est d’intégrer plusieurs sources de données, de construire un référentiel IAM unifié et de générer des rapports périodiques, alors un Data Lake est suffisant.
+
+En revanche, si vous envisagez des mises à jour fréquentes, des analyses interactives ou le développement de modèles de détection intelligents, il faudra faire évoluer la solution vers un Data Lakehouse.
+
+
+
+si on a beaucoup d’analyses ad-hoc + ML, lakehouse apporte valeur (réduire copies). Si usage essentiellement archivage + batch BI, datalake simple peut suffire. 
+
+ 
+
+ 
+
+ 
+ – Explorer les solutions hybrides compatibles avec les standards CIB et ITG. 
+
+Identification des sources : 
+ – CIB IAM (onboarding accounts, entitlements) 
+ – ITG IAM (Active Directory, CyberArk, IdentityNow) 
+ – Référentiels internes (Organisation structure, HR feeds) 
+
+Identification des premiers besoins : 
+ – Consolidation des utilisateurs et comptes 
+ – Reporting des accès critiques et anomalies 
+ – Détection des écarts entre sources 
+
+Sécurité et gouvernance : 
+ – Définir les niveaux d’accès, la responsabilité Data Owner / Steward 
+ – Alignement avec le Data Governance Framework BNP Paribas 
+
+ 
+
+ 5. Prochaines étapes suggérées
+
+Valider le périmètre fonctionnel et les premières sources.
+
+Confirmer la plateforme cible (Oracle / hybride).
+
+Élaborer un mini POC sur un périmètre réduit (IAM CIB par exemple).
+
+Documenter l’architecture et le modèle de données de référence.
+
+
+Je reste bien entendu à disposition pour en discuter plus en détail ou ajuster cette structure selon vos retours.
+
+Bien cordialement,
+W Y
+Data Scientist – CIB IAM / Cybersecurity
+
+ 
+
+ 
+
+ 
+
+ 
+
+Outils -> sites internes bnp 
