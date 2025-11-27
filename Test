@@ -139,3 +139,59 @@ I look forward to hearing from you.
 Best regards,  
 Weize  
 CIB MyIAM Team
+
+
+
+
+
+
+
+
+
+
+FINAL：
+
+Hello all,
+
+I hope you are doing well.
+
+I’m reaching out on behalf of the CIB MyIAM team regarding a potential collaboration on an AI chatbot initiative. As your team already leads several AI and automation projects within CIB, we believe your expertise and experience would be extremely valuable for this work.
+
+**Context**
+
+Within MyIAM, we regularly receive a large volume of recurring questions from users, such as:
+– “What is the status of my access request?”  
+– “How can I raise an access request for a specific application?”  
+– “How do I submit a removal request?”  
+– “Can I get a list of users having access to a particular application?”  
+– “I’m going on leave and need to set up a delegation — how can I do this in MyIAM?”  
+
+These interactions represent clear opportunities for automation.  
+Our objective is to design and implement an AI chatbot that can guide users, simplify navigation within MyIAM, and reduce operational load while improving the overall user experience.
+
+**MVP vs. Full Product Approach**
+
+Before defining our technical direction, we would greatly appreciate your opinion regarding:
+- The feasibility of starting with an MVP focused on the most frequent queries,  
+- Versus directly aiming for a full-scale solution including advanced routing, workflow integration, analytics, etc.
+
+Given our context, an MVP appears to be a pragmatic first step, but we are very interested in your insights based on your previous projects.
+
+**Governance & Need for Alignment**
+
+As IAM topics involve sensitive data and strict confidentiality constraints:
+- Not all users should have the same level of access to information,  
+- Queries about other users’ access or workflow status must be strictly controlled,  
+- Model prompting, logging, and data flows must comply with the BNPP-wide AI governance requirements.
+
+To ensure security, eligibility, and methodological consistency across CIB — and to avoid siloed AI developments — we believe this initiative would greatly benefit from alignment and knowledge-sharing between our teams.
+
+If you are available, we would be happy to schedule a meeting to present our initial scope and hear your recommendations.
+
+Thank you very much in advance for your support.  
+I look forward to hearing from you.
+
+Best regards,  
+Weize  
+CIB-ITO-IT Production Security  
+Identity & Access Management
