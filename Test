@@ -88,3 +88,54 @@ Looking forward to hearing from you.
 Kind regards,  
 Weize  
 CIB MyIAM Team
+
+
+
+-------------------------------
+Hi [Name],
+
+I hope you are doing well.
+
+I’m reaching out on behalf of the CIB MyIAM team regarding a potential collaboration on an AI chatbot initiative. As your team is already leading several AI and automation projects within CIB, we believe your expertise and experience could be extremely valuable for this work.
+
+**Context & Objective**
+
+Within MyIAM, we regularly receive a large volume of recurring questions from users, such as:
+– “What is the status of my access request?”
+– “How can I raise an access request for a specific application?”
+– “How do I submit a removal request?”
+– “Can I get a list of users having access to a particular application?”
+– “I’m going on leave and need to set up a delegation — how can I do this in MyIAM?”
+
+These interactions represent clear opportunities for automation.  
+Our objective is to design an AI chatbot that can provide guidance, simplify navigation within MyIAM, and reduce operational load while improving the user experience.
+
+**MVP vs. Full Product Approach**
+
+Before committing to a final approach, we would greatly appreciate your opinion regarding:
+- The feasibility of building an MVP focused on the most frequent queries (which could allow faster delivery and testing),  
+- Versus directly aiming for a more complete product including advanced routing, workflow integration, analytics, etc.
+
+Given our context, an MVP seems to be a pragmatic first step, but we are open to your insights based on your previous projects.
+
+**Why Collaboration Matters**
+
+IAM topics involve sensitive data and strict confidentiality constraints.  
+To ensure security, eligibility, and compliance with the BNPP-wide AI governance framework, we believe this project would benefit from alignment across CIB teams.
+
+In particular:
+- Not all users should have the same level of access to information,  
+- Queries about other users’ access or workflow status must be strictly controlled,  
+- Model prompting, logging, and data flows should follow the group’s AI governance requirements.
+
+We would be very interested in understanding the approaches, best practices, and high-level architectural patterns you have applied in your previous AI chatbot initiatives.  
+During a short meeting, it would be extremely helpful to review these aspects, so that we can align with CIB standards and explore how we might collaborate efficiently.
+
+Would you be available for a meeting in the coming days to discuss this in more detail? We would be happy to present our initial scope and hear your recommendations.
+
+Thank you very much in advance for your time and guidance.  
+I look forward to hearing from you.
+
+Best regards,  
+Weize  
+CIB MyIAM Team
