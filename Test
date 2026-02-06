@@ -1,1 +1,227 @@
 
+
+# **AI Chatbot for IAM – Project Scope Document (v0.1)**
+
+## **1. Contexte & Objectif du projet**
+
+Le projet vise à développer un **AI Chatbot intelligent dédié à MyIAM**, capable d’assister les utilisateurs CIB dans leurs problématiques IAM quotidiennes, de réduire la charge des équipes support et d’améliorer l’expérience utilisateur.
+
+Les objectifs principaux :
+
+* Automatiser les réponses aux questions les plus fréquentes (FAQ IAM)
+* Guider les utilisateurs dans leurs démarches MyIAM (pas à pas)
+* Réduire le volume des tickets récurrents
+* Standardiser la diffusion d’information IAM
+* Explorer un futur assistant IAM prédictif et contextuel
+
+---
+
+# **2. Users concernés (Périmètre utilisateurs)**
+
+## **2.1 Scope Utilisateurs**
+
+* **Tous les utilisateurs CIB MyIAM** (~toute la population CIB)
+* Equipes Support L1 / L2 / IAM Operations
+* Gestionnaires d’accès / Identity Admins
+* Equipes Application Owners / Managers
+* Nouveaux collaborateurs (onboarding)
+
+## **2.2 Types d’utilisateurs**
+
+* End-user CIB
+* Managers débloquant des demandes via MyIAM
+* Equipes techniques utilisant MyIAM pour la gestion des droits
+* Support agents cherchant à réduire le ticketing répétitif
+
+---
+
+# **3. Use Cases principaux (v0.1)**
+
+### **3.1 Level-1 support automatisé**
+
+* Réponses aux questions fréquentes (FAQ MyIAM)
+* Problèmes courants :
+
+  * mot de passe / reset
+  * accès expiré
+  * ticket rejeté
+  * comment faire une demande
+  * délai de traitement
+
+### **3.2 Guidance sur les workflows MyIAM**
+
+* Aider l’utilisateur à naviguer dans MyIAM
+* “How to request access to X”
+* “Pourquoi ma demande a été rejetée ?”
+* “Quel type de demande dois-je choisir ?”
+
+### **3.3 Information IAM contextualisée**
+
+* Explication des concepts IAM : role, profile, application, SOD, recertification…
+
+### **3.4 Analyse des tickets / patterns (optionnel)**
+
+* Détection des problèmes récurrents
+* Suggestions d’amélioration (feedback loop)
+
+### **3.5 Long-term (future scope)**
+
+* Recommandations d’accès
+* Détection d’anomalies simples (pré-diagnostic)
+* L2 assistant (IAM analyst helper)
+
+---
+
+# **4. Fonctionnalités du Chatbot (Version 0.1)**
+
+### **4.1 Fonctionnalités Core**
+
+* Answering IAM FAQ (RAG)
+* Interaction en langage naturel
+* Explication de procédures IAM
+* Génération de steps-by-step instructions
+* Accès à une base de connaissances MyIAM
+
+### **4.2 Fonctionnalités Avancées (Phase 2 / 3)**
+
+* Intégration API MyIAM (si possible)
+* Context-awareness (user location / app / profile)
+* Suggestion automatique d’actions
+* Capacité de pré-remplir certains choix (si autorisé)
+
+### **4.3 Fonctionnalités Plateau TWIN (option Groupe ITG)**
+
+* Hosting sur plateforme TWIN
+* Agentic orchestration
+* Capacité multi-canal (Teams, Web, Portails Apps)
+
+---
+
+# **5. Requirements (Business & Techniques)**
+
+## **5.1 Business Requirements**
+
+* Réduire les tickets L1
+* Apporter de la cohérence dans les réponses IAM
+* Améliorer l’expérience utilisateur MyIAM
+* Réduire les erreurs de demandes d’accès
+* Accélérer la résolution des problèmes simples
+
+## **5.2 Techniques – Inputs nécessaires**
+
+* Base de connaissances IAM
+
+  * FAQ documentées
+  * User journeys
+  * Workflows MyIAM
+  * Cas d’usage d’accès les plus fréquents
+* Tickets historiques (optionnel → patterns)
+* Architecture MyIAM (diagrammes, flows)
+* Glossaire IAM
+
+## **5.3 Technical dependencies**
+
+* RAG / LLM Framework (fourni par ITO Innovation)
+* Cloud / infra hosting (ITO ou TWIN)
+* IAM data access (si besoin)
+
+---
+
+# **6. Priorisation des Spécifications (MVP → Extended)**
+
+## **6.1 Priorité Haute (MVP / POC)**
+
+* Répondre aux FAQ IAM
+* Guider l’utilisateur (step-by-step)
+* Knowledge base RAG
+* Intégration avec l’infrastructure existante ITO
+* Première version du chatbot (frontend simple)
+
+## **6.2 Priorité Moyenne (MVP+ / V2)**
+
+* Analyse des patterns des tickets
+* Cas un peu complexes IAM
+* Chatbot contextualisé à l’utilisateur
+
+## **6.3 Priorité Basse (Futur / Groupe scope)**
+
+* Intégration automatisée avec MyIAM (API)
+* Actions semi-automatisées
+* Détection d’anomalies IAM (IAM predictive assistant)
+
+---
+
+# **7. Livrables (Diagnostics & Implementation)**
+
+### **7.1 Documents à produire**
+
+* Use Case Document
+* Knowledge Base IAM
+* Architecture et flows IAM
+* Roadmap POC → MVP → Deployment
+* KPI et Success Metrics (ex : réduction tickets, adoption)
+
+### **7.2 Livrables Techniques (par ITO)**
+
+* Environnement POC
+* RAG pipeline
+* Modèle initial fine-tuned
+* Intégration TWIN (option)
+
+---
+
+# **8. Roadmap proposée**
+
+### **Phase 0 – Préparation (en cours)**
+
+* Consolidation de la base de connaissance
+* Définition du périmètre IAM
+* Alignement avec ITO Innovation
+
+### **Phase 1 – POC (2–4 semaines)**
+
+* Chatbot simple
+* FAQ + procédures IAM
+* Déploiement limité
+
+### **Phase 2 – MVP (6–12 semaines)**
+
+* Guidance IAM avancée
+* Première intégration technique
+
+### **Phase 3 – CIB-wide Deployment**
+
+* Déploiement dans MyIAM / ServiceNow / Teams
+
+### **Phase 4 – Groupe ITG integration**
+
+* Migration / intégration dans TWIN
+* Agentic orchestration
+
+---
+
+# **9. Risques & hypothèses**
+
+### **Risques**
+
+* Manque de données ou KB incomplète
+* Complexité de certains workflows IAM
+* Gestion des accès aux logs / données
+
+### **Hypothèses**
+
+* Support continu de ITO Innovation
+* Support business IAM pour KB
+* Validation N+1 / N+2 sur scope MVP
+
+---
+
+# **10. Next Steps immédiats**
+
+* Finaliser la knowledge base IAM
+* Aligner avec ITO sur le périmètre POC
+* Préparer une démo / story pour le POC
+* Préparer un plan de communication interne IAM
+* Identifier 2–3 KPI mesurables pour le MVP
+
+
