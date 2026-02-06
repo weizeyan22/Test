@@ -274,6 +274,42 @@ Droits d’accès DB
 
 Pas d’accès direct aux systèmes sensibles pour le MVP
 
+
+
+1. Architecture & intégration
+
+Connection entre MyIAM DB ↔ chatbot
+
+API nécessaires（read only / access control）
+
+Data flow：user → chatbot → MyIAM → réponse
+
+Limitations techniques connues
+
+
+
+2. Technologies existantes du groupe
+L’ITG a indiqué que le projet pourrait potentiellement être intégré dans la plateforme agentic AI TWIN. Une évaluation technique sera faite après la phase de POC.
+
+3. Sécurité / IAM requirements
+
+Logging & traceability
+
+Data privacy & GDPR considerations
+
+Access tokens / API gateway
+
+4. Environnement technique
+
+Framework existant côté ITO
+
+Hosting options（CIB / ITG）
+
+Monitoring & versioning
+
+
+
+
 Définition claire scope POC vs scope final
 
 
