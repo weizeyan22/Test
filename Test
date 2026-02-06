@@ -225,3 +225,55 @@ Les objectifs principaux :
 * Identifier 2–3 KPI mesurables pour le MVP
 
 
+6. Aspects techniques – Vue d’ensemble
+6.1 Architecture cible (niveau macro)
+
+Integration dans l’écosystème MyIAM
+
+Connexion au framework agentic existant (ITO / ITG)
+
+RAG pipeline (ingestion KB IAM)
+
+Modules potentiels :
+
+Intent detection
+
+Workflow guidance
+
+Querying DB MyIAM (dans une phase ultérieure)
+
+
+6.2 Technical stack proposé (à valider par ITO/ITG)
+
+Utilisation du framework chatbot existant fourni par Infrastructure Innovation
+
+Intégration potentielle avec TWIN (plateforme AI du groupe)
+
+Connecteurs IAM (faqs, workflows, modèles de données)
+
+Logging, monitoring, analytics
+
+
+6.3 Données nécessaires
+
+FAQ MyIAM
+
+Tickets (ServiceNow)
+
+Mails IAM
+
+Architecture + workflow MyIAM
+
+Base de données MyIAM (accès en lecture – urgent)
+
+6.4 Points techniques critiques
+
+Sécurité & confidentialité IAM
+
+Droits d’accès DB
+
+Pas d’accès direct aux systèmes sensibles pour le MVP
+
+Définition claire scope POC vs scope final
+
+
