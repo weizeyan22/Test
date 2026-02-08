@@ -1,275 +1,129 @@
-AI Chatbot for IAM – Project Scope Document (v0.1) 
+AI Chatbot for IAM – Project Scope Document (v0.1)
+1. Context & Project Objectives
+The project aims to develop an intelligent AI Chatbot dedicated to MyIAM. It will assist users with their daily IAM inquiries, reduce the workload of support teams, and significantly enhance the user experience.
 
-1. Contexte & Objectif du projet 
+Phase 1 Objectives (Support Foundation):
+Automate responses to Frequently Asked Questions (IAM FAQ).
 
-Le projet vise à développer un AI Chatbot intelligent dédié à MyIAM, capable d’assister les utilisateurs MyIAM dans leurs problématiques IAM quotidiennes, de réduire la charge des équipes support et d’améliorer l’expérience utilisateur. 
+Guide users through MyIAM procedures and processes (step-by-step).
 
-Objectifs de la Phase 1 (Socle de Support) : 
+Reduce ticket volume on ServiceNow and the influx of queries to the L1/L2 shared mailbox.
 
-Automatiser les réponses aux questions les plus fréquentes (FAQ IAM) 
+Knowledge Management: Centralize and structure IAM expertise, standardize information delivery, and ensure that any procedural changes are immediately and consistently communicated to all users.
 
-Guider les utilisateurs dans leurs démarches et processus MyIAM (pas à pas)  
+Future Phase Objectives (Governance & Advanced AI) – To be confirmed:
+Translate IAM business rules and clarify system decisions: Convert technical logs into plain language to eliminate misunderstandings and reduce support claims. Specifically:
 
-Réduire le volume de tickets récurrents sur Service Now et le flux de sollicitations (queries) sur boîte mail commune L1/L2. 
+Explain root causes for access rejections/revocations (SOD conflicts, approval timeouts, HR movements, etc.).
 
-Gestion de la Connaissance MyIAM (Knowlegde Management) : centraliser et structurer le savoir-faire IAM, standardiser la diffusion d’information, et garantir que tout changement de procédure soit immédiatement diffusé de manière cohérente à tous les utilisateurs. 
+Clarify access lifecycles (recertification processes, request status/approval paths, birthrights, etc.).
 
-Objectifs des Phases ultérieures (Gouvernance & IA Avancée) (à confirmer) : 
+Optimize request quality and compliance: Reduce invalid requests and entry errors by steering users toward the correct access based on their business needs.
 
-Traduire les règles de gestion IAM et clarifier les décisions système : transformer les logs techniques en langage clair pour l'utilisateur afin de lever les incompréhensions et réduire les réclamations auprès du support. Notamment : 
+Goal: Guarantee the Least Privilege principle + increase operational efficiency + improve data quality entering MyIAM.
 
-Expliquer les causes racine des rejets/révocations des droits -> les conflits SOD, l’expiration du délai d'approbation (time-out), les ajustements liés aux changements de poste (mouvements RH) etc. 
+Proactive SOD Conflict Prevention: Reduce SOD access requests upstream by guiding users toward compliant access during the advisory phase.
 
-Clarifier le cycle de vie des accès -> les processus de recertification, le statut et le chemin d'approbation d'une demande, les birthright etc. 
+Business Role (BR) Management Assistance:
 
-Optimiser la qualité et la conformité des demandes : réduire le volume des demandes invalides ainsi que les erreurs de saisie et d'aiguillage en orientant l'utilisateur vers les accès adéquats selon ses besoins métier. => garantir le principe du Least Privilege + augmenter l’efficience opérationnelle + améliorer la qualité des données qui entrent dans MyIAM. 
+Analyze user profiles to recommend the most compliant Business Roles for their team/job function.
 
-Prévention proactive des conflits SOD : réduire les demandes d'accès SOD en amont en guidant l'utilisateur vers des accès conformes dès la phase de conseil, allégeant la charge de validation des managers/resources owners. 
+Assist Managers/Resource Owners/Role Owners in creating new BRs.
 
-Accompagnement à la gestion des Business Roles :  
+Data-Driven Insights: Analyze interactions to generate strategic KPIs for IAM steering:
 
-Analyser le profil de l’utilisateur pour préconiser les Business Roles les plus conformes et adaptés à son équipe/métier.  
+Identify pain points (resources or processes generating the most questions/errors).
 
-Assister les Managers/Resource Owners/Role Owners dans la création de nouveaux BRs. 
+Identify knowledge gaps where the Chatbot could not provide an answer.
 
- 
+2. Target Users
+2.1 User Scope
+The Chatbot will be deployed for all MyIAM users.
 
-Data-Driven Insights : l'analyse des interactions entre les utilisateurs et le Chatbot permet de générer des indicateurs stratégiques pour le pilotage de l'IAM : 
+2.2 User Personas
+End users: Raise/track access requests, view workitems, self-certification.
 
-Identifier les pain points : par exemple repérer les ressources ou les processus qui génèrent le plus de questions ou d'erreurs. 
+Line managers: Team access requests, manage Business Roles, manage team FRC, line manager certification.
 
-Identifier les thématiques pour lesquelles le Chatbot n'a pas trouvé de réponse ou a dû escalader au support. 
+Role owners: Manage business roles, role membership certification.
 
-=> Mettre à jour la base de connaissance IAM en temps réel pour couvrir les nouveaux besoins ou les évolutions de MyIAM. 
+Resource owners: Manage applications/entitlements, resource owner certification.
 
-Etc. 
+Support teams & Admins: All of the above, plus workgroup management.
 
-  
+3. Primary Use Cases (v0.1)
+FAQ Responses: (e.g., "What is the status of my request?", "How do I raise a 'Remove' request?", "How do I set up a delegation?")
 
- 
+Recertification Support: Answering questions related to ongoing campaigns.
 
- 
+Workflow Guidance: Explaining MyIAM concepts (SOD, App Profile, etc.) to prevent errors during entry.
 
-2. Users concernés 
+4. Chatbot Features (v0.1)
+Security & Compliance
+Access Control & Eligibility: Data access restricted by user profile (e.g., standard users only see their own data).
 
-2.1 Scope Utilisateurs 
+Data Privacy: Filtering sensitive data and ensuring the Chatbot operates strictly within the secure MyIAM infrastructure (no external LLM transfers).
 
-Le Chatbot sera déployé pour l'ensemble des utilisateurs MyIAM. 
+Audit Trail: Secure archiving of conversations for audit purposes.
 
-2.2 Types d’utilisateurs 
+Intelligent Response Engine (NLU & RAG)
+Natural Language Understanding (NLU): Interpreting intent regardless of user jargon.
 
-End users : raise access requests (self and others), track requests, view workitems, access review (self certification). 
+RAG (Retrieval-Augmented Generation): Extracting sourced, up-to-date information from official documentation (manuals, FAQs).
 
-Line managers : raise access request (for team), manage business roles, manage access requests, manage Users FRC, access review (line manager certification). 
+Connectivity & Tracking
+Real-time Status Query: Secure connection to MyIAM to retrieve request progress via Request ID.
 
-Role owners : manage business roles, access review (role membership certification). 
+Blocker Identification: Identifying the current approver or team holding a ticket.
 
-Resource owners : manage applications, manage entitlements, access review (resource owner certification). 
+User Experience
+Contextualization: Maintaining conversation history to avoid repetition.
 
-Support teams & Admins : all of above, and manage workgroups 
+Feedback Loop: "Helpful/Not helpful" buttons to identify documentary gaps.
 
- 
+5. Prerequisites & Dependencies (v0.1)
+Technical Prerequisites (Inputs)
+Consolidated FAQ list & User Guides (Finalized).
 
-3. Use Cases principaux (v0.1) 
+Historical email/ServiceNow query data (Provided by Nelson).
 
-Réponses aux questions fréquentes (Cf doc. FAQ MyIAM) : 
+MyIAM ecosystem architecture and workflow diagrams (Finalized).
 
-What is the status of my Access request? 
+Access to MyIAM Database (Urgent).
 
-How can I raise an Access request in MyIAM to gain a particular access? 
+Technical Dependencies
+RAG / LLM Framework (Provided by ITO Infra Innovation).
 
-How can I raise a ‘Remove’ request in MyIAM to revoke access to an unwanted entitlement? 
+Agentic AI TWIN integration (ITG / ITO).
 
-I need an extract from MyIAM showing the list of users having access to a particular application. 
+Database connectivity (IAM).
 
-I am going on leave and need to setup a delegation in MyIAM, how can I do that ? 
+6. Technical Aspects (v0.1)
+(To be finalized by ITO Infra Innovation in coordination with ITG)
 
-Réponses aux questions associées aux recertifications. 
+Architecture: Vector Database, Data Pipeline, Read-only APIs.
 
-Guidance sur les workflows MyIAM  
+Data Flow: User ↔ Interface ↔ AI Agent ↔ MyIAM DB/API.
 
-Explication des concepts MyIAM pour lever les doutes lors de la saisie : business role, app profile, application, SOD, recertification… 
+Security: Access tokens, API Gateway, Audit Logging, Data Masking.
 
- 
+7. Risks & Mitigations
+Adoption Risk: Users continue using email. -> Mitigation: Communication campaigns & portal integration.
 
- 
+Data Leakage: Unauthorized access to sensitive info. -> Mitigation: Strict Access Control implementation.
 
- 
+Hallucinations: AI inventing procedures. -> Mitigation: RAG architecture (strict adherence to docs) & Feedback loop.
 
-4. Fonctionnalités du Chatbot (v0.1)  
+Knowledge Gaps: Complex questions. -> Mitigation: Automatic redirection to Support/ServiceNow for low-confidence scores.
 
-Sécurité et Conformité 
+8. Immediate Next Steps
+Review and validation of this Project Scope document with all stakeholders.
 
-Contrôle d'accès et éligibilité : restriction de l'accès aux données selon le profil de l'utilisateur, par exemple un utilisateur standard est limité à la consultation de ses propres droits, tandis qu'un manager peut accéder aux données de son équipe. 
+Data Access (Priority 1): Grant MyIAM DB access to ITO Infra Innovation developers (limited to UAT/Lower environments initially).
 
-Data privacy (protection des données) : filtrage des données sensibles -> mise en place des mécanismes pour prévenir l'exposition de données confidentielles. Garantie que le Chatbot ne traite que les données internes à l'infrastructure sécurisée de MyIAM, sans aucun transfert vers des modèles LLM externes à MyIAM. 
+Detailed Roadmap definition (Target: end of March).
 
-Traçabilité des conversations (Audit Trail) : archivage sécurisé des échanges pour permettre un audit complet. 
+PoC/MVP Development Launch to test critical use cases.
 
- 
-
-Moteur de réponse intelligent (NLU & RAG) 
-
-Compréhension du langage naturel (NLU) : capacité à interpréter les intentions des utilisateurs quel que soit le jargon utilisé, permettant une interaction fluide et intuitive. 
-
-RAG (Retrieval-Augmented Generation) sur la Knowledge Base IAM : 
-
-extraction intelligente d'informations à partir de la documentation officielle (procédures, guides, FAQ) pour fournir des réponses précises, sourcées et toujours à jour. 
-
- 
-
-Connectivité et Tracking (Lecture de données MyIAM) 
-
-Interrogation de statut en temps réel (à vérifier) : connexion sécurisée à MyIAM pour récupérer et afficher l'état d'avancement d'une demande spécifique via son Request Id. 
-
-Identification de l'étape bloquante : capacité à nommer le validateur actuel ou l'équipe en charge du ticket pour orienter l'utilisateur. 
-
-Assistance au parcours (Guidage & Workflow) 
-
-Assistant de saisie "pas à pas" (Step-by-step Guidance Generator) : guidage interactif pour orienter l'utilisateur vers le bon formulaire ou l’onglet MyIAM selon son besoin. 
-
-Aiguillage vers le support spécialisé : en cas d'échec de résolution autonome, le chatbot fournit les liens directs vers les tickets Service Now ou les contacts des IAM Operations. 
-
- 
-
-Expérience utilisateur et amélioration continue 
-
- 
-
-Contextualisation : capacité à maintenir le contexte de la conversation (mémorisation des échanges précédents) pour éviter à l'utilisateur de répéter des informations déjà fournies. 
-
-Interaction Logging & Feedback Loop : collecte anonymisée de données sur les interactions et les retours utilisateurs (boutons "Utile/Pas utile") pour identifier les lacunes documentaires et enrichir la base de connaissances.  
-
- 
-
-Communication (Recertification) 
-
-Support aux campagnes de recertification : diffusion d'informations sur les dates limites des campagnes et rappels de conformité et des bonnes pratiques pour accompagner les utilisateurs concernés. 
-
- 
-
- 
-
- 
-
-5. Prérequis et Dépendances (v0.1) 
-
-Prérequis techniques (Inputs nécessaires) 
-
-Liste des questions récurrentes FAQ (finalisé) 
-
-Documentation et user guides MyIAM (finalisé) 
-
-Historique des questions basiques reçues par mail (fourni par Nelson) 
-
-Statistiques des tickets Service Now + volumes mails (fourni par Nelson). 
-
-Questions récurrentes issues des tickets Service Now et des mails. 
-
-Architecture de l’écosystème et schéma des workflows MyIAM (finalisé) 
-
-Accès à la base de données MyIAM (urgent)  
-
- 
-
-Dépendances techniques 
-
-Framework RAG / LLM (fournis par l'équipe ITO Infra Innovation) 
-
-Intégration Agentic AI TWIN de l’ITG (ITG, ITO infra innovation) 
-
-Connectivité aux bases de données MyIAM (IAM) 
-
- 
-
-6. Aspects techniques (v0.1) 
-
-(À compléter et finaliser par l’équipe ITO Infrastructure Innovation en coordination avec ITG) 
-
-Architecture RAG (Retrieval-Augmented Generation) 
-
-Vector Database 
-
-Intégration des données (Data pipeline) 
-
-Connection entre MyIAM DB ↔ chatbot 
-
-API nécessaires (read only / access control） 
-
-Data flow : Utilisateur ↔ Chatbot Interface ↔ Agent AI ↔ MyIAM Database / API. 
-
-➡ L’intégration technique globale  sera pilotée par ITO Infrastructure Innovation en coordination avec ITG.   
-
-➡ L’équipe de développement MyIAM contribuera à l’intégration applicative du chatbot dans l’écosystème MyIAM. 
-
-Stacks techniques :  
-
-Connecteurs IAM 
-
-Utilisation du framework chatbot existant fourni par l’équipe Infra Innovation (aligné TWIN / ITG). 
-
-Sécurité / IAM requirements  
-
-Access tokens / API gateway -> Access Control (éligibilité) 
-
-Audit Logging -> Traçabilité 
-
-Data Masking / Filtering -> Data Privacy 
-
-  
-
- 
-
- 
-
- 
-
- 
-
- 
-
-7. Risques  
-
-Les utilisateurs continuent d'envoyer des mails au support au lieu d'utiliser le Chatbot. 
-
-=> Atténuation : campagne de communication, intégration du Chatbot directement dans le portail MyIAM pour une accessibilité maximale... 
-
-Fuite accidentelle de données sensibles ou accès non autorisé à des informations de management. 
-
-=> Atténuation : Mise en place d'un Access Control. 
-
-Le Chatbot pourrait générer des réponses incorrectes ou inventer des procédures, induisant l'utilisateur en erreur. 
-
-=> Atténuation : Utilisation de l'architecture RAG (le modèle ne répond qu'à partir de la documentation fournie) et intégration d'un bouton de feedback pour signaler les erreurs. 
-
-Le Chatbot peut ne pas trouver de réponse si la question est trop spécifique ou si l'information est manquante dans la FAQ ou la base de données MyIAM. 
-
-=> Atténuation : En cas d'impossibilité de répondre avec un haut degré de confiance ou d’absence de réponse, le Chatbot ne doit pas simuler de réponse mais rediriger l'utilisateur vers l’équipe support (Service Now / Mailbox IAM) 
-
- 
-
-8. Next Steps  
-
-Revue et validation du Project Scope (ce document) avec l’ensemble des parties prenantes. 
-
-Accès aux données MyIAM (Priorité 1) : Octroi des accès aux bases de données MyIAM pour les développeurs de l'équipe ITO Infra Innovation. L’accès peut être restreint aux environnements de test (Lower Environments / UAT) dans un premier temps pour validation. 
-
-Définition de la roadmap détaillée (d’ici fin mars) 
-
-Initialisation du développement d’un PoC/MVP (pour tester les premiers cas d'usage critiques.) 
-
- 
-
-9. Responsables et contacts clés 
-
-( à compléter et finaliser) 
-
- 
-
- 
-
- 
-
- 
-
- 
+9. Governance & Key Contacts
+(See RACI Matrix and Contact List in following sections)
