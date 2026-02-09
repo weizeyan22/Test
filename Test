@@ -1,25 +1,29 @@
-Voici la traduction en anglais de cette section, en utilisant un ton professionnel adapté au secteur bancaire et IT (CIB) :
+bjectives for Subsequent Phases (Governance & Advanced AI) (TBC):
 
-**Objectives for Subsequent Phases (Governance & Advanced AI) (TBC):**
+Translate IAM business rules and clarify system decisions: Convert technical logs into plain language for the user to resolve misunderstandings and reduce support claims. Specifically:
 
-* **Translate IAM business rules and clarify system decisions:** Convert technical logs into plain language for the user to resolve misunderstandings and reduce support claims. Specifically:
-* Explain root causes of access rejections/revocations -> SOD conflicts, approval timeouts, adjustments related to job changes (HR movements), etc.
-* Clarify access lifecycles -> recertification processes, request status and approval paths, birthright access, etc.
+Explain root causes of access rejections/revocations -> SOD conflicts, approval timeouts, adjustments related to job changes (HR movements), etc.
 
+Clarify access lifecycles -> recertification processes, request status and approval paths, birthright access, etc.
 
-* **Optimize request quality and compliance:** Reduce the volume of invalid requests as well as entry and routing errors by guiding users toward the appropriate access based on their business needs. => ensure the **Least Privilege** principle + increase operational efficiency + improve the quality of data entering MyIAM.
-* **Proactive SOD conflict prevention:** Reduce SOD access requests upstream by guiding users toward compliant access during the advisory phase, easing the validation burden for managers and resource owners.
-* **Support for Business Role (BR) management:**
-* Analyze user profiles to recommend the Business Roles that are most compliant and best suited to their team/function.
-* Assist Managers, Resource Owners, and Role Owners in the creation of new BRs.
+Optimize request quality and compliance: Reduce the volume of invalid requests as well as entry and routing errors by guiding users toward the appropriate access based on their business needs. => ensure the Least Privilege principle + increase operational efficiency + improve the quality of data entering MyIAM.
 
+Proactive SOD conflict prevention: Reduce SOD access requests upstream by guiding users toward compliant access during the advisory phase, easing the validation burden for managers and resource owners.
 
-* **Data-Driven Insights:** Analyzing interactions between users and the Chatbot enables the generation of strategic indicators for IAM steering:
-* Identify **pain points**: for example, pinpointing resources or processes that generate the most questions or errors.
-* Identify themes for which the Chatbot did not find an answer or had to escalate to support.
-* => Update the IAM knowledge base in real-time to cover new needs or MyIAM evolutions.
-* Etc.
+Support for Business Role (BR) management:
 
+Analyze user profiles to recommend the Business Roles that are most compliant and best suited to their team/function.
 
+Assist Managers, Resource Owners, and Role Owners in the creation of new BRs.
 
-**2. Target Users**
+Data-Driven Insights: Analyzing interactions between users and the Chatbot enables the generation of strategic indicators for IAM steering:
+
+Identify pain points: for example, pinpointing resources or processes that generate the most questions or errors.
+
+Identify themes for which the Chatbot did not find an answer or had to escalate to support.
+
+=> Update the IAM knowledge base in real-time to cover new needs or MyIAM evolutions.
+
+Etc.
+
+2. Target Users
