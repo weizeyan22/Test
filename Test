@@ -1,29 +1,197 @@
-bjectives for Subsequent Phases (Governance & Advanced AI) (TBC):
-
-Translate IAM business rules and clarify system decisions: Convert technical logs into plain language for the user to resolve misunderstandings and reduce support claims. Specifically:
-
-Explain root causes of access rejections/revocations -> SOD conflicts, approval timeouts, adjustments related to job changes (HR movements), etc.
-
-Clarify access lifecycles -> recertification processes, request status and approval paths, birthright access, etc.
-
-Optimize request quality and compliance: Reduce the volume of invalid requests as well as entry and routing errors by guiding users toward the appropriate access based on their business needs. => ensure the Least Privilege principle + increase operational efficiency + improve the quality of data entering MyIAM.
-
-Proactive SOD conflict prevention: Reduce SOD access requests upstream by guiding users toward compliant access during the advisory phase, easing the validation burden for managers and resource owners.
-
-Support for Business Role (BR) management:
-
-Analyze user profiles to recommend the Business Roles that are most compliant and best suited to their team/function.
-
-Assist Managers, Resource Owners, and Role Owners in the creation of new BRs.
-
-Data-Driven Insights: Analyzing interactions between users and the Chatbot enables the generation of strategic indicators for IAM steering:
-
-Identify pain points: for example, pinpointing resources or processes that generate the most questions or errors.
-
-Identify themes for which the Chatbot did not find an answer or had to escalate to support.
-
-=> Update the IAM knowledge base in real-time to cover new needs or MyIAM evolutions.
-
-Etc.
-
 2. Target Users
+
+2.1 User Scope The Chatbot will be deployed to all MyIAM users.
+
+2.2 User Personas / Profiles
+
+
+
+
+3. Primary Use Cases (v0.1)
+
+Responses to Frequently Asked Questions (Refer to MyIAM FAQ document):
+
+What is the status of my Access request?
+
+How can I raise an Access request in MyIAM to gain a particular access?
+
+How can I raise a ‘Remove’ request in MyIAM to revoke access to an unwanted entitlement?
+
+I need an extract from MyIAM showing the list of users having access to a particular application.
+
+I am going on leave and need to setup a delegation in MyIAM, how can I do that?
+
+Recertification Support:
+
+Providing answers to questions associated with ongoing recertification campaigns.
+
+Guidance on MyIAM Workflows:
+
+Step-by-step assistance through the different stages of MyIAM processes.
+
+Conceptual Clarification:
+
+Explaining MyIAM concepts to eliminate ambiguity during data entry: Business Role, App Profile, Application, SOD (Segregation of Duties), Recertification, etc.
+
+
+
+
+
+
+
+4. Chatbot Features (v0.1)
+
+Security & Compliance
+
+Access Control & Eligibility: Data access is restricted based on the user's profile. For example, a standard user is limited to viewing their own rights, while a manager can access their team's data.
+
+Data Privacy: Sensitive data filtering through mechanisms designed to prevent the exposure of confidential information. Guarantee that the Chatbot processes data strictly within the secure MyIAM infrastructure, with no data transfer to LLM models external to the organization.
+
+Audit Trail: Secure archiving of all interactions to allow for comprehensive auditing and traceability.
+
+Intelligent Response Engine (NLU & RAG)
+
+Natural Language Understanding (NLU): The ability to interpret user intent regardless of the jargon used, ensuring fluid and intuitive interaction.
+
+RAG (Retrieval-Augmented Generation) on IAM Knowledge Base: Intelligent information extraction from official documentation (procedures, guides, FAQs) to provide precise, sourced, and consistently up-to-date answers.
+
+Connectivity & Tracking (MyIAM Data Read)
+
+Real-time Status Query (TBC): Secure connection to MyIAM to retrieve and display the progress of a specific request via its Request ID.
+
+Bottleneck Identification: Ability to identify the current approver or the team in charge of the ticket to provide the user with clear direction.
+
+User Journey Assistance (Guidance & Workflow)
+
+Step-by-step Guidance Generator: Interactive guidance to direct the user to the correct MyIAM form or tab based on their specific needs.
+
+Smart Redirection to Support: In cases where self-service resolution fails, the chatbot provides direct links to ServiceNow tickets or contacts for IAM Operations.
+
+User Experience & Continuous Improvement
+
+Contextualization: Ability to maintain conversation context (short-term memory of previous exchanges) so the user does not have to repeat information already provided.
+
+Interaction Logging & Feedback Loop: Anonymized data collection on interactions and user feedback ("Helpful/Not helpful" buttons) to identify documentary gaps and enrich the knowledge base.
+
+Communication (Recertification)
+
+Recertification Campaign Support: Distribution of information regarding campaign deadlines, compliance reminders, and best practices to support the concerned users.
+
+
+
+
+
+
+
+
+
+5. Prerequisites and Dependencies (v0.1)
+
+Technical Prerequisites (Required Inputs)
+
+Consolidated FAQ List: Recurring questions and validated answers (Status: Finalized).
+
+MyIAM Documentation & User Guides: Official manuals and process docs (Status: Finalized).
+
+Historical Data: Archive of basic queries received via email (To be provided by Nelson).
+
+Support Metrics: ServiceNow ticket statistics and email volumes (To be provided by Nelson).
+
+Trend Analysis: Recurring themes and questions identified from ServiceNow tickets and emails.
+
+System Architecture: Detailed MyIAM ecosystem mapping and workflow diagrams (Status: Finalized).
+
+Database Access: Connectivity to the MyIAM database (Status: Urgent / Pending).
+
+Technical Dependencies
+
+RAG / LLM Framework: Provided by the ITO Infra Innovation team.
+
+Agentic AI TWIN Integration: Alignment with ITG and ITO Infra Innovation standards.
+
+Data Connectivity: Establishment of secure links to MyIAM databases (Managed by the IAM Team).
+
+
+
+
+
+6. Technical Aspects (v0.1) (To be completed and finalized by the ITO Infrastructure Innovation team in coordination with ITG)
+
+RAG (Retrieval-Augmented Generation) Architecture
+
+Vector Database: Implementation of a vector store for semantic search.
+
+Data Integration (Data Pipeline): Automated ingestion of documentation and knowledge.
+
+MyIAM DB ↔ Chatbot Connection: Secure bridging for real-time data retrieval.
+
+Required APIs: Development of Read-Only APIs with integrated Access Control.
+
+Data Flow: User ↔ Chatbot Interface ↔ AI Agent ↔ MyIAM Database / API.
+
+➡ Overall technical integration will be led by ITO Infrastructure Innovation in coordination with ITG.
+
+➡ The MyIAM Development Team will contribute to the application integration of the chatbot within the MyIAM ecosystem.
+
+Technical Stack:
+
+IAM Connectors: Specific interfaces for MyIAM data sources.
+
+Framework: Utilization of the existing chatbot framework provided by the Infra Innovation team (aligned with TWIN / ITG standards).
+
+Security / IAM Requirements:
+
+Access Tokens / API Gateway: Enforcing Access Control and user eligibility.
+
+Audit Logging: Ensuring full traceability of interactions.
+
+Data Masking / Filtering: Protecting Data Privacy through automated sensitive data handling.
+
+
+
+
+
+
+7. Risks & Mitigations
+
+Risk 1: Low Adoption Rate Users continue to send emails to support instead of using the Chatbot.
+
+Mitigation: Targeted communication campaigns, and direct integration of the Chatbot into the MyIAM Portal for maximum accessibility and visibility.
+
+Risk 2: Data Breach or Unauthorized Access Accidental leakage of sensitive data or unauthorized access to management-level information.
+
+Mitigation: Implementation of robust Access Control and profile-based filtering to ensure users only see data they are eligible to view.
+
+Risk 3: AI Hallucinations The Chatbot could generate incorrect answers or "invent" procedures, misleading the user.
+
+Mitigation: Use of RAG (Retrieval-Augmented Generation) architecture, ensuring the model only answers based on provided official documentation. Integration of a Feedback Button for users to report inaccuracies.
+
+Risk 4: Knowledge Gaps / Unresolved Queries The Chatbot may not find an answer if the question is too specific or if the information is missing from the FAQ/MyIAM database.
+
+Mitigation: In cases of low confidence scores or a total lack of information, the Chatbot must not "hallucinate" a response. Instead, it will automatically redirect the user to the support team (via ServiceNow or the IAM Mailbox).
+
+
+
+
+
+
+
+8. Next Steps
+
+Review and Validation: Finalize and approve the Project Scope (this document) with all key stakeholders.
+
+Data Access (Priority 1): Grant MyIAM database access to the ITO Infra Innovation development team. Access may be initially restricted to Lower Environments (UAT/Test) for initial validation and testing.
+
+Roadmap Finalization: Define the detailed project roadmap and milestones (Target: End of March).
+
+PoC/MVP Launch: Initiate the development of a Proof of Concept (PoC) / Minimum Viable Product (MVP) to test the first set of critical use cases.
+
+
+
+
+
+
+RACI MatrixActivities / TasksIAM TeamSupport OpéITO InfraMyIAM DevSecurityFunctional Requirements DefinitionA / RCIIIConsolidation of Recurring Questions (FAQ)ARIIITechnical Architecture (LLM, Framework)IIA / RCCMyIAM Data Access (API / DB)IICA / RCAI Development (RAG, Agentic AI)CIA / RIIApplication Integration (Portal UI)IICA / RISecurity & Access Control (IAM)AICRRMonitoring & VersioningIIA / RCIRoadmap & Global SteeringA / RICCILegend: A: Accountable | R: Responsible | C: Consulted | I: Informed11. Key Points of ContactRoleEntityNameStrategic Sponsor (N+3)Management IAM / ITG[Name]Operational Sponsor (N+2)Management IAM[Name]Project Owner (N+1 / Manager)Team MyIAMNelson [Name]Project Lead / CoordinationTeam MyIAM[Your Name]Technical Lead (AI)ITO Infra Innovation[Name]Lead Developer (Application)MyIAM Dev Team[Name]
+
+
+
