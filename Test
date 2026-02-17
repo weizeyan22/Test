@@ -1,30 +1,4 @@
-Hi all,
-
-Following the discussions held over the past week with the CIB ITO Infrastructure Innovation team, I would like to share the latest progress on the MyIAM AI Chatbot project, as well as the Project Scope and the proposed next steps.
-The objective is to ensure full alignment across all teams before the joint work starts in March.
-
-1. Key Outcomes from the Discussions with ITO Infrastructure Innovation
-
-The ITO Infrastructure Innovation team has confirmed strong interest in our use case. Among the 40+ use cases in their portfolio, they proactively prioritized the MyIAM AI Chatbot due to:
-
-the transversal scope of MyIAM across all CIB users,
-
-the strategic importance of IAM within Cybersecurity,
-
-and the high operational value of an AI-driven support capability.
-
-They have already presented the initiative to ITG, who expressed strong interest as well. ITG is willing to support the project at Group level and aims to integrate our chatbot into TWIN, the Group’s agentic AI platform.
-This elevates the initiative from a CIB use case to a Group-level AI project, positioning MyIAM among the first ITO use cases to be onboarded into TWIN.
-
-Leveraging Infra Innovation’s existing RAG/LLM framework will significantly accelerate the PoC delivery and benefit from the enhanced performance of TWIN’s agentic models. Infra Innovation will continue leading the alignment with ITG and the associated technical integration.
-
-On the security side, IAM remains the sole owner of MyIAM data, and all database access required for model enrichment will remain strictly under IAM governance and validation.
-
-2. IAM Inputs & Preparation Work
-
-To support the upcoming phases, the following inputs have already been provided to Infra Innovation:
-
-FAQ – common MyIAM questions
+s
 
 Documentation and user guides
 
