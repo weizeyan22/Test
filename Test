@@ -1,13 +1,1 @@
-| Endpoint                                             | Use case / Question                                 | Input                                     | Output / Action                                                     |
-| ---------------------------------------------------- | --------------------------------------------------- | ----------------------------------------- | ------------------------------------------------------------------- |
-| **1. Get Access Request Status**                     | What's the status of my access request?             | Access Request ID, User ID                | Request status (Pending/Approved/Rejected/Completed), approver info |
-| **2. Update Request / Forward to Alternate Manager** | Request pending with manager on leave → forward     | Request ID, User ID, Alternate Manager ID | Request reassigned, confirmation message                            |
-| **3. List User Accesses**                            | Extract all accesses held by team members           | Team ID or list of User IDs               | List of accesses per user (roles, applications, entitlements)       |
-| **4. Setup Delegation / Leave Management**           | Set delegation while on long leave                  | User ID, Delegate ID, Start/End date      | Delegation created, confirmation                                    |
-| **5. Follow up with Workgroup**                      | Get contact details/members of workgroup            | Request ID, Workgroup ID                  | List of members, contact info                                       |
-| **6. Validate Access Issue Post-Completion**         | Access request completed but user cannot access     | Request ID, User ID, Application ID       | Check access rights, return issue status                            |
-| **7. Password Reset**                                | Reset password for application XYZ                  | User ID, Application ID                   | Trigger reset workflow, confirmation                                |
-| **8. Cancel / Terminate Request**                    | Cancel erroneously raised access request            | Request ID, User ID                       | Request cancelled, confirmation                                     |
-| **9. User Role / Access Mapping Post-Move**          | Lost accesses after dept/manager change             | User ID, New Manager ID                   | Current accesses, missing accesses, approval status                 |
-| **10. Create New Access Request (optionnel)**        | Future interaction: allow chatbot to create request | User ID, Application/Role ID              | Request created, return Request ID and status                       |
-
+| Endpoint                                             | Use case / Question                                 | Input                                     | Output / Action                                                    
