@@ -1,28 +1,5 @@
-|                                             | Use case / Question                                 | Input                                     | Output / Action                                                    
 
-
-这是一个**非常关键的节点**——本质上这不是一个“项目汇报”，而是一次**资源博弈（争预算 + 定你的位置）**。
-
-如果你只是讲技术 or 进展，你会错失80%的价值。
-
-我先直接说结论：
-
-👉 这个 presentation 的目标不是“讲清楚”，而是 **让 N+3 觉得：这个项目必须做 + 必须现在做 + 必须你来做 + 必须给资源**。
-
----
-
-## 一、你这场 presentation 的核心逻辑（一定要这样搭）
-
-你可以用一个非常清晰的 6-step 结构：
-
-### 1. Context（30秒）
-
-- IAM support 当前的问题是什么
-- 为什么现在要做 chatbot
-
-👉 关键词：volume / inefficiency / scalability
-
-**示例：**
+#**
 
 > Today, IAM support is handling a high volume of repetitive requests, with limited scalability and no structured knowledge reuse.
 > 
