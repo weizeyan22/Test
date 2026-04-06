@@ -1,1 +1,86 @@
+## AI Chatbot for IAM (Ver. 0.1)
 
+### Phase 1 : Delivery of 1st POC (Gen AI Chatbot) & Prep Phase 2
+
+#### Week 1-2 :
+
+- Paris Team + UAC Opeations (PM & SME) :
+    - 1st **UAT** to score the accuracy of RAG-generated responses + feedbacks.
+    - Provide edge cases to strengthen the model’s robustness (Delphine, Abire, Roméo)
+    - Update/Complete the Knowledge Base.
+    - Define specific User Stories for the phase 2 (read-only scope) (e.g. “As a manager, I want to check the status of my team’s permission request.”)
+- Innovation Lab :
+    - Optimize Prompt Engineering based on UAT feedback.
+    - Fine-tune RAG retrieval parameters.
+- Dev Team :
+    - Identify existing APIs within MyIAM (Request Status, User Permission)
+    - Prepare the architecture
+    - Define the endpoint APIs (read-only) for the phase 2
+
+#### Week 3-4 :
+
+- Paris Team + UAC :
+    - RAG 2.0 UAT + feedbacks
+    - Define specific User Stories for the phase 2 (read-only scope) (e.g. As a manager, I want to check the status of my team’s permission request.)
+- Innovation Lab :
+    - Release the improved version of the RAG : RAG 2.0
+    - Optimize and fine-tune the RAG 2.0 based on UAT feedbacks.
+    - Begin research on integrating **Agentic Logic (Function Calling)** into the chatbot to facilitate seamless API interaction.
+- Dev Team :
+    - Develop the endpoint APIs  (read-only) for the phase 2 (ensure APIs meet the formatting requirements for the chabot).
+
+#### Week 5-6 :
+
+- Whole Team :
+    - Final GenAI POC Evaluation → Has the RAG performance met the threshold for production release?
+- Dev Team :
+    - Complete development of the first batch of **Read-only API Endpoints** and deploy them to the Sandbox environment.
+    - Conduct API Security Testing to ensure the AI chatbot only accesses data within authorized scopes.
+    - Release of 1st POC Gen AI (deployment into MyIAM).
+- Innovation Lab :
+    - Release of 1st POC Gen AI.
+    - Begin research on integrating **Agentic Logic (Function Calling)** into the chatbot to facilitate seamless API interaction.
+
+### Phase 2 : Delivery of 2nd POC (read-only Agentic AI Chatbot) & Prep Phase 3
+
+#### Week 7-8 :
+
+- Paris Team + UAC :
+    - Define data privacy boundaries (who can access to what).
+    - Design the **Fallback Strategy**. Define how the Chatbot should politely respond to API timeouts or errors without exposing technical error codes to the user. e.g.
+    
+    If the API fails, the bot shouldn't just say "Error 500"; it should say something like:
+    
+    > *"I'm having trouble reaching the MyIAM system right now. You can check your status manually [here], or I can try again in a few minutes."*
+    > 
+- Dev Team :
+    - Deliver the first batch of core Endpoints (e.g., `GET /request-status` and `GET /user-access`).
+    - Implement **OAuth2 or API Key authentication** mechanisms to ensure the Chatbot accesses data strictly via the user’s own identity/permissions.
+- Innovation Lab :
+    - Integrate **Function Calling** (Agentic logic) within the Chatbot framework.
+    - Build **API Response Templates** to transform raw JSON data into human-readable dialogue (e.g., converting `{status: 2}` into *"Your application is currently at Level 2 Approval"*).
+
+#### Week 9-10 :
+
+- Paris Team + UAC :
+    - Design the frontend of chatbot.
+- Dev Team :
+    - Conduct UAT : Validate that real-time data returned by the AI matches the MyIAM web portal with 100% parity.
+- Innovation Lab :
+    - Handle **Multi-turn Dialogue Queries**. Ensure the AI maintains context (e.g., if a user asks *"What is my request status?"* followed by *"And what about my team?"*, the AI retains the previous intent).
+
+#### **Week 11-12 :**
+
+- Dev Team :
+    - Conduct Load/Stress Testing : ensure MyIAM backend APIs can handle concurrent requests (e.g., 500 managers querying team permissions simultaneously).
+- Whole Team :
+    - Lauch the 1st POC (Beta Pilot) for a selected department.
+    - UAT of the POC.
+    - Collect feedbacks for phase 2.
+
+#### Week 13-14 :
+
+- Innovation Lab :
+    - Optimize and fine-tune the POC based on UAT feedbacks.
+- Dev Team :
+    - Release of the read-only Agent AI chatbot (deployment into MyIAM).
