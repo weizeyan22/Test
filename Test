@@ -1,24 +1,9 @@
-Bonjour à tous,
+La semaine dernière, on a lancé le premier POC du chatbot IA.
 
-Comme vous le savez peut-être, nous collaborons actuellement avec l’Innovation Lab sur le développement d’un chatbot IA pour MyIAM.
+Pour cette première phase, on a simplement mis en place un modèle RAG en s’appuyant sur nos documentations existantes.
 
-L’objectif de cette initiative est de s’appuyer sur nos documentations existantes afin de répondre plus efficacement aux demandes simples et répétitives, et plus largement de faciliter l’accès à l’information au sein de MyIAM.
+L’objectif maintenant, c’est vraiment d’améliorer la qualité des réponses, donc vos retours sont super importants.
 
-Même si ce premier POC est principalement orienté vers des cas d’usage support, il peut également être utile pour les équipes centrales, par exemple pour explorer plus rapidement la documentation, retrouver des informations ou encore appuyer certaines analyses.
+Je vous ai partagé le process pour faire les tests, n’hésitez pas à l’utiliser.
 
-La première version du POC est désormais disponible pour test, et vos retours seront très précieux pour améliorer la qualité et la pertinence des réponses.
-
-Comment tester :
-- Accès : rendez-vous sur le POC MyIAM (Open WebUI) et sélectionnez le modèle MyIAM  
-- Questions : testez l’outil à partir des documentations / guides utilisateurs MyIAM  
-- Note : le chatbot n’est pas encore connecté à la base de données, il ne peut donc pas répondre à des cas spécifiques  
-- Évaluation : évaluez chaque réponse (👍 / 👎)  
-- Feedback : en cas de 👎, merci de préciser la réponse attendue  
-- Enregistrement : n’oubliez pas de cliquer sur « Enregistrer »
-
-Il s’agit encore d’une version préliminaire, et vos retours contribueront directement à rendre cet outil réellement utile pour l’équipe.
-
-Merci beaucoup pour votre aide !
-
-Bien cordialement,  
-Weize
+Et bien sûr, si vous avez des questions, n’hésitez pas à me contacter.
