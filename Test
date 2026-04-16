@@ -1,0 +1,181 @@
+### Phase 2 Streams : Delivery of POC read-only Agentic AI Chatbot
+
+#### **Stream 1: API & Infrastructure Layer (IAM Dev Team)**
+
+**Key Tasks:** 
+
+1. Authentication
+- Implement SSO-based authentication (e.g., SSO token / OAuth2).
+1. API Delivery & Authorization 
+- Deliver and expose core **read-only API endpoints.**
+- Integrate IAM-based authorization at API/backend level:
+    - user-level access control (who can access what).
+1. Middleware / Wrapper Layer & Security Controls
+- Build a **middleware layer** to:
+    - standardize API responses for AI consumption.
+    - ensure compatibility with AI **function calling schema.**
+- Implement processing-level security controls:
+    - **Input validation**: ensure that parameters sent by the AI are valid (correct format, no malicious or malformed inputs).
+    - **Response filtering**: filter API responses to expose only the fields required by the chatbot.
+    - **Scope enforcement**: validate requested data is within user scope, block the request if not authorized. *(in addition to backend authorization)*
+    - **Rate limiting**: prevent excessive or abnormal usage (e.g., limit the number of requests per user within a given timeframe).
+    - **Error handling**: prevent backend technical errors from being exposed to the frontend or AI; return standardized error messages instead.
+1. Performance & Scalability Optimization
+- Optimize API latency
+- Conduct load & stress testing : ensure MyIAM backend APIs can handle concurrent requests/usage (e.g., 500 managers querying team permissions simultaneously).
+
+Access Control Design (Summary) : SSO Authentication  (who are you) → IAM Authorization (what you can access) → Middleware Security Controls (how data is processed and exposed safely)
+
+#### **Stream 2: AI Agent Layer (Innovation Lab)**
+
+**Key Tasks:**
+
+1. **Agent Architecture Design** 
+- Integrate **Function Calling / Agentic Logic into the chatbot framework**
+- Define the agent decision workflow:
+    - understand user intent (**knowledge Q&A vs real-time API query**)
+    - decide when to respond via **RAG** and when to trigger an **API call**
+    - select the appropriate tool / endpoint API (**routing logic**)
+    
+    → Decision flow :
+    
+    understand → decide → call API → interpret result → format response
+    
+1. **Tool Calling & API Integration Layer (AI-side)**
+- Define how the chatbot interacts with APIs through **function calling / tool calling.**
+- Design the **input / output schema** for API interaction :
+
+Example : {  "action": "get_user_access",  "parameters": {"user_id": "xxx"  }}
+
+- Align AI-side payload structure with Dev Team endpoint specifications.
+
+1. **API Response Transformation**
+- Transform raw API outputs into **human-readable answers**
+- Convert technical data into **business-friendly explanation**:
+
+Example :  
+
+- Raw response: `{ "status": 2 }`
+- Chatbot response: “Your request is currently at Level 2 Approval.”
+1. **Prompt Engineering Enhancement**
+- **response structuring prompts** (how the answer should be presented to the user)
+- design prompts so the agent respects access logic
+- 把拒绝结果转成自然语言，比如：
+- “You are not authorized to view this information.”
+
+⇒ 
+
+- Ensure agent behavior aligns with authorization constraints
+- Handle unauthorized API responses gracefully in the chatbot dialogue
+- Define **fallback behavior and prompting strategy** for : API timeouts, API failures, unavailable data (fallback to RAG when applicable).
+
+e.g. : “I’m having trouble reaching the MyIAM system right now. You can check the information directly in MyIAM, or try again in a few minutes.”
+
+1. **Continuous Optimization**
+- Fine-tune agent behavior based on:
+    - UAT feedback
+    - edge cases
+    - failed / ambiguous queries
+
+#### **Stream 3:** Business & UX Layer (Paris BAU Team + UAC Operations)
+
+**Key Tasks:**
+
+- Define Use Cases (Read-only scope)
+    - Request status
+    - User access visibility
+    - Manager-level queries
+- Data Privacy & Access Rules
+    - Define “who can see what”
+- UAT Validation
+    - Ensure 100% parity with MyIAM portal
+    - Validate business logic consistency
+- Feedback Loop
+    - Identify gaps in responses
+    - Improve usability
+- Chatbot UX / Frontend Design
+    - Ensure intuitive interaction experience
+
+#### **Cross-Stream: Pilot & Release**
+
+**Key Tasks:**
+
+- Beta Pilot Launch (selected department)
+- UAT of Agentic Chatbot
+- Feedback collection
+- Iterative improvement
+
+### Phase 2 Stages : Delivery of POC read-only Agentic AI Chatbot
+
+#### Stage 1 — Foundation & Alignment
+
+🔵 API / Infra (Dev Team)
+
+- Deliver initial read-only endpoints (`/request-status`, `/user-access`)
+- Implement authentication (OAuth2 / API Key)
+
+🟣 AI Agent (Innovation Lab)
+
+- Integrate Function Calling (agentic logic)
+- Define API calling schema (input/output)
+
+🟢 Business (Paris + Support)
+
+- Define use cases (read-only scope)
+- Define data access & privacy rules
+
+#### Stage 2 — Integration & Core Capabilities
+
+🔵 API / Infra
+
+- Build middleware / wrapper layer
+- Ensure API response standardization
+
+🟣 AI Agent
+
+- Implement tool selection logic (when to call API)
+- API response → human-readable transformation
+- Implement fallback strategy (API failure → RAG)
+
+🟢 Business
+
+- UAT: validate data accuracy vs MyIAM portal
+- Define expected response formats
+
+#### Stage 3 — Advanced Behavior & Validation
+
+🔵 API / Infra
+
+- Load & stress testing
+- Security validation (strict access control)
+
+🟣 AI Agent
+
+- Multi-turn dialogue (context retention)
+- Fine-tuning based on UAT feedback
+
+🟢 Business
+
+- Advanced UAT (real-life scenarios)
+- UX / chatbot interface validation
+
+#### Stage 4 — Pilot & Release
+
+🔴 Cross-team
+
+- Beta Pilot launch (selected department)
+- Collect feedback & iterate
+
+🔵 Dev Team
+
+- Final deployment into MyIAM
+
+🟣 Innovation Lab
+
+- Model optimization post-pilot
+
+### Phase 2 – Read-Only Agentic AI
+
+**Objective:**
+
+Enable the chatbot to retrieve real-time IAM data via API integration, moving from static knowledge retrieval (RAG) to dynamic system interaction.
