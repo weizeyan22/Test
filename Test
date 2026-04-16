@@ -1,0 +1,47 @@
+Hi all,
+
+Thanks again for the discussion earlier.
+
+Just to recap and align on the key points we discussed:
+
+⸻
+
+Phase 1 (Current Focus)
+
+* The priority remains the delivery of the RAG-based AI chatbot
+* Innovation Lab continues working on the knowledge base and model optimization
+* Support team will handle UAT and response quality validation
+
+⸻
+
+Phase 2 (Preparation – Read-only Agentic AI)
+
+* The Dev Team will provide the first set of read-only API endpoints (e.g., request status, user access)
+* These APIs will be used by the chatbot to enable real-time data retrieval
+* The Innovation Lab will design the agent logic and API interaction layer (function calling / payload generation)
+
+⸻
+
+Architecture Alignment
+
+* We agreed to work together on the target architecture, especially around:
+    * API exposure and structure
+    * AI integration (function calling)
+    * Security and access control
+
+⸻
+
+Next Steps
+
+* Start defining the list of required API endpoints for Phase 2
+* Align on the API contract (input/output schema)
+* Continue architecture discussions between Dev Team and Innovation Lab
+
+⸻
+
+Please let me know if I missed anything or if you would like to add further points.
+
+Thanks again for the collaboration.
+
+Best regards,
+[Your Name]
