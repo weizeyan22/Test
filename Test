@@ -1,23 +1,17 @@
-### Phase 1 : Delivery of 1st POC (Gen AI Chatbot) & Prep Phase 2
-
-#### **Stream 1 – RAG Optimization (Paris BAU Team + Innovation Lab)**
-
-Current Status :
-
-- First round UAT completed (based on UAC Operations team feedback)
-- Identified issues :
-    - inaccurate or missing information
-    - outdated content
-    - unclear or incomplete answers (lack of coverage on certain topics)
-
 Next steps :
 
 1. RAG Optimization
-- Paris BAU Team → Enhance and Update MyIAM documentation:
-    - Update/correct existing documentation.
+
+Objective : Improve chatbot response accuracy and coverage based on UAT feedback
+
+- Paris BAU Team + UAC Operations Team→ Update and improve MyIAM documentation:
+    - Update/correct existing documentation
+    
+    (tasks already assigned by Delphine - tracking link:….)
+    
     - Create missing documentation where needed.
-    - Convert structured content (schemas, tables) into AI-readable text where needed.
-- Innovation Lab → optimize RAG parameters and Chatbot performance.
+    - Add detailed MyIAM process documentation into the knowledge base (link : )
+- Innovation Lab → optimize chatbot performance.
 - Expected timeline: ~2 weeks
 1. **RAG Validation** 
 - Launch **second round of testing** after optimization of chatbot/knowledge base.
@@ -45,4 +39,4 @@ Next steps :
 - Analyze core read-only endpoints within MyIAM.
 - Define API specifications for agent integration.
 - Align on API architecture and integration approach.
-- Expected timeline: ~2 weeks
+- Expected timeline: ~4 weeks
