@@ -1,42 +1,68 @@
-Next steps :
+Hi all,
 
-1. RAG Optimization
+Thanks again for the discussion earlier — very helpful to align on the next steps.
 
-Objective : Improve chatbot response accuracy and coverage based on UAT feedback
+### **Phase 1 – RAG Optimization (Next ~2–3 weeks)**
 
-- Paris BAU Team + UAC Operations Team→ Update and improve MyIAM documentation:
-    - Update/correct existing documentation
-    
-    (tasks already assigned by Delphine - tracking link:….)
-    
-    - Create missing documentation where needed.
-    - Add detailed MyIAM process documentation into the knowledge base (link : )
-- Innovation Lab → optimize chatbot performance.
-- Expected timeline: ~2 weeks
-1. **RAG Validation** 
-- Launch **second round of testing** after optimization of chatbot/knowledge base.
-- Paris BAU Team →  test and validate the optimized chatbot.
-- Innovation Lab → Refine chatbot performance based on Paris team feedback.
+**Current status:**
 
-⇒ The chatbot can be released once the following criteria are met :
+* First round of UAT completed based on UAC Operations feedback
+* Main issues identified:
 
-- Major issues identified in round 1 are resolved.
-- No regression on previously correct answers.
-- UAT feedback overall positive.
-- Expected timeline: ~1.5 week
-1. Deployment in production 
-- Innovation Lab → Release MyIAM RAG-based Chatbot (LLM@CIB)
-- Expected timeline: ~1 week
+  * inaccurate or missing information
+  * outdated content
+  * unclear or incomplete answers
 
-⇒ Target : Mid-End May
+**Next steps:**
 
-### **Stream 2 – API Integration (Innovation Lab + IAM Dev Team)**
+* **Paris BAU Team**
 
-⇒ Objective : prepare for phase 2 agent integration.
+  * Update and correct existing documentation
+  * Create missing documentation where needed
+  * Improve content clarity and completeness
 
-⇒ This stream runs in parallel and does not block Phase 1 delivery.
+* **Innovation Lab**
 
-- Analyze core read-only endpoints within MyIAM.
-- Define API specifications for agent integration.
-- Align on API architecture and integration approach.
-- Expected timeline: ~4 weeks
+  * Optimize RAG parameters and overall chatbot performance
+
+---
+
+### **RAG Validation (Round 2 UAT)**
+
+* Launch second round of testing after optimization
+* Focus on:
+
+  * validating that previously incorrect answers are fixed
+  * ensuring no regression on correct answers
+  * confirming overall response quality
+
+---
+
+### **Release Plan (Phase 1)**
+
+The chatbot will be released once:
+
+* major issues identified in round 1 are resolved
+* no regression is observed
+* overall feedback is positive
+
+**Target timeline:** Mid–End May
+
+---
+
+### **Phase 2 Preparation – API Stream (in parallel)**
+
+* Innovation Lab and IAM Dev Team to:
+
+  * analyze core read-only endpoints within MyIAM
+  * define API specifications for future agent integration
+  * align on API architecture
+
+* This stream runs in parallel and does not block Phase 1 delivery
+
+---
+
+Please feel free to add or correct anything if needed.
+
+Thanks again,
+[Your Name]
