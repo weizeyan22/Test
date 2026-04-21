@@ -1,68 +1,13 @@
-Hi all,
+Hello Team,
 
-Thanks again for the discussion earlier — very helpful to align on the next steps.
+Suite à la présentation du chatbot AI MyIAM, vous trouverez en pièce jointe le support de présentation (version brouillon).
 
-### **Phase 1 – RAG Optimization (Next ~2–3 weeks)**
+Les actualités internes BNPP autour de la Data et de l’AI sont disponibles sur Echonet :
 
-**Current status:**
+Echonot → Mes abonnements → Data&AI (le lien ne semble pas disponible)
 
-* First round of UAT completed based on UAC Operations feedback
-* Main issues identified:
+N’hésitez pas à me faire des retours ou à partager vos idées sur le chatbot.
 
-  * inaccurate or missing information
-  * outdated content
-  * unclear or incomplete answers
+Merci encore pour vos échanges et collaboration.
 
-**Next steps:**
-
-* **Paris BAU Team**
-
-  * Update and correct existing documentation
-  * Create missing documentation where needed
-  * Improve content clarity and completeness
-
-* **Innovation Lab**
-
-  * Optimize RAG parameters and overall chatbot performance
-
----
-
-### **RAG Validation (Round 2 UAT)**
-
-* Launch second round of testing after optimization
-* Focus on:
-
-  * validating that previously incorrect answers are fixed
-  * ensuring no regression on correct answers
-  * confirming overall response quality
-
----
-
-### **Release Plan (Phase 1)**
-
-The chatbot will be released once:
-
-* major issues identified in round 1 are resolved
-* no regression is observed
-* overall feedback is positive
-
-**Target timeline:** Mid–End May
-
----
-
-### **Phase 2 Preparation – API Stream (in parallel)**
-
-* Innovation Lab and IAM Dev Team to:
-
-  * analyze core read-only endpoints within MyIAM
-  * define API specifications for future agent integration
-  * align on API architecture
-
-* This stream runs in parallel and does not block Phase 1 delivery
-
----
-
-Please feel free to add or correct anything if needed.
-
-Thanks again,
-[Your Name]
+Cordialement,
