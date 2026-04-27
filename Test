@@ -1,39 +1,5 @@
-| API Name | Description | Input | Output | Notes |  |
-| --- | --- | --- | --- | --- | --- |
-| searchIdentity | Get UID from name | name, department? | list | max 10 |  |
-| getCurrentUser | Get user from SSO | - | UID | implicit |  |
+Je vous remercie sincèrement d’avoir accepté cet échange aujourd’hui.
 
-| API Name | Description | Input | Output | Security |
-| --- | --- | --- | --- | --- |
-| getMyRequests | All requests of current user | status?, limit | list | requester=requestee=self |
-| getRequestStatus | Full request detail | requestID | status, approver, history | requester/requestee/approver |
-| searchRequests | Filter requests | requesteeUID?, requesterUID?, status?, app?, ent? | list | scoped |
-| getPendingRequests | Requests waiting for approval | approverID | list | approver only |
+Vos retours me sont vraiment précieux.
 
-| API Name | Description | Input | Output | Security |
-| --- | --- | --- | --- | --- |
-| getUserAccess | Get user access | userID, app?, ent? | list | self or manager |
-| getTeamAccess | Get team access | managerID, app?, ent? | list | manager only |
-
-| API Name | Description | Input | Output |
-| --- | --- | --- | --- |
-| getOwnership | Get app/ent ownership | userID, app?, ent? | list |
-
-| API Name | Description | Input | Output |
-| --- | --- | --- | --- |
-| getPendingApprovals | Requests to approve | approverID | list |
-
-| Code | Meaning |
-| --- | --- |
-| 400 | Invalid input |
-| 403 | Unauthorized |
-| 404 | Resource not found |
-| 500 | Internal error |
-
-| User Question | API |
-| --- | --- |
-| Where is my request | getMyRequests |
-| Who is approving | getRequestStatus |
-| Show my access | getUserAccess |
-| Show my team access | getTeamAccess |
-| What do I need to approve | getPendingApprovals |
+Si besoin, est-ce que je pourrais revenir vers vous par la suite pour échanger de nouveau ou vous demander quelques conseils complémentaires ?
