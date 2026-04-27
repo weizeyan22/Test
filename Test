@@ -1,3 +1,71 @@
+
+Je travaille en tant que Data Scientist au sein de CIB ITO Production Security, plus précisément dans l’équipe IAM chez BNP Paribas.
+
+Actuellement, je pilote deux initiatives stratégiques :
+
+* le projet de chatbot IA pour MyIAM (en collaboration avec ITG et l’Innovation Lab)
+* ainsi que la conception d’un projet de DataLake / Lakehouse IAM pour CIB Production Security
+
+Aujourd’hui, nos données IAM et Production Security sont très fragmentées entre plusieurs systèmes, équipes et entités (CIB / ITG / différents domaines Prod Sec).
+
+Cela crée des limitations importantes en termes de :
+
+* reporting et visibilité
+* gouvernance et traçabilité
+* efficacité opérationnelle
+* et surtout pour les futurs cas d’usage liés à l’IA
+
+L’objectif n’est pas uniquement de centraliser les données.
+
+La véritable ambition est de construire une infrastructure de données robuste et prête pour l’IA, capable de supporter de futurs cas d’usage d’Agentic AI.
+
+Nous travaillons déjà avec ITG sur le projet de chatbot IA MyIAM, connecté au framework d’Agentic AI du Groupe (TWIN).
+
+Cela nous a permis de réaliser que sans une base de données solide et bien structurée, il sera difficile de faire évoluer les initiatives IA à plus grande échelle.
+
+Comme j’ai vu que votre équipe travaille déjà sur des initiatives DataLake / Lakehouse, je souhaitais mieux comprendre votre retour d’expérience et bénéficier de votre vision.
+
+Questions principales
+
+1. Choix de la plateforme
+
+Comment avez-vous choisi votre plateforme ?
+
+Starburst, Databricks, Snowflake, Elastic Search… quels ont été les principaux critères de décision ?
+
+2. Retour d’expérience utilisateur
+
+D’après votre expérience terrain, qu’est-ce qui fonctionne bien, et quelles sont les principales limites ou difficultés rencontrées ?
+
+3. DataLake vs Lakehouse
+
+Selon vous, dans un contexte sécurité / IAM, recommanderiez-vous plutôt une approche DataLake ou Lakehouse ?
+
+4. Coût / Budget / Infrastructure
+
+D’un point de vue budget et infrastructure, quels sont les éléments qu’il faut anticiper dès le début ?
+
+Coût de la plateforme, serveurs, scalabilité, contraintes de gouvernance…
+
+5. Intégration IA
+
+C’est probablement le point le plus important :
+
+Comme notre objectif à plus long terme est de permettre l’IA et les futures capacités d’Agentic AI,
+
+voyez-vous des opportunités de collaboration entre nos équipes dans le futur ?
+
+J’apprécie sincèrement votre retour.
+
+À ce stade, nous sommes encore en train de définir l’architecture, donc votre expérience est particulièrement précieuse pour nous aider à éviter de mauvaises décisions stratégiques dès le départ.
+
+
+
+
+
+
+
+
 Je vous remercie sincèrement d’avoir accepté cet échange aujourd’hui.
 
 Vos retours me sont vraiment précieux.
