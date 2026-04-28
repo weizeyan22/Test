@@ -1,15 +1,7 @@
-Bonjour,
+Merci beaucoup, c’est très clair.
 
-Merci encore pour vos explications, cela m’aide vraiment à mieux comprendre le modèle.
+Donc si je comprends bien, le choix des composants dépend surtout des besoins du projet : query, orchestration, processing, etc.
 
-J’avais juste une dernière question pour bien clarifier la partie service :
+Côté IAM / Production Security, il faudra donc d’abord clarifier nos cas d’usage, nos sources de données et nos besoins de traitement avant de décider s’il faut commander uniquement Starburst, ou ajouter Airflow / Spark par la suite.
 
-hier, vous avez mentionné plusieurs composants comme IBM COS Bucket / IBM Cloud, DMZR, Starburst, Airflow, etc.
-
-Dans ce modèle, est-ce qu’une entité comme IAM / Production Security commande généralement un seul service global via le Marketplace ITG, qui inclut déjà ces différents composants ?
-
-Ou bien faut-il commander séparément plusieurs services / produits selon les besoins (stockage, query, orchestration, etc.) ?
-
-Cela m’aiderait beaucoup à mieux comprendre comment cadrer notre approche côté projet.
-
-Merci encore pour votre aide 🙂
+Merci encore pour vos explications, c’est vraiment utile pour cadrer notre réflexion.
