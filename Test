@@ -1,50 +1,15 @@
 Bonjour,
 
-Merci encore pour notre échange d’hier, c’était vraiment très enrichissant.
+Merci encore pour vos explications, cela m’aide vraiment à mieux comprendre le modèle.
 
-Comme vous partez bientôt en congé, je me permets juste de vous poser deux dernières questions qui m’aideraient beaucoup pour mieux cadrer notre réflexion côté IAM / Production Security :
+J’avais juste une dernière question pour bien clarifier la partie service :
 
-1. Concernant la gouvernance, qui porte généralement l’ownership de la plateforme (budget, sécurité, support, gouvernance des données) ?
-Est-ce que les équipes métiers restent principalement consommatrices du service, ou peuvent-elles aussi participer à la gouvernance ?
+hier, vous avez mentionné plusieurs composants comme IBM COS Bucket / IBM Cloud, DMZR, Starburst, Airflow, etc.
 
-2. Si une équipe comme IAM / Production Security souhaite s’appuyer sur cette architecture, le modèle est-il plutôt un simple onboarding comme consommateur de service, ou bien une forme de co-construction avec ITG ?
+Dans ce modèle, est-ce qu’une entité comme IAM / Production Security commande généralement un seul service global via le Marketplace ITG, qui inclut déjà ces différents composants ?
 
-Cela nous aiderait beaucoup à mieux comprendre la bonne approche dès le départ, et surtout à éviter de construire quelque chose qui serait difficile à aligner plus tard.
+Ou bien faut-il commander séparément plusieurs services / produits selon les besoins (stockage, query, orchestration, etc.) ?
 
-Merci encore pour votre aide, et je vous souhaite d’excellentes vacances 🙂
+Cela m’aiderait beaucoup à mieux comprendre comment cadrer notre approche côté projet.
 
-Bien cordialement,
-
-
-
-J’avais une dernière question importante concernant la gouvernance :
-
-dans votre modèle actuel, qui porte réellement l’ownership de la plateforme (budget, gouvernance, sécurité, support) ?
-
-Est-ce que les équipes métiers restent “consommatrices” de la plateforme, ou peuvent-elles aussi participer à la gouvernance ?
-
-
-
-Si une équipe comme IAM / Production Security souhaite s’appuyer sur cette architecture, quel serait généralement le modèle :
-
-simple onboarding comme consommateur de service,
-ou bien un projet de co-construction avec ITG ?
-
-
-
-Dans un contexte sensible comme IAM / Production Security, comment gérez-vous généralement les sujets de sécurité et de contrôle d’accès ?
-
-Par exemple :
-qui peut interroger quelles données,
-et comment la gouvernance des accès est-elle assurée ?
-
-
-Dans un contexte sensible comme IAM / Production Security, comment gérez-vous généralement les sujets de sécurité et de contrôle d’accès ?
-
-Par exemple :
-qui peut interroger quelles données,
-et comment la gouvernance des accès est-elle assurée ?
-
-
-
-
+Merci encore pour votre aide 🙂
