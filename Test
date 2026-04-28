@@ -1,2 +1,9 @@
-Pour construire un vrai Lakehouse IAM / Production Security, quel serait le minimum viable setup recommandé ?
-Est-ce qu’un socle IBM COS + Starburst suffit pour démarrer, avec Airflow / Spark à ajouter selon les besoins d’ingestion et de transformation ?
+Merci encore pour tous vos retours, cela m’aide vraiment à mieux structurer notre réflexion côté IAM / Production Security.
+
+Comme nous sommes encore en phase de cadrage sur le sujet DataLake / Lakehouse, j’aimerais continuer à mieux comprendre le modèle de service et la bonne approche pour un éventuel onboarding.
+
+Parmi les contacts que vous m’avez partagés, quelle serait selon vous la personne la plus pertinente à contacter en premier pour échanger sur le périmètre des services disponibles (Starburst, IBM COS, Airflow, etc.) ainsi que sur le modèle de onboarding via le Marketplace ITG ?
+
+Je préfère avancer dans le bon ordre plutôt que solliciter les mauvaises personnes 🙂
+
+Merci encore pour votre aide, et je vous souhaite d’excellentes vacances !
