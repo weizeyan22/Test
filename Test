@@ -1,7 +1,2 @@
-Merci beaucoup, c’est très clair.
-
-Donc si je comprends bien, le choix des composants dépend surtout des besoins du projet : query, orchestration, processing, etc.
-
-Côté IAM / Production Security, il faudra donc d’abord clarifier nos cas d’usage, nos sources de données et nos besoins de traitement avant de décider s’il faut commander uniquement Starburst, ou ajouter Airflow / Spark par la suite.
-
-Merci encore pour vos explications, c’est vraiment utile pour cadrer notre réflexion.
+Pour construire un vrai Lakehouse IAM / Production Security, quel serait le minimum viable setup recommandé ?
+Est-ce qu’un socle IBM COS + Starburst suffit pour démarrer, avec Airflow / Spark à ajouter selon les besoins d’ingestion et de transformation ?
