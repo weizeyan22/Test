@@ -1,1 +1,16 @@
-,
+Bonjour Hamza,
+
+Je me permets de vous contacter suite à un échange avec Dominique concernant notre réflexion autour d’un projet DataLake / Lakehouse côté IAM / Production Security chez BNP Paribas CIB.
+
+Dominique m’a conseillé de revenir vers vous pour mieux comprendre le périmètre des services disponibles (notamment Starburst, IBM COS, Airflow, etc.) ainsi que le modèle d’onboarding via le Marketplace ITG.
+
+Nous sommes actuellement en phase de cadrage du projet, avec pour objectif de construire une architecture de données sécurisée et scalable, capable de supporter à la fois nos besoins de gouvernance IAM et nos futurs cas d’usage liés à l’AI / Agentic AI.
+
+L’idée n’est pas de reconstruire une plateforme isolée, mais plutôt de nous aligner avec les services existants et la stratégie Groupe.
+
+Si vous êtes disponible, je serais ravie d’échanger avec vous sur ce sujet, même pour un rapide point.
+
+Merci beaucoup par avance pour votre aide.
+
+Bien cordialement,
+Weize
