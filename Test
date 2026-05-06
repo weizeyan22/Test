@@ -1,26 +1,28 @@
-Pour bien comprendre le périmètre :
-qu’est-ce qui est exactement inclus dans le service Starburst proposé via PA3I ?
+可以。你这四列可以这样理解：
 
+Agent trigger = 用户怎么问时，Agent应该调用这个 function
+Controller / Security = 谁有权查、默认限制在哪里
+Input = Agent需要传什么参数
+Output = 返回给Agent的结构化结果
 
-Pour un cas d’usage IAM / Production Security comme le nôtre,
-quel serait selon vous le setup minimal recommandé pour démarrer ?
+你可以直接按下面填。
 
+Function	Agent trigger	Controller / Security	Input	Output
+searchRequests	Use when the user wants to list or search access requests: “show my pending requests”, “show Sophie’s rejected requests”, “show requests for app X”.	Default scope = authenticated user as requester or requestee. If another userUID is provided, allow only if authenticated user is manager/support/authorized. Default status = pending if not specified.	requesterUID?, requesteeUID?, role?, status?, appName?, entitlementName?, dateRange?, limit?	requestID, requestDate, requesterUID/displayName, requesteeUID/displayName, appName, entitlementName, status, currentStep
+getRequestDetails	Use when the user asks details about a specific requestID: “what is the status of request 123?”, “who is the approver?”, “where is it blocked?”.	Allow if authenticated user is requester, requestee, approver, manager of requester/requestee, or authorized support user.	requestID	requestID, requester, requestee, appName, entitlementName, status, currentStep, currentApprover, creationDate, lastUpdateDate, history
+getUserAccess	Use when the user wants to know what access a person has: “show my access”, “does Sophie have access to app X?”.	Default = authenticated user. For another userUID, allow only if authenticated user is manager of that user or authorized support/governance user.	userUID?, appName?, entitlementName?, activeOnly?	userUID/displayName, appName, entitlementName, entitlementValue?, accessStatus, assignmentDate?, source?
+getTeamAccess	Use when a manager asks for team access: “show my team access”, “who in my team has access to app X?”.	Authenticated user must be manager. Scope limited to direct/authorized team members.	managerUID? default authenticated user, appName?, entitlementName?, activeOnly?	teamMemberUID/displayName, appName, entitlementName, accessStatus, self-report link?
+getApplicationOwner	Use when the user asks who owns an application: “who is the owner of app X?”, “who should I contact for app X?”.	Open to internal users if ownership info is already visible internally.	appName	appName, appOwnerUID/displayName, backupOwner?, workgroupName?, contactInfo?
+getEntitlementOwner	Use when the user asks who owns an entitlement/role: “who owns entitlement Y?”, “who validates role Z?”.	Open to internal users if ownership info is already visible internally.	entitlementName, appName?	appName, entitlementName, entitlementOwnerUID/displayName, backupOwner?, workgroupName?, contactInfo?
+getWorkgroupMembers	Use when the user asks for members/contacts of a workgroup: “who is in workgroup X?”, “who can approve for this workgroup?”.	Open only if workgroup info is visible to internal users; otherwise restrict to authorized support/governance users.	workgroupName	workgroupName, membersUID/displayName, role, email/contactInfo
+getUserOwnership	Use when the user asks what a person owns: “what applications does Jean own?”, “which entitlements is Sophie responsible for?”.	Self, manager, support, governance users. Respect visibility of ownership data.	userUID, appName?, entitlementName?	userUID/displayName, ownedApplications, ownedEntitlements, ownedWorkgroups
+getPendingApprovals	Use when an approver asks what they need to approve: “what do I need to approve?”, “show my pending approvals”.	Authenticated user must be the approver/validator. Scope limited to their own approval queue.	approverUID? default authenticated user, status=pending, appName?, limit?	requestID, requester, requestee, appName, entitlementName, pendingSince, currentStep, approvalLink?
+searchIdentity	Use when the user refers to someone by name and UID is needed for another call: “show Sophie Martin’s access”, “find Jean Dupont”.	Open to internal users, based on Who’s Who visibility. Do not expose confidential attributes.	name, department?, maxResults? default 10	candidateUID, displayName, department, entity, country, managerName
+getIdentityDetails	Use when the user asks who someone is or when Agent needs organizational context before another call.	Open to internal users, based on Who’s Who visibility.	UID or displayName	UID, displayName, jobTitle, department, entity, country, managerUID/displayName
 
-Comment se répartissent généralement les responsabilités entre PA3I et les équipes métiers concernant :
+你可以在表格上方加一句：
 
-* gouvernance des données
-* gestion des accès
-* sécurité
-* exploitation/run
-* support ?
+This catalog describes functional entry points for the chatbot agent. These are business-oriented functions used for intent routing and orchestration, not final technical API specifications.
 
-
-
-Dans un contexte sensible comme IAM / Production Security,
-avez-vous déjà accompagné des cas d’usage avec des contraintes fortes de sécurité ou de gouvernance ?
-
-
-Notre objectif à long terme est également de supporter des futurs cas d’usage AI / Agentic AI.
-
-Selon vous, cette architecture est-elle adaptée pour évoluer progressivement vers ce type de besoins ?
-
+最重要的优化是：
+searchRequestByUser、searchRequestByStatus、searchRequestByAppEnt 最好合并成一个 searchRequests，否则后面会越来越乱。
