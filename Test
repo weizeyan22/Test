@@ -1,0 +1,28 @@
+Bonjour,
+
+Merci beaucoup d’avoir accepté cet échange.
+
+De mon côté, je travaille actuellement sur un projet DataLake / Lakehouse pour le périmètre IAM / Production Security chez BNP Paribas CIB.
+
+Je suis encore en phase de cadrage et d’analyse des différentes approches possibles, et plusieurs personnes m’ont recommandé d’échanger avec des équipes ayant déjà un retour d’expérience concret sur Starburst et les services DataHub ITG.
+
+Comme j’ai vu que Cardif avait déjà avancé sur ce sujet, je serais vraiment intéressée par votre retour d’expérience terrain : pourquoi ce choix, ce qui fonctionne bien, les difficultés rencontrées, et les points auxquels il faut faire attention au début du projet.
+
+
+Qu’est-ce qui vous a principalement amenés à choisir Starburst ?
+governance?
+fédération?
+sécurité?
+performance?
+recommandation Groupe?
+
+
+Avec le recul, qu’est-ce qui fonctionne bien aujourd’hui dans votre architecture ?
+Et au contraire, quels ont été les principaux challenges ?
+
+Dans votre cas, comment gérez-vous la gouvernance des accès et des rôles ?
+Est-ce que cela a été complexe à mettre en place ?
+
+
+Si vous deviez recommencer aujourd’hui, est-ce que vous partiriez encore sur le même setup dès le début ?
+Ou bien vous commenceriez avec un périmètre plus minimal ?
