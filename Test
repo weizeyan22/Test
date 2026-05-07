@@ -1,28 +1,72 @@
-可以。你这四列可以这样理解：
+Merci encore pour cet échange.
 
-Agent trigger = 用户怎么问时，Agent应该调用这个 function
-Controller / Security = 谁有权查、默认限制在哪里
-Input = Agent需要传什么参数
-Output = 返回给Agent的结构化结果
+Annie m’a déjà beaucoup aidée à mieux comprendre le modèle de service et les premières estimations.
 
-你可以直接按下面填。
+J’avais cependant encore quelques questions pour mieux clarifier l’organisation globale autour de Starburst.
 
-Function	Agent trigger	Controller / Security	Input	Output
-searchRequests	Use when the user wants to list or search access requests: “show my pending requests”, “show Sophie’s rejected requests”, “show requests for app X”.	Default scope = authenticated user as requester or requestee. If another userUID is provided, allow only if authenticated user is manager/support/authorized. Default status = pending if not specified.	requesterUID?, requesteeUID?, role?, status?, appName?, entitlementName?, dateRange?, limit?	requestID, requestDate, requesterUID/displayName, requesteeUID/displayName, appName, entitlementName, status, currentStep
-getRequestDetails	Use when the user asks details about a specific requestID: “what is the status of request 123?”, “who is the approver?”, “where is it blocked?”.	Allow if authenticated user is requester, requestee, approver, manager of requester/requestee, or authorized support user.	requestID	requestID, requester, requestee, appName, entitlementName, status, currentStep, currentApprover, creationDate, lastUpdateDate, history
-getUserAccess	Use when the user wants to know what access a person has: “show my access”, “does Sophie have access to app X?”.	Default = authenticated user. For another userUID, allow only if authenticated user is manager of that user or authorized support/governance user.	userUID?, appName?, entitlementName?, activeOnly?	userUID/displayName, appName, entitlementName, entitlementValue?, accessStatus, assignmentDate?, source?
-getTeamAccess	Use when a manager asks for team access: “show my team access”, “who in my team has access to app X?”.	Authenticated user must be manager. Scope limited to direct/authorized team members.	managerUID? default authenticated user, appName?, entitlementName?, activeOnly?	teamMemberUID/displayName, appName, entitlementName, accessStatus, self-report link?
-getApplicationOwner	Use when the user asks who owns an application: “who is the owner of app X?”, “who should I contact for app X?”.	Open to internal users if ownership info is already visible internally.	appName	appName, appOwnerUID/displayName, backupOwner?, workgroupName?, contactInfo?
-getEntitlementOwner	Use when the user asks who owns an entitlement/role: “who owns entitlement Y?”, “who validates role Z?”.	Open to internal users if ownership info is already visible internally.	entitlementName, appName?	appName, entitlementName, entitlementOwnerUID/displayName, backupOwner?, workgroupName?, contactInfo?
-getWorkgroupMembers	Use when the user asks for members/contacts of a workgroup: “who is in workgroup X?”, “who can approve for this workgroup?”.	Open only if workgroup info is visible to internal users; otherwise restrict to authorized support/governance users.	workgroupName	workgroupName, membersUID/displayName, role, email/contactInfo
-getUserOwnership	Use when the user asks what a person owns: “what applications does Jean own?”, “which entitlements is Sophie responsible for?”.	Self, manager, support, governance users. Respect visibility of ownership data.	userUID, appName?, entitlementName?	userUID/displayName, ownedApplications, ownedEntitlements, ownedWorkgroups
-getPendingApprovals	Use when an approver asks what they need to approve: “what do I need to approve?”, “show my pending approvals”.	Authenticated user must be the approver/validator. Scope limited to their own approval queue.	approverUID? default authenticated user, status=pending, appName?, limit?	requestID, requester, requestee, appName, entitlementName, pendingSince, currentStep, approvalLink?
-searchIdentity	Use when the user refers to someone by name and UID is needed for another call: “show Sophie Martin’s access”, “find Jean Dupont”.	Open to internal users, based on Who’s Who visibility. Do not expose confidential attributes.	name, department?, maxResults? default 10	candidateUID, displayName, department, entity, country, managerName
-getIdentityDetails	Use when the user asks who someone is or when Agent needs organizational context before another call.	Open to internal users, based on Who’s Who visibility.	UID or displayName	UID, displayName, jobTitle, department, entity, country, managerUID/displayName
+Lors d’un autre échange avec une équipe utilisant déjà Starburst, ils m’ont indiqué que Starburst était plutôt porté côté Open Data.
 
-你可以在表格上方加一句：
+Du coup, je voulais mieux comprendre :
+comment se répartissent exactement les rôles entre Open Data, PA3I et les différentes entités autour de Starburst ?
 
-This catalog describes functional entry points for the chatbot agent. These are business-oriented functions used for intent routing and orchestration, not final technical API specifications.
 
-最重要的优化是：
-searchRequestByUser、searchRequestByStatus、searchRequestByAppEnt 最好合并成一个 searchRequests，否则后面会越来越乱。
+
+
+Dans votre expérience,
+est-ce que vous voyez des contraintes particulières pour un use case IAM / Production Security par rapport aux autres entités ?
+
+
+
+Pour une entité qui démarre,
+quel est généralement le premier vrai livrable ou étape de onboarding ?
+
+
+
+Y a-t-il généralement une phase d’architecture review ou de validation avant le lancement officiel du onboarding ?
+
+
+Si nous démarrons avec un MVP plus limité,
+est-ce que l’architecture peut ensuite évoluer progressivement vers quelque chose de plus large à l’échelle Production Security ?
+
+
+
+
+Comment se répartissent concrètement :
+
+* l’infrastructure,
+* le support,
+* la gouvernance,
+* le onboarding,
+* et les validations sécurité ?
+
+
+
+
+Pour un premier MVP IAM / Production Security,
+quel serait selon vous le point de départ le plus raisonnable ?
+
+
+Avant de lancer officiellement un onboarding,
+quels sont généralement les prérequis attendus côté métier / architecture ?
+
+
+Comment évoluent généralement les coûts lorsqu’une plateforme grandit progressivement ?
+
+Par exemple :
+plus de datasets,
+plus d’utilisateurs,
+plus d’entités,
+plus de use cases AI ?
+
+
+
+Est-ce que certaines entités commencent déjà à utiliser cette architecture comme socle pour des use cases AI / GenAI / Agentic AI ?
+
+
+J’avais également une question concernant le sizing infrastructure.
+
+Côté IAM / Production Security, on nous demande déjà une première estimation des besoins (serveurs / capacité) afin d’anticiper les coûts.
+
+Dans votre modèle actuel :
+est-ce que le sizing est généralement défini par PA3I en fonction des use cases et du workload attendu,
+ou bien est-ce que les entités doivent elles-mêmes proposer une architecture cible dès le départ ?
