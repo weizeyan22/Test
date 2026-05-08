@@ -1,72 +1,13 @@
-Merci encore pour cet échange.
+First of all, thank you very much for accepting this meeting.
 
-Annie m’a déjà beaucoup aidée à mieux comprendre le modèle de service et les premières estimations.
+Recently, while working on one of our internal dashboards, we discovered that the CIB Analytics Consulting team already has a DataLake initiative/application in place.
 
-J’avais cependant encore quelques questions pour mieux clarifier l’organisation globale autour de Starburst.
+Since we are currently reflecting on a DataLake / Lakehouse project on the IAM / Production Security side, I was very interested in understanding more about your initiative — especially the objectives behind the project, the architecture choices, the governance model, and the lessons learned from the implementation.
 
-Lors d’un autre échange avec une équipe utilisant déjà Starburst, ils m’ont indiqué que Starburst était plutôt porté côté Open Data.
-
-Du coup, je voulais mieux comprendre :
-comment se répartissent exactement les rôles entre Open Data, PA3I et les différentes entités autour de Starburst ?
+The objective for us today is mainly to better understand existing DataLake initiatives inside CIB, avoid recreating parallel solutions, and learn from teams that already have experience on this topic.
 
 
 
-
-Dans votre expérience,
-est-ce que vous voyez des contraintes particulières pour un use case IAM / Production Security par rapport aux autres entités ?
+Do you see this type of architecture evolving toward broader AI / GenAI / Agentic AI use cases in the future, or is the platform mainly analytics-oriented today?
 
 
-
-Pour une entité qui démarre,
-quel est généralement le premier vrai livrable ou étape de onboarding ?
-
-
-
-Y a-t-il généralement une phase d’architecture review ou de validation avant le lancement officiel du onboarding ?
-
-
-Si nous démarrons avec un MVP plus limité,
-est-ce que l’architecture peut ensuite évoluer progressivement vers quelque chose de plus large à l’échelle Production Security ?
-
-
-
-
-Comment se répartissent concrètement :
-
-* l’infrastructure,
-* le support,
-* la gouvernance,
-* le onboarding,
-* et les validations sécurité ?
-
-
-
-
-Pour un premier MVP IAM / Production Security,
-quel serait selon vous le point de départ le plus raisonnable ?
-
-
-Avant de lancer officiellement un onboarding,
-quels sont généralement les prérequis attendus côté métier / architecture ?
-
-
-Comment évoluent généralement les coûts lorsqu’une plateforme grandit progressivement ?
-
-Par exemple :
-plus de datasets,
-plus d’utilisateurs,
-plus d’entités,
-plus de use cases AI ?
-
-
-
-Est-ce que certaines entités commencent déjà à utiliser cette architecture comme socle pour des use cases AI / GenAI / Agentic AI ?
-
-
-J’avais également une question concernant le sizing infrastructure.
-
-Côté IAM / Production Security, on nous demande déjà une première estimation des besoins (serveurs / capacité) afin d’anticiper les coûts.
-
-Dans votre modèle actuel :
-est-ce que le sizing est généralement défini par PA3I en fonction des use cases et du workload attendu,
-ou bien est-ce que les entités doivent elles-mêmes proposer une architecture cible dès le départ ?
