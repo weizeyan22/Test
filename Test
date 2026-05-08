@@ -11,3 +11,26 @@ The objective for us today is mainly to better understand existing DataLake init
 Do you see this type of architecture evolving toward broader AI / GenAI / Agentic AI use cases in the future, or is the platform mainly analytics-oriented today?
 
 
+
+
+I’m currently working as a Data Scientist within CIB ITO Production Security, more specifically in the IAM team at BNP Paribas.
+
+Right now, I’m leading two strategic initiatives:
+
+- the MyIAM AI Chatbot project, in collaboration with ITG and the Innovation Lab,
+- and the reflection/design around a DataLake / Lakehouse initiative for IAM and Production Security.
+
+Today, one of our main challenges is that IAM and Production Security data is highly fragmented across multiple systems, teams and entities.
+
+This creates limitations in terms of:
+- reporting and visibility,
+- governance and traceability,
+- operational efficiency,
+- and especially future AI use cases.
+
+Our objective is not only to centralize data.
+
+The broader ambition is really to build an AI-ready data foundation capable of supporting future GenAI and Agentic AI use cases.
+
+Since we recently discovered your DataLake initiative inside CIB, I was very interested in understanding more about your project, your architecture choices, governance model, and overall feedback and lessons learned.
+
