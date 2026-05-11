@@ -209,3 +209,50 @@ architecture / orchestration / strategic integration。
 execution-oriented technical complement。
 
 不是你的复制体。
+
+
+
+
+Alternant Data Engineer / AI Platform
+
+Contexte :
+Au sein de l’équipe IAM (Identity & Access Management) de CIB ITO Production Security, nous développons actuellement plusieurs initiatives stratégiques autour de la Data Platform, du DataLake / Lakehouse et des futurs usages IA / GenAI.
+
+L’objectif est de construire une infrastructure data robuste et évolutive afin d’améliorer :
+
+* la gouvernance et la traçabilité des données,
+* l’efficacité opérationnelle,
+* les capacités analytiques,
+* et les futurs cas d’usage IA / Agentic AI.
+
+Missions principales :
+
+* Participer au développement et à l’évolution des pipelines de données (ETL / ingestion)
+* Contribuer aux projets DataLake / Lakehouse et à l’intégration de nouvelles sources de données
+* Participer aux traitements distribués et à l’optimisation des flux de données
+* Contribuer à l’intégration d’APIs et aux échanges de données entre différentes plateformes
+* Participer aux sujets de qualité, gouvernance et sécurisation des données
+* Contribuer à la mise en place d’une infrastructure data “AI-ready” pour les futurs usages IA / GenAI
+
+Compétences recherchées :
+
+* Python
+* SQL
+* Spark / traitement distribué
+* Concepts ETL / pipelines de données
+
+Compétences appréciées :
+
+* Airflow
+* Kafka
+* APIs REST
+* Concepts DataLake / Lakehouse
+* Docker / containerisation
+* Sensibilité ou intérêt pour les sujets IA / GenAI
+
+Profil recherché :
+
+* Étudiant(e) en école d’ingénieur ou Master spécialisé en Data Engineering, Big Data, IA ou informatique
+* Curieux(se), autonome et force de proposition
+* Capacité à travailler dans un environnement transverse et international
+* Intérêt pour les sujets Data Platform, gouvernance et IA
