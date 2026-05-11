@@ -1,1 +1,156 @@
+你这页内容方向是对的 👍
+但现在的问题是：
 
+👉 太像“自己记的notes”
+还不是：
+
+“别人一眼能看懂的weekly update slide”
+
+所以我帮你做两件事：
+
+1. 帮你整理成适合PPT的 bullet points
+2. 给你对应的口语表达（你直接讲）
+
+⸻
+
+🎯 PPT版本（推荐你直接放）
+
+Weekly Progress & Next Steps
+
+⸻
+
+1. RAG Optimization – Progress
+
+* Updated outdated documentation
+* Converted most RAG-incompatible formats into AI-readable formats
+    (except some VSD files)
+* Documentation currently under final review before upload to Innovation Lab
+
+⸻
+
+2. This Week’s Objectives
+
+* Upload validated documentation into the Knowledge Base
+* Launch second round of UAT
+* Continue RAG optimization and chatbot performance improvement
+
+⸻
+
+3. Phase 2 Preparation – API Stream
+
+* Definition of core read-only endpoints completed
+* Review and alignment ongoing with Delphine and Paramesh’s team
+* Innovation Lab testing existing APIs:
+    * user access
+    * application
+    * entitlement APIs
+
+👉 Existing APIs belong to another project;
+a dedicated control layer will be implemented on our side
+
+⸻
+
+4. Project Tracking
+
+* Dedicated Jira already created
+* Tasks assignment in progress
+
+⸻
+
+🔥 为什么这个版本更好
+
+✔ 更像“management slide”
+
+不是notes，而是：
+
+* Progress
+* Objectives
+* Risks / dependencies
+* Tracking
+
+⸻
+
+✔ 自动帮你降语速
+
+因为结构已经清楚了
+
+⸻
+
+✔ “layer of controller” 我帮你换了表达
+
+👉 改成：
+
+dedicated control layer
+
+更自然、更专业
+
+⸻
+
+🗣️ 你可以怎么讲（直接照着说）
+
+⸻
+
+开场
+
+Just a quick update on last week’s progress and this week’s next steps.
+
+⸻
+
+第一部分：RAG
+
+Regarding the RAG optimization stream, most of the outdated documentation has now been updated.
+
+We also converted most of the RAG-incompatible formats into AI-readable formats, except for some VSD files that cannot easily be converted.
+
+The updated documentation is currently under final review before being sent to the Innovation Lab.
+
+⸻
+
+第二部分：This week objectives
+
+For this week, the main objective is to upload all validated documentation into the knowledge base and launch the second round of UAT.
+
+In parallel, the Innovation Lab will continue optimizing the RAG parameters and overall chatbot performance.
+
+⸻
+
+第三部分：API Stream
+
+Regarding Stream 2, we completed the definition of the core read-only endpoints.
+
+This week, we’ll continue the alignment with Delphine and Paramesh’s team regarding the API layer and architecture preparation for Phase 2.
+
+The Innovation Lab is also testing some existing APIs related to user access, applications, and entitlements.
+
+Since these APIs were initially developed for another project, we will implement a dedicated control layer on our side.
+
+⸻
+
+第四部分：Jira
+
+Finally, the dedicated Jira has already been created, and this week I’ll start assigning the different tasks.
+
+⸻
+
+🧠 一个很重要的建议（今天尤其重要）
+
+你今天这场会：
+
+👉 不要再 attempt：
+
+* 解释太深的 architecture
+* 讲太多 future vision
+
+你只需要：
+
+✔ update
+✔ align
+✔ next steps
+
+⸻
+
+🎯 最后一句话
+
+你现在最需要建立的不是“震撼感”，而是“稳定推进感”。
+
+而你这页内容，已经开始有这个感觉了 👍
