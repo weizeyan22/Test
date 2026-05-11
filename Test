@@ -1,156 +1,91 @@
-你这页内容方向是对的 👍
-但现在的问题是：
+很好，这一版内容是对的 👍
+我帮你做的是：整理成一个你可以顺着讲、不会乱、不会说快的版本。
 
-👉 太像“自己记的notes”
-还不是：
+目标是：
 
-“别人一眼能看懂的weekly update slide”
-
-所以我帮你做两件事：
-
-1. 帮你整理成适合PPT的 bullet points
-2. 给你对应的口语表达（你直接讲）
+* ✔ 清晰
+* ✔ 有节奏
+* ✔ 有掌控感
+* ✔ 不啰嗦
 
 ⸻
 
-🎯 PPT版本（推荐你直接放）
-
-Weekly Progress & Next Steps
+🗣️ 你今天可以直接说的版本（推荐）
 
 ⸻
 
-1. RAG Optimization – Progress
+For this week, just a quick update on where we are and the next steps.
 
-* Updated outdated documentation
-* Converted most RAG-incompatible formats into AI-readable formats
-    (except some VSD files)
-* Documentation currently under final review before upload to Innovation Lab
+Last week, we completed the RAG optimization phase.
 
-⸻
+First of all, thanks Nelson and your team for the work on updating the documentation — that was very helpful.
 
-2. This Week’s Objectives
+This week, we will consolidate all the updated documentation and share it with the Innovation Lab.
 
-* Upload validated documentation into the Knowledge Base
-* Launch second round of UAT
-* Continue RAG optimization and chatbot performance improvement
+They will then replace the existing knowledge base content with the updated version, and continue optimizing the LightRAG parameters and overall chatbot performance.
 
-⸻
+Based on that, we should be able to launch the second round of testing this week.
 
-3. Phase 2 Preparation – API Stream
+This second UAT will mainly be conducted by the Paris BAU team, and we may also need support from the support team during the process — I’ll coordinate with you when needed.
 
-* Definition of core read-only endpoints completed
-* Review and alignment ongoing with Delphine and Paramesh’s team
-* Innovation Lab testing existing APIs:
-    * user access
-    * application
-    * entitlement APIs
+Once the second UAT is validated, we will be ready to release the RAG-based chatbot.
 
-👉 Existing APIs belong to another project;
-a dedicated control layer will be implemented on our side
+I will also reconnect with Ignat tomorrow, as he is back then, to align on the next steps.
+
+Regarding Stream 2, this week I will work with Delphine and Paramesh’s team to align on the endpoints required for Phase 2 and start structuring the API layer.
+
+Finally, I’ve created a dedicated Jira space for the project in the marketplace.
+
+This week I will add all the tasks there and share it with you, so we have a clear tracking and follow-up for everyone.
 
 ⸻
 
-4. Project Tracking
+🧠 这版帮你做了3件关键优化
 
-* Dedicated Jira already created
-* Tasks assignment in progress
+1️⃣ 分段清晰（你不会说乱）
 
-⸻
-
-🔥 为什么这个版本更好
-
-✔ 更像“management slide”
-
-不是notes，而是：
-
-* Progress
-* Objectives
-* Risks / dependencies
-* Tracking
+* RAG → UAT → Release
+* Stream 2
+* Jira
 
 ⸻
 
-✔ 自动帮你降语速
+2️⃣ 自动帮你降语速
 
-因为结构已经清楚了
-
-⸻
-
-✔ “layer of controller” 我帮你换了表达
-
-👉 改成：
-
-dedicated control layer
-
-更自然、更专业
+每一段都是短句，你自然会慢下来
 
 ⸻
 
-🗣️ 你可以怎么讲（直接照着说）
+3️⃣ 你在“控节奏”
+
+不是汇报，而是在：
+
+👉 推动 → 安排 → 预告下一步
 
 ⸻
 
-开场
+🎯 小调整建议（可选）
 
-Just a quick update on last week’s progress and this week’s next steps.
+你可以在这一句稍微停一下（很关键）：
 
-⸻
+Based on that, we should be able to launch the second round of testing this week.
 
-第一部分：RAG
-
-Regarding the RAG optimization stream, most of the outdated documentation has now been updated.
-
-We also converted most of the RAG-incompatible formats into AI-readable formats, except for some VSD files that cannot easily be converted.
-
-The updated documentation is currently under final review before being sent to the Innovation Lab.
+👉 停一下 → 再继续
+👉 效果会很“稳”
 
 ⸻
 
-第二部分：This week objectives
+🧘‍♀️ 如果你今天又紧张
 
-For this week, the main objective is to upload all validated documentation into the knowledge base and launch the second round of UAT.
+记住这条主线就够了：
 
-In parallel, the Innovation Lab will continue optimizing the RAG parameters and overall chatbot performance.
-
-⸻
-
-第三部分：API Stream
-
-Regarding Stream 2, we completed the definition of the core read-only endpoints.
-
-This week, we’ll continue the alignment with Delphine and Paramesh’s team regarding the API layer and architecture preparation for Phase 2.
-
-The Innovation Lab is also testing some existing APIs related to user access, applications, and entitlements.
-
-Since these APIs were initially developed for another project, we will implement a dedicated control layer on our side.
-
-⸻
-
-第四部分：Jira
-
-Finally, the dedicated Jira has already been created, and this week I’ll start assigning the different tasks.
-
-⸻
-
-🧠 一个很重要的建议（今天尤其重要）
-
-你今天这场会：
-
-👉 不要再 attempt：
-
-* 解释太深的 architecture
-* 讲太多 future vision
-
-你只需要：
-
-✔ update
-✔ align
-✔ next steps
+👉 Done → Improve → Test → Release
+👉 + Stream 2 parallel
 
 ⸻
 
 🎯 最后一句话
 
-你现在最需要建立的不是“震撼感”，而是“稳定推进感”。
+你现在不是在“讲内容”，你是在“带节奏”。
 
-而你这页内容，已经开始有这个感觉了 👍
+你这版已经完全够支撑你做到这一点了 👍
