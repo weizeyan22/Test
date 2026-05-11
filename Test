@@ -1,0 +1,211 @@
+你现在其实已经开始非常清楚：
+
+你需要的不是传统 Data Scientist alternant。
+
+而是：
+
+Data Engineer / AI Infrastructure profile
+
+而且从你们项目方向看，
+
+我会非常建议：
+
+不要把 JD 写成：
+
+“纯 Hadoop/Spark engineer”
+
+因为：
+
+* 太 old-school
+* scope 太窄
+* 不符合你们 AI + federation + governance 的方向
+
+⸻
+
+你真正需要的人应该是：
+
+“Modern Data / AI Platform Engineer”
+
+也就是：
+
+* data engineering
+* distributed processing
+* APIs
+* cloud/data platform
+* orchestration
+* AI ecosystem awareness
+
+结合。
+
+⸻
+
+我觉得你可以把 profile 定义成：
+
+Alternant Data Engineer / AI Platform
+
+或者：
+
+Alternant Data & AI Platform Engineer
+
+这会比：
+“Data Engineer Hadoop”
+
+高级很多，也更符合未来。
+
+⸻
+
+你真正需要的 skills
+
+我帮你整理一下：
+
+⸻
+
+Core Skills（必须）
+
+Data Engineering
+
+* Python
+* SQL
+* ETL / data pipelines
+* Spark / distributed processing
+
+⸻
+
+Nice to Have（推荐）
+
+Data Platform / Cloud
+
+* Airflow
+* Kafka
+* Docker
+* API integration
+* DataLake / Lakehouse concepts
+
+⸻
+
+AI / Modern Data Ecosystem（非常重要）
+
+这里不要写：
+“必须会 AI”
+
+否则 unrealistic。
+
+你可以写：
+
+Interest in AI / GenAI ecosystems
+
+或者：
+
+* knowledge of AI/LLM ecosystem appreciated
+* curiosity for GenAI / Agentic AI topics
+
+这样会非常 modern。
+
+⸻
+
+我反而建议：
+
+不要强调 Hadoop。
+
+因为现在 enterprise direction 已经：
+
+* Spark
+* federation
+* lakehouse
+* orchestration
+* cloud/data platform
+
+为主。
+
+Hadoop 已经不是核心 keyword 了。
+
+⸻
+
+更重要的是：
+
+你要把 mission 写清楚。
+
+因为：
+
+mission 才会吸引对的人。
+
+⸻
+
+你们真实 mission 应该是：
+
+Contribute to:
+
+* IAM / Production Security DataLake initiative
+* AI-ready data infrastructure
+* data federation / onboarding
+* API integration
+* future AI use cases
+
+这会非常吸引 high-potential profile。
+
+⸻
+
+我甚至觉得：
+
+你现在已经不是在招：
+
+“帮你写几个 ETL 的 alternant”
+
+而是在招：
+
+future AI/Data platform builder。
+
+这是完全不同的定位。
+
+⸻
+
+你可以这样定义 mission（英文）
+
+The alternant will contribute to the development of DataLake / Lakehouse and AI-ready data platform initiatives within the IAM / Production Security perimeter.
+
+Main responsibilities may include:
+
+* data ingestion and ETL pipeline development,
+* distributed data processing,
+* API/data integration,
+* support for DataLake / Lakehouse architecture implementation,
+* participation in data governance and quality initiatives,
+* contribution to future AI / GenAI use cases and data platform evolution.
+
+⸻
+
+Technical Skills（推荐版）
+
+Technical skills:
+
+* Python
+* SQL
+* Spark / distributed data processing
+* ETL / data pipeline concepts
+
+Appreciated:
+
+* Airflow
+* Kafka
+* APIs / REST integration
+* DataLake / Lakehouse concepts
+* Docker / containerization
+* Interest in AI / GenAI ecosystems
+
+⸻
+
+最后一个很重要的提醒
+
+你现在不要：
+
+招“比你更懂所有技术的人”而害怕。
+
+因为你真正的位置已经开始偏：
+
+architecture / orchestration / strategic integration。
+
+你需要的是：
+
+execution-oriented technical complement。
+
+不是你的复制体。
