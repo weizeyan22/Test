@@ -1,30 +1,3 @@
-你现在其实已经开始非常清楚：
-
-你需要的不是传统 Data Scientist alternant。
-
-而是：
-
-Data Engineer / AI Infrastructure profile
-
-而且从你们项目方向看，
-
-我会非常建议：
-
-不要把 JD 写成：
-
-“纯 Hadoop/Spark engineer”
-
-因为：
-
-* 太 old-school
-* scope 太窄
-* 不符合你们 AI + federation + governance 的方向
-
-⸻
-
-你真正需要的人应该是：
-
-“Modern Data / AI Platform Engineer”
 
 也就是：
 
@@ -485,4 +458,18 @@ reporting support
 AI/Data Platform ecosystem
 
 这个变化非常大。
+
+
+
+Petit point rapide concernant le projet du chatbot AI.
+
+La semaine dernière, toutes les mises à jour des documentations ont été finalisées — merci encore à tous pour votre aide et votre contribution.
+
+Les documents mis à jour sont actuellement en cours de review par Delphine. Une fois validés, ils seront uploadés dans la base de connaissance afin de finaliser l’optimisation du RAG.
+
+L’objectif principal de cette semaine est de lancer la deuxième phase de UAT.
+
+Cette deuxième phase de tests aura surtout pour objectif de vérifier que les problèmes identifiés lors du premier round ont bien été corrigés, tout en s’assurant qu’il n’y ait pas de régression sur les réponses déjà correctes.
+
+Une fois tout prêt, je vous enverrai un mail avec les instructions de test et les prochaines étapes.
 
