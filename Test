@@ -1,3 +1,5 @@
+
+
 Comme on était encore dans une phase de réflexion/cadrage autour du projet DataLake, j’ai essayé de regarder ce qui existait déjà chez BNPP pour éviter de partir dans une mauvaise direction.
 
 En explorant un peu les initiatives existantes sur Confluence, j’ai vu qu’il y avait déjà plusieurs entités (ITG, Cardif, PF, équipes analytics…) qui travaillaient sur des sujets DataLake/Lakehouse.
@@ -37,3 +39,10 @@ Pour l’instant je suis encore en train de consolider les différents retours e
 
 Mais je pense que ce serait intéressant que je vous partage ensuite un petit update/synthèse intermédiaire à toi et Patrick, une fois que j’aurai un peu plus structuré tous les éléments.
 
+
+
+Je suis encore en train de consolider et structurer toutes les informations recueillies pendant cette phase de benchmark/exploration.
+
+Je pense vous envoyer prochainement un premier petit update synthétique à toi et Patrick pour partager les principaux constats qui commencent à émerger.
+
+Et ensuite, dans un second temps, préparer un document plus structuré avec une réflexion plus globale autour des différentes approches, architectures et retours d’expérience.
