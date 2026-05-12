@@ -18,3 +18,22 @@ Et ce qui est intéressant, c’est qu’il commence à y avoir des patterns ass
 - et volonté de construire des plateformes AI-ready.
 
 Je pense que la prochaine étape maintenant serait de commencer à structurer une première synthèse/benchmark plus claire pour aligner la suite.
+
+D’ailleurs, ce qui est aussi ressorti des différents échanges, c’est que le terme “DataLake” est parfois un peu vague.
+
+En réalité, dans beaucoup d’entités, l’objectif n’est pas simplement de construire une base centralisée pour stocker des données.
+
+Le vrai sujet est plutôt de construire une plateforme data complète :
+- capable de fédérer plusieurs sources,
+- gérer la gouvernance et la sécurité,
+- supporter des usages analytics,
+- et potentiellement évoluer vers des cas d’usage AI / GenAI / Agentic AI.
+
+Et c’est pour ça qu’on retrouve souvent plusieurs composants/platformes autour du DataLake selon les besoins :
+query/federation, orchestration, processing, cloud storage, gouvernance, etc.
+
+
+Pour l’instant je suis encore en train de consolider les différents retours et benchmark discussions, donc je suis encore dans une phase de réflexion/cadrage.
+
+Mais je pense que ce serait intéressant que je vous partage ensuite un petit update/synthèse intermédiaire à toi et Patrick, une fois que j’aurai un peu plus structuré tous les éléments.
+
