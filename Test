@@ -263,3 +263,226 @@ Merci Delphine d’avoir organisé ce meeting, et merci Anthony pour votre dispo
 L’objectif aujourd’hui est surtout d’échanger autour de votre projet DataLake côté AMER Production Security, afin de mieux comprendre votre retour d’expérience, vos choix d’architecture et les principaux points d’attention.
 
 De notre côté, nous sommes également en réflexion sur des sujets similaires autour d’IAM / Production Security, donc cet échange nous sera très utile.
+
+
+
+
+你们现在这个 poste description 其实还是：
+
+“传统 IAM Data Analyst / BI alternant”
+
+风格。
+
+重点还是：
+
+* dashboard
+* reporting
+* analyse de données
+* modèles de prédiction
+* Pack Office
+
+但：
+
+你现在真实想招的人，
+
+已经变成：
+
+Data Platform / AI-ready Infrastructure profile
+
+了。
+
+所以：
+
+不是全部推翻，
+
+而是：
+
+从 “BI/Data analyst” 转向 “Data Platform/Data Engineering”。
+
+⸻
+
+我建议你保留的部分
+
+这些很好：
+
+* IAM / Production Security context
+* 国际环境
+* India collaboration
+* 100k users / 5 millions d’accès
+* AI innovation mention
+
+这些都很有吸引力。
+
+⸻
+
+你最该改的部分：
+
+1. 标题（非常重要）
+
+现在：
+
+❌ Alternant Data Engineer H/F
+
+太 generic。
+
+⸻
+
+我建议：
+
+✅ Alternant Data & AI Platform Engineer H/F
+
+或者：
+
+✅ Alternant Data Engineer – AI & Data Platform H/F
+
+这一下：
+
+整个 positioning 都变了。
+
+⸻
+
+2. Missions 部分
+
+你现在的 mission 太偏：
+
+* dashboard
+* reporting
+* analyse
+
+了。
+
+⸻
+
+你需要加入：
+
+新方向关键词
+
+Data Platform
+
+DataLake / Lakehouse
+
+ETL / ingestion
+
+distributed processing
+
+APIs
+
+AI-ready infrastructure
+
+⸻
+
+我建议你这样改：
+
+现在这几条：
+
+❌
+
+* création de rapports
+* dashboards
+* modèles de prédiction
+
+太 old DS/BI。
+
+⸻
+
+替换成：
+
+Les principaux objectifs du poste :
+
+• Participer aux initiatives DataLake / Lakehouse et à l’évolution de la plateforme data IAM / Production Security
+
+• Contribuer à l’ingestion, au traitement et à la transformation de données provenant de différentes sources
+
+• Participer au développement et à l’optimisation des pipelines de données (ETL / processing distribué)
+
+• Contribuer à l’intégration d’APIs et aux échanges de données entre différentes plateformes
+
+• Participer aux sujets de gouvernance, qualité et sécurisation des données
+
+• Contribuer aux futurs cas d’usage IA / GenAI et à la mise en place d’une infrastructure data “AI-ready”
+
+⸻
+
+3. Skills 部分（最重要）
+
+现在：
+
+❌ Python SQL analyse de données Pack Office
+
+太弱了。
+
+⸻
+
+你应该升级成：
+
+Vous disposez de bonnes connaissances en :
+
+• Python et SQL
+• Data Engineering et traitement de données
+• Concepts ETL / pipelines de données
+• Spark ou traitement distribué
+
+Compétences appréciées :
+
+• Airflow
+• Kafka
+• APIs REST
+• Concepts DataLake / Lakehouse
+• Docker / containerisation
+• Sensibilité aux sujets IA / GenAI
+
+⸻
+
+4. 删掉 “Pack Office”
+
+真的。
+
+这个会一下子把职位拉回传统 analyst。
+
+⸻
+
+5. “modèles de prédiction”
+
+我建议删掉。
+
+因为：
+你们现在不是：
+
+* ML prediction project
+
+而是：
+
+* data platform / AI infra direction。
+
+⸻
+
+6. 加一个 very important sentence
+
+这个特别重要。
+
+因为你现在这个岗位其实已经有：
+
+transformation positioning。
+
+你可以加：
+
+L’alternant participera à des projets stratégiques et transverses autour des sujets Data Platform, IA et Production Security.
+
+这句会非常吸引 high potential candidates。
+
+⸻
+
+其实你现在已经在做：
+
+“repositioning the IAM data role”
+
+从：
+
+reporting support
+
+变成：
+
+AI/Data Platform ecosystem
+
+这个变化非常大。
+
