@@ -471,5 +471,8 @@ L’objectif principal de cette semaine est de lancer la deuxième phase de UAT.
 
 Cette deuxième phase de tests aura surtout pour objectif de vérifier que les problèmes identifiés lors du premier round ont bien été corrigés, tout en s’assurant qu’il n’y ait pas de régression sur les réponses déjà correctes.
 
+
+Une fois cette phase validée, nous pourrons préparer le déploiement en production du chatbot RAG.
+
 Une fois tout prêt, je vous enverrai un mail avec les instructions de test et les prochaines étapes.
 
