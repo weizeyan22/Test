@@ -1,48 +1,9 @@
+Hi all,  
 
+Please find below the link containing the updated MyIAM documentation reviewed and validated for the next RAG optimization phase:  
+[link]  
 
-Comme on était encore dans une phase de réflexion/cadrage autour du projet DataLake, j’ai essayé de regarder ce qui existait déjà chez BNPP pour éviter de partir dans une mauvaise direction.
+The documents can now be integrated into the Knowledge Base for the preparation of the second round of UAT.  
 
-En explorant un peu les initiatives existantes sur Confluence, j’ai vu qu’il y avait déjà plusieurs entités (ITG, Cardif, PF, équipes analytics…) qui travaillaient sur des sujets DataLake/Lakehouse.
-
-Du coup, j’ai progressivement échangé avec plusieurs personnes pour mieux comprendre :
-- les architectures utilisées,
-- les modèles de gouvernance,
-- les contraintes sécurité,
-- les modèles d’onboarding,
-- et les retours d’expérience.
-
-Par exemple, côté ITG PA3I, ils proposent déjà certains services/platformes autour de Starburst, IBM COS, Airflow, etc., via le Marketplace ITG.
-
-Et ce qui est intéressant, c’est qu’il commence à y avoir des patterns assez récurrents qui émergent :
-- approche fédérée,
-- onboarding progressif,
-- forte importance de la gouvernance/sécurité,
-- et volonté de construire des plateformes AI-ready.
-
-Je pense que la prochaine étape maintenant serait de commencer à structurer une première synthèse/benchmark plus claire pour aligner la suite.
-
-D’ailleurs, ce qui est aussi ressorti des différents échanges, c’est que le terme “DataLake” est parfois un peu vague.
-
-En réalité, dans beaucoup d’entités, l’objectif n’est pas simplement de construire une base centralisée pour stocker des données.
-
-Le vrai sujet est plutôt de construire une plateforme data complète :
-- capable de fédérer plusieurs sources,
-- gérer la gouvernance et la sécurité,
-- supporter des usages analytics,
-- et potentiellement évoluer vers des cas d’usage AI / GenAI / Agentic AI.
-
-Et c’est pour ça qu’on retrouve souvent plusieurs composants/platformes autour du DataLake selon les besoins :
-query/federation, orchestration, processing, cloud storage, gouvernance, etc.
-
-
-Pour l’instant je suis encore en train de consolider les différents retours et benchmark discussions, donc je suis encore dans une phase de réflexion/cadrage.
-
-Mais je pense que ce serait intéressant que je vous partage ensuite un petit update/synthèse intermédiaire à toi et Patrick, une fois que j’aurai un peu plus structuré tous les éléments.
-
-
-
-Je suis encore en train de consolider et structurer toutes les informations recueillies pendant cette phase de benchmark/exploration.
-
-Je pense vous envoyer prochainement un premier petit update synthétique à toi et Patrick pour partager les principaux constats qui commencent à émerger.
-
-Et ensuite, dans un second temps, préparer un document plus structuré avec une réflexion plus globale autour des différentes approches, architectures et retours d’expérience.
+Thanks everyone!  
+[Your Name]
