@@ -82,4 +82,19 @@ Donc idéalement, il faudrait déjà retester la même question ou une reformula
 Après, pour les 3–5 nouvelles questions, vous pouvez être un peu plus libres dans les formulations 🙂
 
 
+Hi all,
+
+Please find attached the UAT tracking file for the second round of testing.
+
+The file contains:
+- the list of assigned testers
+- the status tracking for:
+  - retest of first UAT issues
+  - new business questions
+
+Please update your testing status directly in the file during the UAT phase.
+
+Thanks everyone!
+
+
 | Tester | Retest Scope (1st UAT Issues) | Retest Status | Additional Testing Status | Major Feedback / Issues |
