@@ -69,3 +69,6 @@ Second Round UAT Testing – MyIAM RAG Chatbot
 Please focus on documentation/knowledge-based questions that can normally be answered using the MyIAM documentation available in the Knowledge Base.
 
 At this stage, the chatbot is not yet connected to real-time MyIAM APIs, so please avoid testing questions requiring live user/request/access data (e.g. personal request status, current permissions, etc.).
+
+
+Please focus on documentation-based questions only (questions whose answers can normally be found in the MyIAM documentation/Knowledge Base), and avoid questions requiring real-time user/access/request data.
