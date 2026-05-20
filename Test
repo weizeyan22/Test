@@ -72,3 +72,6 @@ At this stage, the chatbot is not yet connected to real-time MyIAM APIs, so plea
 
 
 Please focus on documentation-based questions only (questions whose answers can normally be found in the MyIAM documentation/Knowledge Base), and avoid questions requiring real-time user/access/request data.
+
+
+| Tester | Retest Scope (1st UAT Issues) | Retest Status | Additional Testing Status | Major Feedback / Issues |
