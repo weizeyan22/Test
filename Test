@@ -1,90 +1,57 @@
-Context
+Hi all,
 
-As the Twin environment is not fully ready yet, the second round of tests will finally be performed on Auria, similar to the first round of testing.
+Following the latest RAG optimization and Knowledge Base updates, we are now ready to launch the second round of UAT for the MyIAM RAG Chatbot.
 
-⸻
+As the Twin environment is not fully ready yet, the second round of UAT will be performed on Auria, similarly to the first round of testing.
 
-Testers
+The objective of this second round of testing is mainly to validate:
+- the correction of previously identified issues
+- the improvement of response quality
+- the overall consistency and relevance of chatbot answers
+- the absence of regression on previously correct responses
 
-[List of testers]
+## Assigned testers
+- Nelson
+- Saikat
+- Sandeep
+- Linda
+- Richard
+- Carine
+- Houda
+- Delphine
+- Roméo
+- Amandine
 
-⸻
+## Scope of Testing
 
-Scope of Testing
-
-1. Retest previously incorrect answers
+### 1. Retest previously incorrect answers
+For those mentioned in the attached first UAT feedback file:
 
 Please retest the incorrect/inaccurate responses identified during the first round of UAT.
 
-2. New business questions
+### 2. New business questions
+In addition, each tester is requested to ask the chatbot 3–5 representative questions related to their own domain/activity while putting themselves in the position of an end user.
 
-In addition, each tester is requested to ask:
+## Testing Process
 
-* 3–5 representative questions related to their own domain/activity
-* while putting themselves in the position of an end user.
+- Go to: Auria (Open WebUI)
+- Please select the model: “MyIAM - LightRAG” (updated Knowledge Base version)
+- Ask your business questions to the chatbot
 
-⸻
+## Validation Process
 
-Validation Process
+- If the response is correct → please click 👍
+- If the response is incorrect, incomplete, or outdated → please click 👎 and leave a comment explaining:
+  - why the answer is incorrect
+  - what the expected/correct answer should be
 
-* If the response is correct → please click 👍
-* If the response is incorrect/incomplete → please click 👎 and leave a comment explaining:
-    * why the answer is incorrect
-    * and what the expected/correct answer should be.
+Please do not forget to save your comment.
 
-⸻
+## Timeline
 
-Timeline
+The second round of testing will run until Friday, 22 May (EOD).
 
-Target completion: next Tuesday EOD.
+Thank you all again for your support and participation throughout the project.
 
-
-The objective of this second round of testing is mainly to validate the improvement of chatbot response quality after the RAG optimization and KB updates.
-
-
-
-
------
-
-MyIAM Gen AI Chatbot"}
-Hi all,  
-
-Following the latest RAG optimization and Knowledge Base updates, we are now ready to launch the second round of UAT for the MyIAM Gen AI Chatbot.  
-
-### Objective of this second round of testing
-The purpose of this UAT is mainly to validate:
-- improvement of response quality
-- correction of previously identified major issues
-- overall consistency and relevance of chatbot answers
-- absence of regression on previously correct responses
-
-### Testing period
-The second round of testing will run from [DATE] until [DATE EOD].
-
-### Scope of testing
-You can test the chatbot using your usual MyIAM-related questions and scenarios, for example:
-- request status
-- access/entitlement questions
-- delegation process
-- password reset guidance
-- workgroup/contact information
-- access request process
-
-### Feedback expected
-Please report:
-- inaccurate answers
-- unclear/incomplete responses
-- outdated information
-- hallucinations or irrelevant outputs
-- missing documentation/topics
-
-### Feedback process
-Please send your feedback directly to [channel/mailbox/Teams/Jira/etc.] with:
-- the question asked
-- chatbot response
-- expected/correct answer (if known)
-
-Thanks again everyone for your support and participation throughout the project!  
-
-Best
-
+Best regards,  
+Weize
