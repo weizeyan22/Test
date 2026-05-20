@@ -1,3 +1,5 @@
+
+
 Hi all,
 
 Following the latest RAG optimization and Knowledge Base updates, we are now ready to launch the second round of UAT for the MyIAM RAG Chatbot.
@@ -72,6 +74,12 @@ At this stage, the chatbot is not yet connected to real-time MyIAM APIs, so plea
 
 
 Please focus on documentation-based questions only (questions whose answers can normally be found in the MyIAM documentation/Knowledge Base), and avoid questions requiring real-time user/access/request data.
+
+Le principal objectif est surtout de vérifier que les réponses incorrectes du premier UAT ont bien été corrigées 🙂
+
+Donc idéalement, il faudrait déjà retester la même question ou une reformulation très proche, pour valider que la réponse est maintenant correcte.
+
+Après, pour les 3–5 nouvelles questions, vous pouvez être un peu plus libres dans les formulations 🙂
 
 
 | Tester | Retest Scope (1st UAT Issues) | Retest Status | Additional Testing Status | Major Feedback / Issues |
