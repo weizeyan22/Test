@@ -1,1 +1,331 @@
+Intro :
 
+Hi everyone,
+
+Today I’d like to share the AI chatbot project for MyIAM that we’ve been working on over the past few months, with Delphine, Roopa, Akshay and Sandeep,
+
+in collaboration with multiple teams — including Paris Central, UAC Operations, the MyIAM Dev team, and the Innovation Lab.
+
+I’ll start with some context — why we launched this project and what the main objectives are.
+
+Then, I’ll walk you through the overall vision and the different stages of its evolution.
+
+As this is not just a standard chatbot,
+I’ll also briefly explain the difference between traditional GenAI — like most of the chatbots we see today —
+and a more advanced approach based on Agentic AI, which many of you may have already heard about.
+
+And finally, I’ll show you a short demo of our current POC.
+
+#### **1. Context / Objective**
+
+To start with, let me briefly go back to the context.
+
+Today, on the MyIAM support side, we receive a large number of simple and repetitive requests.
+
+For example:
+
+*“What’s the status of my access request?”*
+
+*“How do I forward a work item?”*
+
+*“How can I extract my team’s access?”*
+
+*“How do I set up delegation during a leave?”*
+
+These types of questions represent a significant part of the daily workload for our support team — roughly half of the ServiceNow tickets.
+
+The issue is that a lot of time is spent on relatively simple topics，
+
+while for the support team this time could be better used on more complex requests, such as L2-level issues.
+
+And from a user perspective, the experience is not optimal either.
+
+Because users have to send an email or create a ServiceNow ticket,
+
+and sometimes wait several days to get a response.
+
+So in terms of both efficiency and user experience, this is clearly not ideal.
+
+So based on this observation, the objective of our chatbot is quite straightforward:
+to reduce the number of simple and repetitive requests handled by the support team,
+
+and ultimately improve overall efficiency,
+so that they can focus on more complex and higher-value tasks.
+
+#### 2. Vision/Phases
+
+Now that you have the context and the objectives,
+
+I’ll walk you through the overall vision of the project and the different phases.
+
+Today, we are not just building a standard chatbot based on documentation and user guidelines.
+
+We really aim to build a more advanced solution based on what we call *Agentic AI*.
+
+The idea is to start with a chatbot that can answer questions,
+
+and progressively evolve into an assistant that can interact with MyIAM data,
+
+and eventually support more complex actions.
+
+So we are moving from a rather static “question-and-answer” model
+
+to something more dynamic and intelligent.
+
+And this is really the key value of the project —
+
+we are building a foundation that can evolve over time
+
+towards more advanced use cases,
+
+with higher value for both the team and the users.
+
+This evolution will allow us to go further
+
+in terms of automation and efficiency.
+
+To make this vision concrete,
+
+we have structured the project into several phases.
+
+**Today, we are in Phase 1,**
+
+based on GenAI with a RAG approach, retrieval augmented generation, 
+
+This allows the chatbot to answer questions using MyIAM documentation.
+
+I’ll briefly explain what RAG is in a moment.
+
+At this stage, the chatbot mainly handles simple and generic questions, such as general MyIAM processes,  for example questions like : what is the process to request access ? How do I forward a workitem ?
+
+**In Phase 2, which is what we are currently preparing**
+
+we go one step further by enabling the chatbot to interact with MyIAM data in real time.
+
+This allows it to answer more specific questions,
+
+such as the status of a request or user access details.
+
+At this stage, the approach remains read-only,
+
+meaning no modification of the data in our database.
+
+**In Phase 3, in the longer term,**
+
+we move towards more advanced capabilities,
+
+where the chatbot can support certain actions behind—
+
+for example, managing delegation, forwarding items,
+
+or handling simple operational tasks.
+
+At this point, the chatbot would not only read data,
+
+but also perform concrete actions.
+
+Of course, this phase would require proper validation and governance,
+as it involves interacting directly with MyIAM data.
+
+And for sure all these evolutions will be implemented with the necessary security controls, in collaboration with the MyIAM Dev team.
+
+So overall, we can say that this is a progressive journey,
+with increasing value at each stage.
+
+#### 3. GenAI VS Agentic AI
+
+As we’ve just seen in the different phases,
+we refer to both GenAI and Agentic AI.
+
+I’ll take a minute to explain the difference in a simple way.
+
+Well, today, most AI tools we use on the market — such as ChatGPT, Gemini, LLM@CIB —
+are based on Generative AI.
+
+The principle is really straightforward:
+you ask a question, and the AI generates a response.
+
+For example, if you ask it to draft an email,
+it will generate the content,
+but it’s still up to the user to review it, copy it, and send it.
+
+So in this model, the AI can assist you,
+but does not directly perform actions for you。
+
+But with Agentic AI, we go one step further.
+
+It means that the AI not only generates responses,
+but can also interact with systems,
+retrieve data in real time,
+and progressively support certain actions.
+
+To make this more concrete,
+let me briefly show how it works from a functional perspective in our project.
+
+This is a simple schema we put together this morning with Delphine —
+it’s just a draft to illustrate the overall idea.
+
+At the top, we have the chatbot interface,
+where the user asks a question.
+
+Then, the request goes to the Agentic AI layer,
+which acts as an orchestrator.
+
+Based on the user’s request,
+it decides how to process it.
+
+In simple terms, there are two main paths:
+
+**First, the RAG path** —
+
+where the chatbot retrieves information from the documentation,
+
+through a knowledge base,
+
+and generates a response.
+
+This knowledge base is built from our MyIAM documentation and user guidelines.
+
+This is what we are using today in Phase 1.
+
+**Second, the tool/API path** — where the AI can call specific functions
+
+to retrieve data directly from MyIAM systems.
+
+This is more aligned with Phase 2 and beyond.
+
+So overall,
+
+the Agentic AI layer acts as a decision layer,
+
+choosing between knowledge-based answers
+
+and real-time data access.
+
+And this is what enables the transition
+
+from a simple chatbot
+
+to a more intelligent and action-oriented assistant.
+
+#### 4. Demo
+
+Now, I’ll show you a quick demo of the first working RAG-based POC,
+
+with a few concrete use cases.
+
+So here, you can access Auria,
+
+and in the top left corner, select the *MyIAM* model.
+
+For example, if a user asks a question like:
+
+*“How to set delegation”*
+
+or *“How to forward a work item”*,
+
+the chatbot will retrieve information from the documentation
+
+and generate a response directly.
+
+As you can see here,
+
+the chatbot provides a clear answer,
+
+including the steps to set delegation.
+
+If the answer is not fully relevant or not clear enough,
+
+you can click on *“bad response”*,
+
+provide a rating,
+
+and specify the reason —
+
+for example, if the answer is too vague
+
+or if the information is not up to date. 
+
+Another example —
+
+if I ask:
+
+*“What’s the status of my request?”*
+
+today, the chatbot does not directly provide the status,
+
+and redirects the user to MyIAM to check the information.
+
+So this type of request still goes through the support team.
+
+But tomorrow, with the evolution of the project,
+
+this type of request could be handled directly by the chatbot.
+
+So this demo is mainly to illustrate the chatbot’s current capabilities,
+
+and more importantly, how we will continue improving the quality
+and expanding the use cases.
+
+So we are really building something that can bring value
+both to users and to the support team.
+
+As a quick update,
+we have just completed the first round of documentation updates this week,
+thanks to the UAC team and the Paris team.
+
+And we are now preparing for the next round of testing.
+
+That’s it for the presentation —
+I’d be happy to take any questions before we move to the next part.
+
+Q/A :
+
+There is of course more technical complexity behind this,
+but here we’re focusing on the overall concept.
+
+Sure, I’ll share the slides with everyone after the session.
+
+Is this already in production ?
+
+At this stage, we are still in a POC phase.
+
+We are currently improving the model and validating the use cases before moving to production.
+
+How accurate is it?”
+
+The accuracy is improving progressively.
+
+We are currently refining the documentation and collecting feedback to enhance the model performance.
+
+What about security / risks?”
+
+Security is a key consideration for us.
+
+That’s why we are taking a progressive approach —
+
+starting with read-only access,
+
+and implementing proper governance and controls for the next phases.
+
+“What’s the next step?”
+
+The next step is to continue improving the quality of the responses
+
+and expand the use cases,
+
+before moving to more advanced capabilities in Phase 2.
+
+“Can this be reused for other teams?”
+
+Yes, potentially.
+
+The approach can be adapted to other use cases,
+
+as long as there is a clear knowledge base and defined processes.
+
+That’s a great question.
+
+At this stage, we are still in a POC phase.
+
+We are focusing on validating the use cases before scaling.
