@@ -1,331 +1,243 @@
-Intro :
+#### Business Value & Opportunies  :
 
-Hi everyone,
+Maintenant, je vais surtout vous présenter les principales opportunités et la valeur business du projet.
 
-Today I’d like to share the AI chatbot project for MyIAM that we’ve been working on over the past few months, with Delphine, Roopa, Akshay and Sandeep,
+1.
 
-in collaboration with multiple teams — including Paris Central, UAC Operations, the MyIAM Dev team, and the Innovation Lab.
+Comme Delphine l’a mentionné tout à l’heure, le chatbot permettra de réduire significativement le volume de requêtes qui arrivent aujourd’hui de manière dispersée via ServiceNow et par email.
 
-I’ll start with some context — why we launched this project and what the main objectives are.
+L’objectif est également d’estimer progressivement le pourcentage de requêtes pouvant être automatisées à chaque phase du projet.
 
-Then, I’ll walk you through the overall vision and the different stages of its evolution.
+À ce stade, nous estimons par exemple que certaines catégories de demandes répétitives pourraient représenter environ 30% du volume traité dans les phases plus avancées.
 
-As this is not just a standard chatbot,
-I’ll also briefly explain the difference between traditional GenAI — like most of the chatbots we see today —
-and a more advanced approach based on Agentic AI, which many of you may have already heard about.
+L’idée n’est pas de remplacer les équipes support, mais plutôt de leur permettre de se concentrer davantage sur des sujets à plus forte valeur ajoutée.
 
-And finally, I’ll show you a short demo of our current POC.
+Les demandes dont les réponses sont déjà bien documentées, ou dont les informations existent déjà dans l’écosystème MyIAM, pourront être traitées beaucoup plus rapidement via le chatbot.
 
-#### **1. Context / Objective**
+2.
 
-To start with, let me briefly go back to the context.
+Par ailleurs, MyIAM est aujourd’hui utilisé par l’ensemble des collaborateurs CIB, ce qui représente une base utilisateur extrêmement importante.
 
-Today, on the MyIAM support side, we receive a large number of simple and repetitive requests.
+Donc même si l’impact exact reste encore difficile à quantifier aujourd’hui, le projet représente également une vraie opportunité d’améliorer l’expérience utilisateur à grande échelle, avec un accès plus rapide et plus homogène à l’information IAM.
 
-For example:
+3.
 
-*“What’s the status of my access request?”*
+Aujourd’hui, les demandes arrivent de manière relativement dispersée entre ServiceNow, emails et différents canaux.
 
-*“How do I forward a work item?”*
+Du coup aujourd’hui, c’est assez difficile d'estimer ce qui est demandé, ce qui est répondu rapidement, et ce qui prend du temps.
 
-*“How can I extract my team’s access?”*
+surtout cela rend difficile l’analyse précise des besoins utilisateurs et des types de demandes les plus fréquents.
 
-*“How do I set up delegation during a leave?”*
+Avec le chatbot, toutes les interactions pourront être tracées et analysées.
 
-These types of questions represent a significant part of the daily workload for our support team — roughly half of the ServiceNow tickets.
+Par exemple, il sera possible d’identifier :
 
-The issue is that a lot of time is spent on relatively simple topics，
+- quels sujets reviennent le plus souvent,
+- quels workflows génèrent le plus de questions,
+- quelles demandes ne sont pas encore bien couvertes,
+- ou encore quels sujets prennent le plus de temps aux équipes support.
 
-while for the support team this time could be better used on more complex requests, such as L2-level issues.
+Cela permettra non seulement d’améliorer progressivement la base de connaissances, mais aussi d’identifier plus facilement les zones d’amélioration et les futurs besoins utilisateurs.
 
-And from a user perspective, the experience is not optimal either.
+4.
 
-Because users have to send an email or create a ServiceNow ticket,
+L’approche du projet est volontairement progressive.
 
-and sometimes wait several days to get a response.
+L’idée n’était pas de commencer immédiatement avec des cas d’usage trop complexes, mais plutôt de commencer par les cas d’usage les plus génériques afin de valider progressivement l’expérience utilisateur et la pertinence des réponses fournies par le chatbot.
 
-So in terms of both efficiency and user experience, this is clearly not ideal.
+Ensuite, les phases suivantes permettront d’intégrer des cas d’usage plus avancés et plus spécifiques aux utilisateurs.
 
-So based on this observation, the objective of our chatbot is quite straightforward:
-to reduce the number of simple and repetitive requests handled by the support team,
+L’objectif est donc d’avancer de manière maîtrisée, surtout dans le contexte d’un premier use case de Twin côté CIB.
 
-and ultimately improve overall efficiency,
-so that they can focus on more complex and higher-value tasks.
+Donc au-delà du chatbot lui-même, le projet représente aussi une première fondation pour les futurs usages IA autour de l’écosystème IAM.
 
-#### 2. Vision/Phases
+Et d’une certaine manière, il constitue aussi un premier point d’entrée vers l’adoption progressive de l’Agentic AI dans l’environnement IAM.
 
-Now that you have the context and the objectives,
+Aujourd’hui, beaucoup de connaissances IAM restent encore fragmentées entre différentes documentations, workflows, processus et canaux support.
 
-I’ll walk you through the overall vision of the project and the different phases.
+Le projet permet justement de commencer à centraliser et structurer cette connaissance dans une logique compatible avec les futurs usages IA et Agentic AI.
 
-Today, we are not just building a standard chatbot based on documentation and user guidelines.
+Et à plus long terme, cela pourra également faciliter le développement de nouvelles capacités d’Agentic AI et d’automations autour de l’écosystème IAM.
 
-We really aim to build a more advanced solution based on what we call *Agentic AI*.
+5.
 
-The idea is to start with a chatbot that can answer questions,
+Enfin, ce projet s’inscrit également dans une dynamique stratégique plus globale autour de Twin.
 
-and progressively evolve into an assistant that can interact with MyIAM data,
+Aujourd’hui, Twin est la plateforme stratégique du groupe pour les usages IA et Agentic AI.
 
-and eventually support more complex actions.
+L’objectif est à terme de disposer d’une plateforme commune pour les agents IA à l’échelle BNP Paribas, pour différentes entités du groupe comme CIB, ITG, Cardif ou encore BCEF.
 
-So we are moving from a rather static “question-and-answer” model
+Aujourd’hui, notre projet est le premier use case CIB à être onboardé sur la plateforme Twin.
 
-to something more dynamic and intelligent.
+Donc c’est aussi une opportunité importante d’être parmi les premières initiatives IA développées dans cet écosystème stratégique au niveau groupe.
 
-And this is really the key value of the project —
+Par ailleurs, le projet pourrait également ouvrir des perspectives de réplication à plus long terme.
 
-we are building a foundation that can evolve over time
+Par exemple, lors de certaines présentations autour du projet, plusieurs personnes côté MyAccess ont déjà exprimé un intérêt potentiel pour une approche similaire côté ITG.
 
-towards more advanced use cases,
+Mais aujourd’hui, rien n’est encore défini à ce stade.
 
-with higher value for both the team and the users.
+L’idée est surtout de voir d’abord comment le projet évolue et quels résultats il pourra apporter dans l’environnement MyIAM.
 
-This evolution will allow us to go further
+Et plus globalement, si l’approche fonctionne bien, elle pourrait éventuellement servir de point de départ pour d’autres usages IA et Agentic AI autour de l’écosystème IAM.
 
-in terms of automation and efficiency.
+Et surtout, l’objectif n’est pas de construire une initiative isolée dans notre coin.
 
-To make this vision concrete,
+Le projet a vraiment été pensé dans une logique d’alignement avec les initiatives IA et Agentic AI plus globales portées aujourd’hui côté ITG et CIB.
 
-we have structured the project into several phases.
+Donc finalement,, au-delà du chatbot lui-même, notre projet représente surtout une première étape vers un écosystème IAM plus intelligent et progressivement plus orienté IA.
 
-**Today, we are in Phase 1,**
+#### Chatbot Workflow/Architecture :
 
-based on GenAI with a RAG approach, retrieval augmented generation, 
+Maintenant, je vais vous présenter le workflow global de notre chatbot IAM.
 
-This allows the chatbot to answer questions using MyIAM documentation.
+Je ne vais pas rentrer trop dans les détails techniques, mais plutôt vous présenter la logique générale de l’architecture, et la vision globale du projet.
 
-I’ll briefly explain what RAG is in a moment.
+Aujourd’hui, MyIAM fonctionne principalement comme une plateforme transactionnelle.
 
-At this stage, the chatbot mainly handles simple and generic questions, such as general MyIAM processes,  for example questions like : what is the process to request access ? How do I forward a workitem ?
+Les utilisateurs passent par l’interface MyIAM pour :
 
-**In Phase 2, which is what we are currently preparing**
+- faire des demandes d’accès,
+- suivre des workflows,
+- gérer des droits,
+- ou consulter certaines informations IAM.
 
-we go one step further by enabling the chatbot to interact with MyIAM data in real time.
+Derrière cette interface, nous avons notamment :
 
-This allows it to answer more specific questions,
+- la base de données MyIAM,
+- ainsi qu’une couche d’APIs, notamment autour des access requests, des applications, des entitlements, des ownerships etc.
 
-such as the status of a request or user access details.
+Mais aujourd’hui, toute l’intelligence métier reste essentiellement portée par les équipes support ou les utilisateurs eux-mêmes.
 
-At this stage, the approach remains read-only,
+L’objectif du projet est justement d’ajouter une couche d’intelligence au-dessus de cet écosystème IAM.
 
-meaning no modification of the data in our database.
+Pour cela, nous introduisons un agent MyIAM dans l’écosystème Twin.
 
-**In Phase 3, in the longer term,**
+Ici, toute la partie entourée en pointillé vert représente justement l’écosystème TWIN introduite par le projet.
 
-we move towards more advanced capabilities,
+Twin est aujourd’hui la plateforme stratégique du groupe pour les usages Agentic AI, et fournit tout le framework nécessaire pour intégrer et orchestrer les agents IA.
 
-where the chatbot can support certain actions behind—
+L’agent MyIAM est connecté via API à une base de connaissances construite à partir :
 
-for example, managing delegation, forwarding items,
+- des documentations,
+- des workflows IAM,
+- des procédures,
+- des processus métiers,
+- et potentiellement,  à terme, d’autres sources IAM.
 
-or handling simple operational tasks.
+Ici, l’image LightRAG illustre la manière dont les connaissances IAM peuvent être structurées sous forme de graphe de connaissances.
 
-At this point, the chatbot would not only read data,
+Concrètement, dans notre cas, les nœuds peuvent représenter des éléments issus de la documentation IAM :
 
-but also perform concrete actions.
+- des procédures,
+- des workflows,
+- des types de demandes,
+- des applications ou modules MyIAM mentionnés dans les documents,
+- ou encore des règles ou étapes de validation.
 
-Of course, this phase would require proper validation and governance,
-as it involves interacting directly with MyIAM data.
+Ces éléments sont ensuite reliés entre eux selon les relations décrites dans les processus métiers.
 
-And for sure all these evolutions will be implemented with the necessary security controls, in collaboration with the MyIAM Dev team.
+Par exemple, une procédure peut être liée à un workflow spécifique ou à différentes étapes de validation.
 
-So overall, we can say that this is a progressive journey,
-with increasing value at each stage.
+Donc ici, l’idée du graphe, c’est vraiment que le modèle comprenne mieux le contexte métier et les liens entre les différents éléments IAM, plutôt que de simplement rechercher des mots-clés dans des documents séparés.
 
-#### 3. GenAI VS Agentic AI
+Côté utilisateur, plusieurs interfaces sont envisagéss :
 
-As we’ve just seen in the different phases,
-we refer to both GenAI and Agentic AI.
+Les utilisateurs pourront interagir :
 
-I’ll take a minute to explain the difference in a simple way.
+- soit directement via un widget intégré dans l’interface MyIAM (Le widget fonctionnera comme une page web à l'intérieur d'une page web.)
+- soit via Twin Chatbot.
+- et potentiellement aussi via LLM@CIB, mais l’intégration est encore en cours de validation avec l’Innovation Lab.
 
-Well, today, most AI tools we use on the market — such as ChatGPT, Gemini, LLM@CIB —
-are based on Generative AI.
+Le chatbot Twin pourra être accessible soit directement via Teams, soit via une URL dédiée.
 
-The principle is really straightforward:
-you ask a question, and the AI generates a response.
+L’objectif est donc de rendre l’assistance IAM beaucoup plus accessible, fluide et intuitive pour les utilisateurs.
 
-For example, if you ask it to draft an email,
-it will generate the content,
-but it’s still up to the user to review it, copy it, and send it.
+Aujourd’hui, nous sommes principalement sur une approche RAG et assistance utilisateur.
 
-So in this model, the AI can assist you,
-but does not directly perform actions for you。
+Mais l’architecture a également été pensée pour évoluer progressivement vers des capacités plus agentiques.
 
-But with Agentic AI, we go one step further.
+Par exemple, à terme, l’agent pourrait :
 
-It means that the AI not only generates responses,
-but can also interact with systems,
-retrieve data in real time,
-and progressively support certain actions.
+- récupérer automatiquement des informations IAM,
+- rechercher des accès,
+- identifier des owners,
+- suivre des workflows,
+- voire assister certaines actions via des APIs sécurisées, bien sûr avec les contrôles de sécurité et de gouvernance nécessaires.
 
-To make this more concrete,
-let me briefly show how it works from a functional perspective in our project.
+Donc finalement, ce projet ne représente pas uniquement un chatbot.
 
-This is a simple schema we put together this morning with Delphine —
-it’s just a draft to illustrate the overall idea.
+Il représente surtout une première étape vers l’intégration de l’IA dans l’écosystème IAM, mais aussi une fondation pour les futurs usages Agentic AI autour de cet écosytème.
 
-At the top, we have the chatbot interface,
-where the user asks a question.
+Demo
 
-Then, the request goes to the Agentic AI layer,
-which acts as an orchestrator.
+Pour rendre tout cela un peu plus concret, je vais maintenant vous montrer rapidement quelques exemples d’interactions possibles avec le chatbot.
 
-Based on the user’s request,
-it decides how to process it.
+L’objectif ici n’est pas de montrer un produit finalisé, mais plutôt d’illustrer le type d’assistance que le chatbot pourra progressivement apporter aux utilisateurs.
 
-In simple terms, there are two main paths:
+Donc ici, sur Auria,
 
-**First, the RAG path** —
+et en haut à gauche, vous sélectionnez le modèle *MyIAM*.
 
-where the chatbot retrieves information from the documentation,
+Par exemple, si un utilisateur pose une question comme :
 
-through a knowledge base,
+*“How to set delegation”* ou *“How to forward a workitem”*,
 
-and generates a response.
+le chatbot va aller chercher l’information dans les documentations
 
-This knowledge base is built from our MyIAM documentation and user guidelines.
+Un autre exemple :
 
-This is what we are using today in Phase 1.
+“Comment mettre en place une délégation pendant mes congés ?”
 
-**Second, the tool/API path** — where the AI can call specific functions
+Aujourd’hui, ce type de question représente une partie importante des sollicitations support.
 
-to retrieve data directly from MyIAM systems.
+Ici, le chatbot est capable de retrouver et synthétiser rapidement des informations issues de la documentation IAM.
 
-This is more aligned with Phase 2 and beyond.
+Par exemple, si je pose une question comme :
 
-So overall,
+*“What’s the status of my request ?”*
 
-the Agentic AI layer acts as a decision layer,
+aujourd’hui, le chatbot ne donne pas directement le statut,
+et renvoie vers MyIAM pour vérifier l’information.
 
-choosing between knowledge-based answers
+Donc ce type de question passe encore par le support.
 
-and real-time data access.
+Et à terme, avec les futures phases plus agentiques, l’objectif sera également de pouvoir interagir davantage avec les APIs et les données MyIAM de manière sécurisée.
 
-And this is what enables the transition
+Voilà pour la démonstration.
 
-from a simple chatbot
+L’idée, c’est vraiment de vous montrer le potentiel du chatbot,
+et surtout l’évolution possible dans les prochaines phases.
 
-to a more intelligent and action-oriented assistant.
+Donc finalement, l’objectif du projet n’est pas uniquement de répondre à des questions utilisateurs.
 
-#### 4. Demo
+L’idée est surtout de construire progressivement une nouvelle couche d’assistance intelligente autour de l’écosystème IAM.
 
-Now, I’ll show you a quick demo of the first working RAG-based POC,
+Mail Follow-Up :
 
-with a few concrete use cases.
+Bonjour François,
 
-So here, you can access Auria,
+Merci pour votre temps aujourd’hui, ainsi que pour vos feedbacks et vos échanges autour de notre projet.
 
-and in the top left corner, select the *MyIAM* model.
+Veuillez trouver en pièces jointes :
 
-For example, if a user asks a question like:
+- le support de présentation,
+- ainsi que la liste des endpoints APIs actuellement identifiés pour les prochaines phases du projet.
 
-*“How to set delegation”*
+Suite aux échanges d’aujourd’hui, nous allons poursuivre progressivement les réflexions autour de l’évolution du projet vers des capacités plus avancées d’orchestration et d’assistance intelligente orientées Agentic AI.
 
-or *“How to forward a work item”*,
+L’objectif est notamment de commencer à structurer et centraliser progressivement les connaissances MyIAM actuellement fragmentées entre différentes documentations, workflows, processus et canaux support, dans une logique compatible avec les futures capacités d’assistance intelligente, d’orchestration et d’automatisation.
 
-the chatbot will retrieve information from the documentation
+Au-delà du cas d’usage actuel, cette approche représente également une première fondation pour les futurs usages IA et Agentic AI autour de l’écosystème MyIAM.
 
-and generate a response directly.
+Le projet s’inscrit également dans la dynamique stratégique Twin, qui constitue aujourd’hui la plateforme de référence du groupe pour les usages Agentic AI à l’échelle BNP Paribas. 
 
-As you can see here,
+L’objectif à terme est de disposer d’un écosystème commun et industrialisé pour les usages Agentic AI des différentes entités du groupe, afin d’éviter une multiplication d’initiatives isolées et de permettre une approche plus cohérente autour des capacités d’orchestration, d’assistance intelligente, d’automatisation et d’interopérabilité entre différents environnements IA, notamment dans une logique future d’agent-to-agent orchestration.
 
-the chatbot provides a clear answer,
+Dans ce contexte, notre use case représente aujourd’hui le premier projet CIB prêt à être onboardé sur l’écosystème Twin.
 
-including the steps to set delegation.
+N’hésitez pas à revenir vers nous si besoin. Merci encore pour votre support et votre confiance.
 
-If the answer is not fully relevant or not clear enough,
+Bien cordialement,
 
-you can click on *“bad response”*,
-
-provide a rating,
-
-and specify the reason —
-
-for example, if the answer is too vague
-
-or if the information is not up to date. 
-
-Another example —
-
-if I ask:
-
-*“What’s the status of my request?”*
-
-today, the chatbot does not directly provide the status,
-
-and redirects the user to MyIAM to check the information.
-
-So this type of request still goes through the support team.
-
-But tomorrow, with the evolution of the project,
-
-this type of request could be handled directly by the chatbot.
-
-So this demo is mainly to illustrate the chatbot’s current capabilities,
-
-and more importantly, how we will continue improving the quality
-and expanding the use cases.
-
-So we are really building something that can bring value
-both to users and to the support team.
-
-As a quick update,
-we have just completed the first round of documentation updates this week,
-thanks to the UAC team and the Paris team.
-
-And we are now preparing for the next round of testing.
-
-That’s it for the presentation —
-I’d be happy to take any questions before we move to the next part.
-
-Q/A :
-
-There is of course more technical complexity behind this,
-but here we’re focusing on the overall concept.
-
-Sure, I’ll share the slides with everyone after the session.
-
-Is this already in production ?
-
-At this stage, we are still in a POC phase.
-
-We are currently improving the model and validating the use cases before moving to production.
-
-How accurate is it?”
-
-The accuracy is improving progressively.
-
-We are currently refining the documentation and collecting feedback to enhance the model performance.
-
-What about security / risks?”
-
-Security is a key consideration for us.
-
-That’s why we are taking a progressive approach —
-
-starting with read-only access,
-
-and implementing proper governance and controls for the next phases.
-
-“What’s the next step?”
-
-The next step is to continue improving the quality of the responses
-
-and expand the use cases,
-
-before moving to more advanced capabilities in Phase 2.
-
-“Can this be reused for other teams?”
-
-Yes, potentially.
-
-The approach can be adapted to other use cases,
-
-as long as there is a clear knowledge base and defined processes.
-
-That’s a great question.
-
-At this stage, we are still in a POC phase.
-
-We are focusing on validating the use cases before scaling.
+Delphine & Weize
