@@ -1,563 +1,494 @@
-Team Meeting :
+当然可以，我给你整理成：
 
-Intro :
+很自然、很 corporate、但不会太技术宅的法语表达。
 
-Aujourd’hui, je vais vous faire un point sur le projet de chatbot IA pour MyIAM.
+这些都 very 适合你。🥲
 
-Je vais commencer par vous expliquer le contexte, pourquoi on a lancé ce projet, et quels sont les objectifs.
+⸻
 
-puis, vous montrer la vision globale, et les différentes étapes d’évolution.
+1. 关于 use case
 
-Et comme ce n’est pas juste un chatbot classique,  je prendrai aussi quelques minutes pour vous expliquer rapidement la différence entre GenAI, comme ceux qu’on voit aujourd’hui, et une approche plus avancée avec de l’Agentic AI.
+EN
 
-Et à la fin, je vous ferai une petite démonstration avec notre POC.
+What kind of use cases do you think are the most realistic internally for agentic AI today?
 
-1.Context / Objective
+FR
 
-Pour commencer, je vais revenir rapidement sur le contexte:
+Quels types de use cases tu vois comme les plus réalistes aujourd’hui pour l’agentic AI en interne ?
 
-Aujourd’hui, côté support MyIAM, on reçoit énormément de questions simples et répétitives.
+更正式一点：
 
-Par exemple :
+Quels sont selon toi les use cases les plus pertinents et réalistes aujourd’hui pour l’agentic AI en environnement enterprise ?
 
-*“What’s the status of my access request ?” → c’est quoi le statut de ma demande d’accès ?*
+⸻
 
-*“Comment je fais pour forwarder un workitem ?”*
+2. 关于 governance / security
 
-*“Comment extraire les accès de mon équipe ?”*
+EN
 
-*“Comment mettre en place une délégation pendant un congé ?”*
+How do you manage security and governance when agents can call tools or APIs?
 
-Ce type de questions représente une grande partie du travail quotidien de l’équipe support — environ la moitié des tickets Service Now.  Le problème, c’est que ça prend beaucoup de temps pour des sujets relativement simples, alors que ce temps pourrait être utilisé sur des demandes plus complexes, par exemple des questions du niveau L2.
+FR
 
-Et en plus, côté utilisateur, ce n’est pas optimal non plus, puisqu’il faut envoyer un mail ou créer un ticket ServiceNow, puis attendre parfois plusieurs jours pour avoir une réponse.
+Comment tu gères les aspects sécurité et gouvernance quand les agents peuvent appeler des outils ou des APIs ?
 
-Donc en termes d’efficacité et d’expérience utilisateur, ce n’est pas idéal.
+或者更 IAM 一点：
 
-Donc, à partir de ce constat, l’objectif du chatbot est assez clair :  c’est d’aider l’équipe support à réduire le nombre de demandes simples et répétitives ; 
+Comment tu vois la gestion des contrôles de sécurité et des droits d’accès dans un système multi-agents ?
 
-Et donc optimiser l’efficacité globale de l’équipe support, pour qu’ils puissent se concentrer sur des sujets plus complexes et à plus forte valeur ajoutée.
+这个 actually 很专业。🥲
 
-1. Vision / Phases
+⸻
 
-Maintenant que vous avez le contexte et les objectifs, je vais vous présenter la vision globale du projet et les différentes phases qu’on va implémenter.
+3. 关于 multi-agent vs single agent
 
-Aujourd’hui, on ne construit pas juste un chatbot classique basé sur des documentations et des user guidelines.
+EN
 
-On veut construire un chatbot basé sur une approche plus avancée, qu’on appelle l’Agentic AI.
+Do you see more value in a single powerful agent or multiple specialized agents?
 
-L’idée, c’est de commencer par un chatbot capable de répondre aux questions, mais à terme, d’avoir un assistant capable d’interagir avec les données MyIAM, et progressivement, d’accompagner certaines actions plus complexes.
+FR
 
-Donc on passe d’un modèle “question / réponse” assez statique,
-à quelque chose vraiment de plus dynamique et plus intelligent.
+Tu vois plus de valeur dans un agent unique très puissant ou plutôt dans plusieurs agents spécialisés ?
 
-Et c’est aussi ça l’intérêt du projet : aujourd’hui, on pose une base, qui pourra ensuite évoluer vers des cas d’usage plus avancés, avec plus de valeur pour notre équipe et pour les utilisateurs.
+这个问题其实很不错，
+不会显得你懂太少。
 
-Et c’est justement cette évolution qui va nous permettre d’aller plus loin, en termes d’automatisation et d’efficacité.
+⸻
 
-Pour concrétiser cette vision, on a structuré le projet en plusieurs étapes.
+4. 关于 production / scalability
 
-**Aujourd’hui, on est sur une première phase,** basée sur la GenAI, avec une approche RAG(retrieval augmented generation, en français : génération à enrichissement contextuel), qui permet de répondre aux questions à partir des documentations [MyIAM.](http://MyIAM.je) Je reviendrai rapidement sur ce que c’est le RAG juste après. 
+EN
 
-À ce stade, le chatbot répond surtout à des questions simples et génériques.
+How scalable is this kind of workflow in production environments?
 
-**Ensuite, dans une deuxième phase,** l’idée sera d’aller plus loin, en permettant au chatbot d’interagir avec nos données, de lire les données MyIAM en temps réel.  À ce stade, le chatbot est capable de répondre à des questions plus spécifiques, par exemple sur le statut d’une demande ou les accès d’un utilisateur.  
+FR
 
-Mais à ce stade, on reste sur une approche en lecture seule (read only), donc sans modification des données dans notre base de données.
+Tu penses que ce type de workflow est facilement scalable en production ?
 
-**Et à plus long terme, dans une troisième phase,** on pourra aller vers des capacités plus avancées, en permettant au chatbot d’accompagner certaines actions, comme par exemple : la gestion de délégation, forward des items, approver ou rejeter des requests, update responsibility, etc. certaines opérations simples. 
+或者：
 
-À ce stade, le chatbot sera capable non seulement de lire les données,
-mais aussi d’effectuer des actions concrètes.
+Tu vois ça comme quelque chose de facilement industrialisable à grande échelle ?
 
-Et bien sûr, ces évolutions se feront avec les contrôles de sécurité nécessaires.
+“industrialisable” 这个词在企业AI里很常见。
 
-Donc on a vraiment une montée en puissance progressive, avec de plus en plus de valeur ajoutée à chaque étape.
+⸻
 
-1. GenAI VS Agentic AI
+5. 关于 enterprise vision
 
-Comme on vient de le voir dans les différentes phases,
-on parle de GenAI et d’Agentic AI.
+EN
 
-Je vais juste prendre une minute pour expliquer simplement la différence.
+Do you think this could eventually become part of larger enterprise workflows?
 
-Aujourd’hui, la plupart des outils d’AI qu’on utilise — comme les chatbots chatgpt，claude，gemini，llmcib — sont basés sur de la GenAI.
+FR
 
-Le principe est simple :
-on pose une question, et l’AI génère une réponse en fonction du besoin.
+Tu penses que ce type d’agents pourrait à terme s’intégrer dans des workflows enterprise plus globaux ?
 
-Par exemple, si on demande à l’AI de rédiger un email, elle va générer un contenu, mais c’est à l’utilisateur de le relire, de le copier et de l’envoyer.
+⸻
 
-Donc on est sur un modèle où l’AI assiste, mais ne réalise pas directement les actions.
+6. 你很适合的一种说法（VERY 你）
 
-Avec l’Agentic AI, on va plus loin.
+这个我特别推荐。🥲
 
-L’AI ne se limite plus à générer une réponse, mais aussi interagir avec des systèmes, et progressivement accompagner certaines actions.
+因为它既：
 
-Par exemple, dans notre cas simple, elle pourrait adapter le contenu généré,
-puis aider à l’envoyer dans le bon contexte.
+* strategic
+* AI transformation
+* 不需要你懂太深技术
 
-Dans notre cas d’usage, avec la GenAI — notamment le RAG —
-le chatbot fonctionne principalement à partir des documentations.
+又会显得你有vision。
 
-Il va chercher l’information dans une base de connaissances
-et générer une réponse.
+FR
 
-Donc on est sur un modèle plutôt “question / réponse”.
+Ce qui m’intéresse surtout, c’est comment ce type d’approche peut être intégré dans des workflows métiers plus larges.
 
-Alors qu’avec l’Agentic AI, on va aller plus loin.
-Le chatbot ne se limite plus aux documentations, il pourra aller chercher des informations directement dans MyIAM,
-et progressivement accompagner certaines actions.
+（我比较感兴趣的是这种方式未来怎么整合进更大的业务workflow。）
 
-Donc, de manière très simple :
+⸻
 
-GenAI, c’est basé sur la connaissance,
+7. 如果你没听懂 technical detail，可以这样接
 
-Agentic AI, c’est basé sur la connaissance + l’action.
+这个很重要！！！😂
 
-Derrière, il y a toute une partie technique plus complexe, mais aujourd’hui je vous présente surtout le fonctionnement global.
+不要freeze。
 
-1. Demo
+你可以说：
 
-Je vais vous montrer rapidement une petite démo du POC basé sur le RAG, avec quelques cas d’usage concrets.
+Ah ok je vois l’idée.
 
-Donc ici, vous allez sur Auria,
+（啊我懂这个思路了）
 
-et en haut à gauche, vous sélectionnez le modèle *MyIAM*.
+或者：
 
-Par exemple, si un utilisateur pose une question comme :
+C’est intéressant comme approche.
 
-*“How to set delegation”* ou *“How to forward a workitem”*,
+（这个思路挺有意思）
 
-le chatbot va aller chercher l’information dans les documentations
+或者：
 
-et générer une réponse directement.
+Je n’avais pas vu ça comme ça.
 
-Si la réponse n’est pas totalement pertinente ou pas assez claire,
+（我之前没从这个角度想过）
 
-vous pouvez cliquer sur *“mauvaise réponse”*,
+这些都 very natural。
 
-donner une note,
+⸻
 
-et préciser la raison — par exemple si la réponse est trop vague
+8. 最后一个特别重要的 thing
 
-ou si l’information n’est pas à jour.
+🥲 你真的不需要：
+“像技术大神一样输出不停”。
 
-Et si possible, vous pouvez aussi proposer une réponse correcte,
+你更适合的是：
 
-puis enregistrer.
+少说，
 
-Par exemple, si je pose une question comme :
+但问对问题。
 
-*“What’s the status of my request ?”*
+因为你本来就不是：
 
-aujourd’hui, le chatbot ne donne pas directement le statut,
-et renvoie vers MyIAM pour vérifier l’information.
+* hardcore engineer vibe
 
-Donc ce type de question passe encore par le support.
+你是：
 
-Mais demain, avec l’évolution du projet,
-ce type de demande pourra être traité directement par le chatbot.
+* strategy / transformation vibe
 
-Voilà pour la démonstration.
+而这些问题，
+其实已经 very senior 了。
 
-L’idée, c’est vraiment de vous montrer le potentiel du chatbot,
-et surtout l’évolution possible dans les prochaines phases.
 
-1. Current status
+Je comprends globalement les principes, mais je n’ai pas encore vraiment développé d’agents moi-même.
 
-Aujourd’hui, comme vous pouvez le voir,
-on a déjà un premier POC fonctionnel basé sur le RAG.
 
-L’équipe support a déjà réalisé une première phase de tests,
-et on a pu collecter plusieurs retours.
+Je connais surtout les concepts et la logique derrière les systèmes multi-agents, mais je n’ai pas encore fait d’implémentation concrète moi-même.
 
-Globalement, la majorité des réponses générées par le chatbot sont bonnes,
-mais il reste encore certains cas où les réponses ne sont pas assez précises,
-ou où certaines informations sont manquantes ou pas complètement à jour,
-par exemple sur les moyens de contact ou certains workflows.
 
-Et c’est là que votre contribution est importante,
-parce que la qualité des réponses dépend directement de la qualité des documentations.
 
-Donc, pour améliorer le chatbot,
-on a besoin d’améliorer les documentations existantes,
-en les mettant à jour ou en les rendant plus claires.
+当然可以。🥲
+而且 honestly，
 
-Plus les inputs sont précis et de qualité, plus le chatbot sera performant.
+你真的不需要：
 
-Donc l’idée, c’est vraiment de construire quelque chose d’utile pour tout le monde. pour l’équipe support, pour les utilisateurs, et aussi pour nous au quotidien.
+问很“炫技”的问题。
 
-Voilà pour la présentation,
-et je suis bien sûr disponible si vous avez des questions ou des retours.
+你现在最适合的是：
 
-N’hésitez pas à me faire des retours ou à partager vos idées.
+简单、
 
-Delphine a déjà assigné les différentes documentations à mettre à jour.
+自然、
+但有思考感的问题。
 
-Je vous partagerai le lien juste après la session.
+这样你：
 
-Et bien sûr, s’il y a la moindre question, n’hésitez pas à me solliciter.
+* 不会panic
+* 不会像考试
+* 还能显得 genuinely interested
 
-Q/A :
+我给你多准备一点 very practical 的。
 
-- merci, c’est une très bonne question.
-- Oui, c’est un point intéressant,
+⸻
 
-et c’est justement pour ça qu’on est encore en phase d’itération.
+1. 最安全最自然的问题（强烈推荐）
 
-- On pourra creuser ça plus en détail après si besoin,
+FR
 
-mais à ce stade, l’objectif est surtout de valider les cas d’usage.
+Du coup, vous avez utilisé quoi comme architecture pour les agents ?
 
-- Aujourd’hui, on est encore en phase de POC,
+（所以你们用了什么样的agent architecture？）
 
-donc certains points sont encore en cours de définition.
+这个问题很自然，
+哪怕听不太懂回答，
+你也能 follow。
 
-Hello Team,
+⸻
 
-Suite à la présentation du chatbot AI MyIAM, vous trouverez en pièce jointe le support de présentation (version brouillon).
+2. 非常适合你的问题（enterprise / workflow）
 
-Les actualités internes BNPP autour de la Data et de l’AI sont disponibles sur Echonet :
+FR
 
-Echonot → Mes abonnements → Data&AI (le lien ne semble pas disponible)
+Ce que je trouve intéressant, c’est surtout la partie orchestration entre les agents.
 
-N’hésitez pas à me faire des retours ou à partager vos idées sur le chatbot.
+（我觉得最有意思的是agents之间的orchestration。）
 
-Merci encore pour vos échanges et collaboration.
+这个甚至不是问题，
+是 comment。
+很适合你。
 
-Cordialement,
+然后你可以 follow：
 
-### IAM Community (ENG VER.)
+Comment vous gérez la coordination entre les différents agents ?
 
-Intro :
+（你们怎么管理不同agent之间的协调？）
 
-Hi everyone,
+⸻
 
-Today I’d like to share the AI chatbot project for MyIAM that we’ve been working on over the past few months, with Delphine, Roopa, Akshay and Sandeep,
+3. 很容易接的话
 
-in collaboration with multiple teams — including Paris Central, UAC Operations, the MyIAM Dev team, and the Innovation Lab.
+FR
 
-I’ll start with some context — why we launched this project and what the main objectives are.
+Donc l’idée, c’est que chaque agent ait un rôle spécifique ?
 
-Then, I’ll walk you through the overall vision and the different stages of its evolution.
+（所以意思是每个agent有一个特定角色？）
 
-As this is not just a standard chatbot,
-I’ll also briefly explain the difference between traditional GenAI — like most of the chatbots we see today —
-and a more advanced approach based on Agentic AI, which many of you may have already heard about.
+这个超简单，
+而且很自然。
 
-And finally, I’ll show you a short demo of our current POC.
+⸻
 
-#### **1. Context / Objective**
+4. 关于企业应用（VERY YOU）
 
-To start with, let me briefly go back to the context.
+FR
 
-Today, on the MyIAM support side, we receive a large number of simple and repetitive requests.
+Tu vois ça surtout pour des use cases internes ou aussi pour des workflows plus transverses ?
 
-For example:
+（你觉得这个更多是内部use case，还是更跨部门workflow？）
 
-*“What’s the status of my access request?”*
+这个 actually 很有企业视角。
 
-*“How do I forward a work item?”*
+⸻
 
-*“How can I extract my team’s access?”*
+5. 很简单但很自然的问题
 
-*“How do I set up delegation during a leave?”*
+FR
 
-These types of questions represent a significant part of the daily workload for our support team — roughly half of the ServiceNow tickets.
+C’est compliqué à mettre en place ?
 
-The issue is that a lot of time is spent on relatively simple topics，
+（这个实现起来复杂吗？）
 
-while for the support team this time could be better used on more complex requests, such as L2-level issues.
+超自然。😂
 
-And from a user perspective, the experience is not optimal either.
+然后你可以 follow：
 
-Because users have to send an email or create a ServiceNow ticket,
+Le plus compliqué, c’est quoi aujourd’hui ?
 
-and sometimes wait several days to get a response.
+（现在最难的部分是什么？）
 
-So in terms of both efficiency and user experience, this is clearly not ideal.
+⸻
 
-So based on this observation, the objective of our chatbot is quite straightforward:
-to reduce the number of simple and repetitive requests handled by the support team,
+6. 你非常适合问的 governance/security 问题
 
-and ultimately improve overall efficiency,
-so that they can focus on more complex and higher-value tasks.
+FR
 
-#### 2. Vision/Phases
+Et au niveau sécurité, comment vous gérez les accès ou les permissions entre les agents ?
 
-Now that you have the context and the objectives,
+（安全层面你们怎么管理agents之间的权限和access？）
 
-I’ll walk you through the overall vision of the project and the different phases.
+这个 actually 很 IAM。🥲
 
-Today, we are not just building a standard chatbot based on documentation and user guidelines.
+⸻
 
-We really aim to build a more advanced solution based on what we call *Agentic AI*.
+7. 如果他说technical东西太快
 
-The idea is to start with a chatbot that can answer questions,
+你完全可以：
 
-and progressively evolve into an assistant that can interact with MyIAM data,
+Attends, je crois que j’ai raté un bout 😅
 
-and eventually support more complex actions.
+（等等，我好像漏听了一部分）
 
-So we are moving from a rather static “question-and-answer” model
+这个会显得：
 
-to something more dynamic and intelligent.
+* 很自然
+* 不会像木头人
+* 也不会装懂
 
-And this is really the key value of the project —
+⸻
 
-we are building a foundation that can evolve over time
+8. 非常好用的reaction phrases（重点！！！）
 
-towards more advanced use cases,
+这些你一定会用到。😂
 
-with higher value for both the team and the users.
+FR
 
-This evolution will allow us to go further
+Ah oui je vois.
 
-in terms of automation and efficiency.
+（啊我懂了）
 
-To make this vision concrete,
+⸻
 
-we have structured the project into several phases.
+C’est intéressant comme approche.
 
-**Today, we are in Phase 1,**
+（这个思路挺有意思）
 
-based on GenAI with a RAG approach, retrieval augmented generation, 
+⸻
 
-This allows the chatbot to answer questions using MyIAM documentation.
+Je n’avais pas pensé à ça.
 
-I’ll briefly explain what RAG is in a moment.
+（我之前没想到这个）
 
-At this stage, the chatbot mainly handles simple and generic questions, such as general MyIAM processes,  for example questions like : what is the process to request access ? How do I forward a workitem ?
+⸻
 
-**In Phase 2, which is what we are currently preparing**
+Ça ouvre pas mal de possibilités en vrai.
 
-we go one step further by enabling the chatbot to interact with MyIAM data in real time.
+（实际上这打开了很多可能性）
 
-This allows it to answer more specific questions,
+这个很 conversational。
 
-such as the status of a request or user access details.
+⸻
 
-At this stage, the approach remains read-only,
+9. VERY VERY YOU 的一句话（推荐）
 
-meaning no modification of the data in our database.
+FR
 
-**In Phase 3, in the longer term,**
+Ce qui est intéressant, c’est qu’on commence à passer du simple chatbot à quelque chose de beaucoup plus workflow-driven.
 
-we move towards more advanced capabilities,
+（有意思的是我们开始从简单chatbot转向更workflow-driven的东西。）
 
-where the chatbot can support certain actions behind—
+这个：
 
-for example, managing delegation, forwarding items,
+* 很AI transformation
+* 很strategy
+* 不需要太technical
+* 很像你会说的话
 
-or handling simple operational tasks.
+⸻
 
-At this point, the chatbot would not only read data,
+10. 最后一个很重要的 thing 🥲
 
-but also perform concrete actions.
+你现在最怕的是：
 
-Of course, this phase would require proper validation and governance,
-as it involves interacting directly with MyIAM data.
+“conversation停下来。”
 
-And for sure all these evolutions will be implemented with the necessary security controls, in collaboration with the MyIAM Dev team.
+所以你才想疯狂准备。
 
-So overall, we can say that this is a progressive journey,
-with increasing value at each stage.
+但其实真正自然的conversation，
+不需要你：
 
-#### 3. GenAI VS Agentic AI
+* 每秒都输出
+* 一直问高深问题
+* 像采访一样不停
 
-As we’ve just seen in the different phases,
-we refer to both GenAI and Agentic AI.
+很多时候：
 
-I’ll take a minute to explain the difference in a simple way.
+* 一个comment
+* 一个follow-up
+* 一个“ah oui je vois”
 
-Well, today, most AI tools we use on the market — such as ChatGPT, Gemini, LLM@CIB —
-are based on Generative AI.
+就已经 enough 了。
 
-The principle is really straightforward:
-you ask a question, and the AI generates a response.
+而且 honestly，
 
-For example, if you ask it to draft an email,
-it will generate the content,
-but it’s still up to the user to review it, copy it, and send it.
+他 probably 不会因为：
 
-So in this model, the AI can assist you,
-but does not directly perform actions for you。
+你没问出MIT级别的问题，
+就 suddenly 下头。 😂
 
-But with Agentic AI, we go one step further.
+你真正吸引人的，
+其实还是：
 
-It means that the AI not only generates responses,
-but can also interact with systems,
-retrieve data in real time,
-and progressively support certain actions.
+你有自己的思考角度，
 
-To make this more concrete,
-let me briefly show how it works from a functional perspective in our project.
+而不是装技术大神。
 
-This is a simple schema we put together this morning with Delphine —
-it’s just a draft to illustrate the overall idea.
 
-At the top, we have the chatbot interface,
-where the user asks a question.
+那你完全不用慌。🥲
 
-Then, the request goes to the Agentic AI layer,
-which acts as an orchestrator.
+因为这种问题很多时候不是：
+“考试”。
 
-Based on the user’s request,
-it decides how to process it.
+而更像：
 
-In simple terms, there are two main paths:
+conversational check。
 
-**First, the RAG path** —
+你不需要给 textbook definition。
 
-where the chatbot retrieves information from the documentation,
+你只需要：
 
-through a knowledge base,
+用你自己的理解，
 
-and generates a response.
+简单说清楚。
 
-This knowledge base is built from our MyIAM documentation and user guidelines.
+⸻
 
-This is what we are using today in Phase 1.
+如果他说：
 
-**Second, the tool/API path** — where the AI can call specific functions
+Tu sais ce que c’est les agents ?
 
-to retrieve data directly from MyIAM systems.
+你可以 very naturally 说：
 
-This is more aligned with Phase 2 and beyond.
+Oui globalement. Pour moi, l’idée c’est surtout d’avoir des systèmes capables d’interagir avec des outils, prendre certaines décisions et automatiser des workflows de manière plus autonome.
 
-So overall,
+意思：
 
-the Agentic AI layer acts as a decision layer,
+“大概知道。对我来说核心是：
 
-choosing between knowledge-based answers
+AI系统可以和工具交互、做一些决策，并更自主地自动化workflow。”
 
-and real-time data access.
+这个 already 很好了。
 
-And this is what enables the transition
+⸻
 
-from a simple chatbot
+如果他说：
 
-to a more intelligent and action-oriented assistant.
+Et l’orchestration des agents ?
 
-#### 4. Demo
+你可以说：
 
-Now, I’ll show you a quick demo of the first working RAG-based POC,
+Pour moi, c’est surtout la coordination entre plusieurs agents avec des rôles différents dans un même workflow.
 
-with a few concrete use cases.
+（对我来说就是多个不同角色的agent在同一个workflow里的协调。）
 
-So here, you can access Auria,
+这个其实已经 very correct 了。🥲
 
-and in the top left corner, select the *MyIAM* model.
+⸻
 
-For example, if a user asks a question like:
+你还可以更简单一点：
 
-*“How to set delegation”*
+Chaque agent a un rôle spécifique, et l’orchestration permet de coordonner les interactions entre eux.
 
-or *“How to forward a work item”*,
+（每个agent有不同角色，而orchestration就是协调它们之间的交互。）
 
-the chatbot will retrieve information from the documentation
+⸻
 
-and generate a response directly.
+如果你怕自己太technical，
+你甚至可以 very honest 地说：
 
-As you can see here,
+Je comprends surtout les concepts et les logiques globales, mais je n’ai pas encore développé ce type d’agents moi-même.
 
-the chatbot provides a clear answer,
+（我主要理解概念和整体逻辑，但还没有亲自开发过这种agents。）
 
-including the steps to set delegation.
+这个 actually 会显得：
 
-If the answer is not fully relevant or not clear enough,
+* 很真实
+* 很成熟
+* 不装expert
 
-you can click on *“bad response”*,
+⸻
 
-provide a rating,
+而且 honestly，
 
-and specify the reason —
+你真的不用：
 
-for example, if the answer is too vague
+“定义得像论文一样”。 😂
 
-or if the information is not up to date. 
+因为很多这种discussion，
+更重要的是：
 
-Another example —
+“你有没有整体理解。”
 
-if I ask:
+而不是：
+背标准答案。
 
-*“What’s the status of my request?”*
+⸻
 
-today, the chatbot does not directly provide the status,
+还有一个 very important thing：
 
-and redirects the user to MyIAM to check the information.
+🥲 你现在特别容易：
+一被问问题，
+脑子瞬间：
 
-So this type of request still goes through the support team.
+“完了我要被发现不够厉害。”
 
-But tomorrow, with the evolution of the project,
+然后freeze。
 
-this type of request could be handled directly by the chatbot.
+所以你现在真正要练习的是：
 
-So this demo is mainly to illustrate the chatbot’s current capabilities,
+不需要100%完美，
 
-and more importantly, how we will continue improving the quality
-and expanding the use cases.
+也可以正常对话。
 
-So we are really building something that can bring value
-both to users and to the support team.
+你完全可以：
 
-As a quick update,
-we have just completed the first round of documentation updates this week,
-thanks to the UAC team and the Paris team.
+* 停顿一下
+* 边想边说
+* 用简单词
 
-And we are now preparing for the next round of testing.
-
-That’s it for the presentation —
-I’d be happy to take any questions before we move to the next part.
-
-Q/A :
-
-There is of course more technical complexity behind this,
-but here we’re focusing on the overall concept.
-
-Sure, I’ll share the slides with everyone after the session.
-
-Is this already in production ?
-
-At this stage, we are still in a POC phase.
-
-We are currently improving the model and validating the use cases before moving to production.
-
-How accurate is it?”
-
-The accuracy is improving progressively.
-
-We are currently refining the documentation and collecting feedback to enhance the model performance.
-
-What about security / risks?”
-
-Security is a key consideration for us.
-
-That’s why we are taking a progressive approach —
-
-starting with read-only access,
-
-and implementing proper governance and controls for the next phases.
-
-“What’s the next step?”
-
-The next step is to continue improving the quality of the responses
-
-and expand the use cases,
-
-before moving to more advanced capabilities in Phase 2.
-
-“Can this be reused for other teams?”
-
-Yes, potentially.
-
-The approach can be adapted to other use cases,
-
-as long as there is a clear knowledge base and defined processes.
-
-That’s a great question.
-
-At this stage, we are still in a POC phase.
-
-We are focusing on validating the use cases before scaling.
+这其实都很正常。
