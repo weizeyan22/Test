@@ -1,1 +1,43 @@
-Strong alignment with the AI strategies currently driven by CIB and ITG, while positioning IAM as the first CIB use case preparing to be onboarded onto the Twin platform.
+Salut Patrick,
+
+Tu trouveras en pièce jointe la dernière version des slides avec les ajustements discutés pendant notre échange. Delphine s’occupera des derniers points.
+
+On a bien noté les principaux éléments évoqués pendant la revue :
+
+- Mieux mettre en avant que le chatbot est avant tout destiné aux end users MyIAM ;
+- Renforcer la partie liée au monitoring des interactions utilisateurs (questions, réponses, qualité des réponses fournies, taux d’abandon, etc.) afin de mieux mesurer l’adoption et identifier les axes d’amélioration ;
+- Clarifier davantage le découpage et le positionnement des différentes phases de la roadmap, en explicitant les principaux livrables et les types de questions adressés à chaque étape ;
+- Bien distinguer les capacités associées à chaque phase (How-To / Q&A / Q&A + Actions) ;
+- Rendre plus claire la partie Business Value & Opportunities.
+
+Concernant cette dernière partie, voici les principaux messages que je souhaitais faire ressortir :
+
+**1.Immediate Operational Value (Today)**
+
+Réduction progressive des demandes répétitives aujourd’hui traitées via ServiceNow et par email. L’objectif est d’automatiser une partie des demandes à faible valeur ajoutée et de permettre aux équipes support de se concentrer davantage sur les sujets complexes nécessitant une expertise humaine.
+
+**2.User Experience and Knowledge Management (Today)**
+
+Au-delà de l’amélioration de l’expérience utilisateur, le chatbot représente une opportunité de centraliser et structurer l’expertise IAM au sein d’un point d’entrée unique. Il permettra de standardiser la diffusion de l’information, de réduire les écarts d’interprétation et de garantir que les évolutions des processus IAM soient communiquées de manière cohérente à l’ensemble des utilisateurs.
+
+**3.Traceability and Continuous Improvement (Tomorrow)**
+
+Ces informations permettront non seulement d’améliorer progressivement la base de connaissances, mais également d’identifier des opportunités d’amélioration des services IAM, des processus existants et des futures évolutions de MyIAM.
+
+**4.Progressive AI Adoption and Strategic AI Foundation (Tomorrow)**
+
+L’approche est volontairement progressive afin de valider les usages étape par étape. Au-delà du chatbot lui-même, le projet constitue également une première fondation pour les futurs usages IA et Agentic AI autour de l’IAM. 
+
+**5.Strategic Alignment and Future Opportunities (Future)**
+
+Le projet représente aujourd’hui le premier use case CIB prêt à être onboardé sur la plateforme Twin. 
+
+Au-delà de sa valeur opérationnelle, le projet permet également de positionner l’IAM dans les initiatives IA actuellement portées au niveau CIB et ITG. Il bénéficie par ailleurs d’un fort alignement avec les orientations stratégiques autour de Twin et de l’Agentic AI.
+
+Merci encore pour tes conseils et tes retours.
+
+N’hésite pas si tu as d’autres suggestions ou pistes d’amélioration.
+
+Bien cordialement,
+
+Weize
