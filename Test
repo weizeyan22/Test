@@ -1,50 +1,49 @@
-Salut Patrick,
+MoM :
 
-Tu trouveras en pièce jointe la dernière version des slides avec les ajustements discutés pendant notre échange. Delphine s’occupera des derniers points.
+Chatbot Project - Weekly Meeting Minutes
 
-On a bien noté les principaux éléments évoqués pendant la revue :
+## Progress Update
 
-- Mieux mettre en avant que le chatbot est avant tout destiné aux end users MyIAM ;
-- Renforcer la partie liée au monitoring des interactions utilisateurs (questions, réponses, qualité des réponses fournies, taux d’abandon, etc.) afin de mieux mesurer l’adoption et identifier les axes d’amélioration ;
-- Clarifier davantage le découpage et le positionnement des différentes phases de la roadmap, en explicitant les principaux livrables et les types de questions adressés à chaque étape ;
-- Bien distinguer les capacités associées à chaque phase (How-To / Q&A / Q&A + Actions) ;
-- Rendre plus claire la partie Business Value & Opportunities.
+### Steering Committee / ExCo
 
-Concernant cette dernière partie, voici les principaux messages que je souhaitais faire ressortir :
+- Our use case was presented to the ExCo together with the Innovation Lab.
+- A demo was performed as part of the Go / No-Go decision process.
+- The Steering Committee provided a **Go decision** for the project.
+- The first batch of APIs is targeted for delivery by the end of June.
 
-**1.Immediate Operational Value (Today)**
+### TWIN Platform
 
-Réduction progressive des demandes répétitives aujourd’hui traitées via ServiceNow et par email. L’objectif est d’automatiser une partie des demandes à faible valeur ajoutée et de permettre aux équipes support de se concentrer davantage sur les sujets complexes nécessitant une expertise humaine.
+- The Innovation Lab has fixed the majority of TWIN-related bugs and released the updated development environment.
+- A few frontend issues are still being addressed.
+- The current TWIN interface does not yet provide a Feedback section, which is a platform limitation rather than a development issue.
+- No major blockers have been identified at this stage.
+- The objective remains to move to production once the remaining knowledge base adjustments are completed.
 
-**2.User Experience and Knowledge Management (Today)**
+### 2nd UAT Testing
 
-Au-delà de l’amélioration de l’expérience utilisateur, le chatbot représente une opportunité de centraliser et structurer l’expertise IAM au sein d’un point d’entrée unique. Il permettra de standardiser la diffusion de l’information, de réduire les écarts d’interprétation et de garantir que les évolutions des processus IAM soient communiquées de manière cohérente à l’ensemble des utilisateurs.
+- Results from the second UAT campaign have been reviewed.
+- Approximately 30% of feedback remains negative.
 
-**3.Traceability and Continuous Improvement (Tomorrow)**
+Main root causes identified:
 
-Ces informations permettront non seulement d’améliorer progressivement la base de connaissances, mais également d’identifier des opportunités d’amélioration des services IAM, des processus existants et des futures évolutions de MyIAM.
+1. Audit-oriented MyIAM documentation was uploaded to the Knowledge Base, leading to overly long and technical chatbot responses that are not sufficiently user-friendly.
+2. The prompt configuration was not fully optimized. 
 
-**4.Progressive AI Adoption and Strategic AI Foundation (Tomorrow)**
+### Improvements implemented
 
-L’approche est volontairement progressive afin de valider les usages étape par étape. Au-delà du chatbot lui-même, le projet constitue également une première fondation pour les futurs usages IA et Agentic AI autour de l’IAM. 
+- Prompt adjustments have been implemented by Ignat.
+- Initial testing indicates that responses are becoming more concise and user-friendly. However, the accuracy and relevance of the generated responses still require further improvement.
 
-**5.Strategic Alignment and Future Opportunities (Future)**
+Next Steps:
 
-Le projet représente aujourd’hui le premier use case CIB prêt à être onboardé sur la plateforme Twin. 
+- Clean up the Knowledge Base and remove audit-specific documentation.
+- Continue prompt optimization.
+- Monitor chatbot response quality after the changes.
+- Assess the need for a third UAT campaign after the latest improvements.
 
-Au-delà de sa valeur opérationnelle, le projet permet également de positionner l’IAM dans les initiatives IA actuellement portées au niveau CIB et ITG. Il bénéficie par ailleurs d’un fort alignement avec les orientations stratégiques autour de Twin et de l’Agentic AI.
+API & Phase 2 Preparation
 
-Merci encore pour tes conseils et tes retours.
-
-N’hésite pas si tu as d’autres suggestions ou pistes d’amélioration.
-
-
-
-Aujourd’hui, les demandes sont réparties entre plusieurs canaux, ce qui rend difficile l’analyse précise des besoins utilisateurs et des types de demandes les plus fréquents.
-
-Avec le chatbot, les interactions pourront être tracées et analysées afin de mieux comprendre les besoins utilisateurs, d’identifier les principaux points de friction et d’améliorer progressivement la base de connaissances, les services IAM, les processus existants et les futures évolutions de MyIAM.
-
-Chatbot Presentation – Follow-up
-Bien cordialement,
-
-Weize
+- Delphine shared the detailed Tool Layer specifications for the APIs.
+- The first batch of endpoints will focus on the Request Tracking functionalities.
+- Following the specification review, Paramesh will assess the development effort and provide an estimated delivery timeline for the first batch of endpoints.
+- The endpoint implementation remains a key prerequisite for Phase 2 AI agent integration.
