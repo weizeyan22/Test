@@ -1,49 +1,292 @@
-MoM :
+当然。考虑到你今天是和女经理一起面试，而且你们未来可能既有 Chatbot 又有 DataLake 需求，我会把问题设计得比较专业，但不会像 Senior Engineer 面试那样刁钻。
 
-Chatbot Project - Weekly Meeting Minutes
+你甚至可以直接照着念。
 
-## Progress Update
+⸻
 
-### Steering Committee / ExCo
+1. Présentation générale
 
-- Our use case was presented to the ExCo together with the Innovation Lab.
-- A demo was performed as part of the Go / No-Go decision process.
-- The Steering Committee provided a **Go decision** for the project.
-- The first batch of APIs is targeted for delivery by the end of June.
+Question
 
-### TWIN Platform
+Pouvez-vous vous présenter en quelques minutes et nous expliquer votre parcours ?
 
-- The Innovation Lab has fixed the majority of TWIN-related bugs and released the updated development environment.
-- A few frontend issues are still being addressed.
-- The current TWIN interface does not yet provide a Feedback section, which is a platform limitation rather than a development issue.
-- No major blockers have been identified at this stage.
-- The objective remains to move to production once the remaining knowledge base adjustments are completed.
+Ce que tu cherches
 
-### 2nd UAT Testing
+* Structuration
+* Clarté
+* Motivation
 
-- Results from the second UAT campaign have been reviewed.
-- Approximately 30% of feedback remains negative.
+Bonne réponse
 
-Main root causes identified:
+能够清楚解释：
 
-1. Audit-oriented MyIAM documentation was uploaded to the Knowledge Base, leading to overly long and technical chatbot responses that are not sufficiently user-friendly.
-2. The prompt configuration was not fully optimized. 
+* EPF
+* Pourquoi Data / IA
+* Projets principaux
+* Ce qu’il recherche en alternance
 
-### Improvements implemented
+⸻
 
-- Prompt adjustments have been implemented by Ignat.
-- Initial testing indicates that responses are becoming more concise and user-friendly. However, the accuracy and relevance of the generated responses still require further improvement.
+2. Projet LangChain
 
-Next Steps:
+Question
 
-- Clean up the Knowledge Base and remove audit-specific documentation.
-- Continue prompt optimization.
-- Monitor chatbot response quality after the changes.
-- Assess the need for a third UAT campaign after the latest improvements.
+Vous mentionnez LangChain sur votre CV. Pouvez-vous nous expliquer concrètement ce que vous avez développé ?
 
-API & Phase 2 Preparation
+Bonne réponse
 
-- Delphine shared the detailed Tool Layer specifications for the APIs.
-- The first batch of endpoints will focus on the Request Tracking functionalities.
-- Following the specification review, Paramesh will assess the development effort and provide an estimated delivery timeline for the first batch of endpoints.
-- The endpoint implementation remains a key prerequisite for Phase 2 AI agent integration.
+例如：
+
+J’ai développé un système utilisant un LLM associé à une base documentaire.
+
+Les documents étaient vectorisés puis stockés dans une base vectorielle.
+
+Lorsqu’un utilisateur pose une question, le système récupère les documents pertinents avant de générer la réponse.
+
+Red Flag
+
+J’ai suivi un tutoriel sur Youtube.
+
+😂
+
+⸻
+
+3. RAG
+
+Question
+
+Quelle est la différence entre un LLM classique et un système RAG ?
+
+Bonne réponse
+
+Un LLM classique répond uniquement à partir de ses connaissances pré-entraînées.
+
+Un système RAG combine le LLM avec une recherche documentaire afin d’utiliser des données externes et à jour.
+
+⸻
+
+4. SQL
+
+Question
+
+Quelle est la différence entre un INNER JOIN et un LEFT JOIN ?
+
+Bonne réponse
+
+INNER JOIN retourne uniquement les lignes présentes dans les deux tables.
+
+LEFT JOIN retourne toutes les lignes de la table de gauche, même lorsqu’il n’y a pas de correspondance dans la table de droite.
+
+⸻
+
+5. Doublons
+
+Question
+
+Comment identifieriez-vous des doublons dans une base de données ?
+
+Bonne réponse
+
+Je peux utiliser un GROUP BY avec un COUNT afin d’identifier les valeurs apparaissant plusieurs fois.
+
+Exemple :
+
+SELECT id, COUNT(*)
+FROM table
+GROUP BY id
+HAVING COUNT(*) > 1
+
+⸻
+
+6. ETL
+
+Question
+
+Pouvez-vous nous expliquer ce qu’est un ETL ?
+
+Bonne réponse
+
+ETL signifie Extract, Transform, Load.
+
+On extrait les données depuis une source.
+
+On les transforme (nettoyage, enrichissement, standardisation).
+
+Puis on les charge dans une cible comme un Data Warehouse ou un Data Lake.
+
+⸻
+
+7. Transformation ETL
+
+Question
+
+Pouvez-vous donner un exemple concret de transformation dans un ETL ?
+
+Bonne réponse
+
+Par exemple :
+
+Suppression des doublons.
+
+Normalisation des formats de date.
+
+Contrôle de qualité des données.
+
+Enrichissement avec des données de référence.
+
+⸻
+
+8. Data Quality
+
+Question
+
+Que feriez-vous si les données reçues sont incomplètes ou incohérentes ?
+
+Bonne réponse
+
+Je commencerais par mettre en place des contrôles de qualité.
+
+J’identifierais les valeurs manquantes ou incohérentes.
+
+Je générerais des logs et des alertes afin d’informer les équipes concernées.
+
+⸻
+
+9. Data Lake
+
+Question
+
+Quelle est la différence entre un Data Warehouse et un Data Lake ?
+
+Bonne réponse
+
+Un Data Warehouse contient généralement des données déjà structurées et transformées.
+
+Un Data Lake permet de stocker des données brutes provenant de différentes sources et sous différents formats.
+
+⸻
+
+10. Pipeline de données
+
+Question
+
+Pouvez-vous nous décrire les différentes étapes d’un pipeline de données ?
+
+Bonne réponse
+
+Source de données
+
+Extraction
+
+Transformation
+
+Stockage
+
+Consommation (reporting, API, IA, dashboard…)
+
+⸻
+
+Questions Spark
+
+因为CV里没写Spark，所以这部分主要看学习能力。
+
+⸻
+
+Question Spark 1
+
+Avez-vous déjà utilisé Apache Spark ?
+
+如果他说：
+
+Non.
+
+没关系。
+
+继续问。
+
+⸻
+
+Question Spark 2
+
+Connaissez-vous la différence entre Pandas et Spark ?
+
+Bonne réponse
+
+Pandas fonctionne sur une seule machine et en mémoire.
+
+Spark permet le traitement distribué sur plusieurs machines et est adapté aux très gros volumes de données.
+
+⸻
+
+Question Spark 3
+
+Pourquoi utiliser Spark plutôt que Pandas dans un Data Lake ?
+
+Bonne réponse
+
+Pour traiter des volumes de données beaucoup plus importants.
+
+Pour améliorer les performances grâce au calcul distribué.
+
+Pour industrialiser les traitements de données.
+
+⸻
+
+Question très intéressante pour DataLake
+
+这个我最推荐问。
+
+Question
+
+Imaginons que nous souhaitions récupérer des données depuis plusieurs API, les stocker dans un Data Lake et les exploiter ensuite pour des dashboards ou de l’IA. Comment concevriez-vous cette architecture ?
+
+Très bonne réponse
+
+他应该能说出类似：
+
+API
+
+↓
+
+Extraction automatique
+
+↓
+
+Stockage brut
+
+↓
+
+Transformation
+
+↓
+
+Stockage structuré
+
+↓
+
+Dashboard / IA / Reporting
+
+如果他甚至提到：
+
+* Airflow
+* Spark
+* Cloud
+* Data Quality
+
+那就属于超预期了。
+
+⸻
+
+如果是我今天面试这个候选人，我最关注的不是 YOLO、SVM、Neural Networks。
+
+而是这三个问题：
+
+1. Expliquez-moi concrètement votre projet LangChain.
+2. Quelle est la différence entre un Data Warehouse et un Data Lake ?
+3. Comment concevriez-vous un pipeline de données de bout en bout ?
+
+因为这三个问题基本可以判断：
+
+他到底是一个只会做学校AI项目的学生，
+
+还是未来有潜力成长为 Data Engineer / AI Engineer。
