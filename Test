@@ -1,292 +1,272 @@
-当然。考虑到你今天是和女经理一起面试，而且你们未来可能既有 Chatbot 又有 DataLake 需求，我会把问题设计得比较专业，但不会像 Senior Engineer 面试那样刁钻。
+😂 我理解你现在的心情，但如果你的目标是：
 
-你甚至可以直接照着念。
+验证他是不是真的懂数据工程和ETL
 
-⸻
+那问题应该设计成：
 
-1. Présentation générale
+能区分真正懂的人和只背过概念的人。
 
-Question
+而不是故意刁难。
 
-Pouvez-vous vous présenter en quelques minutes et nous expliquer votre parcours ?
-
-Ce que tu cherches
-
-* Structuration
-* Clarté
-* Motivation
-
-Bonne réponse
-
-能够清楚解释：
-
-* EPF
-* Pourquoi Data / IA
-* Projets principaux
-* Ce qu’il recherche en alternance
+因为你最后还是要招一个能干活的人。
 
 ⸻
 
-2. Projet LangChain
+问题1（我最推荐）
 
 Question
 
-Vous mentionnez LangChain sur votre CV. Pouvez-vous nous expliquer concrètement ce que vous avez développé ?
+Imaginons qu’un pipeline ETL fonctionne correctement depuis plusieurs mois. Un matin, le volume de données chargé est deux fois supérieur à la normale. Comment investigueriez-vous le problème ?
 
-Bonne réponse
+⸻
+
+初级学生
+
+会说：
+
+Je vérifierais les données.
+
+结束。
+
+⸻
+
+好学生
+
+会说：
+
+* Vérifier la source
+* Vérifier les logs
+* Contrôler les doublons
+* Vérifier les changements récents
+* Comparer avec les exécutions précédentes
+
+⸻
+
+Data Engineer思维
+
+会说：
+
+* Data lineage
+* Monitoring
+* Alerting
+* Contrôle qualité
+* Root cause analysis
+
+⸻
+
+问题2
+
+Question
+
+Comment garantir l’idempotence d’un pipeline ETL ?
+
+这个很多Data Scientist不会。
+
+⸻
+
+如果他不知道：
+
+正常。
+
+⸻
+
+优秀答案：
+
+Exécuter plusieurs fois le pipeline doit produire le même résultat.
+
+Utiliser des clés métier.
+
+Déduplication.
+
+Gestion des mises à jour.
+
+Contrôle des rechargements.
+
+⸻
+
+问题3
+
+Question
+
+Quelle est la différence entre un chargement Full Load et un chargement Incremental ?
+
+⸻
+
+优秀答案：
+
+Full
+
+* recharge tout
+
+Incremental
+
+* uniquement les nouvelles données
+
+⸻
+
+继续追问：
+
+Pourquoi préférer un chargement incrémental ?
+
+⸻
+
+答案：
+
+* performance
+* coûts
+* volume
+
+⸻
+
+问题4
+
+Question
+
+Comment géreriez-vous des données arrivant en retard dans un pipeline ?
+
+（Late arriving data）
+
+⸻
+
+这个开始有点Data Engineering味道了。
+
+⸻
+
+优秀答案：
+
+* watermark
+* fenêtre de traitement
+* reprocessing
+
+⸻
+
+问题5
+
+Question
+
+Comment mettriez-vous en place un contrôle de qualité des données dans un ETL ?
+
+⸻
+
+优秀答案：
+
+* contrôle de complétude
+* unicité
+* cohérence
+* validité
+
+⸻
 
 例如：
 
-J’ai développé un système utilisant un LLM associé à une base documentaire.
-
-Les documents étaient vectorisés puis stockés dans une base vectorielle.
-
-Lorsqu’un utilisateur pose une question, le système récupère les documents pertinents avant de générer la réponse.
-
-Red Flag
-
-J’ai suivi un tutoriel sur Youtube.
-
-😂
+* email non nul
+* date valide
+* pas de doublons
 
 ⸻
 
-3. RAG
+问题6（我觉得非常好）
 
 Question
 
-Quelle est la différence entre un LLM classique et un système RAG ?
-
-Bonne réponse
-
-Un LLM classique répond uniquement à partir de ses connaissances pré-entraînées.
-
-Un système RAG combine le LLM avec une recherche documentaire afin d’utiliser des données externes et à jour.
+Imaginons qu’une API fournisse des données avec un format différent du jour au lendemain. Que faites-vous ?
 
 ⸻
 
-4. SQL
+优秀答案：
+
+* validation du schéma
+* logs
+* alertes
+* traitement d’erreur
+
+⸻
+
+而不是：
+
+le pipeline plante 😂
+
+⸻
+
+Spark问题
+
+CV没写Spark。
+
+所以你可以这样问。
+
+⸻
 
 Question
 
-Quelle est la différence entre un INNER JOIN et un LEFT JOIN ?
-
-Bonne réponse
-
-INNER JOIN retourne uniquement les lignes présentes dans les deux tables.
-
-LEFT JOIN retourne toutes les lignes de la table de gauche, même lorsqu’il n’y a pas de correspondance dans la table de droite.
+Pourquoi Spark est-il plus performant que Pandas sur de gros volumes de données ?
 
 ⸻
 
-5. Doublons
+优秀答案：
+
+* traitement distribué
+* parallélisation
+* cluster
+
+⸻
+
+我最喜欢的DataLake问题
 
 Question
 
-Comment identifieriez-vous des doublons dans une base de données ?
+Dans un Data Lake, pourquoi ne stocke-t-on pas uniquement les données transformées ? Pourquoi conserver également les données brutes ?
 
-Bonne réponse
-
-Je peux utiliser un GROUP BY avec un COUNT afin d’identifier les valeurs apparaissant plusieurs fois.
-
-Exemple :
-
-SELECT id, COUNT(*)
-FROM table
-GROUP BY id
-HAVING COUNT(*) > 1
+这个很好。
 
 ⸻
 
-6. ETL
+优秀答案：
 
-Question
-
-Pouvez-vous nous expliquer ce qu’est un ETL ?
-
-Bonne réponse
-
-ETL signifie Extract, Transform, Load.
-
-On extrait les données depuis une source.
-
-On les transforme (nettoyage, enrichissement, standardisation).
-
-Puis on les charge dans une cible comme un Data Warehouse ou un Data Lake.
+* traçabilité
+* réexécution
+* audit
+* nouvelles règles métier
 
 ⸻
 
-7. Transformation ETL
+如果他能答出来。
 
-Question
-
-Pouvez-vous donner un exemple concret de transformation dans un ETL ?
-
-Bonne réponse
-
-Par exemple :
-
-Suppression des doublons.
-
-Normalisation des formats de date.
-
-Contrôle de qualité des données.
-
-Enrichissement avec des données de référence.
+说明思维已经超过普通学生。
 
 ⸻
 
-8. Data Quality
+但说实话
 
-Question
+看完这个CV。
 
-Que feriez-vous si les données reçues sont incomplètes ou incohérentes ?
+如果我是你。
 
-Bonne réponse
+我真正想验证的不是：
 
-Je commencerais par mettre en place des contrôles de qualité.
+他会不会回答出来。
 
-J’identifierais les valeurs manquantes ou incohérentes.
+而是：
 
-Je générerais des logs et des alertes afin d’informer les équipes concernées.
+当他不会的时候，他怎么反应。
 
-⸻
+因为一个优秀Alternant经常会说：
 
-9. Data Lake
+Je ne connais pas encore Spark.
 
-Question
+Je n’ai jamais utilisé Airflow.
 
-Quelle est la différence entre un Data Warehouse et un Data Lake ?
+Mais je comprends le besoin et je suis prêt à apprendre.
 
-Bonne réponse
+这种人其实比背了一堆关键词的人更有培养价值。
 
-Un Data Warehouse contient généralement des données déjà structurées et transformées.
+对于你们Prod Sec未来的DataLake，我觉得最重要的信号不是技术，而是：
 
-Un Data Lake permet de stocker des données brutes provenant de différentes sources et sous différents formats.
+有没有Data Engineering的思维。
 
-⸻
+你问下面这三个问题基本就够筛掉80%的人了：
 
-10. Pipeline de données
+1. Différence entre Full Load et Incremental Load ?
+2. Comment garantir la qualité des données dans un ETL ?
+3. Pourquoi conserver les données brutes dans un Data Lake ?
 
-Question
-
-Pouvez-vous nous décrire les différentes étapes d’un pipeline de données ?
-
-Bonne réponse
-
-Source de données
-
-Extraction
-
-Transformation
-
-Stockage
-
-Consommation (reporting, API, IA, dashboard…)
-
-⸻
-
-Questions Spark
-
-因为CV里没写Spark，所以这部分主要看学习能力。
-
-⸻
-
-Question Spark 1
-
-Avez-vous déjà utilisé Apache Spark ?
-
-如果他说：
-
-Non.
-
-没关系。
-
-继续问。
-
-⸻
-
-Question Spark 2
-
-Connaissez-vous la différence entre Pandas et Spark ?
-
-Bonne réponse
-
-Pandas fonctionne sur une seule machine et en mémoire.
-
-Spark permet le traitement distribué sur plusieurs machines et est adapté aux très gros volumes de données.
-
-⸻
-
-Question Spark 3
-
-Pourquoi utiliser Spark plutôt que Pandas dans un Data Lake ?
-
-Bonne réponse
-
-Pour traiter des volumes de données beaucoup plus importants.
-
-Pour améliorer les performances grâce au calcul distribué.
-
-Pour industrialiser les traitements de données.
-
-⸻
-
-Question très intéressante pour DataLake
-
-这个我最推荐问。
-
-Question
-
-Imaginons que nous souhaitions récupérer des données depuis plusieurs API, les stocker dans un Data Lake et les exploiter ensuite pour des dashboards ou de l’IA. Comment concevriez-vous cette architecture ?
-
-Très bonne réponse
-
-他应该能说出类似：
-
-API
-
-↓
-
-Extraction automatique
-
-↓
-
-Stockage brut
-
-↓
-
-Transformation
-
-↓
-
-Stockage structuré
-
-↓
-
-Dashboard / IA / Reporting
-
-如果他甚至提到：
-
-* Airflow
-* Spark
-* Cloud
-* Data Quality
-
-那就属于超预期了。
-
-⸻
-
-如果是我今天面试这个候选人，我最关注的不是 YOLO、SVM、Neural Networks。
-
-而是这三个问题：
-
-1. Expliquez-moi concrètement votre projet LangChain.
-2. Quelle est la différence entre un Data Warehouse et un Data Lake ?
-3. Comment concevriez-vous un pipeline de données de bout en bout ?
-
-因为这三个问题基本可以判断：
-
-他到底是一个只会做学校AI项目的学生，
-
-还是未来有潜力成长为 Data Engineer / AI Engineer。
+如果这三个都答不出来，而且对Data Engineering也没兴趣，那基本可以确定他更偏Data Science，不是你想找的profil。
