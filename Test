@@ -1,272 +1,43 @@
-😂 我理解你现在的心情，但如果你的目标是：
+Pour la semaine dernière, honnêtement c’était assez soudain.
+J’ai eu un souci de santé et j’ai eu besoin de prendre quelques jours de repos. Je sais que c’était au dernier moment et Je comprends que ce n’était pas idéal du point de vue de l’organisation.
+Mais de mon côté, c’était une situation imprévue liée à ma santé.
+Par contre, je préfère ne pas rentrer dans les détails parce que c’est quelque chose d’assez personnel，et je ne souhaite pas particulièrement en parler ni inquiéter les autres.
+Si un jour c’est quelque chose de prévisible, bien sûr je te préviendrai à l’avance. Mais là, ce n’était vraiment pas quelque chose que j’avais anticipé.
 
-验证他是不是真的懂数据工程和ETL
 
-那问题应该设计成：
+Par contre, j’aimerais aussi qu’on clarifie un peu les priorités et mon périmètre de travail parce qu’en ce moment je suis sur beaucoup de sujets en parallèle.
+Je travaille sur le projet Chatbot, sur le projet DataLake, je gère aussi les demandes liées aux audits, les extractions de données, etc.
+Concernant le DataLake, Patrick et Samuel m’ont déjà demandé plusieurs fois où on en était. Le sujet avance, mais ça demande énormément de recherche, de discussions avec différentes équipes, d’analyse et de structuration. C’est un travail qui prend du temps et qui demande de la concentration.
+Pour le Chatbot, j’ai reçu le scope début juin. À ce moment-là, j’étais déjà très engagée sur le DataLake, puis j’ai été absente la semaine dernière.
+Je n’ai pas laissé le sujet de côté volontairement. J’essaie simplement de gérer plusieurs priorités en même temps.
 
-能区分真正懂的人和只背过概念的人。
 
-而不是故意刁难。
+En plus du Chatbot et du DataLake, je continue également à travailler sur les sujets liés aux audits GM. Les demandes continuent d’arriver régulièrement et cela demande aussi du temps d’analyse, de préparation et de consolidation.
+J’ai également les demandes d’extraction de données à traiter.
+C’est justement pour cette raison que j’aimerais qu’on clarifie ensemble les priorités actuelles, afin que je puisse me concentrer sur les sujets les plus importants et avancer efficacement.
 
-因为你最后还是要招一个能干活的人。
+Concernant le scope du Chatbot, je l’ai reçu début juin.
 
-⸻
+À ce moment-là, j’étais déjà en train d’avancer sur l’analyse du DataLake, puis j’ai également été absente la semaine dernière.
+Je n’ai pas volontairement laissé le sujet de côté ou retardé le travail. J’ai simplement dû gérer plusieurs priorités en parallèle, avec un temps et une capacité de concentration qui restent limités.
+C’est justement pour cette raison que j’aimerais qu’on clarifie ensemble les priorités actuelles.）
 
-问题1（我最推荐）
+Du coup, j’aimerais qu’on s’aligne sur ce qui est prioritaire aujourd’hui. Si le Chatbot est la priorité numéro un, je me concentrerai dessus. Si on veut faire avancer le DataLake, il faudra aussi que je puisse y consacrer du temps，j’aurai besoin du temps nécessaire pour le faire progresser correctement..
 
-Question
+Si nécessaire, nous pouvons également faire un point avec Patrick afin d’aligner les priorités et les attentes de chacun.
 
-Imaginons qu’un pipeline ETL fonctionne correctement depuis plusieurs mois. Un matin, le volume de données chargé est deux fois supérieur à la normale. Comment investigueriez-vous le problème ?
+J’ai eu un souci de santé.
+Je préfère garder les détails privés.
+Je comprends qu’il aurait été préférable de communiquer plus tôt.
+J’aimerais maintenant clarifier les priorités
 
-⸻
 
-初级学生
+C’était vraiment imprévu.
 
-会说：
+Je n’avais pas anticipé cette situation.
 
-Je vérifierais les données.
+J’ai eu besoin de prendre quelques jours de repos pour des raisons de santé.
 
-结束。
 
-⸻
-
-好学生
-
-会说：
-
-* Vérifier la source
-* Vérifier les logs
-* Contrôler les doublons
-* Vérifier les changements récents
-* Comparer avec les exécutions précédentes
-
-⸻
-
-Data Engineer思维
-
-会说：
-
-* Data lineage
-* Monitoring
-* Alerting
-* Contrôle qualité
-* Root cause analysis
-
-⸻
-
-问题2
-
-Question
-
-Comment garantir l’idempotence d’un pipeline ETL ?
-
-这个很多Data Scientist不会。
-
-⸻
-
-如果他不知道：
-
-正常。
-
-⸻
-
-优秀答案：
-
-Exécuter plusieurs fois le pipeline doit produire le même résultat.
-
-Utiliser des clés métier.
-
-Déduplication.
-
-Gestion des mises à jour.
-
-Contrôle des rechargements.
-
-⸻
-
-问题3
-
-Question
-
-Quelle est la différence entre un chargement Full Load et un chargement Incremental ?
-
-⸻
-
-优秀答案：
-
-Full
-
-* recharge tout
-
-Incremental
-
-* uniquement les nouvelles données
-
-⸻
-
-继续追问：
-
-Pourquoi préférer un chargement incrémental ?
-
-⸻
-
-答案：
-
-* performance
-* coûts
-* volume
-
-⸻
-
-问题4
-
-Question
-
-Comment géreriez-vous des données arrivant en retard dans un pipeline ?
-
-（Late arriving data）
-
-⸻
-
-这个开始有点Data Engineering味道了。
-
-⸻
-
-优秀答案：
-
-* watermark
-* fenêtre de traitement
-* reprocessing
-
-⸻
-
-问题5
-
-Question
-
-Comment mettriez-vous en place un contrôle de qualité des données dans un ETL ?
-
-⸻
-
-优秀答案：
-
-* contrôle de complétude
-* unicité
-* cohérence
-* validité
-
-⸻
-
-例如：
-
-* email non nul
-* date valide
-* pas de doublons
-
-⸻
-
-问题6（我觉得非常好）
-
-Question
-
-Imaginons qu’une API fournisse des données avec un format différent du jour au lendemain. Que faites-vous ?
-
-⸻
-
-优秀答案：
-
-* validation du schéma
-* logs
-* alertes
-* traitement d’erreur
-
-⸻
-
-而不是：
-
-le pipeline plante 😂
-
-⸻
-
-Spark问题
-
-CV没写Spark。
-
-所以你可以这样问。
-
-⸻
-
-Question
-
-Pourquoi Spark est-il plus performant que Pandas sur de gros volumes de données ?
-
-⸻
-
-优秀答案：
-
-* traitement distribué
-* parallélisation
-* cluster
-
-⸻
-
-我最喜欢的DataLake问题
-
-Question
-
-Dans un Data Lake, pourquoi ne stocke-t-on pas uniquement les données transformées ? Pourquoi conserver également les données brutes ?
-
-这个很好。
-
-⸻
-
-优秀答案：
-
-* traçabilité
-* réexécution
-* audit
-* nouvelles règles métier
-
-⸻
-
-如果他能答出来。
-
-说明思维已经超过普通学生。
-
-⸻
-
-但说实话
-
-看完这个CV。
-
-如果我是你。
-
-我真正想验证的不是：
-
-他会不会回答出来。
-
-而是：
-
-当他不会的时候，他怎么反应。
-
-因为一个优秀Alternant经常会说：
-
-Je ne connais pas encore Spark.
-
-Je n’ai jamais utilisé Airflow.
-
-Mais je comprends le besoin et je suis prêt à apprendre.
-
-这种人其实比背了一堆关键词的人更有培养价值。
-
-对于你们Prod Sec未来的DataLake，我觉得最重要的信号不是技术，而是：
-
-有没有Data Engineering的思维。
-
-你问下面这三个问题基本就够筛掉80%的人了：
-
-1. Différence entre Full Load et Incremental Load ?
-2. Comment garantir la qualité des données dans un ETL ?
-3. Pourquoi conserver les données brutes dans un Data Lake ?
-
-如果这三个都答不出来，而且对Data Engineering也没兴趣，那基本可以确定他更偏Data Science，不是你想找的profil。
+Je comprends que ce n’était pas idéal du point de vue de l’organisation.
+Mais de mon côté, c’était une situation imprévue liée à ma santé.
