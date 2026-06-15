@@ -1,7 +1,9 @@
-En résumé, aujourd’hui nos données sont dispersées dans plusieurs systèmes.
+Je vais te présenter rapidement le contexte du projet.
 
-L’idée est de construire une plateforme qui nous permette de centraliser ces données, de les exploiter plus facilement et de préparer les futurs usages autour de la data et de l’IA.
+Aujourd’hui, au sein de Production Security, nous avons beaucoup de données provenant de différentes sources : IAM, sécurité, gouvernance, reporting, etc.
 
-Le projet est encore en phase de construction, donc il y a beaucoup de choses à définir et à mettre en place. C’est justement ce qui le rend intéressant.
+L’objectif du projet DataLake est de centraliser et structurer ces données au sein d’une plateforme unique afin de faciliter l’analyse, le reporting et, à terme, les futurs cas d’usage liés à l’IA.
 
-C’est un projet assez transverse, donc il y aura aussi beaucoup d’échanges avec différentes équipes et différents métiers.
+Nous sommes actuellement dans une phase de réflexion et de cadrage : analyse de l’existant, benchmark des solutions, définition de l’architecture cible et identification des besoins métiers.
+
+Pour l’alternant, l’objectif sera de participer progressivement à cette construction, notamment sur les aspects data engineering, intégration de données, qualité des données, automatisation des traitements et éventuellement certains sujets liés à l’IA.
