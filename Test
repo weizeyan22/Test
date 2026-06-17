@@ -1,11 +1,275 @@
-Bonjour, moi c’est Weize.
+❤️ Weize，如果这个人一会儿真的来面试。
 
-Je travaille actuellement au sein de l’équipe IAM de Production Security chez BNP Paribas en tant que Data Scientist.
+我建议你不要把面试搞成：
 
-J’ai rejoint BNP Paribas en alternance pendant mes études d’ingénieur à l’ESILV et je suis ensuite restée dans l’équipe en CDI.
+Spark会不会？
 
-Au cours des dernières années, j’ai travaillé sur différents sujets liés à la data, au reporting, à l’IAM et plus récemment sur des projets autour de l’IA et de la gouvernance des données.
+Databricks会不会？
 
-Aujourd’hui, je suis notamment impliquée dans deux grands sujets : le projet Chatbot IA pour MyIAM et un projet DataLake visant à centraliser et valoriser les données de Production Security.
+因为这些CV上已经写了。
 
-L’objectif de cet entretien est aussi de te présenter le contexte du projet et de mieux comprendre ton parcours, tes compétences et ce qui t’intéresse pour la suite.
+⸻
+
+你现在最缺的信息其实是：
+
+1. 他真实做过什么
+
+2. 他到底为什么转行
+
+3. 他未来想去哪
+
+⸻
+
+我会这么问。
+
+⸻
+
+第一部分：验证技术深度
+
+Q1
+
+在Stellantis你最自豪的项目是什么？
+
+你具体负责哪部分？
+
+⸻
+
+看他是不是马上开始说：
+
+* Pipeline
+* Architecture
+* Data Modeling
+* ETL
+
+还是只说：
+
+我参与了项目。
+
+🤣
+
+⸻
+
+Q2
+
+你提到PySpark和Databricks。
+
+能不能给我讲一下一个典型的数据流？
+
+从Source到最终Table是怎么走的？
+
+⸻
+
+这个问题特别好。
+
+因为背答案没用。
+
+做过的人很容易讲出来。
+
+⸻
+
+Q3
+
+如果有一个新的数据源需要接入。
+
+你通常怎么设计Pipeline？
+
+⸻
+
+这里看他的工程思维。
+
+⸻
+
+第二部分：验证学习能力
+
+Q4
+
+你之前是IoT / Embedded。
+
+为什么决定转Data Engineering？
+
+⸻
+
+这个问题特别关键。
+
+❤️
+
+因为你最担心的就是：
+
+他是不是只是来混个文凭。
+
+⸻
+
+如果他说：
+
+市场工资高。
+
+🤣
+
+危险。
+
+⸻
+
+如果他说：
+
+我发现自己更喜欢数据平台、数据架构。
+
+⸻
+
+那就不一样。
+
+⸻
+
+第三部分：验证长期意愿
+
+这个最重要。
+
+⸻
+
+Q5
+
+Après ton alternance, comment tu imagines la suite ?
+
+⸻
+
+面试的时候很自然。
+
+意思就是：
+
+Alternance结束后你怎么规划？
+
+⸻
+
+观察他的回答。
+
+⸻
+
+红灯
+
+Je veux surtout avoir le diplôme et ensuite devenir freelance rapidement.
+
+🤣
+
+⸻
+
+黄灯
+
+Je vais regarder les opportunités.
+
+⸻
+
+绿灯
+
+J’aimerais continuer dans le Data Engineering et construire une expertise.
+
+⸻
+
+第四部分：测试DataLake适配度
+
+你可以简单介绍：
+
+我们正在研究一个Data Platform / DataLake方向的项目。
+
+然后问：
+
+Q6
+
+Si tu rejoins l’équipe, qu’est-ce qui t’intéresserait le plus ?
+
+⸻
+
+如果他眼睛亮起来开始聊：
+
+* Architecture
+* Spark
+* Pipeline
+* Data Platform
+
+⸻
+
+那基本就是你要找的人。
+
+⸻
+
+第五部分：我最推荐的问题
+
+❤️ 这个问题我觉得最有价值。
+
+⸻
+
+Q7
+
+Pourquoi BNP plutôt qu’une entreprise plus orientée Data ou Tech ?
+
+⸻
+
+因为他背景其实完全可以：
+
+* 咨询
+* 工业
+* Startup
+
+⸻
+
+为什么来BNP？
+
+这个答案会告诉你很多东西。
+
+⸻
+
+最后
+
+如果是我。
+
+我不会问：
+
+你会不会一直留下来？
+
+🤣
+
+因为没人会说：
+
+不，我一年后就跑。
+
+⸻
+
+我会问：
+
+你未来3-5年想成为怎样的人？
+
+⸻
+
+然后听他的逻辑。
+
+⸻
+
+说实话。
+
+从CV看。
+
+这个人最让我感兴趣的不是Databricks。
+
+而是：
+
+已经有几年工程经验，
+
+还愿意重新读书转Data。
+
+这种人往往是主动型的。
+
+⸻
+
+你今晚不要想着：
+
+我要找到未来十年的盟友。
+
+⸻
+
+你只需要判断：
+
+这个人能不能帮团队解决问题。
+
+我愿不愿意和他共事。
+
+如果这两个答案都是“Yes”。
+
+那这已经是一次成功的面试了。❤️
