@@ -1,0 +1,45 @@
+这种情况其实最好提前帮他们“免责”，说明：
+
+* 你发的是完整列表；
+* 你不确定哪些文档最终被成功上传到了KB；
+* 如果他们发现列表中的文档已经存在于KB，请全部删除。
+
+这样后面不会出现：
+
+“这个文档我们没找到，因为当时没上传成功。”
+
+你可以发：
+
+Hi Divya,
+
+As requested, please find attached the complete list of audit-related documents that were previously shared for the Knowledge Base.
+
+Please note that, due to formatting issues encountered during the initial upload process, I am not certain whether all of these documents were ultimately integrated into the Knowledge Base. However, I am providing the full list for completeness.
+
+Could you please remove any of the attached documents that are currently present in the Knowledge Base?
+
+Based on the latest UAT results, we suspect that these audit-oriented documents are contributing to overly technical responses and are negatively impacting the chatbot’s ability to provide user-focused answers.
+
+Thank you in advance for your support.
+
+Best regards,
+
+Weize
+
+如果你想更简洁一点（我觉得更符合你们平时和 Innovation Lab 的沟通风格）：
+
+Hi Divya,
+
+As requested, please find attached the list of audit-related documents.
+
+Due to formatting issues encountered during the initial Knowledge Base upload, I am not sure whether all of these documents were successfully integrated. However, please use this list as a reference and remove any of these documents that are currently present in the Knowledge Base.
+
+Based on the latest UAT feedback, we believe these audit-focused documents are contributing to overly technical responses and reducing the relevance of the chatbot answers for end users.
+
+Thank you for your support.
+
+Best regards,
+
+Weize
+
+第二个版本更像项目沟通邮件，简洁、客观，而且把责任边界说明得很清楚。
