@@ -1,118 +1,16 @@
-可以，这种 FRC Template 本来就不是写长文的，每个框一般都是 3–5 个 bullet points。下面这个长度基本就能放进去。
+例如：
 
-⸻
+Quantitative
 
-1. Business problem
+* Reduce repetitive support requests.
+* Reduce response time.
+* Increase first-contact resolution.
+* Improve support team productivity.
 
-* Repetitive IAM support requests
-* Difficult access to IAM information
-* Heavy reliance on manual support
+Qualitative
 
-⸻
-
-2. Current process
-
-* Documentation & FAQs
-* ServiceNow tickets
-* Email support
-
-Limitations
-
-* Slow responses
-* Difficult to find information
-* Repetitive workload
-
-（如果空间更小，只保留前三行。）
-
-⸻
-
-3. Objective
-
-* AI assistant for MyIAM
-* Improve self-service
-* Reduce support workload
-* Enhance user experience
-
-⸻
-
-4. Expected benefits
-
-* Faster answers
-* Fewer support tickets
-* Better user experience
-* Higher support efficiency
-
-⸻
-
-5. Success criteria
-
-* Accurate AI responses
-* Positive user feedback
-* Successful API integration
-* Reduced support requests
-
-⸻
-
-6. Timeline
-
-* Business approval: Jul 2026
-* PoC: Jul–Aug 2026
-* Production: TBD
-
-⸻
-
-7. Region / Users
-
-Regions
-
-Global CIB
-
-Users
-
-MyIAM users
-
-Testers
-
-IAM Support Team
-
-⸻
-
-8. Business Lines
-
-勾：
-
-☑ Function
-
-如果 MyIAM 覆盖整个 CIB，也可以勾：
-
-☑ Global Banking
-
-⸻
-
-9. Technology
-
-勾：
-
-☑ AI / Machine Learning
-
-☑ Cloud
-
-☑ Client digital interaction
-
-⸻
-
-10. Maturity
-
-☑ Prototype
-
-⸻
-
-我还有一个建议
-
-Business problem 那一栏，我建议改成下面这个版本，比 “Heavy reliance on manual support” 更符合你们项目的定位，也更有管理层视角：
-
-* Repetitive IAM support requests
-* Difficult access to IAM information
-* Improve employee self-service
-
-这样三句话既点出了痛点，也体现了项目目标，放在 FRC 里会更自然。
+* Better employee experience.
+* Easier access to IAM knowledge.
+* Consistent responses.
+* Better adoption of MyIAM services.
+* Foundation for future AI capabilities.
