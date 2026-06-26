@@ -1,157 +1,241 @@
-Weize，我建议你今天不要去”赢”Delphine，也不要去”说服”Patrick。
+可以，而且我觉得这个 FRC 我们可以填得比较漂亮，因为你们之前已经准备了很多材料（SteerCo、ExCo、Business Case、API Specs、Knowledge Base 等），很多内容直接可以复用。
 
-你的目标只有一个：
-
-把你的专业判断讲清楚，然后让Patrick做Manager该做的决定。
-
-这反而会让你的意见更有分量。
+从你这张模板来看，需要填写的主要就是下面几个部分。
 
 ⸻
 
-我建议你的结构（3分钟就够）
+1. Proof of Concept description / objectives
 
-① 先承认两个人都有优点
+What business problem/difficulties or opportunity is the POC addressing?
 
-先降低对抗性。
+可以写：
 
-Les deux profils ont des qualités.
+The current MyIAM support process relies heavily on ServiceNow tickets, emails, and manual interactions with support teams. End users often struggle to find the correct information or understand IAM processes, resulting in repetitive support requests and increased workload for support teams.
 
-Je comprends pourquoi Pierre peut être intéressant sur le long terme, notamment pour son potentiel et sa réflexion structurée.
-
-这样Patrick会觉得：
-
-Weize听进去了我的观点。
+This PoC aims to introduce an AI-powered assistant capable of providing accurate, contextual, and user-friendly responses to MyIAM users.
 
 ⸻
 
-② 然后回到岗位需求（这是你的核心）
+What is the current process or solution, and what are its limitations?
 
-这是最重要的一段。
+可以写：
 
-En revanche, si je me base sur les besoins actuels du projet Data Lake, je me projette davantage avec Cédric.
+Users currently rely on:
 
-然后解释原因。
+* MyIAM documentation
+* ServiceNow requests
+* Email exchanges with IAM support teams
+
+These approaches have several limitations:
+
+* Documentation can be difficult to navigate.
+* Responses are often delayed.
+* Support teams repeatedly answer similar questions.
+* Users struggle to identify the appropriate process or request type.
+
+⸻
+
+What is the objective of this PoC?
+
+这里建议写得比较符合管理层语言：
+
+The objective of this PoC is to evaluate the feasibility of integrating an AI assistant into MyIAM to:
+
+* Improve employee self-service capabilities.
+* Reduce repetitive support requests.
+* Provide contextual guidance for IAM processes.
+* Improve user experience.
+* Prepare the foundation for future AI-enabled IAM services.
+
+⸻
+
+2. Expected benefits
+
+建议不要只写一句。
 
 例如：
 
-Il a déjà travaillé sur des pipelines de données, Databricks, PySpark et des sujets proches de la Data Engineering.
+Quantitative
 
-J’ai l’impression qu’il pourra contribuer plus rapidement sur les sujets que nous avons aujourd’hui.
+* Reduce repetitive support requests.
+* Reduce response time.
+* Increase first-contact resolution.
+* Improve support team productivity.
 
-注意。
+Qualitative
 
-不要说：
-
-Il est meilleur.
-
-而说：
-
-Il est plus aligné avec nos besoins actuels.
-
-这是两个完全不同的表达。
-
-⸻
-
-③ 解释为什么你这样判断
-
-这一点你已经有充分依据。
-
-可以说：
-
-Pendant l’entretien, j’ai essayé de comprendre leur projet professionnel et leur intérêt pour la Data Engineering.
-
-Chez Cédric, j’ai trouvé cette orientation plus claire.
-
-不要评价Pierre不好。
-
-只说：
-
-Chez Pierre, je n’ai pas encore réussi à identifier la même projection sur la Data Engineering.
-
-这是一个非常客观的反馈。
+* Better employee experience.
+* Easier access to IAM knowledge.
+* Consistent responses.
+* Better adoption of MyIAM services.
+* Foundation for future AI capabilities.
 
 ⸻
 
-④ 最后表达你的立场
+3. Success criteria
 
-最后一句就够了。
+建议写 KPI。
 
-Comme c’est avec cette personne que je travaillerai au quotidien sur le projet, si je dois donner mon avis, je choisirais Cédric.
+例如：
 
-结束。
+The PoC will be considered successful if:
 
-不要继续解释。
+* Users obtain relevant answers to common IAM questions.
+* Positive user feedback is received during testing.
+* The chatbot correctly answers predefined use cases.
+* Response time remains acceptable.
+* Knowledge Base integration performs as expected.
+* API integration with MyIAM is successfully validated.
 
-⸻
+如果你们做第三轮 UAT，还可以加：
 
-我建议你不要说的
-
-❌ “我和Pierre没feeling。”
-
-❌ “Pierre不服我。”
-
-❌ “Pierre是introverti。”
-
-❌ “Cedric一定比Pierre优秀。”
-
-这些都会让讨论偏离重点。
+* User satisfaction score
+* Percentage of correct answers
+* Number of unanswered questions
 
 ⸻
 
-如果Patrick问：
+4. Timeline / Key deadlines
 
-“Et si Cédric part dans deux ans ?”
+例如：
 
-你可以回答：
+Business approval
 
-C’est un risque possible.
+July 2026
 
-Mais aujourd’hui, notre priorité est de réussir le projet Data Lake.
+Presentation to CIB TEC FRC
 
-À mes yeux, Cédric est le profil le plus aligné avec cette phase du projet.
+July 2026
 
-注意，这不是否认长期风险，而是说明你认为当前阶段的优先级。
+Pilot
 
-⸻
+July – August 2026
 
-如果Delphine说：
+Production readiness
 
-“Pierre a plus de potentiel.”
+TBD after successful validation
 
-不要反驳。
-
-你可以说：
-
-C’est possible.
-
-Mon point est simplement que, pour les missions que nous avons aujourd’hui, je me projette davantage avec Cédric.
-
-这样既承认了她的观点，又没有放弃自己的判断。
+（具体日期可以根据你们项目计划调整。）
 
 ⸻
 
-最后，我想说一句。
+5. Region / Countries impacted
 
-今天这场会，不要想着证明自己比Patrick或Delphine更聪明。
+如果是 MyIAM：
 
-Patrick昨天已经告诉你：
+Regions
 
-Ton avis est important.
+✅ Global
 
-这意味着他不是要你迎合他。
+Countries
 
-他是要你给出真实、专业、经过思考的判断。
+All CIB entities using MyIAM
 
-把你的判断讲清楚，然后接受Manager综合团队、预算、长期规划等因素做最终决定。
+⸻
 
-无论最终结果是什么，只要你的判断是基于岗位需求、项目需求和面试观察，而不是情绪，你就已经完成了自己的职责。
+Users
 
-祝你顺利。🌱
+例如：
 
-Si nous étions en train de recruter un alternant Data sans besoin particulier, j’aurais probablement évalué les profils différemment.
+CIB employees using MyIAM
 
-Mais aujourd’hui, nous avons un besoin concret lié aux sujets Data Engineering / Data Lake, et c’est dans ce contexte que je donne mon avis.
+Tester
 
-Je suis d’accord qu’il a du potentiel.
+可以写
 
-Ma question est plutôt : est-ce que son potentiel correspond au besoin que nous avons aujourd’hui ?
+IAM Support Team
+
+Product Owner
+
+Selected business users
+
+⸻
+
+6. Business Lines / Functions impacted
+
+应该勾：
+
+✅ Function
+
+如果 MyIAM 已经给整个 CIB 用：
+
+也可以勾：
+
+✅ Global Banking
+
+如果 Markets 也在用：
+
+✅ Global Markets
+
+如果不确定，就只勾 Function。
+
+⸻
+
+7. Technology
+
+这里应该勾：
+
+✅ AI / Machine Learning
+
+✅ Cloud
+
+如果允许的话：
+
+✅ Client Digital Interaction
+
+Big Data / Analytics
+
+如果他们认为 RAG 属于 Analytics，也可以勾。
+
+⸻
+
+8. Maturity Technology
+
+目前你们更像：
+
+✅ Prototype
+
+因为：
+
+* 已经开发
+* 已经做两轮 UAT
+* SteerCo 已经 Go
+* 正在准备 Production
+
+如果他们定义 Prototype 是开发完成、PoC 验证阶段，这是最合适的。
+
+⸻
+
+Sponsor 那一栏
+
+右上角还有：
+
+Business Sponsor
+
+这里通常应该填 业务 Sponsor，很可能是 François（如果他是项目 Sponsor）或者负责 MyIAM 的业务负责人，而不是 Innovation Lab。
+
+Project Manager
+
+这里一般填 Delphine（如果她是正式的 PM）。
+
+IT Cluster approval
+
+一般等审批人填写，或者填对应 IT Cluster Manager 的名字。
+
+⸻
+
+我还有一个建议
+
+这份 FRC 不要只把它当审批材料。
+
+因为你之前已经做了很多关于 Chatbot 的 Business Case，这份文档其实可以直接体现项目价值。比如你之前总结过的内容都可以融进去：
+
+* 19,000+ Resources
+* 100,000+ Identities
+* 3,000,000+ Accesses
+* 减少 ServiceNow 和邮件咨询
+* 提升员工体验
+* 建立 AI Foundation
+* 为未来 Agentic AI 做准备
+
+这些都是很好的亮点。如果 FRC 允许稍微详细一点，我建议把这些价值写进去，会比一份只有几句话的审批表更有说服力。
