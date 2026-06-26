@@ -1,16 +1,51 @@
-例如：
+这一页其实就是让你说明 PoC 怎么测试，不用写很多。根据你们已经做了两轮 UAT 的情况，这一页反而很好填。
 
-Quantitative
+1. What are the different scenarios to test?
 
-* Reduce repetitive support requests.
-* Reduce response time.
-* Increase first-contact resolution.
-* Improve support team productivity.
+Test	Vendor	Solution	Geographical Scope	User	User Interface	Other
+1	ITG Twin	MyIAM AI Chatbot	Global	IAM Users	MyIAM	Functional test
+2	ITG Twin	MyIAM AI Chatbot	Global	IAM Support	MyIAM	API integration
+3	ITG Twin	MyIAM AI Chatbot	Global	Pilot users	MyIAM	UAT
 
-Qualitative
+（如果觉得太多，写两行也可以。）
 
-* Better employee experience.
-* Easier access to IAM knowledge.
-* Consistent responses.
-* Better adoption of MyIAM services.
-* Foundation for future AI capabilities.
+⸻
+
+2. What will be tested and how?
+
+这一栏可以写 4-5 个 bullet 就够了：
+
+* Chatbot response accuracy
+* Knowledge Base retrieval
+* API integration
+* User acceptance testing (UAT)
+* End-to-end workflow validation
+
+⸻
+
+3. Process description / Architecture impacts
+
+建议写得简洁一点：
+
+Integration of MyIAM with Twin and CIB LLM through internal APIs. No major impact on existing MyIAM architecture.
+
+或者如果你想稍微完整一点：
+
+AI assistant integrated with MyIAM via Twin platform and internal APIs. Existing MyIAM processes remain unchanged.
+
+⸻
+
+我还有一个建议
+
+Vendor 那一栏，我建议不要写 “ITG”。
+
+因为这一列叫 Vendor，通常指提供解决方案的平台或供应商。既然你们实际接入的是 Twin，可以直接写：
+
+Twin (ITG)
+
+这样审批的人一眼就知道：
+
+* 平台：Twin
+* 所属：ITG
+
+比单独写 ITG 更准确，也和你们整个项目架构一致。
