@@ -1,241 +1,118 @@
-可以，而且我觉得这个 FRC 我们可以填得比较漂亮，因为你们之前已经准备了很多材料（SteerCo、ExCo、Business Case、API Specs、Knowledge Base 等），很多内容直接可以复用。
-
-从你这张模板来看，需要填写的主要就是下面几个部分。
+可以，这种 FRC Template 本来就不是写长文的，每个框一般都是 3–5 个 bullet points。下面这个长度基本就能放进去。
 
 ⸻
 
-1. Proof of Concept description / objectives
+1. Business problem
 
-What business problem/difficulties or opportunity is the POC addressing?
-
-可以写：
-
-The current MyIAM support process relies heavily on ServiceNow tickets, emails, and manual interactions with support teams. End users often struggle to find the correct information or understand IAM processes, resulting in repetitive support requests and increased workload for support teams.
-
-This PoC aims to introduce an AI-powered assistant capable of providing accurate, contextual, and user-friendly responses to MyIAM users.
+* Repetitive IAM support requests
+* Difficult access to IAM information
+* Heavy reliance on manual support
 
 ⸻
 
-What is the current process or solution, and what are its limitations?
+2. Current process
 
-可以写：
+* Documentation & FAQs
+* ServiceNow tickets
+* Email support
 
-Users currently rely on:
+Limitations
 
-* MyIAM documentation
-* ServiceNow requests
-* Email exchanges with IAM support teams
+* Slow responses
+* Difficult to find information
+* Repetitive workload
 
-These approaches have several limitations:
-
-* Documentation can be difficult to navigate.
-* Responses are often delayed.
-* Support teams repeatedly answer similar questions.
-* Users struggle to identify the appropriate process or request type.
+（如果空间更小，只保留前三行。）
 
 ⸻
 
-What is the objective of this PoC?
+3. Objective
 
-这里建议写得比较符合管理层语言：
-
-The objective of this PoC is to evaluate the feasibility of integrating an AI assistant into MyIAM to:
-
-* Improve employee self-service capabilities.
-* Reduce repetitive support requests.
-* Provide contextual guidance for IAM processes.
-* Improve user experience.
-* Prepare the foundation for future AI-enabled IAM services.
+* AI assistant for MyIAM
+* Improve self-service
+* Reduce support workload
+* Enhance user experience
 
 ⸻
 
-2. Expected benefits
+4. Expected benefits
 
-建议不要只写一句。
-
-例如：
-
-Quantitative
-
-* Reduce repetitive support requests.
-* Reduce response time.
-* Increase first-contact resolution.
-* Improve support team productivity.
-
-Qualitative
-
-* Better employee experience.
-* Easier access to IAM knowledge.
-* Consistent responses.
-* Better adoption of MyIAM services.
-* Foundation for future AI capabilities.
+* Faster answers
+* Fewer support tickets
+* Better user experience
+* Higher support efficiency
 
 ⸻
 
-3. Success criteria
+5. Success criteria
 
-建议写 KPI。
-
-例如：
-
-The PoC will be considered successful if:
-
-* Users obtain relevant answers to common IAM questions.
-* Positive user feedback is received during testing.
-* The chatbot correctly answers predefined use cases.
-* Response time remains acceptable.
-* Knowledge Base integration performs as expected.
-* API integration with MyIAM is successfully validated.
-
-如果你们做第三轮 UAT，还可以加：
-
-* User satisfaction score
-* Percentage of correct answers
-* Number of unanswered questions
+* Accurate AI responses
+* Positive user feedback
+* Successful API integration
+* Reduced support requests
 
 ⸻
 
-4. Timeline / Key deadlines
+6. Timeline
 
-例如：
-
-Business approval
-
-July 2026
-
-Presentation to CIB TEC FRC
-
-July 2026
-
-Pilot
-
-July – August 2026
-
-Production readiness
-
-TBD after successful validation
-
-（具体日期可以根据你们项目计划调整。）
+* Business approval: Jul 2026
+* PoC: Jul–Aug 2026
+* Production: TBD
 
 ⸻
 
-5. Region / Countries impacted
-
-如果是 MyIAM：
+7. Region / Users
 
 Regions
 
-✅ Global
-
-Countries
-
-All CIB entities using MyIAM
-
-⸻
+Global CIB
 
 Users
 
-例如：
+MyIAM users
 
-CIB employees using MyIAM
-
-Tester
-
-可以写
+Testers
 
 IAM Support Team
 
-Product Owner
+⸻
 
-Selected business users
+8. Business Lines
+
+勾：
+
+☑ Function
+
+如果 MyIAM 覆盖整个 CIB，也可以勾：
+
+☑ Global Banking
 
 ⸻
 
-6. Business Lines / Functions impacted
+9. Technology
 
-应该勾：
+勾：
 
-✅ Function
+☑ AI / Machine Learning
 
-如果 MyIAM 已经给整个 CIB 用：
+☑ Cloud
 
-也可以勾：
-
-✅ Global Banking
-
-如果 Markets 也在用：
-
-✅ Global Markets
-
-如果不确定，就只勾 Function。
+☑ Client digital interaction
 
 ⸻
 
-7. Technology
+10. Maturity
 
-这里应该勾：
-
-✅ AI / Machine Learning
-
-✅ Cloud
-
-如果允许的话：
-
-✅ Client Digital Interaction
-
-Big Data / Analytics
-
-如果他们认为 RAG 属于 Analytics，也可以勾。
-
-⸻
-
-8. Maturity Technology
-
-目前你们更像：
-
-✅ Prototype
-
-因为：
-
-* 已经开发
-* 已经做两轮 UAT
-* SteerCo 已经 Go
-* 正在准备 Production
-
-如果他们定义 Prototype 是开发完成、PoC 验证阶段，这是最合适的。
-
-⸻
-
-Sponsor 那一栏
-
-右上角还有：
-
-Business Sponsor
-
-这里通常应该填 业务 Sponsor，很可能是 François（如果他是项目 Sponsor）或者负责 MyIAM 的业务负责人，而不是 Innovation Lab。
-
-Project Manager
-
-这里一般填 Delphine（如果她是正式的 PM）。
-
-IT Cluster approval
-
-一般等审批人填写，或者填对应 IT Cluster Manager 的名字。
+☑ Prototype
 
 ⸻
 
 我还有一个建议
 
-这份 FRC 不要只把它当审批材料。
+Business problem 那一栏，我建议改成下面这个版本，比 “Heavy reliance on manual support” 更符合你们项目的定位，也更有管理层视角：
 
-因为你之前已经做了很多关于 Chatbot 的 Business Case，这份文档其实可以直接体现项目价值。比如你之前总结过的内容都可以融进去：
+* Repetitive IAM support requests
+* Difficult access to IAM information
+* Improve employee self-service
 
-* 19,000+ Resources
-* 100,000+ Identities
-* 3,000,000+ Accesses
-* 减少 ServiceNow 和邮件咨询
-* 提升员工体验
-* 建立 AI Foundation
-* 为未来 Agentic AI 做准备
-
-这些都是很好的亮点。如果 FRC 允许稍微详细一点，我建议把这些价值写进去，会比一份只有几句话的审批表更有说服力。
+这样三句话既点出了痛点，也体现了项目目标，放在 FRC 里会更自然。
