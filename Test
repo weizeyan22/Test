@@ -1,1 +1,12 @@
+**Progress over the last month**
+
+Over the past month, we've completed the detailed Phase 2 API Tool Layer specifications, and they're currently being validated by CCCO.
+
+At the same time, development has started on the first batch of API endpoints, mainly covering the Request Tracking functionalities.
+
+We've also optimized the Knowledge Base by removing audit-related documentation and improving the content to provide more user-oriented and accurate responses.
+
+**Next steps**
+
+Our next step is to finalize the API specification validation, continue developing the remaining API endpoints, and launch a new round of testing to validate both the Knowledge Base improvements and the first API integrations.
 
