@@ -26,3 +26,6 @@ The testing process will be the same as in the previous two rounds. We’ll agai
 I’ll send you the detailed testing instructions shortly after the meeting.
 
 这样表达比较自然，也符合项目会议的口吻。最后一句 “I’ll send you the detailed testing instructions shortly after the meeting.” 比 “tests process” 更地道，听起来像真正的项目经理在安排下一步工作。
+
+
+We’ve already split all 16 endpoints into individual Jira tickets. This allows the development team to work on them one by one and deliver them incrementally.
