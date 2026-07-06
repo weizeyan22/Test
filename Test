@@ -1,1 +1,7 @@
-As you may remember, during the previous testing rounds we identified that the audit-related documents in the Knowledge Base were negatively impacting the chatbot’s response quality, as the answers were often too technical and not user-oriented. The Innovation Lab has now confirmed that these documents have been removed and the updated Support Q&A has been uploaded.
+Cette semaine, nous allons lancer la troisième campagne de tests UAT.
+
+Comme l’Innovation Lab a maintenant supprimé tous les documents liés aux audits de la Knowledge Base et ajouté la liste des Q&A fournie par l’équipe Support, nous pouvons démarrer cette nouvelle campagne.
+
+Le déroulement sera le même que pour les deux premières campagnes : nous demanderons à l’équipe Support et à l’équipe BAU Paris de poser chacun 3 à 5 questions au chatbot, puis d’évaluer la qualité des réponses.
+
+Je vous partagerai le processus de test ainsi que les instructions détaillées un peu plus tard.
