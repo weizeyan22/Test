@@ -1,63 +1,13 @@
-当然可以，而且我建议你说得自然、口语一点，不用太正式。
+Good morning everyone. We have a few updates this week.
 
-如果他们问：
+First, the Innovation Lab has removed all audit-related documents from the Knowledge Base. This week, they will upload the MyIAM Support Q&A list that Linda and the support team consolidated the week before last. Once that is done, we will be able to launch the third round of testing, which we hope will be the final one.
 
-Où en est le projet ?
+For this third round of testing, we will again need the support of both the Support team and the Paris BAU team. I will send you the testing details shortly.
 
-你可以说：
+Secondly, Delphine and I completed the review of the detailed API Tool Layer specification. As you can see, it includes a total of 16 functions. We previously presented the high-level endpoints during the IAM Community meeting, and now we’d like to walk the CCCO team through the detailed specifications so they can validate them.
 
-Aujourd’hui, nous avons terminé les spécifications détaillées des API de la phase 2. Elles sont actuellement en cours de validation avec le CCCO.
+By the way, Delphine, I couldn’t find a time slot this week when everyone from the CCCO team is available. So we either need to postpone the session or present it during the next IAM Community meeting.
 
-En parallèle, le développement des premiers endpoints, notamment Request Tracking, a déjà commencé.
+Finally, Delphine and I have already created Jira tickets for these endpoints. I’ll finish creating the remaining tickets later today.
 
-Nous avons également optimisé la Knowledge Base et nous préparons une nouvelle phase de tests pour valider les améliorations.
-
-⸻
-
-如果他们问：
-
-Qu’est-ce qu’il reste à faire ?
-
-Les prochaines étapes sont de finaliser la validation des spécifications, poursuivre le développement des autres endpoints et lancer une nouvelle campagne de tests.
-
-⸻
-
-如果他们问：
-
-Qu’attendez-vous du kick-off ?
-
-Pour moi, l’objectif du kick-off est surtout de s’aligner sur le périmètre, les rôles et responsabilités, le planning et les prochaines étapes, afin que tout le monde ait la même vision avant de poursuivre le développement.
-
-⸻
-
-你也可以主动问他们：
-
-De votre côté, quelles sont vos attentes pour ce kick-off ?
-
-（你们对这个 Kick-off 有什么期待？）
-
-或者：
-
-Est-ce qu’il y a des éléments dont vous avez besoin de notre côté avant le kick-off ?
-
-（Kick-off 前，你们还需要我们提供什么吗？）
-
-⸻
-
-如果聊到资源（Resource）
-
-因为你还没有和 Delphine 确认，我建议说得保守一点：
-
-Concernant les ressources, je préfère qu’on valide ça en interne avant de confirmer quoi que ce soit.
-
-（关于资源，我希望先在我们内部确认，再正式确认。）
-
-或者更轻一点：
-
-Je pense qu’il faut encore qu’on s’aligne en interne sur ce sujet.
-
-（我觉得这个问题我们还需要内部再对齐一下。）
-
-⸻
-
-这几句话都是法国同事在项目会议里很常用、很自然的表达，不会显得生硬。
+One last update: the second Steering Committee with Laurent Cordeil will take place the day after tomorrow. Divya has just asked me to prepare a summary of this month’s progress and the next steps, and I’ll send that over to her.
