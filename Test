@@ -1,7 +1,30 @@
-Cette semaine, nous allons lancer la troisième campagne de tests UAT.
+ 我建议这封邮件不要太长，因为这是第三轮 UAT，大家已经参加过前两轮了，只需要告诉他们为什么做、什么时候做、怎么做。
 
-Comme l’Innovation Lab a maintenant supprimé tous les documents liés aux audits de la Knowledge Base et ajouté la liste des Q&A fournie par l’équipe Support, nous pouvons démarrer cette nouvelle campagne.
+可以写成这样：
 
-Le déroulement sera le même que pour les deux premières campagnes : nous demanderons à l’équipe Support et à l’équipe BAU Paris de poser chacun 3 à 5 questions au chatbot, puis d’évaluer la qualité des réponses.
+Hi everyone,
 
-Je vous partagerai le processus de test ainsi que les instructions détaillées un peu plus tard.
+Following the latest updates to the Knowledge Base, we are ready to launch the third UAT campaign for the MyIAM Chatbot.
+
+As part of the latest improvements:
+
+* All audit-related documents have been removed from the Knowledge Base.
+* The MyIAM Support Q&A provided by the Support team has been integrated.
+
+The objective of this third round is to validate whether these changes have improved the quality and relevance of the chatbot’s responses.
+
+The testing process remains the same as for the previous two UAT campaigns:
+
+* Each participant is invited to ask 3 to 5 questions to the chatbot.
+* Please evaluate each response based on the evaluation criteria provided in the test file.
+* Feel free to include both common user questions and any edge cases you think are relevant.
+
+Testing period: [add dates]
+
+Please complete your evaluation before [deadline].
+
+Thank you again for your support. Your feedback is essential to help us finalize the chatbot before moving forward with the next phase of the project.
+
+Please let me know if you have any questions.
+
+Best regards,
