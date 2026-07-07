@@ -1,33 +1,13 @@
-Progress Update
+Hi team,
 
-Knowledge Base
+As discussed, we have now finalized the detailed API Tool Layer specification and split each endpoint into an individual Jira ticket.
 
-* The Innovation Lab has confirmed that all audit-related documents have been removed from the Knowledge Base.
-* The MyIAM Support Q&A document provided by the Support team has been uploaded.
+The tickets are now available in Jira, allowing the development to be carried out incrementally.
 
-UAT Campaign
+As agreed during the planning, we will start with the Request Tracking endpoints, with the objective of delivering the first batch by the end of August.
 
-* The third UAT campaign has been launched.
-* The testing process remains the same as in the previous campaigns:
-    * Each participant is invited to ask 3–5 questions to the chatbot.
-    * Responses should be evaluated using the provided evaluation file.
-* A tracking file has also been created to monitor the testing progress.
+Please let us know if you have any questions regarding the specifications or if any clarification is needed before development starts.
 
-Steering Committee
+Thank you!
 
-* The second Steering Committee was held last week.
-* The main discussion focused on the resource allocation required for Phase 2 development.
-
-API Tool Layer
-
-* The detailed API Tool Layer specification was presented to the IAM Community for validation.
-* The review focused on confirming that the planned functions align with MyIAM’s security model and access control rules before implementation.
-* All API endpoints have been split into individual Jira tickets to support incremental development and progress tracking.
-
-⸻
-
-Next Steps
-
-* Complete the third UAT campaign and collect user feedback.
-* Review the UAT results and identify any remaining improvements to the Knowledge Base if required.
-* Continue preparing for Phase 2 implementation.
+You can also find the API specification document attached to each Jira ticket for reference.
