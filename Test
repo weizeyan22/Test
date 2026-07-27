@@ -1,13 +1,641 @@
-Bonjour [Prénom],
+1. Benchmark Overview 
 
-Je me permets de vous contacter dans le cadre d’une étude que je réalise actuellement sur le futur Data Platform de Prod Security (CIB).
+以下都是benchamark的findings，可能需要最终确认 
 
-Nous travaillons sur un projet de Data Platform visant à consolider les données de CIB et d’ITG Prod Security, et je mène actuellement un benchmark des différentes initiatives DataHub / Data Platform mises en place au sein du Groupe.
+2. Entity-Level Benchmark Analysis 
 
-En échangeant avec plusieurs équipes, j’ai vu que vous étiez Product Manager sur le DataHub de PF. J’aurais quelques questions si cela ne vous dérange pas 😊
+你现在整个 Benchmark 都是在介绍不同实体。我建议每个实体都保持同样的结构： 
 
-* Quelles étaient les principales motivations pour lancer ce DataHub ?
-* Quels sont aujourd’hui les principaux cas d’usage ou Data Products ?
-* Quels bénéfices métier concrets avez-vous observés depuis sa mise en place ?
+Overview（介绍这个实体是什么、为什么采访它）  
 
-Merci beaucoup pour votre aide !
+Discussion Summary（采访中了解到什么）  
+
+Key Findings（主要发现）  
+
+Key Takeaways（这一章总结） 
+
+ 
+
+Chapitre 
+
+Nature 
+
+PA3I – Présentation de la solution DataHub V2 
+
+Solution Provider 
+
+ITG Management Office – Retour d'expérience utilisateur sur Starburst (Open Data) 
+
+User Feedback 
+
+ 
+
+ 
+
+ 
+
+我反而觉得，你这两个月最大的收获不是 Starburst。 
+
+而是你已经收集到了很多不同层级的视角： 
+
+人 
+
+提供的价值 
+
+PA3I 
+
+平台提供方：DataHub V2 的能力与组件 
+
+Open Data (Zakaria) 
+
+Data Product 的使用和运营模式 
+
+Cardif (Olivier) 
+
+企业级 Lakehouse 的长期实践、架构演进和治理 
+
+Portugal 
+
+CIB 内部的实际部署计划 
+
+BCEF / PF 
+
+其他实体的采用情况和补充经验 
+
+ 
+
+ 
+
+ 
+
+2.1 ITG PA3I – DataHub V2 
+
+Contexte 
+
+PA3I (Production Artificial Intelligence & IT Innovation) est une entité de l'ITG chargée du développement et de l'exploitation de plateformes et de services autour de la donnée et de l'intelligence artificielle. Elle met à disposition des entités du Groupe des capacités techniques mutualisées dans les domaines des plateformes de données, de l'IA en production et de l'automatisation. 
+
+Dans le cadre de ce benchmark, les travaux menés avec PA3I avaient pour objectif d'analyser les capacités de sa plateforme Data (DataHub V2), son architecture Data Lakehouse, son modèle de gouvernance et d'exploitation, ainsi que les modalités de consommation de ces services par les entités du Groupe, afin d'évaluer leur adéquation aux besoins de Production Security. 
+
+ 
+
+Architecture de la plateforme 
+
+DataHub V2 est une plateforme Data mutualisée développée par PA3I, reposant sur une architecture Data Lakehouse. Elle est proposée sous la forme d'une offre "Data Query as a Service" destinée aux entités du Groupe. 
+
+Composants principaux 
+
+Les principaux composants identifiés lors du benchmark sont les suivants : 
+
+Couche 
+
+Technologie 
+
+Rôle 
+
+Stockage (optionnel) 
+
+IBM Cloud Object Storage (COS - S3 Like) 
+
+Stockage des données et mise en cache  
+
+Traitement 
+
+Spark 
+
+Traitement distribué et transformation des données 
+
+Orchestration 
+
+Airflow 
+
+Orchestration des workflows et planification des pipelines ETL 
+
+Interrogation / Fédération 
+
+Starburst (Trino) 
+
+Fédération des données et interrogation multi-sources 
+
+ 
+
+Les échanges avec PA3I mettent en évidence le rôle central de Starburst au sein de l'architecture. Il permet de fédérer plusieurs sources de données sans imposer leur centralisation, limitant ainsi la duplication des données. 
+
+Airflow orchestre les traitements entre les différents composants de la plateforme (Spark, Starburst), automatise l'exécution des pipelines et facilite l'exécution des scripts DDL.  
+
+Spark est dédié aux traitements distribués ainsi qu'à la transformation des données. 
+
+IBM Cloud Object Storage (COS) peut être intégré à l'architecture lorsque les cas d'usage nécessitent un espace de stockage dédié. Les échanges menés avec PA3I indiquent que le stockage ne fait pas partie des composants fournis par défaut avec l'offre DataHub V2. 
+
+Ces différents composants assurent conjointement les principales fonctions techniques de la plateforme et interviennent de manière complémentaire selon les besoins des cas d'usage. 
+
+ 
+
+Architecture modulaire 
+
+L'architecture repose sur une approche modulaire. Les différentes entités du Groupe ne déploient pas nécessairement l'ensemble des composants de DataHub V2. Les différentes briques peuvent être consommées indépendamment selon les besoins fonctionnels et techniques propres à chaque contexte. 
+
+ 
+
+Catalogue de données 
+
+DataHub V2 permet l'utilisation de deux formats de catalogues de données : Apache Hive et Apache Iceberg. 
+
+Au cours des échanges, Apache Hive a été présenté comme le format historique, reconnu pour sa robustesse dans les traitements analytiques traditionnels. Apache Iceberg a, quant à lui, été identifié comme le format privilégié pour les projets d'intelligence artificielle et les architectures Lakehouse modernes. 
+
+Selon PA3I, Apache Iceberg apporte notamment la gestion native des versions (snapshots), l'évolution des schémas sans interruption de service (schema evolution) ainsi que des fonctionnalités de time travel, permettant d'interroger les données dans un état antérieur. PA3I souligne également l'intérêt d'Iceberg pour les traitements portant sur de grands volumes de données. 
+
+ 
+
+Modèle opérationnel et gouvernance 
+
+Les capacités de la plateforme DataHub V2 sont proposées sous forme de services accessibles via la Marketplace ITG. Les entités du Groupe s'appuient sur une plateforme mutualisée, sans avoir à mettre en place leur propre plateforme technique. 
+
+Dans ce modèle, PA3I intervient en tant que fournisseur de la plateforme et assure : 
+
+le développement et les évolutions de la plateforme ;  
+
+la maintenance technique de l'infrastructure et des composants logiciels ;  
+
+les mises à jour de la plateforme ; 
+
+le support de niveau N2/N3 ; 
+
+l'accompagnement des entités lors de l'onboarding (définition de l'architecture cible, estimation de l'infrastructure nécessaire et déploiement de la plateforme)  
+
+Les entités utilisatrices restent responsables de : 
+
+la configuration de la plateforme selon leurs besoins ; 
+
+l'intégration et la gestion de leurs sources de données ; 
+
+l'exploitation de leurs cas d'usage métier ; 
+
+les activités de Run ;  
+
+la gouvernance des données et des habilitations 
+
+ 
+
+En cas d'incident, PA3I intervient lorsque le problème concerne la plateforme elle-même, tandis que les entités restent responsables des problématiques liées à leurs sources de données ou à leur configuration. 
+
+ 
+
+Ce modèle repose sur une répartition claire des responsabilités : PA3I assure l'exploitation technique de la plateforme, tandis que les entités utilisatrices conservent la gouvernance de leurs données, de leurs habilitations et de leurs activités opérationnelles. 
+
+Sécurité et gestion des accès 
+
+Le modèle de sécurité associé à l'utilisation de Starburst repose sur les mécanismes suivants : 
+
+Authentification technique 
+
+Les connexions de Starburst aux différentes sources de données s'effectuent au moyen de Service Accounts. 
+
+Les identifiants des Service Accounts sont stockés dans HashiCorp Vault et font l'objet d'une rotation automatique selon une fréquence définie par l'entité. 
+
+Authentification des utilisateurs 
+
+Les utilisateurs accèdent à Starburst via WebSSO. 
+
+Gestion des habilitations 
+
+La gestion des habilitations repose sur un modèle RBAC (Role-Based Access Control). 
+
+Les rôles sont définis par chaque entité métier puis configurés à la fois dans MyAccess et dans Starburst. Chaque rôle définit les droits d'accès associés aux ensembles de données (lecture, écriture, etc.). 
+
+Les entités restent responsables de la revue périodique des droits d'accès. 
+
+ 
+
+Perspectives technologiques : Databricks 
+
+Au moment des échanges, PA3I suivait les travaux en cours autour de Databricks (une plateforme Data Lakehouse). À ce stade, la solution faisait encore l'objet d'une évaluation afin de vérifier sa conformité aux exigences de gouvernance du Groupe. 
+
+Des interrogations subsistaient notamment concernant la manière dont les données temporaires (temporary storage) étaient gérées, ainsi que leur conformité aux exigences de sécurité et de gouvernance du Groupe. 
+
+En conséquence, aucune décision n'avait encore été prise quant à une éventuelle adoption de cette technologie et aucun calendrier de déploiement n'était disponible au moment des échanges. 
+
+ 
+
+2.2 ITG Management Office – Retour d'expérience utilisateur sur Starburst (Open Data) 
+
+Contexte 
+
+L'équipe Open Data de l'ITG développe et met à disposition des Data Products destinés à répondre aux besoins métiers spécifiques. L'équipe ITG Management Office est utilisatrice de Starburst au travers de ces Data Products, qu'elle exploite pour produire des indicateurs et des tableaux de bord. 
+
+Dans le cas étudié, Open Data a développé un Data Product spécifique pour l'équipe ITG Management Office afin de consolider les informations nécessaires au suivi des applications et des assets liés au programme DMZR. 
+
+Cet entretien avait pour objectif de recueillir un retour d'expérience utilisateur sur l'utilisation de Starburst, les services proposés par Open Data ainsi que les bénéfices observés dans un contexte opérationnel. 
+
+ 
+
+Positionnement et modèle opérationnel d'Open Data  
+
+Open Data est une équipe utilisatrice de la plateforme proposée par PA3I. Alors que PA3I fournit la plateforme technique (DataHub V2), Open Data joue le rôle de fournisseur de Data Products en s'appuyant sur cette plateforme. Les échanges réalisés permettent d'identifier un modèle opérationnel reposant sur la production, la publication et la mutualisation des Data Products, plutôt que sur la mise à disposition directe de tables techniques. 
+
+Lorsqu'un besoin fonctionnel est exprimé par une équipe utilisatrice, Open Data identifie les sources de données nécessaires, réalise les consolidations, applique les règles métiers et construit des datasets destinés à être publiés dans Starburst. Les équipes utilisatrices peuvent ainsi exploiter des datasets déjà consolidés, sans avoir à reconstruire les jointures complexes entre plusieurs systèmes. 
+
+Selon les échanges réalisés, l'objectif est de favoriser la réutilisation des Data Products entre plusieurs équipes présentant des besoins similaires et d'enrichir progressivement un catalogue de datasets réutilisables. 
+
+ 
+
+Gouvernance des Data Products 
+
+Selon les échanges réalisés, Open Data est responsable des Data Products qu'il fournit dans Starburst. À ce titre, l'équipe assure l'identification et la consolidation des données issues de différentes sources, l'application des règles métiers, le contrôle de la qualité des données, ainsi que la maintenance et les mises à jour régulières des datasets. 
+
+Les équipes utilisatrices restent responsables des traitements complémentaires réalisés sur leurs propres données ainsi que des livrables qu'elles développent à partir des datasets fournis. 
+
+ 
+
+Bénéfices observés 
+
+Selon le retour d'expérience partagé, l'utilisation des Data Products développés par Open Data permet aux équipes utilisatrices de disposer de datasets déjà consolidés et prêts à l'emploi. Cette approche réduit la charge de préparation des données et limite les erreurs liées aux jointures entre plusieurs sources. Elle permet également aux équipes utilisatrices de s'appuyer sur un dataset unique, consolidé et directement exploitable, plutôt que de reconstruire les données à partir de nombreuses tables techniques dispersées. 
+
+Les échanges soulignent également que la centralisation des règles métiers, les contrôles de qualité, ainsi que la maintenance des Data Products contribuent à améliorer leur cohérence et leur fiabilité. 
+
+Cette organisation permet également de limiter la duplication des traitements techniques entre les différentes équipes utilisatrices. 
+
+ 
+
+Utilisation et retour d'expérience sur Starburst 
+
+Du point de vue utilisateur, Starburst est principalement utilisé comme une couche d'accès et d'exploration des Data Products mis à disposition par Open Data. Les utilisateurs peuvent consulter les datasets via le Query Editor et accéder aux différentes tables publiées dans Starburst. Les traitements spécifiques, les enrichissements complémentaires et les développements analytiques restent réalisés dans DataIku, connecté directement à Starburst et utilisé comme environnement de préparation et d'exploitation des données. 
+
+Une connexion directe entre Starburst et DataIku permet d'exploiter les Data Products publiés dans les projets analytiques, et de les combiner avec d'autres sources de données propres aux équipes afin de construire des indicateurs et des tableaux de bord répondant aux besoins métiers. 
+
+Selon le retour d'expérience partagé, aucune contrainte technique majeure n'a été identifiée dans l'utilisation quotidienne de Starburst. La solution répond aux besoins de consultation et d'exploitation des Data Products. 
+
+ 
+
+ 
+
+ 
+
+2.3 Cardif – Architecture et retour d'expérience du Data Lakehouse (Reference implementation) 
+
+Jacqueline MARCHETTI – Cardif Support IT Data - Utilisateur Starburst  
+
+Olivier BESNARD - Chapter Lead Confirme (Tribe Tech Lead) IT Data & AI (Cardif)  
+
+Contexte 
+
+Dans le cadre du benchmark des solutions Data Lakehouse au sein du Groupe BNP Paribas, des échanges ont été réalisés avec les équipes IT Data & AI de BNP Paribas Cardif. 
+
+Au cours des dernières années, Cardif a progressivement développé et enrichi une plateforme Data Lakehouse ayant aujourd'hui atteint un niveau de maturité significatif. Cette plateforme s'appuie sur les services proposés par le Groupe (Data Hub V2) et mobilise notamment Starburst, Airflow, Spark et Iceberg. Elle intègre progressivement de nouveaux cas d'usage, tels que les bases de données vectorielles et les plateformes d'IA générative, afin de répondre aux enjeux de centralisation et de gouvernance des données, d'industrialisation des traitements, ainsi que d'évolution des usages analytiques. 
+
+Ces échanges avaient pour objectif de mieux comprendre les choix d'architecture, le modèle d'organisation (Data Mesh), les pratiques de gouvernance mises en œuvre, les retours d'expérience issus de l'exploitation de cette plateforme, ainsi que les perspectives d'évolution de son écosystème Data Lakehouse. Les enseignements recueillis permettent d'identifier de bonnes pratiques et d'alimenter la réflexion autour de la conception d'une plateforme Data Lakehouse adaptée aux besoins de Production Security. 
+
+ 
+
+Vision d'architecture et évolution du Data Lakehouse   
+
+Une architecture construite progressivement  
+
+Depuis plusieurs années, Cardif fait évoluer progressivement son architecture Data afin de répondre à l'augmentation des volumes de données, à la diversification des usages et aux nouveaux besoins analytiques. Initialement, l’écosystème Data reposait principalement sur une architecture de type Data Warehouse traditionnelle, avec des traitements ETL sous Informatica, des fichiers CSV stockés sur des espaces NAS et des bases Oracle pour stocker et exploiter les données. 
+
+Avec le temps, cette architecture est devenue moins adaptée aux nouveaux besoins et a commencé à présenter certaines limites. Les traitements étaient plus difficiles à faire évoluer, le passage à l'échelle devenait plus complexe et l'intégration de nouvelles sources de données demandait davantage d’efforts. Pour répondre à ces limites, Cardif a progressivement adopté les blueprints et les services proposés par le Groupe dans le cadre de Data Hub V2. 
+
+Cette évolution a conduit à la mise en place progressive d’une architecture Data Lakehouse, reposant notamment sur Starburst pour l’accès SQL et la fédération des données, Airflow pour l’orchestration des pipelines, Spark pour les traitements massifs, ainsi qu’Iceberg pour structurer les données stockées dans l’Object Storage. 
+
+Une architecture fondée sur des patterns communs / Blueprint du pipeline 
+
+L'un des principes retenus par Cardif consiste à s'appuyer sur les mêmes patterns d'architecture pour l'ensemble des flux de données. L’objectif est de structurer les pipelines selon une chaîne standardisée, depuis la collecte des données jusqu’à leur mise à disposition auprès des consommateurs. 
+
+Le pipeline est organisé autour des étapes suivantes : 
+
+Collecte et médiation → Ingestion → Stockage brut → Intégration et traitement → Stockage structuré → Exposition et consommation 
+
+Les données issues de différents canaux et sous différents formats sont tout d’abord collectées, puis déposées dans une zone de stockage brut sur l’Object Storage (COS). Elles sont ensuite transformées et structurées, notamment sous forme de tables Iceberg, avant d’être mises à disposition via différents modes d’accès tels que SQL, les API S3, les API REST ou, plus récemment, des moteurs de recherche et des bases de données vectorielles. 
+
+Cette organisation permet de conserver une architecture commune, même lorsque les besoins, les sources ou les formats de données évoluent. Par exemple, l'ajout d'un nouveau protocole de collecte ne nécessite d'adapter que la première partie du pipeline, tandis que les étapes suivantes restant inchangées.  
+
+Cette standardisation facilite la maintenance de la plateforme, limite les développements spécifiques et permet d’intégrer de nouveaux cas d’usage sans devoir reconstruire un pipeline dédié. 
+
+Architecture technique de la plateforme 
+
+ 
+
+Iceberg : un format de table adapté au stockage objet  
+
+L'adoption d'Apache Iceberg a marqué une étape importante dans l'évolution de l'architecture du Data Lakehouse de Cardif. Auparavant, les traitements reposaient principalement sur Oracle, avec des limites en matière de montée en charge et de scalabilité pour le stockage et le traitement de volumes importants de données. L'arrivée d'Iceberg a permis de conserver les avantages du stockage objet (COS) tout en manipulant les données sous forme de tables.  
+
+Ce choix répond à plusieurs objectifs. D'une part, il permet de stocker de très grands volumes de données à moindre coût tout en bénéficiant de la scalabilité du stockage objet. D'autre part, Iceberg offre des fonctionnalités habituellement associées aux bases de données relationnelles, notamment la gestion des métadonnées, l'évolution des schémas, la mise à jour des données et la conservation de l'historique. Il est ainsi devenu le format privilégié pour le stockage des données analytiques et des données historiques de la plateforme. 
+
+Starburst : une couche SQL de fédération et d'accès aux données 
+
+Starburst constitue la couche d'accès aux données du Data Lakehouse. Son rôle principal est de fournir un point d'entrée unique permettant d'interroger des données provenant de plusieurs sources hétérogènes à l'aide du langage SQL.  
+
+Au sein du Data Lakehouse, Starburst est utilisé pour fédérer les données stockées dans différents environnements, notamment les tables Iceberg, Oracle ainsi que d'autres sources de données. Il permet également d'interroger directement certaines sources externes sans duplication préalable des données, tout en optimisant l'exécution des requêtes grâce au mécanisme de push-down query lorsque cela est possible.  
+
+Cette approche limite les duplications de données, facilite l'intégration progressive de nouvelles sources au sein de la plateforme et offre une vue unifiée de l'ensemble des données accessibles depuis la plateforme. 
+
+Une architecture hybride Oracle / Iceberg adaptée aux exigences de performance 
+
+Bien qu'Iceberg soit utilisé comme principal format de stockage, Cardif conserve Oracle pour certains cas d'usage nécessitant des temps de réponse très faibles. En effet, les traitements analytiques, les synchronisations de données et les reportings reposent principalement sur des traitements batch, pour lesquels une latence de quelques secondes reste acceptable. En revanche, certaines applications opérationnelles, notamment dans le domaine de l'assurance (par exemple la gestion des sinistres), nécessitent des temps de réponse inférieurs à la seconde. 
+
+Dans ces situations, les données actives sont conservées dans Oracle afin de garantir les performances attendues, tandis que les données historiques sont stockées dans Iceberg. Starburst permet ensuite d'interroger simultanément ces deux environnements grâce à ses capacités de fédération de requêtes.  
+
+Cette architecture hybride permet de combiner les avantages des deux technologies afin de répondre à des besoins de performance différents, sans remettre en cause les principes d'architecture retenus pour la plateforme Data Lakehouse. Oracle est utilisé pour les traitements transactionnels nécessitant une faible latence, tandis qu'Iceberg est privilégié pour le stockage massif et les analyses historiques. 
+
+ 
+
+ 
+
+ 
+
+Industrialisation des pipelines / Standardisation et industrialisation des pipelines / blueprint du pipeline 
+
+ 
+
+ 
+
+Extension de la plateforme vers de nouveaux usages / Extension de l’architecture à de nouveaux cas d’usage 
+
+Les premiers usages étaient principalement orientés vers des traitements batch, des synchronisations de données, du reporting et des analyses portant sur des volumes importants. L’introduction de Starburst et du format Iceberg a ensuite permis de conserver les avantages d’un stockage objet peu coûteux et scalable, tout en proposant une représentation des données sous forme de tables interrogeables en SQL. 
+
+Au fur et à mesure de l’apparition de nouveaux besoins, la plateforme a été étendue sans remettre en cause ses principes structurants. Des capacités supplémentaires ont ainsi été intégrées pour traiter de nouveaux formats, exposer des données provenant de différentes technologies ou répondre à des cas d’usage liés à l’intelligence artificielle. 
+
+À titre d’exemple, les besoins liés aux assistants conversationnels ont conduit Cardif à intégrer dans le même périmètre d’architecture la collecte de documents PDF, leur stockage dans la zone brute, leur traitement de vectorisation sur une plateforme d’IA, puis le stockage et l’exposition des vecteurs au sein d’une base vectorielle. Cette extension permet de capitaliser sur les mécanismes existants de collecte, de gouvernance, de sécurité et d’exposition des données. 
+
+Le Data Lakehouse devient ainsi progressivement une infrastructure transverse, destinée non seulement aux usages analytiques et de reporting, mais également au sourcing des données pour les plateformes d’IA, aux besoins de reproductibilité des modèles et, à terme, aux cas d’usage de RAG et d’Agentic AI. 
+
+---------------- 
+
+ 
+
+La plateforme a d’abord été conçue principalement pour des traitements batch, des synchronisations de données, du reporting et des analyses sur des volumes importants. Dans ce type d’usage, une latence de quelques secondes reste généralement acceptable. En revanche, l’architecture actuelle est moins adaptée aux besoins nécessitant une mise à disposition immédiate des données ou des temps de réponse inférieurs à la seconde. 
+
+Cardif a donc adapté certains composants en fonction des besoins, tout en conservant le même cadre d’architecture. Pour un cas d’usage lié à la gestion des sinistres, par exemple, certaines données actives nécessitant un temps de réponse très court sont conservées dans Oracle. Les données historiques restent, quant à elles, stockées dans Iceberg pour les besoins d’analyse. Starburst permet ensuite d’interroger et de croiser les données provenant des deux environnements. 
+
+Cette approche permet de répondre à des besoins différents sans reconstruire une architecture spécifique pour chaque cas d’usage. Les composants peuvent être adaptés en fonction des contraintes de performance, de volumétrie ou de format, tout en restant intégrés dans un ensemble commun. 
+
+La plateforme continue également d’évoluer pour intégrer de nouveaux usages liés à l’intelligence artificielle. Dans le cadre des assistants conversationnels, Cardif a par exemple réutilisé les mêmes principes de collecte et de stockage pour intégrer des documents PDF. Ces documents sont déposés dans la zone de stockage brut, puis traités sur la plateforme d’IA afin d’être découpés et vectorisés. Les vecteurs sont ensuite stockés dans une base de données vectorielle et peuvent être utilisés pour des cas d’usage de RAG. 
+
+L’objectif est ainsi de capitaliser sur les composants et les mécanismes déjà en place, notamment pour la collecte, la sécurité, la gestion des accès et l’exposition des données. Le Data Lakehouse évolue progressivement d’une plateforme principalement destinée au reporting et à l’analytics vers une infrastructure pouvant également soutenir les usages Data Science, GenAI et, à terme, Agentic AI. 
+
+___________________________________________________________________________ 
+
+ 
+
+La plateforme Data Lakehouse de Cardif a progressivement été enrichie pour répondre à de nouveaux besoins, tout en conservant les mêmes principes d'architecture. 
+
+Initialement utilisée principalement pour des traitements batch, du reporting et des analyses de données, elle est désormais également utilisée pour supporter de nouveaux cas d'usage liés à l'intelligence artificielle. 
+
+Par exemple, les assistants conversationnels s'appuient sur le même pipeline de collecte déjà utilisé pour les données structurées. Les documents PDF sont collectés puis déposés dans la zone de stockage brut avant d'être vectorisés sur la plateforme d'IA. Les embeddings générés sont ensuite stockés dans une base vectorielle afin d'être exploités dans des cas d'usage de type RAG. 
+
+Cette approche permet de réutiliser les mécanismes déjà en place, notamment pour la collecte, la gouvernance, la sécurité et la gestion des accès, sans développer une architecture spécifique pour chaque nouveau besoin. 
+
+À terme, cette plateforme a vocation à devenir une infrastructure commune supportant non seulement les usages analytiques, mais également les plateformes d'IA, les modèles de Machine Learning, le RAG et les futurs cas d'usage d'Agentic AI. 
+
+ 
+
+ 
+
+Organisation et approche Data Mesh / Organisation et modèle Data Mesh 
+
+ 
+
+Architecture technique de la plateforme / Blueprint du pipeline 
+
+ 
+
+Industrialisation des pipelines de données  
+
+ 
+
+Utilisation de Starburst et d'Iceberg  / Rôle de Starburst et d’Iceberg dans l’architecture 
+
+ 
+
+Gouvernance, sécurité et gestion des accès  
+
+ 
+
+Cas particuliers et optimisations  / Cas d’usage et retours d’expérience 
+
+ 
+
+Évolutions et perspectives 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Benchmark 最好保持： 
+
+Dominique 说了什么； 
+
+你从 PA3I 学到了什么（Key Takeaways）。 
+
+至于： 
+
+为什么最终推荐 PA3I； 
+
+为什么不推荐 Databricks； 
+
+为什么采用 Service Consumer Model； 
+
+这些更适合放到 Cross-Entity Benchmark Analysis 或 Technical Analysis 中作为综合分析。这样既保持了 Benchmark 的客观性，也能避免把个人判断混入单个访谈章节。 
+
+ 
+
+ 
+
+Dominique 说的 → Benchmark（注明来源，不代表你的立场）  
+
+我综合几个人之后得出的结论 → Technical Analysis  
+
+多个 Entity 都体现出这个共同趋势 → Cross-Entity Benchmark Analysis 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+2.2 ITG – Open Data 
+
+2.3 Cardif – 
+
+ 
+
+ 
+
+ 
+
+2.4 BCEF – 
+
+2.5 PF – 
+
+ 
+
+2.6 CIB – Data Analytics / AI Platform 
+
+ 
+
+3. Cross-Entity Benchmark Analysis 
+
+   
+
+ 
+
+ 
+
+ 
+
+Cardif -> Airflow + Starburst, PF -> Spark + Airflow, BCEF -> Spark + Airflow + Starburst 
+
+这些例子更适合放到 Cross-Entity Benchmark Analysis，例如： 
+
+Entité 
+
+Principaux composants 
+
+Cardif 
+
+Airflow + Starburst 
+
+PF 
+
+Spark + Airflow 
+
+BCEF 
+
+Spark + Airflow + Starburst 
+
+然后得出： 
+
+Les architectures observées confirment une consommation modulaire des services. 
+
+ 
+
+4. Appendix 
+
+ 
+
+ 
+
+ 
+
+最后，再借用一句你以前说过的话送给你。 
+
+你曾经说，你不想只是在盖一间临时的小房子，你想搭的是未来十年真正的"主楼"。 
+
+我希望你记住：主楼的地基，往往是最慢、最不起眼的部分。 
+
+别人看到的是高楼，只有建造的人知道，真正决定它能盖多高的，是那些埋在地下、别人看不见的基础。 
+
+你现在做的这些积累——和专家交流、建立架构思维、学习平台、理解 AI 与数据的关系——很像在浇筑地基。 
+
+继续走下去。 
+
+不用急着证明自己。 
+
+等到几年后回头看，你会发现，今天这些看似零散的努力，已经连成了一条非常清晰的路。 
+
+ 
+
+ 
