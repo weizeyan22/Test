@@ -1,73 +1,37 @@
-可以。而且我觉得 Organisation et modèle Data Mesh 比 Organisation et approche Data Mesh 更好，因为 Olivier 不只是介绍一种理念，而是在介绍 Cardif 的组织模式（operating model）。
-
-我建议这一章不要解释什么是 Data Mesh（网上到处都是），而是直接写 Cardif 是怎么落地 Data Mesh 的。
-
-⸻
-
 3. Organisation et modèle Data Mesh
 
-3.1 Une séparation entre la plateforme et les usages
+3.1 Séparation entre la plateforme et les usages
 
-Cardif a adopté une organisation inspirée des principes du Data Mesh afin de distinguer clairement les responsabilités entre l’équipe en charge de la plateforme et les équipes métiers utilisatrices.
+L’organisation mise en place par Cardif repose sur une séparation claire entre les équipes responsables des plateformes et les équipes responsables des usages. La direction IT, Data & AI met à disposition des plateformes communes, dont le Data Lakehouse, et en assure le fonctionnement, la maintenance et l’évolution.
 
-L’équipe Data & AI est responsable de la conception, de l’exploitation et de l’évolution des plateformes communes, notamment le Data Lakehouse. Elle met à disposition les infrastructures, les outils ainsi que les standards techniques permettant d’intégrer et d’exploiter les données.
+Les équipes IT rattachées aux différents domaines métiers développent ensuite leurs propres pipelines et intègrent leurs données sur la plateforme. Elles restent responsables de l’évolution de leurs périmètres de données, de la qualité des contenus publiés et de la gestion des accès associés.
 
-Les équipes IT des différents domaines métiers (assurance, épargne, RH, etc.) restent quant à elles responsables de leurs propres pipelines de données, de l’évolution de leurs périmètres fonctionnels ainsi que de la gestion des accès aux données dont elles sont propriétaires.
+Ce modèle permet à l’équipe centrale de se concentrer sur les capacités communes de la plateforme, tandis que la connaissance fonctionnelle et la responsabilité des données restent portées par les domaines métiers.
 
-Cette organisation permet à la plateforme d’évoluer indépendamment des différents cas d’usage tout en favorisant l’autonomie des équipes métiers.
+3.2 Autonomie encadrée des équipes métiers
 
-⸻
+L’approche Data Mesh retenue par Cardif vise à permettre à plusieurs équipes, en France comme à l’international, de développer et de déployer leurs propres pipelines sur une infrastructure partagée.
 
-3.2 Une plateforme commune au service des domaines métiers
+Cette autonomie repose néanmoins sur un cadre commun défini par l’équipe plateforme. Celle-ci fournit les outils, les patterns d’architecture et les règles de développement nécessaires à l’intégration des données. La standardisation des pipelines et le Generator Data Pipeline contribuent notamment à faciliter l’onboarding des équipes et à limiter les développements spécifiques.
 
-Plutôt que de développer les pipelines de données pour l’ensemble des métiers, l’équipe plateforme met à disposition un environnement commun permettant aux différentes équipes de construire leurs propres traitements.
+L’objectif est de rendre la plateforme suffisamment accessible pour que les équipes métiers puissent intégrer leurs données sans dépendre systématiquement d’une équipe centrale, tout en garantissant la cohérence technique de l’ensemble.
 
-Pour faciliter cette adoption, la plateforme fournit des règles d’architecture, des patterns de développement ainsi que des outils d’industrialisation destinés à standardiser la création des pipelines de données. Cette approche permet d’assurer une cohérence technique entre les différents projets tout en limitant les développements spécifiques.
+3.3 Une plateforme mutualisée au service de plusieurs domaines
 
-L’objectif est de rendre l’intégration de nouvelles sources de données suffisamment simple pour éviter les cycles de développement longs traditionnellement associés aux Data Warehouses.
+Le Data Lakehouse est conçu comme une plateforme mutualisée pouvant accueillir des données et des cas d’usage provenant de plusieurs domaines, pays et équipes. Les mêmes capacités de collecte, de stockage, de traitement et d’exposition sont réutilisées pour répondre à des besoins différents.
 
-⸻
+Cette logique permet de capitaliser sur les composants existants plutôt que de construire une plateforme spécifique pour chaque nouveau cas d’usage. Cardif a ainsi étendu progressivement son architecture à de nouveaux besoins, notamment aux données vectorielles et aux cas d’usage liés à l’intelligence artificielle, tout en conservant les mêmes principes d’intégration.
 
-3.3 Gouvernance et responsabilités
+3.4 Enjeux de gouvernance liés au modèle distribué
 
-Cette organisation implique une gouvernance adaptée afin de garantir la sécurité et la cohérence de la plateforme partagée.
+La répartition des responsabilités entre de nombreuses équipes implique des exigences importantes en matière de gouvernance. La mutualisation de la plateforme nécessite notamment de garantir la ségrégation entre les domaines, la confidentialité des données et une gestion précise des droits d’accès.
 
-L’équipe plateforme assure notamment la gestion des infrastructures, des standards techniques, des mécanismes de sécurité et des règles de gouvernance communes. Les équipes métiers conservent la responsabilité de leurs données, de leurs pipelines ainsi que des évolutions fonctionnelles liées à leurs domaines respectifs.
+Cardif privilégie un accès aux données via Starburst afin de centraliser l’application des règles de sécurité. Les droits peuvent être définis à différents niveaux, notamment par catalogue, schéma, table ou colonne, puis attribués au travers des processus MyAccess.
 
-Cette répartition des responsabilités permet de faire évoluer la plateforme de manière progressive tout en conservant un cadre de gouvernance commun pour l’ensemble des domaines métiers.
+La traçabilité des requêtes permet également d’identifier les données consultées, les utilisateurs concernés et les ressources consommées. Elle contribue à la fois au contrôle des accès, aux besoins d’audit, au suivi des performances et à la répartition des coûts entre les différents usages de la plateforme.
 
-⸻
+3.5 Principaux enseignements
 
-我建议再加一个小结（这是我觉得 benchmark 最有价值的分析）
+Le modèle Data Mesh de Cardif ne repose pas uniquement sur une décentralisation du développement. Il associe l’autonomie des domaines métiers à une plateforme commune, des standards techniques partagés et une gouvernance centralisée.
 
-其实 Olivier 这一段最重要的，不是 Data Mesh 本身，而是平台团队和业务团队的边界。
-
-如果是传统 Data Warehouse：
-
-Equipe Data
-↓
-Développe tous les pipelines
-↓
-Les métiers attendent
-
-而 Cardif：
-
-Equipe Plateforme
-↓
-Construit la plateforme
-↓
-Les métiers développent eux-mêmes leurs pipelines
-↓
-La plateforme fournit
-- les standards
-- les outils
-- les patterns
-- la gouvernance
-
-这是整个采访最核心的思想。
-
-所以我建议在这一章最后加一句总结：
-
-Cette organisation traduit une évolution du rôle de l’équipe Data & AI, qui ne développe plus l’ensemble des flux de données, mais fournit une plateforme commune, des standards et des outils permettant aux équipes métiers de construire et de maintenir leurs propres pipelines de manière autonome.
-
-我觉得这一句，比单纯写「Data Mesh」更有价值，因为它概括了 Cardif 的组织模式，也和后面的 Generator Data Pipeline、Industrialisation des pipelines 自然衔接起来。
+Cette organisation facilite le déploiement de nouveaux usages à grande échelle, mais suppose de disposer d’outils suffisamment industrialisés et d’un cadre de sécurité adapté à une plateforme mutualisée.
