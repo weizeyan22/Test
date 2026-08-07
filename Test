@@ -1,13 +1,191 @@
-"Merci à tous. J'ai fait un point sur le fichier de suivi la semaine dernière : un grand merci à Max et Carine d'avoir finalisé votre partie !
+2.3 Cardif – Architecture et retour d'expérience du Data Lakehouse (Reference implementation) 
 
-Actuellement, il nous manque encore quelques retours :
+Jacqueline MARCHETTI – Cardif Support IT Data - Utilisateur Starburst  
 
-Richard, bon retour de vacances ! Est-ce que tu pourras finaliser tes tests et mettre à jour le fichier dans la journée ?
+Olivier BESNARD - Chapter Lead Confirme (Tribe Tech Lead) IT Data & AI (Cardif)  
 
-Pour Linda et Bouchra, comme elles sont actuellement en congés, on fera le point à leur retour.
+Contexte 
 
-Pour rappel, c'est un travail d'équipe pour le projet Chatbot de Delphine, et c'est elle qui a défini la liste des tésteurs. Notre troisième COSTRAT aura lieu en septembre, et il est indispensable qu'on termine la partie Chatbot RAG avant septembre.
+Dans le cadre du benchmark des solutions Data Lakehouse au sein du Groupe BNP Paribas, des échanges ont été menés avec le département IT Data & AI de BNP Paribas Cardif. 
 
-Comme nous collaborons avec plusieurs parties prenantes—notamment l'Innovation Lab—c'est très important que chacun respecte les deadlines pour ne pas bloquer l'avancement global. Merci beaucoup pour votre coopération !"
+Au cours des dernières années, Cardif a progressivement développé et enrichi une plateforme Data Lakehouse (Cardif Trusted Data Fabric) ayant aujourd'hui atteint un niveau de maturité significatif. Cette plateforme s'appuie sur les services proposés par le Groupe (Data Hub V2) et mobilise notamment Starburst, Airflow, Spark et Iceberg. Elle intègre progressivement de nouveaux cas d'usage, tels que les bases de données vectorielles et les plateformes d'IA générative, afin de répondre aux enjeux de centralisation et de gouvernance des données, d'industrialisation des traitements, ainsi que d'évolution des usages analytiques. 
 
-Du coup, si chacun peut finaliser sa partie dès que possible, ça nous permettra de tout garder sur de bons rails pour septembre et de bien faire avancer le projet de Delphine. Merci beaucoup à tous pour votre aide !"
+Ces échanges avaient pour objectif de mieux comprendre les choix d'architecture, le modèle d'organisation (Data Mesh), les pratiques de gouvernance mises en œuvre, les retours d'expérience issus de l'exploitation de cette plateforme, ainsi que les perspectives d'évolution de son écosystème Data Lakehouse. Les enseignements recueillis permettent d'identifier de bonnes pratiques et d'alimenter la réflexion autour de la conception d'une plateforme Data Lakehouse adaptée aux besoins de Production Security. 
+
+ 
+
+Évolution du Data Lakehouse 
+
+Depuis plusieurs années, Cardif fait évoluer progressivement son architecture Data afin de répondre à l'augmentation des volumes de données, à la diversification des sources et des usages, ainsi qu'aux nouveaux besoins analytiques. Initialement, l’écosystème Data reposait principalement sur une architecture de type Data Warehouse traditionnelle, avec des traitements ETL sous Informatica, des fichiers CSV stockés sur des espaces NAS et des bases Oracle pour stocker et exploiter les données. 
+
+Avec le temps, cette architecture est devenue moins adaptée aux nouveaux besoins et a commencé à présenter certaines limites. Les traitements étaient plus difficiles à faire évoluer, le passage à l'échelle devenait plus complexe et l'intégration de nouvelles sources de données demandait davantage d’efforts. Une architecture plus scalable et plus flexible est ainsi progressivement devenue nécessaire pour accompagner l'évolution des besoins. Pour répondre à ces limites, Cardif a progressivement adopté les blueprints et les services proposés par le Groupe dans le cadre de Data Hub V2, intégrant notamment les exigences définies à l'échelle du Groupe en matière de gouvernance et de souveraineté des données. 
+
+Cette évolution a conduit à la mise en place progressive d’une architecture Data Lakehouse, reposant notamment sur Starburst pour l’accès SQL et la fédération des données, Airflow pour l’orchestration des pipelines, Spark pour les traitements massifs, ainsi qu’Iceberg pour structurer les données stockées dans l’Object Storage. Cette architecture constitue aujourd'hui le socle de la plateforme Data de Cardif et continue d'évoluer afin d'intégrer de nouveaux cas d'usage, notamment autour des données non structurées et de l'intelligence artificielle. 
+
+ 
+
+Architecture du Data Lakehouse   
+
+Organisation des flux de données et standardisation 
+
+L'un des principes d'architecture retenus par Cardif consiste à appliquer un modèle commun à l'ensemble des flux de données. L'objectif est de structurer les flux de données selon une chaîne de traitement standardisée, depuis la collecte des données jusqu'à leur mise à disposition auprès des consommateurs. 
+
+Les flux de données sont organisés autour des étapes suivantes : 
+
+Collecte et médiation → Ingestion → Stockage brut (Object Storage) → Traitement et intégration (Spark) → Stockage structuré (Iceberg) → Exposition (Starburst) → Consommation 
+
+Les données issues de différents canaux et sous différents formats (CSV, JSON, API REST ou fichiers Excel) sont tout d’abord collectées, puis stockées dans une zone de stockage brut sur l’Object Storage (COS). Elles sont ensuite traitées par Spark, qui assure les traitements d'intégration et de transformation avant leur stockage sous forme de tables Iceberg. Les données sont enfin exposées via Starburst et rendues accessibles au travers de différents modes d'accès tels que SQL, les API S3, les API REST. La plateforme a également été progressivement étendue afin de supporter de nouveaux mécanismes d'accès, tels que les moteurs de recherche et les bases de données vectorielles. 
+
+Cette organisation permet de maintenir une architecture homogène lors de l'évolution des besoins, des sources ou des formats de données. Par exemple, l'ajout d'un nouveau protocole ou d'une nouvelle source de données ne nécessite d'adapter que la première partie du pipeline, tandis que les étapes suivantes restent inchangées. 
+
+ 
+
+Industrialisation des pipelines de données 
+
+Au-delà de la standardisation des flux de données, Cardif a industrialisé le développement et l'exploitation des pipelines, afin de permettre aux différentes équipes IT de développer et de déployer leurs propres flux de données selon un modèle commun. 
+
+ 
+
+Industrialisation du développement des pipelines 
+
+Afin de standardiser le développement des nouveaux pipelines, Cardif a mis en place un Generator Data Pipeline. 
+
+Les caractéristiques des flux de données (structure des données sources, règles de transformation, paramètres techniques, etc.) sont décrites dans un fichier Excel de définition. À partir de cette description, le générateur produit automatiquement les structures de tables, les requêtes SQL ainsi que les pipelines d'intégration des données. 
+
+Les développeurs n'ont plus à développer manuellement les principaux éléments des pipelines d'intégration. Ils interviennent principalement pour définir les caractéristiques des flux, valider les éléments générés et traiter les cas particuliers lorsque cela est nécessaire.  
+
+Cette approche réduit l'effort de développement nécessaire à l'intégration de nouvelles sources de données, tout en limitant les risques d'erreur lors de l'implémentation. L'effort de développement devient ainsi largement indépendant du nombre de tables à intégrer, ce qui facilite l'intégration de nouveaux systèmes sources. 
+
+ 
+
+Industrialisation de l'exploitation des pipelines 
+
+Une fois générés, les pipelines sont orchestrés par Airflow. 
+
+Les traitements sont organisés sous forme de workflows, au sein desquels les différentes tâches sont exécutées selon leurs dépendances. Airflow assure ainsi l'orchestration et l'exécution automatisée des traitements sur l'ensemble de la plateforme. 
+
+Les pipelines suivent ensuite un cycle de déploiement commun au sein des différents environnements (développement, intégration, qualification puis production). Cette organisation permet d'appliquer un mode d'exploitation homogène à l'ensemble des pipelines déployés sur la plateforme. 
+
+ 
+
+Les principaux composants de l'architecture 
+
+ 
+
+Iceberg : couche de stockage des données (Storage layer) 
+
+L'adoption d'Iceberg a accompagné l'évolution de l'architecture du Data Lakehouse de Cardif. Auparavant, l'architecture reposait principalement sur Oracle, avec des limites en matière de montée en charge et de scalabilité pour le stockage et le traitement de volumes importants de données. L'arrivée d'Iceberg a permis de conserver les avantages du stockage objet (COS) tout en manipulant les données sous forme de tables.  
+
+L'utilisation d'Iceberg répond à plusieurs objectifs. D'une part, il permet de stocker de très grands volumes de données à moindre coût tout en bénéficiant de la scalabilité du stockage objet. D'autre part, Iceberg offre des fonctionnalités habituellement associées aux bases de données relationnelles, notamment la gestion des métadonnées, l'évolution des schémas, la mise à jour des données et la conservation de l'historique. Il est ainsi devenu le format privilégié pour le stockage des données analytiques et des données historiques de la plateforme. 
+
+Les tables Iceberg peuvent être lues et alimentées directement par Spark lors des traitements d'intégration et de transformation. Les traitements massifs peuvent ainsi être exécutés directement sur les données stockées dans Iceberg, sans solliciter systématiquement le cluster Starburst, qui reste principalement dédié aux usages de requêtage SQL. 
+
+Starburst : couche d'accès et de fédération des données (Access Layer） 
+
+Starburst constitue la couche d'accès aux données du Data Lakehouse. Son rôle principal est de fournir un point d'entrée unique permettant d'interroger des données provenant de plusieurs sources hétérogènes à l'aide du langage SQL.  
+
+Au sein du Data Lakehouse, Starburst est utilisé pour fédérer les données stockées dans différents environnements, notamment les tables Iceberg, les bases Oracle ainsi que d'autres sources de données (Data Federation). Il permet également d'interroger directement certaines sources externes sans duplication préalable des données (Data Virtualisation), tout en optimisant l'exécution des requêtes grâce au mécanisme de push-down query lorsque cela est possible.  
+
+Cette approche limite les duplications de données, facilite l'intégration progressive de nouvelles sources au sein de la plateforme et offre une vue unifiée de l'ensemble des données accessibles depuis la plateforme. 
+
+Stratégie de stockage hybride Oracle / Iceberg 
+
+Bien qu'Iceberg soit utilisé comme principal format de stockage, Cardif conserve Oracle pour certains cas d'usage nécessitant des temps de réponse très faibles. En effet, les traitements analytiques, les synchronisations de données et les reportings reposent principalement sur des traitements batch, pour lesquels une latence de quelques secondes reste acceptable. En revanche, certaines applications opérationnelles, notamment dans le domaine de l'assurance (par exemple la gestion des sinistres), nécessitent des temps de réponse inférieurs à la seconde. 
+
+Dans ces situations, les données actives sont conservées dans Oracle afin de garantir les performances attendues, tandis que les données historiques sont stockées dans Iceberg. Starburst permet ensuite d'interroger simultanément ces deux environnements à travers une même interface SQL. 
+
+Cette architecture hybride permet de répondre à des exigences de performance différentes, sans remettre en cause les principes d'architecture retenus pour la plateforme Data Lakehouse. Oracle est utilisé pour les traitements transactionnels nécessitant une faible latence, tandis qu'Iceberg est privilégié pour le stockage massif et les analyses historiques. 
+
+ 
+
+Organisation et modèle Data Mesh  
+
+L’organisation mise en place par Cardif repose sur une séparation entre les responsabilités liées à la plateforme et celles liées aux domaines métiers. 
+
+Le département IT Data & AI conçoit, exploite et fait évoluer les plateformes communes, dont le Data Lakehouse. Il définit également les outils, les patterns d’architecture ainsi que les standards de développement permettant aux autres équipes IT de développer et de déployer leurs pipelines sur la plateforme. 
+
+Les équipes IT des différents domaines métiers restent responsables de l’intégration de leurs données, du développement de leurs pipelines, de la mise à disposition de leurs données sur la plateforme ainsi que de l’évolution de leurs périmètres de données et des usages associés. 
+
+Cette organisation peut être résumée de la manière suivante : 
+
+Responsabilité 
+
+Équipe plateforme IT Data & AI 
+
+Équipes IT des domaines métiers 
+
+Conception et évolution de la plateforme 
+
+Responsable 
+
+— 
+
+Exploitation technique de la plateforme 
+
+Responsable 
+
+— 
+
+Définition des règles et patterns communs 
+
+Responsable 
+
+Appliqués par les équipes 
+
+Développement des pipelines métier 
+
+Support et cadre technique 
+
+Responsable 
+
+Intégration et évolution des périmètres de données 
+
+Accompagnement technique 
+
+Responsable 
+
+Gestion des usages associés aux données 
+
+— 
+
+Responsable 
+
+ 
+
+Cette approche correspond à un modèle Data Mesh orienté plateforme : la plateforme et les capacités techniques sont mutualisées, tandis que la responsabilité des flux de données et des usages reste distribuée entre les différents domaines métiers. 
+
+Le Data Lakehouse permet ainsi d'accueillir progressivement de nouveaux domaines métiers, de nouvelles équipes et de nouveaux cas d'usage, sans remettre en cause l'architecture existante de la plateforme ni nécessiter la mise en place d'une plateforme dédiée pour chaque nouveau besoin. 
+
+ 
+
+Gouvernance des accès aux données 
+
+Au sein du Data Lakehouse, Starburst constitue le point d'entrée privilégié pour accéder aux différentes sources de données de la plateforme. Cette approche permet de centraliser la gestion des accès au niveau de la plateforme, indépendamment des technologies de stockage sous-jacentes.  
+
+Les droits d'accès sont gérés via MyAccess et peuvent être définis à plusieurs niveaux (catalogue, schéma, table ou colonne). Dans un contexte de plateforme mutualisée, cette organisation permet d'assurer la ségrégation des données entre les différents domaines métiers, pays et équipes. Chez Cardif, les droits sont principalement administrés au niveau des schémas afin de limiter la complexité de gestion. Lorsque des restrictions plus fines sont nécessaires, des schémas dédiés peuvent être créés afin de restreindre l'accès à un sous-ensemble de tables. 
+
+Toutes les requêtes exécutées via Starburst sont tracées. Les informations collectées permettent d'identifier les utilisateurs, d'analyser les requêtes exécutées ainsi que leur plan d'exécution (Query Plan). Ces informations sont utilisées pour les besoins d'audit, l'analyse des performances des requêtes ainsi que le suivi de l'utilisation de la plateforme. 
+
+À terme, Cardif souhaite que les applications transmettent directement l'identité de l'utilisateur final à Starburst, plutôt que de s'appuyer sur des comptes de service propres aux applications. Cette évolution vise à centraliser la gestion des droits, à améliorer la traçabilité des accès et à appliquer les règles de gestion des accès de manière homogène, quel que soit l'outil utilisé pour consulter les données.  
+
+Retours d’expérience 
+
+Le Data Lakehouse est aujourd'hui utilisé pour plusieurs types de traitements de données au sein de Cardif. Les principaux usages concernent l'intégration de données provenant de systèmes hétérogènes, les synchronisations de données, les activités de reporting ainsi que les traitements analytiques.  
+
+Le retour d'expérience présenté montre également que la standardisation des composants et l'industrialisation des pipelines contribuent à faciliter l'intégration de nouvelles sources de données tout en réduisant les efforts de développement. L'utilisation de technologies largement fondées sur SQL facilite la prise en main de la plateforme par les équipes de développement. L'onboarding des développeurs est plus rapide que sur les anciennes plateformes Hadoop, sans nécessiter les compétences très spécialisées traditionnellement associées à ces environnements. 
+
+Quelques limitations techniques ont néanmoins été identifiées concernant les drivers ODBC sous Linux utilisés par certains outils tels que SAS et Informatica PowerCenter. Cette problématique est particulièrement importante pour Cardif, où SAS demeure l'un des principaux outils utilisés par les actuaires. Les difficultés rencontrées concernent notamment la compatibilité entre SAS et Starburst, en particulier la gestion de l'encodage de certains caractères spéciaux. Afin d'accompagner leur évolution, Cardif participe au programme de prévisualisation des nouvelles versions du pilote ODBC Linux proposé par Starburst.  
+
+Enfin, le retour d'expérience souligne l'intérêt de faire évoluer progressivement une plateforme commune en capitalisant sur les composants existants, afin d'intégrer de nouveaux cas d'usage sans remettre en cause l'architecture globale. 
+
+ 
+
+Évolutions et perspectives   
+
+L'une des principales évolutions concerne l'extension progressive du Data Lakehouse aux usages d'intelligence artificielle générative, avec l'intégration de traitement appliqués à des documents non structurés (PDF). Ceux-ci sont traités sur la plateforme d'IA Domino afin de réaliser les opérations de découpage en fragments (chunking) et de génération d'embeddings (vectorisation). Les vecteurs générés sont ensuite stockés dans une base de données vectorielle (Elastic), afin de répondre à des cas d'usage tels que les assistants conversationnels (RAG). À terme, Starburst devrait permettre d'interroger directement ces données vectorielles tout en conservant un point d'accès unique aux données et en appliquant les mêmes mécanismes de gouvernance et de gestion des accès que pour les données structurées. 
+
+Cardif souhaite progressivement ouvrir davantage la plateforme aux usages de Data Science, notamment depuis les environnements Domino et Python utilisés par les data scientists. L'utilisation de PyStarburst constitue une piste d'évolution permettant d'exécuter les traitements SQL directement sur la plateforme Starburst, sans rapatrier systématiquement les données dans des DataFrames Pandas. Cette approche vise à améliorer les performances lors du traitement de grands volumes de données tout en facilitant l'exploitation des données par les utilisateurs. 
+
+Cardif suit également les évolutions de l'offre Data Hub V2 proposée par le Groupe autour de Starburst. Une autre évolution concerne la migration du mécanisme de gestion des droits de Ranger vers BIAC, désormais privilégié par Starburst. Cette évolution devrait permettre d'activer progressivement plusieurs fonctionnalités actuellement indisponibles dans l'offre Groupe, notamment les vues matérialisées, les capacités d'interrogation des données vectorielles via Starburst ainsi que de nouvelles possibilités d'intégration avec Spark. 
+
+Plus largement, Cardif fait progressivement converger ses plateformes Data et IA. Le département IT Data & AI regroupe désormais les plateformes de données (Data Lakehouse) et les plateformes dédiées à l'intelligence artificielle (AI Factory, plateformes conversationnelles et plateforme agentique) au sein d'une même organisation. Cette organisation vise à faire du Data Lakehouse la plateforme de référence pour l'alimentation des usages d'IA. L'entraînement des modèles, les usages de Data Science ainsi que les assistants conversationnels s'appuient progressivement sur cette plateforme commune. Cette approche permet de capitaliser sur les capacités existantes du Data Lakehouse, tout en assurant la cohérence des données, de leur gouvernance et de leur cycle de vie. 
