@@ -17,3 +17,18 @@ N'hésite pas à me faire part de tes retours ou des points que tu souhaiterais 
 
 Bien à toi,
 Weize
+
+
+Ce benchmark s'appuie sur les échanges menés avec plusieurs entités et équipes du Groupe disposant d'une expérience dans la mise en place ou l'utilisation de plateformes Data. Il présente les retours d'expérience recueillis auprès de chaque entité ainsi qu'une analyse comparative des principales approches observées, notamment en matière d'architecture, d'organisation des données, de gouvernance, de modèle opérationnel et d'usages métiers.
+
+Ce document constitue la première partie de l'analyse. Il se concentre sur la restitution factuelle des retours d'expérience et leur analyse comparative. Les deux autres volets seront présentés séparément dans les documents suivants :
+
+Technical Analysis : analyse technique détaillée des technologies, des composants et des différentes options d'architecture applicables à IAM / Production Security ;
+Proposed Approach : analyse des besoins de IAM / Production Security et proposition d'une architecture cible ainsi que des composants associés.
+
+Je vous partagerai ces deux documents dans un second temps, une fois l'analyse finalisée.
+
+N'hésitez pas à me faire part de vos retours ou des points que vous souhaiteriez approfondir.
+
+Bien à vous,
+Weize
