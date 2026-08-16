@@ -1,11 +1,13 @@
-
 Hi Paramesh,
 
 Thanks for the summary. I agree with the points discussed. Please proceed with the development based on the following:
 
 * Endpoint consolidation: We can consolidate the filters into a single endpoint, with the relevant filters provided as input parameters depending on the use case.
-* Global Status Label / Workitem Status Label: I understand the concern regarding the additional calculation and potential impact on API response time. We should discuss this point with the Innovation Lab AI developers to assess whether part of this logic could be handled more efficiently at the AI agent layer, while minimizing the impact on API performance.
-* Misspelled application / entitlement names: Similarly, we can assess with the Innovation Lab whether the AI agent can interpret an approximate or misspelled application/entitlement name, identify the intended value, and then call the endpoint with the correct parameters to retrieve the relevant request information.
+* Global Status Label / Workitem Status Label: I understand the concern regarding the additional calculation and the potential impact on API response time.
+    For the Global Status, since it represents a consolidated business-level status derived from several underlying statuses (e.g. approval status, provisioning status, work item status), I think it would be preferable to keep the calculation based on predefined business rules on the API/backend side.
+    This would give us a single and consistent definition of the Global Status, independent of how the AI agent interprets the underlying statuses. The AI agent can then use the Global Status returned by the API to interpret the user’s request and provide a user-friendly explanation, rather than recalculating the business status itself.
+    We can therefore define the required mapping/business rules together. If the calculation has a significant impact on response time, we can review the implementation and optimize it based on the actual performance observed.
+* Misspelled application / entitlement names: For this point, I suggest discussing with the Innovation Lab AI developers whether the AI agent can handle approximate or misspelled application/entitlement names, identify the intended value, and then call the endpoint with the correct parameters. This type of semantic interpretation seems more appropriate at the AI agent layer.
 * Request status: Pending, Completed and Cancelled are sufficient for the current scope and can remain aligned with the MyIAM Access Request UI.
 * Identity scope: Agreed. As initially discussed with Delphine, we can start with normal identities only. Technical identities can be handled separately at a later stage if required.
 
