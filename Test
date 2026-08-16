@@ -1,1 +1,17 @@
 
+Hi Paramesh,
+
+Thanks for the summary. I agree with the points discussed. Please proceed with the development based on the following:
+
+* Endpoint consolidation: We can consolidate the filters into a single endpoint, with the relevant filters provided as input parameters depending on the use case.
+* Global Status Label / Workitem Status Label: I understand the concern regarding the additional calculation and potential impact on API response time. We should discuss this point with the Innovation Lab AI developers to assess whether part of this logic could be handled more efficiently at the AI agent layer, while minimizing the impact on API performance.
+* Misspelled application / entitlement names: Similarly, we can assess with the Innovation Lab whether the AI agent can interpret an approximate or misspelled application/entitlement name, identify the intended value, and then call the endpoint with the correct parameters to retrieve the relevant request information.
+* Request status: Pending, Completed and Cancelled are sufficient for the current scope and can remain aligned with the MyIAM Access Request UI.
+* Identity scope: Agreed. As initially discussed with Delphine, we can start with normal identities only. Technical identities can be handled separately at a later stage if required.
+
+In the meantime, the endpoint development should continue so that we can complete a first working version based on the current scope.
+
+Once the AI agent implementation progresses, we can review how the agent interacts with these endpoints and adjust them where necessary. Additional functionalities or endpoints can also be introduced later based on identified needs.
+
+Thanks,
+Weize
