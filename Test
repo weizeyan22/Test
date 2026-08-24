@@ -1,19 +1,5 @@
-Hi Paramesh,
+Concernant le chatbot, j'ai jeté un coup d'œil au fichier de tracking, merci à tous ceux qui ont déjà terminé !
 
-Thanks for the summary. I agree with the points discussed. Please proceed with the development based on the following:
+Là, je vois qu'il ne reste plus que Bouchra et Linda. Bouchra, je sais que tu es dessus, hésite pas à mettre à jour le fichier de présence quand c'est bon pour toi. Linda, je ne sais pas si tu as déjà fini tes tests et que c'est juste pas encore mis à jour dans le fichier. Si c'est pas encore fait, est-ce que tu pourrais les finaliser d'ici ce soir s'il te plaît ?
 
-* Endpoint consolidation: We can consolidate the filters into a single endpoint, with the relevant filters provided as input parameters depending on the use case.
-* Global Status Label / Workitem Status Label: I understand the concern regarding the additional calculation and the potential impact on API response time.
-    For the Global Status, since it represents a consolidated business-level status derived from several underlying statuses (e.g. approval status, provisioning status, work item status), I think it would be preferable to keep the calculation based on predefined business rules on the API/backend side.
-    This would give us a single and consistent definition of the Global Status, independent of how the AI agent interprets the underlying statuses. The AI agent can then use the Global Status returned by the API to interpret the user’s request and provide a user-friendly explanation, rather than recalculating the business status itself.
-    We can therefore define the required mapping/business rules together. If the calculation has a significant impact on response time, we can review the implementation and optimize it based on the actual performance observed.
-* Misspelled application / entitlement names: For this point, I suggest discussing with the Innovation Lab AI developers whether the AI agent can handle approximate or misspelled application/entitlement names, identify the intended value, and then call the endpoint with the correct parameters. This type of semantic interpretation seems more appropriate at the AI agent layer.
-* Request status: Pending, Completed and Cancelled are sufficient for the current scope and can remain aligned with the MyIAM Access Request UI.
-* Identity scope: Agreed. As initially discussed with Delphine, we can start with normal identities only. Technical identities can be handled separately at a later stage if required.
-
-In the meantime, the endpoint development should continue so that we can complete a first working version based on the current scope.
-
-Once the AI agent implementation progresses, we can review how the agent interacts with these endpoints and adjust them where necessary. Additional functionalities or endpoints can also be introduced later based on identified needs.
-
-Thanks,
-Weize
+Pour recontextualiser un peu, je tenais juste à rappeler que je ne suis pas le/la product owner du chatbot, et que cette liste de testeurs a été assignée par Delphine. On doit clôturer la partie RAG d'ici la fin du mois d'août pour pouvoir passer à la phase suivante, donc c'est vraiment très important qu'on termine cette vague de tests au plus vite. Merci tout le monde !"
