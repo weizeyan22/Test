@@ -1,9 +1,24 @@
-Concernant le chatbot, j'ai jeté un coup d'œil au fichier de tracking, merci à tous ceux qui ont déjà terminé !
+Pour vous donner quelques updates sur le projet :
 
-Là, je vois qu'il ne reste plus que Bouchra et Linda. Bouchra, je sais que tu es dessus, hésite pas à mettre à jour le fichier de présence quand c'est bon pour toi. Linda, je ne sais pas si tu as déjà fini tes tests et que c'est juste pas encore mis à jour dans le fichier. Si c'est pas encore fait, est-ce que tu pourrais les finaliser d'ici ce soir s'il te plaît ?
+Tout d’abord, le premier batch d’API sur le Request Tracking a déjà été déployé en prod. J’ai demandé à notre équipe APS de faire une demande de service account pour votre dev, pour qu’il puisse accéder à nos APIs.
 
-Pour recontextualiser un peu, je tenais juste à rappeler que je ne suis pas le/la product owner du chatbot, et que cette liste de testeurs a été assignée par Delphine. On doit clôturer la partie RAG d'ici la fin du mois d'août pour pouvoir passer à la phase suivante, donc c'est vraiment très important qu'on termine cette vague de tests au plus vite. Merci tout le monde !"
+Pour le deuxième batch, il devrait être disponible vers fin septembre. En fait, notre équipe dev prévoit de livrer un nouveau batch d’API à la fin de chaque mois.
 
-“Comme vous le savez, cette phase de test a été validée par Delphine avec cette liste précise de testeurs. C'est une étape obligatoire pour qu'on puisse clôturer la partie RAG d'ici fin août et avancer sur la suite.”
+Et concernant l’intégration avec l’AI agent, comme l’agent n’est pas encore développé, on aura peut-être besoin de faire quelques ajustements sur les APIs au moment de l’intégration. Si c’est le cas, votre dev pourra directement voir les points techniques avec nos devs, et on ajustera si besoin.
 
-Beaucoup de personnes attendent les résultats de ces tests, et l'idée c'est qu'on ne bloque pas les contributions de toute l'équipe pour la suite.
+On aura aussi un nouvel alternant qui va rejoindre l’équipe fin septembre. Mais comme il va juste arriver dans l’équipe et qu’il devra d’abord se familiariser avec le contexte MyIAM et le sujet AI, ce serait compliqué de lui confier le développement de l’AI agent de zéro dès son arrivée.
+
+Par contre, pour toute la partie intégration, l’alternant et moi, on va suivre le sujet de près et travailler avec votre dev. Et s’il y a des ajustements à faire côté API, on pourra directement voir ça avec nos devs.
+
+
+Et concernant la partie RAG, on a terminé la troisième phase de tests. On a reçu plus de 70 feedbacks au total, avec un peu plus de 30 % de feedbacks négatifs.
+
+Je dois encore revoir les résultats plus en détail avec Fred, parce que dans certains cas, les testeurs ont posé des questions très précises, alors qu’un utilisateur classique n’irait pas forcément aussi loin dans le niveau de détail.
+
+Donc je lui ai demandé de regarder plus précisément les feedbacks négatifs, pour comprendre d’où viennent les mauvaises réponses.
+
+Et en fonction de son analyse, si on voit que certaines informations manquent ou ne sont pas assez claires dans notre base de connaissance, on pourra revoir ou compléter la documentation.
+
+
+
+J’ai vu ton mail, mais je n’ai pas trop compris ce que tu voulais dire par “faire une copie de Marketplace”, ni ce qu’on doit faire exactement de notre côté. Tu peux m’expliquer ?
