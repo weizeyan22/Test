@@ -1,0 +1,11 @@
+De mon côté, principalement quelques updates sur le projet MyIAM AI Agent.
+
+Pour la partie RAG, on a terminé le troisième tour de tests. On a reçu 71 feedbacks au total, avec 61 % de positifs et 39 % de négatifs.
+
+Je vais maintenant revoir les feedbacks négatifs avec l’équipe Support pour identifier les points à améliorer. En fonction des résultats, on verra s’il faut mettre à jour certaines documentations ou faire des ajustements côté RAG, et ensuite décider si un nouveau tour de tests est nécessaire.
+
+Concernant les APIs, le premier batch sur le Request Tracking est maintenant disponible en prod. La prochaine étape est de tester l’accès avec le dev d’Innovation Lab pour pouvoir commencer l’intégration avec l’AI agent.
+
+En parallèle, nos devs ont commencé le deuxième batch d’APIs, avec une livraison prévue pour fin septembre.
+
+Donc globalement, on avance maintenant sur l’intégration du premier batch, tout en continuant le développement du deuxième
