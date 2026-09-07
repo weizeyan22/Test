@@ -7,3 +7,15 @@ Based on their analysis, we’ll see whether we need to update or complete some 
 Regarding the APIs, the first batch for Request Tracking is already ready. The service account has also already been provided to Innovation Lab. The next step is to check with their developer whether they can successfully access and call our APIs with this account. I think it would be useful to organize a quick meeting with their developer to test the connection together.
 
 For the second batch of APIs, I already had a discussion with Paramesh about a few points that need to be adjusted in the specifications. I’ll reply to his email today with the changes we agreed on. The development can then continue based on the updated scope.
+
+
+
+Since the Support team are our subject matter experts, you know the users’ needs and the questions they usually ask better than anyone else.
+
+So I’d like you to review these 30 negative feedbacks this week and, for each question, let us know whether you think it’s a realistic question that an end user could actually ask.
+
+I’ll send you a summary email after the meeting with what needs to be reviewed.
+
+如果你不想听起来像是在给 Support team 强硬派任务，可以稍微软一点：
+
+So I think it would be useful if you could review these 30 negative feedbacks this week and let us know, for each one, whether it’s something an end user would realistically ask.
