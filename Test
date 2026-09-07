@@ -1,37 +1,31 @@
-可以。按照你今天 weekly meeting 要讲的内容，我建议 minutes 不要写成长篇会议记录，继续用你之前那种 Progress Update + Actions 的形式会比较清楚。
+Action
 
-你可以直接发下面这版：
+Owner
 
-MyIAM AI Agent – Weekly Meeting Minutes
+Review the 28 negative feedbacks and assess their relevance to actual end-user needs
 
-RAG / UAT
+Support Team
 
-* The third round of testing has been completed, with more than 70 feedbacks collected in total. Around 39% of the feedback was negative.
-* Some of the negative feedback relates to very specific questions that may not necessarily reflect typical end-user needs.
-* As Subject Matter Experts, the Support team will review the ~30 negative feedbacks and assess whether each question represents a realistic end-user need.
-* Based on this review, we will identify whether the issues are related to gaps in the existing documentation or require further improvements on the RAG side.
-* The documentation / Knowledge Base will be updated if needed.
-* Based on the outcome, we will decide whether another full round of testing is required or whether targeted testing within the Support team is sufficient.
+Identify potential documentation gaps based on the feedback review
 
-API Development & AI Agent Integration
+Support Team / Fred
 
-* The first batch of APIs – Request Tracking – is ready.
-* A service account has already been provided to Innovation Lab. The next step is to confirm that the Innovation Lab developer can successfully access and call the MyIAM APIs using this account.
-* A technical discussion can be organized between the Innovation Lab developer and the MyIAM dev team to validate the connection and support the integration.
-* If any API adjustments are identified during the AI agent integration, they can be reviewed directly between both development teams and implemented as needed.
-* Development of the second batch of APIs has started, with delivery targeted for the end of September.
-* Some updates to the second-batch API specifications have already been discussed with Paramesh. The updated points will be confirmed by email.
+Review and update the Knowledge Base if needed
 
-Next Actions
+Fred / Innovation Lab
 
-Action	Owner
-Review the ~30 negative feedbacks and assess their relevance to actual end-user needs	Support Team
-Identify documentation gaps based on the feedback review	Support Team / Weize
-Confirm whether the existing service account can access the MyIAM APIs	Innovation Lab / MyIAM Dev
-Organize a technical discussion for API access/integration if needed	Weize
-Confirm the agreed updates to the second-batch API specifications	Weize
-Continue development of the second API batch	MyIAM Dev Team
+Confirm access to the MyIAM APIs using the existing service account
 
-有一点我特意没有在 minutes 里写 “39% negative = RAG performance issue”。现在你们还没完成 root-cause analysis，所以正式 minutes 里最好保持中性。等 Support team review 完，你才能进一步区分是 documentation gap / RAG issue / overly specific or out-of-scope question。
+Innovation Lab
 
-这版已经可以直接作为你今天的 MoM 发出去。
+Organize a technical discussion between Innovation Lab and MyIAM dev teams if needed
+
+Weize
+
+Confirm the agreed updates to the second-batch API specifications by email
+
+Weize
+
+Continue development of the second batch of APIs
+
+MyIAM Dev Team
