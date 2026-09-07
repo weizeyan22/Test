@@ -1,0 +1,9 @@
+First, regarding the RAG part, we have completed the third round of testing. We received more than 70 feedbacks in total, with around 39% negative feedback.
+
+I asked the Support team to review the negative feedback in more detail and check whether these are actually frequently asked questions from end users. Because in some cases, the testers asked very specific questions, while a typical user would probably not go into that level of detail.
+
+Based on their analysis, we’ll see whether we need to update or complete some of the documentation in the Knowledge Base. Then we can decide whether another round of testing is needed, or whether we can just do some targeted testing within the Support team.
+
+Regarding the APIs, the first batch for Request Tracking is already ready. The service account has also already been provided to Innovation Lab. The next step is to check with their developer whether they can successfully access and call our APIs with this account. I think it would be useful to organize a quick meeting with their developer to test the connection together.
+
+For the second batch of APIs, I already had a discussion with Paramesh about a few points that need to be adjusted in the specifications. I’ll reply to his email today with the changes we agreed on. The development can then continue based on the updated scope.
