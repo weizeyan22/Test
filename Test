@@ -1,17 +1,23 @@
-There are not many updates from our side this week.
+Cette semaine, on n’a pas beaucoup d’updates de notre côté. J’ai principalement quelques points sur la partie RAG / Knowledge Base et sur le développement des APIs.
 
-For the RAG and Knowledge Base part, Fred and I have finished reviewing Nelson’s assessment of the negative feedback, and we’ve identified the required action for each case.
+Pour la partie RAG et Knowledge Base, Fred et moi avons terminé la revue de l’analyse des feedbacks négatifs faite par Nelson, et on a identifié les actions à mener pour chaque cas.
 
-Overall, we identified three main types of issues.
+Globalement, on a identifié trois grandes catégories de problèmes.
 
-The first one is related to outdated documentation in the Knowledge Base. For these cases, the existing documents need to be updated.
+La première concerne les documents de notre Knowledge Base qui ne sont pas à jour. Pour ces cas-là, il faudra simplement mettre à jour les documents existants.
 
-The second one is where the information is simply not available in our current documentation. For these cases, Fred will create a new FAQ document dedicated to the chatbot, where we can progressively add the questions and answers that are currently missing from the Knowledge Base.
+La deuxième concerne les cas où l’information n’existe tout simplement pas dans notre documentation actuelle. Pour ça, Fred va créer un nouveau document FAQ dédié au chatbot, dans lequel on pourra ajouter progressivement les questions et réponses qui ne sont pas couvertes aujourd’hui par la Knowledge Base.
 
-The third type is more related to the chatbot behavior. In some cases, the user’s request is not very clear, and the chatbot simply answers that it doesn’t know. Instead, we would expect the chatbot to further explore the user’s request, for example by asking follow-up questions or trying to better understand the user’s intent before giving up. So for these cases, we need to look at how we can improve the RAG and the prompting. We’ll discuss this point with the Innovation Lab.
+La troisième catégorie concerne plutôt le comportement du chatbot. Dans certains cas, la demande de l’utilisateur n’est pas très claire et le chatbot répond simplement qu’il ne sait pas. Ce qu’on attendrait plutôt, c’est qu’il essaie d’aller plus loin dans la demande, par exemple en posant des questions complémentaires ou en essayant de mieux comprendre l’intention de l’utilisateur avant de répondre qu’il ne sait pas.
 
-For the API development, as far as I know, the second batch of endpoints is currently being tested and should be ready for production by the end of the month.
+Pour ces cas-là, il faudra voir comment on peut optimiser le RAG et le prompting. On va donc en discuter avec l’Innovation Lab.
 
-Tomorrow, we also have a session planned between the Innovation Lab developers and our developers to test the connection to the MyIAM APIs. We’ll start, of course, with the STG environment and STG data before moving any further.
+Concernant le développement des APIs, d’après les dernières informations que j’ai, le deuxième batch d’endpoints est actuellement en phase de test et devrait être prêt pour la production d’ici la fin du mois.
 
-And one last update: a new AI Engineer has joined Adrien’s Automation team, and he will also contribute to the project, especially on the AI Agent development together with the Innovation Lab.
+Demain, on a également un point prévu entre les développeurs de l’Innovation Lab et nos développeurs pour tester la connexion aux APIs MyIAM et vérifier que les développeurs de l’Innovation Lab peuvent bien y accéder. Bien sûr, on va commencer par l’environnement STG et les données de STG avant d’aller plus loin.
+
+Et un dernier point : un nouvel AI Engineer a rejoint l’équipe Automation d’Adrien. Il va également participer au projet et contribuer au développement de la partie AI Agent avec l’Innovation Lab.
+
+其中最后一句如果你想说得更自然一点，我其实更推荐：
+
+Un nouvel AI Engineer vient également de rejoindre l’équipe Automation d’Adrien. Il va travailler avec nous sur le projet, notamment sur la partie développement de l’AI Agent avec l’Innovation Lab.
