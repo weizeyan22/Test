@@ -1,0 +1,17 @@
+There are not many updates from our side this week.
+
+For the RAG and Knowledge Base part, Fred and I have finished reviewing Nelson’s assessment of the negative feedback, and we’ve identified the required action for each case.
+
+Overall, we identified three main types of issues.
+
+The first one is related to outdated documentation in the Knowledge Base. For these cases, the existing documents need to be updated.
+
+The second one is where the information is simply not available in our current documentation. For these cases, Fred will create a new FAQ document dedicated to the chatbot, where we can progressively add the questions and answers that are currently missing from the Knowledge Base.
+
+The third type is more related to the chatbot behavior. In some cases, the user’s request is not very clear, and the chatbot simply answers that it doesn’t know. Instead, we would expect the chatbot to further explore the user’s request, for example by asking follow-up questions or trying to better understand the user’s intent before giving up. So for these cases, we need to look at how we can improve the RAG and the prompting. We’ll discuss this point with the Innovation Lab.
+
+For the API development, as far as I know, the second batch of endpoints is currently being tested and should be ready for production by the end of the month.
+
+Tomorrow, we also have a session planned between the Innovation Lab developers and our developers to test the connection to the MyIAM APIs. We’ll start, of course, with the STG environment and STG data before moving any further.
+
+And one last update: a new AI Engineer has joined Adrien’s Automation team, and he will also contribute to the project, especially on the AI Agent development together with the Innovation Lab.
