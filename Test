@@ -1,0 +1,17 @@
+Good afternoon everyone.
+
+I’ll give you a quick update on Stream 4, the MyIAM AI Agent project.
+
+Most of you are probably already familiar with MyIAM, whether it's for requesting access, tracking a request, or managing access for your teams.
+
+Today, even for relatively simple needs, users sometimes have to spend time figuring out where to find the right information, which procedure to follow, or where to go to perform a specific action.
+
+**And that's exactly why we launched the MyIAM AI Agent.**
+
+Our objective is to build an AI chatbot for all MyIAM end users, leveraging both Generative and Agentic AI capabilities, to provide a single entry point to IAM information and services, making them easier and more intuitive for users to access.
+
+**To deliver this, the project relies on two core capabilities.**
+
+The first is **RAG**, which enables the Agent to answer users' questions instantly based on our IAM Knowledge Base.
+
+The second is **Agentic AI**, which connects directly to MyIAM data via APIs, pulling user-specific, real-time data to answer context-aware questions.
