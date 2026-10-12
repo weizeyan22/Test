@@ -1,20 +1,7 @@
-So, just a quick update from our side this week.
+Concernant la partie Agentic AI, les deux premiers lots d’APIs MyIAM ont été livrés, et le troisième est prévu pour fin octobre.
 
-Last week, we presented the progress of the MyIAM AI Agent project during the SteerCo. Overall, the project is progressing steadily, and we’re now focusing on the next steps.
+En revanche, le développement de l’AI Agent en lui-même n’a pas encore démarré. Nous disposons désormais de ressources de l’Innovation Lab et de l’équipe Automation pour lancer son développement et l’intégration avec les APIs MyIAM.
 
-First, regarding the RAG and Knowledge Base, our objective is to complete the targeted KB updates and RAG prompting optimization by the end of October.
+À ce stade, nous n’avons donc pas encore de fonctionnalités de l’Agent directement exploitables par Le Comptoir.
 
-Fred and the Innovation Lab will be working on these improvements. If we need any additional input or support from the Support team, we’ll reach out to you.
-
-Second, regarding the API development, we’re targeting the delivery of the third batch of MyIAM APIs by the end of October.
-
-And finally, for the AI Agent integration, we’re planning to start integrating the MyIAM APIs into the Agent.
-
-We now have several AI developers from the Innovation Lab, as well as a new AI Engineer from the Automation team, who will support us with the Agent development and integration.
-
-So overall, things are moving forward, and our main priorities for this month are the RAG improvements, the third API batch delivery, and the start of the AI Agent integration.
-
-That’s all from my side for now.
-
-Also, I was thinking we could move this meeting to every two weeks, since we don't always have significant updates on a weekly basis.
-And if anything urgent comes up, we can always arrange a separate meeting.
+Nous pourrons refaire un point ensemble dès que nous aurons de premiers résultats concrets sur cette partie.
