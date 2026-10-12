@@ -1,7 +1,373 @@
-Concernant la partie Agentic AI, les deux premiers lots d’APIs MyIAM ont été livrés, et le troisième est prévu pour fin octobre.
+可以。我根据你之前和 Paramesh 的邮件，以及你发来的第 12–22 页 Specification 截图，把 3.2 Request Tracking 重新整理成一个完整的英文版本。
 
-En revanche, le développement de l’AI Agent en lui-même n’a pas encore démarré. Nous disposons désormais de ressources de l’Innovation Lab et de l’équipe Automation pour lancer son développement et l’intégration avec les APIs MyIAM.
+我尽量保留你原来文档的结构，包括 Function Description、Agent Trigger、Endpoint、Authentication、Input Parameters、Response Schema、Example Response、Error Codes 和 Implementation Notes。
 
-À ce stade, nous n’avons donc pas encore de fonctionnalités de l’Agent directement exploitables par Le Comptoir.
+这份是供 Paramesh review 的修订草案，不是已经确认的最终 API Contract。尤其是 Global Status 的业务映射、模糊匹配策略和最终用户身份传递方式，仍需要技术确认。
 
-Nous pourrons refaire un point ensemble dès que nous aurons de premiers résultats concrets sur cette partie.
+3.2 Request Tracking
+
+This functional area enables the AI Agent to retrieve access request information from MyIAM through secure, read-only APIs.
+
+It supports two main use cases:
+
+* Request Search: Retrieve access requests based on criteria such as requestor, requestee, application, entitlement, status and submission date.
+* Request Details: Retrieve the detailed status, approval workflow and provisioning information of a specific access request.
+
+The search capabilities previously defined as searchRequestsByUser, searchRequestsByAppEnt and searchRequestByStatus are consolidated into a single function, searchRequests, using optional input filters.
+
+The API/backend layer is responsible for applying access controls and calculating consolidated business-level request statuses. The AI Agent uses the returned information to provide clear, contextual responses to end users.
+
+3.2.1 searchRequests
+
+Function Description
+
+Returns a paginated list of access requests matching the specified filters.
+
+The function supports searching by requestor, requestee, application, entitlement, request status and submission date. Multiple filters can be combined to narrow the results.
+
+This function allows the AI Agent to answer natural-language questions about access requests without requiring separate API functions for each search criterion.
+
+Agent Trigger
+
+Use this function when the user asks to search, list or track access requests associated with a person, application, entitlement or status.
+
+Examples:
+
+* “Show me my pending requests.”
+* “What requests did I submit for my team?”
+* “Have I requested Bloomberg access?”
+* “Show me my completed requests.”
+* “What requests were submitted for Jean Dupont?”
+* “Show me the pending requests for ServiceNow.”
+* “Which requests were rejected last month?”
+
+Endpoint
+
+GET /api/v1/requests/search
+
+Authentication and Authorization
+
+Authentication is required. The API must determine the authenticated end-user identity from a trusted authentication context.
+
+The authenticated user identity must not be supplied as an arbitrary query parameter by the AI Agent.
+
+All search filters and returned results must be validated against the end user’s authorized access scope.
+
+The intended access rules are:
+
+User Role	Authorized Scope
+Regular user	Own requests, whether requestor or requestee
+Manager	Own requests and authorized team members’ requests
+Administrator	Requests within the administrator’s authorized scope
+
+The mechanism used to propagate the end-user identity when the Agent calls the API through a technical service account remains to be confirmed with the IAM and Innovation Lab development teams.
+
+Input Parameters
+
+Parameter	Type	Required	Description
+requestorId	string	No	IIQ user ID of the person who submitted the request.
+requesteeId	string	No	IIQ user ID of the beneficiary for whom the access was requested.
+applicationName	string	No	Application name used to filter requests. Name resolution strategy to be confirmed.
+entitlementName	string	No	Entitlement or role name used to filter requests. Name resolution strategy to be confirmed.
+status	string	No	Business-level request status filter. Default: all. Accepted values and mapping to be validated.
+scope	string	No	Requested search scope: me, my_team or all, subject to authorization. Default: me.
+submittedAfter	date	No	ISO 8601 date. Returns requests submitted on or after this date.
+submittedBefore	date	No	ISO 8601 date. Returns requests submitted on or before this date.
+limit	integer	No	Maximum number of results returned. Default: 20. Maximum: 100.
+offset	integer	No	Pagination offset. Default: 0.
+
+Filter Combination Rules
+
+* All supplied filters are combined using AND logic.
+* requestorId and requesteeId can be used separately or together.
+* applicationName and entitlementName can be used separately or together.
+* If no user, application or entitlement filter is provided, the search defaults to the authenticated user’s authorized scope.
+* The scope parameter cannot extend the caller’s authorized permissions.
+* If submittedAfter and submittedBefore are both provided, the API returns requests within the specified submission date range.
+* Pagination must be applied after filtering and authorization checks.
+
+Request Status Handling
+
+The status parameter represents a business-level filter, rather than the underlying IIQ technical status.
+
+For the initial scope, the agreed priority filters are:
+
+Input Status	Intended Meaning
+pending	Requests that are still awaiting completion
+completed	Requests that have successfully completed
+cancelled	Requests that have been cancelled
+all	All requests within the authorized scope
+
+The final mapping between these business-level filters and IIQ internal statuses must be confirmed with the development team.
+
+In particular, the handling of rejected requests and requests in execution must be explicitly defined to avoid incorrect classifications.
+
+Response Schema
+
+Field	Type	Description
+totalCount	integer	Total number of matching requests after authorization and filtering, before pagination.
+hasMore	boolean	Indicates whether additional results are available.
+nextOffset	integer/null	Offset for retrieving the next page. Null when no additional results are available.
+appliedFilters.requestorId	string/null	Resolved requestor filter applied to the search.
+appliedFilters.requesteeId	string/null	Resolved requestee filter applied to the search.
+appliedFilters.applicationName	string/null	Application filter applied.
+appliedFilters.entitlementName	string/null	Entitlement filter applied.
+appliedFilters.status	string	Normalized status filter applied.
+appliedFilters.scope	string	Authorized scope applied to the search.
+requests[].AccessRequestId	string	IIQ access request identifier.
+requests[].globalStatus	string	Consolidated business-level request status calculated by the API/backend.
+requests[].globalStatusLabel	string	Human-readable explanation of the overall request status.
+requests[].RequestDate	datetime	UTC request submission timestamp.
+requests[].requestor.UID	string	IIQ user ID of the requestor.
+requests[].requestor.DisplayName	string	Full name of the requestor.
+requests[].requestee.UID	string	IIQ user ID of the beneficiary.
+requests[].requestee.DisplayName	string	Full name of the beneficiary.
+requests[].items[].EntitlementName	string	Display name of the requested entitlement or role.
+requests[].items[].Application	string	Application name in business terms.
+requests[].items[].WorkItemStatus	string/null	Status of the individual request item, if available.
+requests[].items[].WorkItemStatusLabel	string/null	Human-readable item-level status information, if available.
+
+Example Response
+
+The following is an illustrative response structure, not a validated backend payload.
+
+{
+  "appliedFilters": {
+    "requestorId": null,
+    "requesteeId": "JDUPONT",
+    "applicationName": null,
+    "entitlementName": null,
+    "status": "pending",
+    "scope": "me"
+  },
+  "totalCount": 1,
+  "hasMore": false,
+  "nextOffset": null,
+  "requests": [
+    {
+      "AccessRequestId": "REQ-2025-00145",
+      "globalStatus": "PENDING",
+      "globalStatusLabel": "Waiting for Risk Manager approval",
+      "RequestDate": "2025-03-10T08:30:00Z",
+      "requestor": {
+        "UID": "PLECLERC",
+        "DisplayName": "Pierre Leclerc"
+      },
+      "requestee": {
+        "UID": "JDUPONT",
+        "DisplayName": "Jean Dupont"
+      },
+      "items": [
+        {
+          "EntitlementName": "Trading Platform - Write Access",
+          "Application": "Front Office Trading",
+          "WorkItemStatus": "VERIFYING",
+          "WorkItemStatusLabel": "Under review by Risk Officer"
+        }
+      ]
+    }
+  ]
+}
+
+Error Codes
+
+HTTP Code	Description
+400	Invalid or incompatible query parameters.
+401	Missing, invalid or expired authentication token.
+403	The caller is not authorized to access the requested scope or information.
+500	Unexpected backend error.
+
+A valid search returning no matching requests should normally return an empty requests array with totalCount set to 0, rather than an HTTP 404.
+
+Implementation Notes
+
+* The API/backend must enforce authorization independently of the AI Agent.
+* The API/backend is responsible for calculating the consolidated globalStatus using predefined business rules.
+* The Agent must not independently infer the authoritative Global Status from underlying technical statuses.
+* The globalStatusLabel should provide meaningful business context, such as the current approval or provisioning stage, where available.
+* Application and entitlement name resolution must be discussed with the Innovation Lab. The Agent may handle approximate or misspelled names before calling the API, but the final approach remains to be confirmed.
+* If multiple application or entitlement matches are possible, the Agent should ask the user for clarification rather than selecting an uncertain match.
+* Pagination must support limit and offset, with totalCount, hasMore and nextOffset returned consistently.
+* The API must avoid exposing request information outside the authenticated user’s authorized scope.
+
+3.2.2 getRequestDetails
+
+Function Description
+
+Returns detailed information about a specific access request, including its consolidated business-level status, requested application and entitlement, approval workflow and provisioning steps.
+
+The function provides the information required to understand the current request status, identify pending approval or provisioning stages, and explain potential delays or rejection reasons.
+
+Agent Trigger
+
+Use this function when the user refers to a specific request ID or requests detailed information about a request previously identified through searchRequests.
+
+Examples:
+
+* “What is the status of REQ-2025-00145?”
+* “Who still needs to approve my request?”
+* “Why is my request still pending?”
+* “Why was my request rejected?”
+* “Show me all the approval steps for my request.”
+* “Has the provisioning been completed?”
+
+Endpoint
+
+GET /api/v1/requests/{requestId}
+
+Authentication and Authorization
+
+Authentication is required.
+
+The API must validate that the authenticated end user is authorized to view the specified request.
+
+Access may be granted to the requestor, requestee, authorized manager or administrator according to the applicable MyIAM access-control rules.
+
+The technical service account used for API connectivity must not automatically grant unrestricted access to request details.
+
+Input Parameters
+
+Parameter	Type	Required	Description
+requestId	string	Yes	Unique IIQ access request identifier.
+
+Response Schema
+
+Field	Type	Description
+AccessRequestId	string	Unique access request identifier.
+globalStatus	string	Consolidated business-level status calculated by the API/backend.
+globalStatusLabel	string	Human-readable explanation of the overall status.
+RequestDate	datetime	UTC submission timestamp.
+requestedBy.DisplayName	string	Full name of the requestor.
+requestedFor.DisplayName	string	Full name of the beneficiary.
+items[].EntitlementName	string	Requested entitlement or role.
+items[].Application	string	Application name.
+items[].EntitlementType	string	Entitlement or business role type.
+items[].provisioningType	string	CONNECTED or MANUAL.
+items[].approvalSteps[].stepOrder	integer	Position of the approval step in the workflow.
+items[].approvalSteps[].stepName	string	Business name of the approval step.
+items[].approvalSteps[].status	string	Current status of the approval step.
+items[].approvalSteps[].approver.displayName	string/null	Name of the assigned approver, if available.
+items[].approvalSteps[].approver.jobTitle	string/null	Job title of the approver, if available.
+items[].approvalSteps[].decisionDate	datetime/null	Timestamp of the approval decision, if available.
+items[].approvalSteps[].comment	string/null	Approval or rejection comment, if available.
+items[].approvalSteps[].isOverdue	boolean/null	Whether the step has exceeded its applicable SLA, if determinable.
+items[].provisioningSteps[].stepName	string	Name of the provisioning step.
+items[].provisioningSteps[].status	string	Current provisioning status.
+items[].provisioningSteps[].completedAt	datetime/null	Provisioning completion timestamp, if available.
+items[].provisioningSteps[].adminTeam	string/null	Responsible administration team for manual provisioning, if available.
+
+Global Status Calculation
+
+The globalStatus represents the consolidated business-level status of the entire access request.
+
+It must be calculated by the API/backend using predefined business rules derived from the relevant underlying approval, provisioning and work item statuses.
+
+The AI Agent must not independently determine the authoritative request status by aggregating these technical statuses.
+
+The API should return a consistent status and an associated human-readable explanation.
+
+The detailed mapping and aggregation rules must be defined and validated with the MyIAM development team.
+
+Example Response
+
+The following example is illustrative.
+
+{
+  "AccessRequestId": "REQ-2025-00145",
+  "globalStatus": "PENDING",
+  "globalStatusLabel": "Waiting for Risk Officer approval",
+  "RequestDate": "2025-03-10T08:30:00Z",
+  "requestedBy": {
+    "DisplayName": "Pierre Leclerc"
+  },
+  "requestedFor": {
+    "DisplayName": "Jean Dupont"
+  },
+  "items": [
+    {
+      "EntitlementName": "Trading Platform - Write Access",
+      "Application": "Front Office Trading",
+      "EntitlementType": "ENTITLEMENT",
+      "provisioningType": "CONNECTED",
+      "approvalSteps": [
+        {
+          "stepOrder": 1,
+          "stepName": "Line Manager Approval",
+          "status": "COMPLETED",
+          "approver": {
+            "displayName": "Pierre Leclerc",
+            "jobTitle": null
+          },
+          "decisionDate": "2025-03-11T14:00:00Z",
+          "comment": null,
+          "isOverdue": false
+        },
+        {
+          "stepOrder": 2,
+          "stepName": "Risk Officer Review",
+          "status": "IN_PROGRESS",
+          "approver": {
+            "displayName": "Marie Martin",
+            "jobTitle": "Senior Risk Manager"
+          },
+          "decisionDate": null,
+          "comment": null,
+          "isOverdue": false
+        },
+        {
+          "stepOrder": 3,
+          "stepName": "CISO Sign-off",
+          "status": "PENDING",
+          "approver": null,
+          "decisionDate": null,
+          "comment": null,
+          "isOverdue": false
+        }
+      ],
+      "provisioningSteps": [
+        {
+          "stepName": "AD Group Assignment",
+          "status": "PENDING",
+          "completedAt": null,
+          "adminTeam": null
+        }
+      ]
+    }
+  ]
+}
+
+Error Codes
+
+HTTP Code	Description
+400	Invalid request identifier.
+401	Missing, invalid or expired authentication token.
+403	The caller is not authorized to view the request.
+404	Request not found.
+500	Unexpected backend error.
+
+Implementation Notes
+
+* globalStatus and globalStatusLabel must be returned by the API/backend.
+* The Global Status must be calculated using predefined business rules, not inferred by the AI Agent.
+* globalStatusLabel should summarize the current request situation, including the blocking step, responsible party, elapsed time or SLA information where available and applicable.
+* For rejected approval steps, the API should return the rejection reason when available. Whether a comment is mandatory must be confirmed against the underlying data model.
+* For manual provisioning steps, the responsible administration team should be returned where available.
+* Approver information may be null for future workflow steps where the approver is assigned dynamically.
+* The Agent should use the returned approval and provisioning information to explain the request status in natural language, without inventing missing details.
+* The response must respect the authenticated end user’s access rights and applicable information-disclosure restrictions.
+
+七、修改完成后，建议和 Paramesh 确认的事项
+
+这份版本已经可以作为你修改 Word 文档的基础，但有几个决定不应该直接视为最终确定：
+
+Topic	Point to validate
+Consolidated endpoint	确认统一的 searchRequests 参数组合及最终字段名称
+Global Status	确认 PENDING、EXECUTING、COMPLETED、REJECTED、CANCELLED 的计算和映射
+Status filtering	确认 rejected 是否仍可独立查询，以及默认值
+Name resolution	Innovation Lab 负责语义识别，还是 API/backend 提供 fuzzy matching
+Authorization	Service account 与最终用户身份如何关联，如何实施权限校验
+Response payload	确认哪些字段能从 IIQ 实际获取，哪些需要额外计算
+
+还有一点我建议你特别注意：你原先的 searchRequestsByUser 默认只查询最近三个月、pending 状态，而我在合并草案中暂时改为 status=all，没有固定三个月限制。 这不是 Paramesh 邮件明确确认过的变更，需要和开发团队确认默认行为，否则可能影响已有实现。
+
+我的建议是：先把这个版本作为 v1.1 draft，发给 Paramesh 做一次技术 review，再冻结最终 API Contract。 这样既落实了你们之前讨论的合并决定，也不会在尚未确认的字段和业务规则上提前做出承诺。
