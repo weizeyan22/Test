@@ -1,17 +1,20 @@
-Good afternoon everyone.
+So, just a quick update from our side this week.
 
-I’ll give you a quick update on Stream 4, the MyIAM AI Agent project.
+Last week, we presented the progress of the MyIAM AI Agent project during the SteerCo. Overall, the project is progressing steadily, and we’re now focusing on the next steps.
 
-Most of you are probably already familiar with MyIAM, whether it's for requesting access, tracking a request, or managing access for your teams.
+First, regarding the RAG and Knowledge Base, our objective is to complete the targeted KB updates and RAG prompting optimization by the end of October.
 
-Today, even for relatively simple needs, users sometimes have to spend time figuring out where to find the right information, which procedure to follow, or where to go to perform a specific action.
+Fred and the Innovation Lab will be working on these improvements. If we need any additional input or support from the Support team, we’ll reach out to you.
 
-**And that's exactly why we launched the MyIAM AI Agent.**
+Second, regarding the API development, we’re targeting the delivery of the third batch of MyIAM APIs by the end of October.
 
-Our objective is to build an AI chatbot for all MyIAM end users, leveraging both Generative and Agentic AI capabilities, to provide a single entry point to IAM information and services, making them easier and more intuitive for users to access.
+And finally, for the AI Agent integration, we’re planning to start integrating the MyIAM APIs into the Agent.
 
-**To deliver this, the project relies on two core capabilities.**
+We now have several AI developers from the Innovation Lab, as well as a new AI Engineer from the Automation team, who will support us with the Agent development and integration.
 
-The first is **RAG**, which enables the Agent to answer users' questions instantly based on our IAM Knowledge Base.
+So overall, things are moving forward, and our main priorities for this month are the RAG improvements, the third API batch delivery, and the start of the AI Agent integration.
 
-The second is **Agentic AI**, which connects directly to MyIAM data via APIs, pulling user-specific, real-time data to answer context-aware questions.
+That’s all from my side for now.
+
+Also, I was thinking we could move this meeting to every two weeks, since we don't always have significant updates on a weekly basis.
+And if anything urgent comes up, we can always arrange a separate meeting.
