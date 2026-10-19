@@ -1,29 +1,9 @@
-Hi all,
-
-I’ve completed the review and update of the MyIAM API Tool Layer Specifications document, which is now available on SharePoint:
-
-[SharePoint link]
-
-Please note that the sections highlighted in red are not part of the current implementation scope. They either refer to functionalities that will not be implemented in the chatbot or to potential future enhancements requiring updates to the corresponding endpoints.
-
 Project Team – Roles & Responsibilities
 
-To facilitate coordination between the different teams, here is a quick overview of the main contacts and their respective roles:
+To facilitate coordination across teams, here is a quick overview of the main responsibilities:
 
-* Myself – Project Manager: Overall project coordination, follow-up of API deliveries and Agent integration.
-* Fred – Product Owner: Functional requirements, business priorities and Knowledge Base improvements.
-* Paramesh – MyIAM Development Lead: MyIAM API development, technical specifications and API delivery coordination.
-* Ignat – Innovation Lab AI Engineer: AI Agent development and integration of MyIAM APIs into the Agent.
-* Ghassen – Automation AI Engineer / Developer: Technical support and coordination on AI Agent development and integration.
-
-Next Steps
-
-1. API Connectivity: Could the Innovation Lab team please confirm whether you can successfully access and call the MyIAM APIs using the connection details previously shared?
-2. Agent Integration: Once connectivity is confirmed, we can proceed with integrating the available APIs into the AI Agent, using the updated specifications as a reference.
-3. Coordination & Follow-up: As new API batches will continue to be delivered monthly, we should align on how to track integration progress, manage feedback and coordinate any required API adjustments between the teams.
-
-Please feel free to reach out if you have any questions or need further clarification.
-
-Thanks everyone for your support.
-
-Best regards,
+* MyIAM Team (Paramesh): API development, technical specifications and delivery.
+* Innovation Lab (Divya, Sylvain and AI Agent developers): AI Agent development and integration of MyIAM APIs.
+* Automation Team (Ghassen): Technical support for AI Agent development and integration.
+* Project Coordination (Weize): Overall coordination, API delivery follow-up and integration tracking.
+* MyIAM Product Owners (Fred / Delphine): Functional requirements, business priorities and Knowledge Base improvements.
