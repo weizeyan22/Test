@@ -1,11 +1,24 @@
-Salut [Prénom], j’espère que tu vas bien !
+Hi all,
 
-Je reviens vers toi concernant notre échange d’il y a quelques mois sur votre Data Lake SIEM/CSIRT.
+I’ve completed the review and update of the MyIAM API Tool Layer Specifications document, which is now available on SharePoint:
 
-Si je me souviens bien, vous aviez migré d’Elasticsearch vers OpenSearch pour des raisons de coûts, et vous envisagiez également une évolution vers ClickHouse.
+[SharePoint link]
 
-Dans le cadre de notre étude Data Lake Prod Sec, j’aimerais mieux comprendre les motivations de cette évolution, notamment les éventuelles limites rencontrées avec OpenSearch et les avantages attendus de ClickHouse.
+Please note that the sections highlighted in red refer to functionalities that either:
 
-Est-ce que vous avez avancé sur ce sujet depuis notre dernier échange ?
+* Will not be implemented in the chatbot’s scope, or
+* May require future updates to the corresponding endpoints but are not included in the current implementation.
 
-Merci d’avance pour ton retour !
+Regarding the next steps:
+
+Could the Innovation Lab team please confirm whether you are now able to access and successfully call the MyIAM APIs using the credentials and connection details previously shared?
+
+Once connectivity is confirmed, we can move forward with the integration of the available APIs into the AI Agent.
+
+As new API batches will continue to be delivered monthly, we should also align on how to track integration progress, identify any required API adjustments, and coordinate changes between the development teams.
+
+Please feel free to reach out if you have any questions or need further clarification on the specifications.
+
+Thanks everyone for your support.
+
+Best regards,
