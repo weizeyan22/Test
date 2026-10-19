@@ -1,10 +1,2 @@
-Next Steps
-
-* AI Agent Developers (Innovation Lab & Automation Team): Please confirm whether you can successfully connect to and call the MyIAM APIs using the connection details previously shared.
-* AI Agent Developers (Innovation Lab & Automation Team): Proceed with integrating the available APIs into the AI Agent, based on the updated specifications.
-* MyIAM Development Team: Continue delivering the remaining API batches and support any adjustments identified during integration.
-* Wiola & Weize: Align on a common workflow to track integration progress, manage testing and feedback, and coordinate any required API adjustments across teams, using Jira for task tracking.
-
-Please feel free to share any questions or feedback.
-
-Thanks everyone for your support.
+* Project Manager (Weize): Overall project coordination, API delivery follow-up, cross-team alignment and integration progress monitoring.
+* Scrum Master (Wiola): Development workflow coordination, Jira task tracking and follow-up of integration activities.
