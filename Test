@@ -4,20 +4,25 @@ I’ve completed the review and update of the MyIAM API Tool Layer Specification
 
 [SharePoint link]
 
-Please note that the sections highlighted in red refer to functionalities that either:
+Please note that the sections highlighted in red are not part of the current implementation scope. They either refer to functionalities that will not be implemented in the chatbot or to potential future enhancements requiring updates to the corresponding endpoints.
 
-* Will not be implemented in the chatbot’s scope, or
-* May require future updates to the corresponding endpoints but are not included in the current implementation.
+Project Team – Roles & Responsibilities
 
-Regarding the next steps:
+To facilitate coordination between the different teams, here is a quick overview of the main contacts and their respective roles:
 
-Could the Innovation Lab team please confirm whether you are now able to access and successfully call the MyIAM APIs using the credentials and connection details previously shared?
+* Myself – Project Manager: Overall project coordination, follow-up of API deliveries and Agent integration.
+* Fred – Product Owner: Functional requirements, business priorities and Knowledge Base improvements.
+* Paramesh – MyIAM Development Lead: MyIAM API development, technical specifications and API delivery coordination.
+* Ignat – Innovation Lab AI Engineer: AI Agent development and integration of MyIAM APIs into the Agent.
+* Ghassen – Automation AI Engineer / Developer: Technical support and coordination on AI Agent development and integration.
 
-Once connectivity is confirmed, we can move forward with the integration of the available APIs into the AI Agent.
+Next Steps
 
-As new API batches will continue to be delivered monthly, we should also align on how to track integration progress, identify any required API adjustments, and coordinate changes between the development teams.
+1. API Connectivity: Could the Innovation Lab team please confirm whether you can successfully access and call the MyIAM APIs using the connection details previously shared?
+2. Agent Integration: Once connectivity is confirmed, we can proceed with integrating the available APIs into the AI Agent, using the updated specifications as a reference.
+3. Coordination & Follow-up: As new API batches will continue to be delivered monthly, we should align on how to track integration progress, manage feedback and coordinate any required API adjustments between the teams.
 
-Please feel free to reach out if you have any questions or need further clarification on the specifications.
+Please feel free to reach out if you have any questions or need further clarification.
 
 Thanks everyone for your support.
 
