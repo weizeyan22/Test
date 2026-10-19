@@ -1,1 +1,11 @@
-Prod Sec Data Lake – Échange sur la solution OpenSearch
+Salut [Prénom], j’espère que tu vas bien !
+
+Je reviens vers toi concernant notre échange d’il y a quelques mois sur votre Data Lake SIEM/CSIRT.
+
+Si je me souviens bien, vous aviez migré d’Elasticsearch vers OpenSearch pour des raisons de coûts, et vous envisagiez également une évolution vers ClickHouse.
+
+Dans le cadre de notre étude Data Lake Prod Sec, j’aimerais mieux comprendre les motivations de cette évolution, notamment les éventuelles limites rencontrées avec OpenSearch et les avantages attendus de ClickHouse.
+
+Est-ce que vous avez avancé sur ce sujet depuis notre dernier échange ?
+
+Merci d’avance pour ton retour !
