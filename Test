@@ -1,7 +1,11 @@
-Hi team,
+Bonjour Marine,
 
-The data details in the extracts provided for the GM audits have been filled out in the Excel file. However, a few columns are missing from the reporting database and need to be confirmed.
+Oui, bien sûr, je peux te partager les spécifications des APIs MyIAM. Les deux premiers lots ont déjà été livrés, et le troisième est prévu pour fin octobre.
 
-If everything looks good to you, I will go ahead and send it to Anshu.
+Juste pour préciser, ces APIs constituent la couche d’accès aux données MyIAM, mais ne correspondent pas encore aux fonctionnalités de l’AI Agent lui-même. Le développement et l’intégration de l’Agent sont actuellement en cours avec l’Innovation Lab.
 
-Best regards,
+Si vous disposez déjà de votre propre framework agentique côté Le Comptoir / MIA, une intégration directe avec les APIs MyIAM pourrait effectivement être envisagée, sous réserve des aspects techniques et des contrôles d’accès.
+
+Je te partage le document de spécifications pour que vous puissiez regarder les fonctionnalités disponibles et celles prévues dans les prochains lots.
+
+On pourra ensuite échanger sur les possibilités d’intégration selon votre architecture.
