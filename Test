@@ -1,25 +1,16 @@
-和你同事 Ruchir 开会讨论时，用口语化、逻辑清晰的英文表达会非常高效。你可以参考以下几句口头沟通的表达：
-1. 核心意思总结（口语开门见山）
-> "To clarify what we need from your side: I’ve filled out the template based on the fields from our monthly extracts. However, there are some columns that I couldn't trace directly to our reporting DB."
-> 
-2. 展开解释技术细节（讲清楚原因）
-> "Some of these columns come from the BO (Business Objects) reports, but they aren't raw fields directly stored in the reporting database—they are calculated or processed in the backend.
-> So, I need your help to review and confirm how these specific fields should be mapped or calculated in the DB."
-> 
-3. 开会时可以直接照着说的完整的表达（建议逐句说）：
-> "Hi Ruchir, let me quickly explain what we need to confirm on your end.
-> As you know, we provide them with monthly extracts, so I filled out the spreadsheet based on those fields. However, I couldn't directly locate some of the columns in our reporting database.
-> Some of these columns appear in the BO reports, but they seem to be processed or computed in the backend rather than existing directly as standard DB fields.
-> That's why I need you to double-check those specific 'to be confirmed' columns and clarify their underlying database logic or source."
-> 
-💡 重点关键词提炼（便于你随时口头串联）：
- * Monthly extracts：每月提取的数据
- * Filled out the template / spreadsheet：填了表格
- * Trace back to the reporting DB：追溯到 reporting 数据库
- * BO reports (Business Objects reports)：BO 报表
- * Calculated / Processed in the backend：后台加工/计算过的
- * Raw fields：原始字段
+Hi all,
 
+As part of Innovation Lab’s Stream 4, the MyIAM AI Agent project aims to provide MyIAM end users with a single entry point to access IAM information and services through a conversational AI interface, leveraging RAG and Agentic AI capabilities.
 
-"By the way, regarding Power BI on staging—I tried connecting to it this morning, but it suddenly threw an invalid password error. It was working fine a couple of days ago, so I'm not sure what happened."
+As the project progresses towards production readiness, we would like to initiate the IT SVC request to anticipate the requirements for its future deployment into production.
 
+During our recent discussion with Innovation Lab, we understood that a common IT SVC Light solution covering all Innovation Lab streams is currently under consideration, pending management approval.
+
+In the meantime, we would like to proceed with an individual IT SVC request for the MyIAM AI Agent project, to avoid potential delays and ensure that the necessary steps are initiated ahead of production deployment.
+
+Could you please advise on the process and requirements to initiate this request?
+
+Thank you in advance for your guidance and support.
+
+Best regards,
+Weize
