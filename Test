@@ -1,56 +1,11 @@
-我帮你整理成一版自然、口语化的英文会议发言稿，适合你直接跟 Innovation Lab 的 Developer 说。不需要太正式，尤其是开头可以轻松一点。
+Bonjour [Prénom], j’espère que tu vas bien !
 
-1. 开场寒暄
+Je me permets de revenir vers toi concernant notre échange d’il y a quelques mois sur Starburst et les architectures Data Lakehouse.
 
-Hey, long time no see!It seems like every time you come to the office, I’m not there. We always seem to miss each other!Sorry I couldn’t join the meeting this morning. My laptop was running some updates. I hope the meeting went well!
+Nous avançons actuellement dans notre étude pour le futur Data Lake Prod Sec, et nous explorons également OpenSearch / Elasticsearch comme alternative possible.
 
-2. 关于 Ghassen 的进展
+Je voulais savoir si tu avais déjà eu l’occasion d’évaluer ou de travailler avec ces technologies, notamment dans un contexte de Data Lake / Data Platform.
 
-By the way, I spoke with Ghassen this morning.He’s currently preparing a demo for management next week. Once that’s done, he’ll be able to fully focus on our project.So I might organize another meeting to help him catch up on the progress you’ve made so far.I think it would be helpful if you could walk him through what you’ve already done, what still needs to be done, and what he needs to get started.
+Aurais-tu un retour d’expérience sur leur pertinence et leurs éventuelles limites pour des besoins d’intégration de données, de reporting et d’analyses SQL complexes, par rapport à une architecture Lakehouse avec Starburst ?
 
-这里的 walk him through 非常自然，意思是带他了解整个项目和技术进展。
-
-3. 引入今天的三个议题
-
-So, I’d like to take advantage of today’s meeting to go through three points with you.
-
-第一：Knowledge Base 文档更新
-
-First, I wanted to check whether you’ve already uploaded all the documents I shared with you previously to the Knowledge Base.I also sent you a new FAQ document last week. Could you please add that one to the KB as well?I just want to make sure the Knowledge Base is up to date before we move forward with further improvements.
-
-第二：第三轮 UAT 后的 Prompting Optimization
-
-这一部分我建议你稍微多解释一下，因为这是你们第三轮测试发现的一个重要问题。
-
-The second point is about prompting optimization, following the feedback we received during the third round of UAT.Some of the negative feedback wasn’t necessarily related to missing information in the Knowledge Base, but more to the chatbot’s behavior.For example, when a user asks a question that’s not very clear or doesn’t provide enough context, the chatbot sometimes simply responds with “I don’t know.“But ideally, instead of stopping there, the chatbot should try to understand what the user is actually looking for by asking follow-up questions or requesting clarification.So I think we need to improve the prompting to make the chatbot more interactive and better at guiding users.Basically, rather than immediately saying “I don’t know,” it should try to dig a little deeper into the user’s request.Do you think we could address this through prompt optimization?
-
-你这里的重点是：Chatbot 不应该在信息不够明确时直接放弃，而应该主动引导用户澄清需求。
-
-但也需要注意，如果 KB 确实没有相关信息，Chatbot 不能编造答案。所以你可以补充：
-
-Of course, if the information is genuinely unavailable, the chatbot should be transparent about that. But when the question is simply unclear, it should ask for clarification first.
-
-第三：n8n 的可行性及限制
-
-And the third point is more of a technical question.I was wondering whether our MyIAM AI Agent use case could potentially be implemented using n8n.And if so, what would be the main advantages and limitations compared to our current approach with ITG Twin?I’m also curious why we chose not to use n8n in the first place. Was it because of technical limitations, security constraints, or simply because ITG Twin was already the preferred internal framework?I’d be interested to hear your thoughts on that.
-
-这个问法比较好，因为你不是在质疑他们为什么不用 n8n，而是希望理解两种技术方案的差异。
-
-4. 会议结束时可以说
-
-So those are the three main points I wanted to discuss today.For the Knowledge Base and prompting improvements, I’d also like us to agree on the next steps and see what we can realistically improve before the next round of testing.
-
-我给你的一个建议
-
-关于第二点，我认为你可以特别强调 Clarification vs. Knowledge Gap 的区别。
-
-因为你们现在面临的可能是两类不同的问题：
-
-* Knowledge Gap：KB 里确实没有答案，需要补充 FAQ 或更新文档。
-* Conversational Behavior：KB 里可能有相关信息，但用户问题不够明确，Agent 没有继续追问，而是直接回答不知道。
-
-你可以用一句话总结：
-
-We need the chatbot to distinguish between a genuine lack of information and a question that simply needs clarification.
-
-这句话我非常推荐你在会议上说。它准确地表达了你想优化的行为，而且能让 Developer 明白：你希望改进的不只是检索质量，还有 Chatbot 的对话策略。
+Merci d’avance pour ton retour !
