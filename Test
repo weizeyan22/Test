@@ -1,11 +1,19 @@
-Bonjour [Prénom], j’espère que tu vas bien !
-
-Je me permets de revenir vers toi concernant notre échange d’il y a quelques mois sur Starburst et les architectures Data Lakehouse.
-
-Nous avançons actuellement dans notre étude pour le futur Data Lake Prod Sec, et nous explorons également OpenSearch / Elasticsearch comme alternative possible.
-
-Je voulais savoir si tu avais déjà eu l’occasion d’évaluer ou de travailler avec ces technologies, notamment dans un contexte de Data Lake / Data Platform.
-
-Aurais-tu un retour d’expérience sur leur pertinence et leurs éventuelles limites pour des besoins d’intégration de données, de reporting et d’analyses SQL complexes, par rapport à une architecture Lakehouse avec Starburst ?
-
-Merci d’avance pour ton retour !
+在和 Anshu 及 GM 团队的会议上，你可以按照清晰的逻辑，用流畅且自然的英文表达如下：
+开会表达建议（可直接使用）
+1. 开场与 ETL 流程背景介绍
+> "Hi everyone, today we'd like to walk you through the Python scripts and SQL queries behind the data extracts we usually provide.
+> To give you some background, Thomas set up the whole ETL configuration for us. Previously, I had to generate these extracts manually one by one, but Thomas automated the entire pipeline. However, for the Orbit team, you probably won't need these config files, since Orbit already automatically fetches data directly from the reporting DB."
+> 
+2. 介绍具体 7 个 Extract 及处理逻辑
+> "In total, we are providing 7 extracts today.
+> The overall logic is quite straightforward: I first use SQL to fetch raw data from the reporting DB, and then run Python scripts for light post-processing—for example, splitting an Excel file into two sheets, or performing some more complex calculations."
+> 
+💡 核心词汇与表达解析（方便你自由发挥）：
+ * Walk someone through...：带某人过一遍 / 看一下（非常地道的开会表达）
+ * Data extracts / Raw data：数据提取 / 原始数据
+ * ETL configuration / Automated pipeline：ETL 配置 / 自动化流程
+ * Fetch data directly from the reporting DB：直接从 reporting 数据库抓取数据
+ * Post-processing：二次加工 / 后续处理
+ * Split an Excel file into two：把一个 Excel 文件拆分成两个
+ * Perform complicated calculations：进行复杂的计算
+祝你会议顺畅！如果有其他需要补充的点，随时告诉我。
