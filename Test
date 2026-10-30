@@ -1,115 +1,17 @@
-Bonjour Kaouther, Abdel et Hana,
-
-Merci pour notre échange concernant la solution OpenSearch et son positionnement par rapport aux besoins de notre projet de plateforme de données Production Security.
-
-Vous trouverez ci-dessous un récapitulatif des principaux points abordés, notamment les fonctionnalités proposées, les contraintes techniques identifiées et le périmètre du service.
-
-### 1. Positionnement et fonctionnalités d'OpenSearch
-
-OpenSearch a été présenté comme une solution principalement orientée vers **l'indexation, la recherche, l'agrégation et l'analyse de données**, provenant de différentes sources.
-
-Les principales fonctionnalités évoquées sont les suivantes :
-
-- Indexation de données structurées et non structurées, au-delà des seuls logs ;
-- Recherche et exploration des données via une interface utilisateur ;
-- Agrégation et analyse des données indexées ;
-- Création de dashboards pour la visualisation et le suivi des données.
-
-**L'exploitation des données repose principalement sur leur ingestion et leur indexation préalables dans OpenSearch.** Contrairement à une solution de fédération de requêtes, OpenSearch ne permet pas, dans le cadre de l'offre présentée, d'interroger directement plusieurs bases de données externes sans étape préalable d'intégration.
-
-Concernant les fichiers tels qu'Excel, **OpenSearch ne constitue pas une solution de stockage et de gestion native des fichiers dans leur format d'origine**, contrairement à un système de stockage de fichiers ou d'objets. Leur contenu doit être préalablement extrait, éventuellement transformé à l'aide d'un outil externe (par exemple Python), puis indexé dans OpenSearch pour être exploité.
-
-Cette approche nécessite donc des traitements complémentaires et ne remplace pas un espace de conservation des fichiers sources.
-
 ### 2. Ingestion, transformation et intégration des données
 
-Nous avons notamment évoqué un cas d'usage IAM de détection de bypass d'habilitation, nécessitant le rapprochement de données issues de plusieurs systèmes, notamment MyIAM, ePassport et potentiellement les données SIEM.
+Nous avons notamment évoqué un cas d'usage IAM de détection de bypass d'habilitation, nécessitant le rapprochement de données provenant de plusieurs systèmes, notamment MyIAM et ePassport.
 
-Plusieurs contraintes ont été identifiées :
+Les points suivants ont été abordés :
 
-- **Ingestion :** OpenSearch ne prend pas en charge, à lui seul, l'ensemble des mécanismes d'extraction et de collecte depuis les systèmes sources. Des outils ou développements complémentaires sont nécessaires pour alimenter les index.
-- **ETL / Transformation :** selon les formats et les besoins de préparation, des traitements externes peuvent être nécessaires avant l'indexation.
-- **Outils complémentaires :** Fluent Bit et Data Prepper ont été mentionnés comme solutions possibles pour l'ingestion et certaines transformations. Leur mise en place et leur configuration restent à la charge de l'équipe utilisatrice.
-- **Orchestration :** la planification, l'enchaînement et le suivi des traitements de données ne sont pas couverts par le service OpenSearch proposé et nécessitent, le cas échéant, une solution complémentaire.
-- **Jointures et rapprochements multi-sources :** OpenSearch n'étant pas une base de données relationnelle, les rapprochements complexes nécessitent une modélisation adaptée, voire des traitements de préparation ou de consolidation des données en amont.
+- **Ingestion des données :** les données doivent être intégrées et indexées dans OpenSearch avant de pouvoir être exploitées selon l'approche présentée. L'extraction et l'ingestion depuis les systèmes sources ne sont pas prises en charge par l'équipe OpenSearch et restent à la charge de l'équipe utilisatrice.
 
-Dans ce contexte, la faisabilité technique ne suffit pas à elle seule à confirmer l'adéquation de la solution : **les performances, les volumes de données, les fréquences d'actualisation ainsi que les efforts d'intégration et de maintenance devront également être évalués.**
+- **ETL / Transformation :** selon les formats et les besoins de préparation des données, des traitements de transformation peuvent être nécessaires en amont de l'indexation.
 
-### 3. Data Management, Data Lineage et gouvernance
+- **Outils complémentaires :** Fluent Bit et Data Prepper ont été cités comme exemples d'outils pouvant être utilisés pour l'ingestion et certaines transformations. Leur mise en place et leur configuration ne sont pas incluses dans le service OpenSearch proposé.
 
-Nous avons également abordé les besoins à moyen et long terme liés à l'augmentation progressive du nombre de sources, des traitements et des cas d'usage.
+- **Orchestration :** la mise en place éventuelle de mécanismes d'orchestration des traitements relève de l'équipe utilisatrice, conformément au périmètre de service présenté, limité à la gestion des clusters.
 
-Il a été précisé que :
+- **Jointures et rapprochements multi-sources :** OpenSearch n'étant pas une base de données relationnelle, la réalisation de rapprochements complexes nécessite une réflexion sur la structuration et la modélisation des données. Les modalités de mise en œuvre, ainsi que la faisabilité et les performances pour nos cas d'usage, restent à évaluer.
 
-- **Data Lineage :** OpenSearch ne fournit pas, dans le cadre du service présenté, de fonctionnalité native permettant d'assurer la traçabilité de bout en bout des données, depuis les systèmes sources jusqu'aux usages finaux.
-- **Data Management et gouvernance :** la gestion des métadonnées métier, de la qualité des données, des règles de transformation et de leur cycle de vie nécessite des mécanismes ou outils complémentaires.
-- **Data Products :** les besoins futurs de structuration, de documentation et de mise à disposition de données réutilisables devront être étudiés dans le cadre d'une architecture globale.
-
-Ces aspects ne sont donc pas couverts par la seule mise à disposition d'un cluster OpenSearch et impliqueraient des travaux supplémentaires de Data Engineering et de gouvernance.
-
-### 4. Différences de positionnement avec Starburst
-
-Dans le cadre de notre benchmark des solutions internes, nous avons également abordé les différences entre OpenSearch et Starburst.
-
-- **OpenSearch :** approche principalement fondée sur l'ingestion et l'indexation des données dans ses propres index, pour permettre leur recherche et leur analyse.
-- **Starburst :** moteur de requêtage SQL distribué permettant notamment d'accéder à plusieurs sources de données via une couche de fédération, sans nécessiter systématiquement leur duplication.
-
-Il s'agit donc de technologies ayant des positionnements et des modes de fonctionnement différents.
-
-Leur pertinence doit être évaluée au regard des besoins fonctionnels et techniques, ainsi que des composants complémentaires nécessaires pour construire la plateforme cible.
-
-### 5. Périmètre du service OpenSearch et responsabilités
-
-L'équipe a précisé que son périmètre de service se limite principalement à **la mise à disposition, à la gestion du cycle de vie et au support technique des clusters OpenSearch**.
-
-Les responsabilités ont été présentées comme suit :
-
-**Pris en charge par l'équipe OpenSearch :**
-- Mise à disposition des clusters ;
-- Gestion du cycle de vie des clusters ;
-- Intervention en cas de problème lié à l'infrastructure ou au cluster.
-
-**À la charge de l'équipe utilisatrice :**
-- Identification et connexion aux sources de données ;
-- Choix, déploiement et configuration des outils d'ingestion ;
-- Développement des pipelines ETL et des transformations ;
-- Mise en place éventuelle d'un outil d'orchestration ;
-- Modélisation des données et configuration des index ;
-- Développement des traitements analytiques et des cas d'usage ;
-- Mise en œuvre des mécanismes de gouvernance et de traçabilité nécessaires ;
-- Maintenance des développements et composants complémentaires.
-
-Il a également été confirmé qu'**aucun service d'onboarding ou d'accompagnement à l'intégration des données n'est proposé** dans le cadre de cette offre.
-
-Ainsi, au-delà de la mise à disposition du cluster, l'ensemble des travaux de Data Engineering et d'intégration reste à organiser et à prendre en charge par l'équipe utilisatrice.
-
-### 6. Infrastructure et coûts
-
-Concernant le modèle de facturation, les éléments indicatifs suivants ont été communiqués :
-
-- Facturation basée sur les machines virtuelles (VM) ;
-- Coût indicatif d'environ **200 € par VM** ;
-- Estimation d'environ **1 000 € pour un petit cluster** ;
-- Stockage reposant sur l'infrastructure VM, avec une gestion de l'infrastructure sous-jacente par les équipes Virtualisation et Storage.
-
-Ces montants restent à confirmer selon le dimensionnement, la configuration et les modalités de facturation.
-
-Il conviendra également de prendre en compte **les coûts des outils complémentaires, des développements, de l'intégration et de la maintenance**, qui ne sont pas inclus dans ces estimations d'infrastructure.
-
-### 7. Prochaines étapes
-
-Compte tenu du périmètre global du projet, l'équipe OpenSearch a recommandé de solliciter un **Data Architect CIB** afin de :
-
-- Préciser les besoins fonctionnels et techniques : sources, formats, volumes, fréquences d'actualisation, traitements et usages attendus ;
-- Définir l'architecture cible et identifier les composants nécessaires ;
-- Évaluer l'adéquation des différentes solutions internes, dont OpenSearch, avec les besoins identifiés ;
-- Examiner les contraintes d'intégration, d'exploitation, de gouvernance et les coûts associés.
-
-Cette analyse permettra de déterminer le positionnement éventuel d'OpenSearch dans la future architecture, ainsi que les composants complémentaires à prévoir.
-
-N'hésitez pas à me faire part de vos remarques ou corrections si certains éléments nécessitent d'être précisés.
-
-Merci encore pour votre disponibilité.
-
-Bien cordialement,  
-Weize
+Ces éléments impliquent que l'utilisation d'OpenSearch pour nos cas d'usage nécessiterait, au-delà de la mise à disposition du cluster, des travaux complémentaires d'intégration, de Data Engineering et de développement, dont le périmètre reste à préciser.
