@@ -1,1 +1,37 @@
+D'après les échanges réalisés dans le cadre du benchmark, Starburst est déjà utilisé par plusieurs entités du Groupe, principalement comme couche d'accès SQL, de fédération et de partage des données.
 
+**ITG PA3I – Fournisseur de la plateforme**
+
+ITG PA3I propose DataHub V2, une plateforme Data mutualisée reposant notamment sur Starburst, Spark et Airflow. Starburst y est utilisé pour l'interrogation SQL et la fédération de données provenant de différentes sources, sans nécessiter systématiquement leur centralisation.
+
+**ITG Open Data / Management Office – Data Products et reporting**
+
+L'équipe ITG Open Data s'appuie sur DataHub V2 pour construire et publier des Data Products mutualisés, à partir de différentes sources de données.
+
+Par exemple, un Data Product a été développé pour l'équipe ITG Management Office afin de consolider les informations relatives aux applications et aux assets du programme DMZR.
+
+Les utilisateurs accèdent aux datasets publiés via Starburst, puis les exploitent dans Dataiku pour réaliser des analyses, construire des indicateurs et produire des tableaux de bord.
+
+**Cardif – Data Lakehouse transverse**
+
+Le département IT Data & AI de Cardif a mis en place un Data Lakehouse mutualisé, utilisé par différents domaines métiers.
+
+Starburst constitue la couche d'accès SQL et de fédération des données, permettant notamment d'interroger des données stockées dans Iceberg, Oracle ou d'autres sources, sans duplication systématique.
+
+Les principaux usages couvrent l'intégration et la synchronisation de données, le reporting et les traitements analytiques. La plateforme évolue également vers les usages de Data Science et d'IA, notamment pour alimenter les environnements d'entraînement de modèles et les assistants conversationnels.
+
+**BCEF – Partage de données et Data Products entre projets**
+
+BCEF dispose d'un DataHub IV2 mutualisé, utilisé en production par une vingtaine de projets.
+
+Starburst y constitue la couche d'exposition des données stockées dans Iceberg/COS, permettant aux différents projets de partager et de consommer des données et des Data Products.
+
+Les principaux usages concernent le reporting, les tableaux de bord, les analyses métiers, ainsi que l'alimentation d'applications et de services opérationnels via des API ou des fichiers, notamment dans le cadre des initiatives Martech et CRM Corporate.
+
+**CIB AI Platform – DataLake transverse**
+
+Enfin, au sein de CIB, l'équipe Data Analytics / AI Platform dispose d'un DataLake transverse destiné à répondre aux besoins de différents projets et équipes métiers, notamment pour le reporting, le monitoring et le suivi d'indicateurs dans les domaines du Risque, de l'activité/RH et de l'ESG.
+
+L'équipe fait évoluer son architecture vers Starburst afin de renforcer les capacités de fédération des données et de limiter les réplications entre systèmes. Cette évolution était encore en cours au moment de notre échange.
+
+En résumé, les retours d'expérience montrent que Starburst est principalement utilisé comme une couche d'accès, de fédération et d'exposition des données au sein de plateformes Data mutualisées, pour des usages analytiques, de reporting et de partage de Data Products. Il s'intègre généralement à d'autres composants, notamment Spark pour les transformations, Airflow pour l'orchestration et Iceberg/COS pour le stockage.
