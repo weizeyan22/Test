@@ -1,22 +1,11 @@
-## 5. Classification et confidentialité des données
+## 6. Prochaines étapes
 
-Dominique a rappelé que la **classification des données constitue un prérequis au choix de l'architecture et de l'environnement d'hébergement**.
+- **Consolidation des besoins :** finaliser les besoins fonctionnels et les principaux cas d'usage IAM/PAM et Production Security, en précisant les sources de données concernées, leurs caractéristiques et les usages envisagés (reporting, analytics, Data Products, IA/Agents).
 
-Il a notamment distingué deux systèmes de classification : celui des données selon leur niveau de confidentialité et celui des environnements Cloud, dont les niveaux ne suivent pas la même logique.
+- **Partage avec ITG Data Architecture :** transmettre à Dominique la synthèse des besoins et des données envisagées afin d'étudier les options d'architecture les plus adaptées (DataHub V2 / Starburst, Databricks ou autres solutions selon les besoins).
 
-### Classification des données et contraintes d'hébergement
+- **Classification des données :** se rapprocher du Chief Data Office (CDO) pour confirmer la classification des données et leur éligibilité aux environnements d'hébergement envisagés.
 
-- **Données confidentielles (Type 3) :** elles peuvent, sous réserve des règles de sécurité applicables, être hébergées dans des environnements tels qu'IBM COS ou l'Azure Landing Zone BNP Paribas.
-- **Données secrètes (Type 4) :** elles sont soumises à des restrictions d'hébergement plus strictes et nécessitent notamment un chiffrement côté applicatif avant leur dépôt dans un bucket. Selon Dominique, elles ne peuvent pas être hébergées dans l'environnement Azure envisagé pour Databricks.
+- **Évaluation des coûts :** récupérer auprès de Dominique les éléments de tarification des services, notamment Starburst, afin de préparer une première estimation budgétaire.
 
-Concernant les environnements, Dominique a indiqué qu'**IBM COS relève du Cloud Type 2**, tandis que l'**Azure Landing Zone destinée à Databricks relève du Cloud Type 3**, avec des conditions d'éligibilité différentes.
-
-### Implications pour Production Security DataLakehouse
-
-Avant de retenir une solution, il sera nécessaire de :
-
-- Identifier et faire classifier les données IAM/PAM et Production Security auprès des responsables compétents et du **Chief Data Office (CDO)**.
-- Vérifier leur éligibilité aux environnements envisagés (IBM COS / Azure Landing Zone).
-- Identifier les éventuelles contraintes de chiffrement et d'hébergement.
-
-**La classification des données devra ainsi être prise en compte en amont de la décision d'architecture, afin de garantir la conformité de la solution retenue aux exigences de sécurité du Groupe.**
+- **Disponibilité de Databricks :** confirmer le calendrier prévisionnel de mise à disposition ainsi que les conditions d'accès aux environnements de développement, de qualification et de production.
