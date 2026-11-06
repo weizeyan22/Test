@@ -1,61 +1,22 @@
 ## 5. Classification et confidentialité des données
 
-Dominique a souligné que la classification des données constitue un prérequis essentiel avant le choix de l'architecture et de l'environnement d'hébergement.
+Dominique a rappelé que la **classification des données constitue un prérequis au choix de l'architecture et de l'environnement d'hébergement**.
 
-Il a notamment distingué **deux systèmes de classification : la classification des données selon leur niveau de confidentialité et la classification des environnements Cloud selon leurs caractéristiques et conditions d'hébergement.**
+Il a notamment distingué deux systèmes de classification : celui des données selon leur niveau de confidentialité et celui des environnements Cloud, dont les niveaux ne suivent pas la même logique.
 
-### 5.1. Classification des données
+### Classification des données et contraintes d'hébergement
 
-Les données sont classifiées selon leur niveau de sensibilité, allant des données publiques aux données secrètes.
+- **Données confidentielles (Type 3) :** elles peuvent, sous réserve des règles de sécurité applicables, être hébergées dans des environnements tels qu'IBM COS ou l'Azure Landing Zone BNP Paribas.
+- **Données secrètes (Type 4) :** elles sont soumises à des restrictions d'hébergement plus strictes et nécessitent notamment un chiffrement côté applicatif avant leur dépôt dans un bucket. Selon Dominique, elles ne peuvent pas être hébergées dans l'environnement Azure envisagé pour Databricks.
 
-Selon les éléments présentés lors de l'échange :
+Concernant les environnements, Dominique a indiqué qu'**IBM COS relève du Cloud Type 2**, tandis que l'**Azure Landing Zone destinée à Databricks relève du Cloud Type 3**, avec des conditions d'éligibilité différentes.
 
-- **Type 1 – Public :** données publiques.
-- **Type 3 – Confidentiel :** données nécessitant des mesures de protection adaptées à leur caractère confidentiel.
-- **Type 4 – Secret :** données soumises à des exigences de sécurité renforcées, notamment en matière d'hébergement et de chiffrement.
+### Implications pour Production Security DataLakehouse
 
-Dominique a précisé que les données confidentielles (Type 3) sont relativement courantes dans les usages métiers, tandis que les données classifiées comme secrètes (Type 4) sont moins fréquentes.
+Avant de retenir une solution, il sera nécessaire de :
 
-La classification doit être établie en amont, en lien avec le **Chief Data Office (CDO)**, afin de déterminer les conditions de traitement et les environnements autorisés.
+- Identifier et faire classifier les données IAM/PAM et Production Security auprès des responsables compétents et du **Chief Data Office (CDO)**.
+- Vérifier leur éligibilité aux environnements envisagés (IBM COS / Azure Landing Zone).
+- Identifier les éventuelles contraintes de chiffrement et d'hébergement.
 
-### 5.2. Classification des environnements Cloud
-
-Dominique a également expliqué que les environnements Cloud disposent de leur propre classification, distincte de celle des données, avec une logique de numérotation différente.
-
-Il a notamment évoqué :
-
-- **Cloud Type 1 :** environnements on-premise.
-- **Cloud Type 2 :** catégorie dans laquelle il a notamment situé IBM Cloud Object Storage (COS).
-- **Cloud Type 3 :** catégorie envisagée pour l'Azure Landing Zone BNP Paribas, sur laquelle reposerait l'offre Databricks.
-- **Cloud Types 4 et 5 :** autres catégories d'environnements, avec des niveaux de contraintes différents, le Type 5 ayant été associé aux environnements publics.
-
-Le DMZR a également été mentionné parmi les environnements internes, mais son niveau exact de classification reste à confirmer.
-
-Dominique a indiqué qu'IBM COS et Azure Landing Zone ne présentent pas nécessairement les mêmes niveaux de classification et conditions d'éligibilité des données.
-
-Le choix de l'environnement d'hébergement doit donc tenir compte de la classification des données et des règles de sécurité applicables à chaque plateforme.
-
-### 5.3. Contraintes spécifiques aux données secrètes
-
-Pour les données classifiées **Type 4 – Secret**, Dominique a souligné l'existence d'exigences de sécurité supplémentaires.
-
-Il a notamment précisé que :
-
-- Leur hébergement peut être soumis à des restrictions importantes, y compris dans des environnements internes ou on-premise.
-- Un chiffrement côté applicatif peut être requis avant leur dépôt dans un espace de stockage, notamment un bucket.
-- Leur hébergement dans l'environnement Azure envisagé pour Databricks ne serait pas autorisé dans les conditions évoquées lors de l'échange.
-
-À l'inverse, les données confidentielles (Type 3) pourraient être hébergées dans certains environnements internes ou dans l'Azure Landing Zone BNP Paribas, sous réserve de respecter les exigences de sécurité et les règles d'éligibilité applicables.
-
-### 5.4. Implications pour le projet Production Security DataLakehouse
-
-Avant de retenir une solution technologique ou un environnement de stockage, il sera nécessaire de :
-
-- Identifier les données IAM/PAM et les autres données Production Security susceptibles d'être intégrées à la plateforme.
-- Déterminer leur niveau de confidentialité avec les responsables compétents et le CDO.
-- Vérifier la compatibilité de ces classifications avec les environnements envisagés, notamment IBM COS et Azure Landing Zone.
-- Identifier les éventuelles exigences complémentaires de chiffrement, de contrôle d'accès et d'hébergement.
-
-**La classification des données devra donc être réalisée en amont de la décision d'architecture, afin de garantir que la solution retenue respecte les exigences de sécurité du Groupe.**
-
-*Point à confirmer : la classification exacte des environnements DMZR et les règles d'éligibilité associées devront être vérifiées auprès des équipes compétentes.*
+**La classification des données devra ainsi être prise en compte en amont de la décision d'architecture, afin de garantir la conformité de la solution retenue aux exigences de sécurité du Groupe.**
