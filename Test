@@ -1,31 +1,61 @@
-## 1. Positionnement et limites d'Elasticsearch / OpenSearch
+## 5. Classification et confidentialité des données
 
-Elasticsearch et OpenSearch ont été présentés comme des solutions principalement orientées vers l'indexation, la recherche et l'analyse de données, particulièrement adaptées aux logs, aux métriques, aux pistes d'audit et aux données événementielles.
+Dominique a souligné que la classification des données constitue un prérequis essentiel avant le choix de l'architecture et de l'environnement d'hébergement.
 
-Ces solutions sont notamment pertinentes pour le suivi d'indicateurs, les analyses temporelles et le monitoring, avec des capacités de visualisation et de reporting via Kibana (Elasticsearch) ou OpenSearch Dashboards (OpenSearch).
+Il a notamment distingué **deux systèmes de classification : la classification des données selon leur niveau de confidentialité et la classification des environnements Cloud selon leurs caractéristiques et conditions d'hébergement.**
 
-Toutefois, Dominique a souligné plusieurs contraintes dans le cadre de la construction d'une plateforme Data transverse destinée à gérer et croiser différents objets métiers.
+### 5.1. Classification des données
 
-### Principales contraintes évoquées
+Les données sont classifiées selon leur niveau de sensibilité, allant des données publiques aux données secrètes.
 
-- **Gestion des mises à jour et de l'historisation :** Elasticsearch est particulièrement adapté à l'indexation de données peu modifiées après leur ingestion. Bien que les mises à jour soient possibles, la gestion de modifications fréquentes et de multiples versions d'un même objet métier (par exemple, un utilisateur ou une habilitation) peut devenir complexe, notamment pour les requêtes historiques.
+Selon les éléments présentés lors de l'échange :
 
-- **Jointures et rapprochements entre données :** les capacités de jointure entre index existent, mais restent plus contraintes que dans un environnement SQL relationnel ou fédéré. Les rapprochements complexes entre plusieurs référentiels métiers peuvent nécessiter des traitements préalables ou une dénormalisation des données, avec des impacts potentiels sur les performances et la maintenance.
+- **Type 1 – Public :** données publiques.
+- **Type 3 – Confidentiel :** données nécessitant des mesures de protection adaptées à leur caractère confidentiel.
+- **Type 4 – Secret :** données soumises à des exigences de sécurité renforcées, notamment en matière d'hébergement et de chiffrement.
 
-- **Modélisation et évolutivité :** l'organisation des données repose sur des index et des documents, ce qui peut nécessiter une adaptation du modèle aux requêtes attendues. Les évolutions importantes du modèle peuvent entraîner des opérations de réindexation, rendant la maintenance plus contraignante dans un environnement comportant de nombreux objets métiers interdépendants.
+Dominique a précisé que les données confidentielles (Type 3) sont relativement courantes dans les usages métiers, tandis que les données classifiées comme secrètes (Type 4) sont moins fréquentes.
 
-- **Requêtes fonctionnelles complexes :** Elasticsearch / OpenSearch sont particulièrement performants pour la recherche, les agrégations et les analyses de métriques. En revanche, les analyses fonctionnelles nécessitant de nombreux croisements, regroupements et transformations entre différents objets métiers peuvent être moins naturelles et plus complexes à mettre en œuvre.
+La classification doit être établie en amont, en lien avec le **Chief Data Office (CDO)**, afin de déterminer les conditions de traitement et les environnements autorisés.
 
-- **Construction de Data Products :** la création de référentiels métiers consolidés et réutilisables (utilisateurs, comptes, habilitations, recertifications, organisations, etc.) nécessite des mécanismes de modélisation, d'intégration et de gouvernance adaptés. Dominique a indiqué qu'une architecture Data Lakehouse serait davantage appropriée pour structurer et exposer ces objets métiers sous forme de Data Products.
+### 5.2. Classification des environnements Cloud
 
-- **Data Management, Data Lineage et couche sémantique :** les capacités nécessaires à la gouvernance, à la traçabilité et à la contextualisation des données ne sont pas couvertes de manière équivalente à celles d'une plateforme Data Lakehouse intégrée. Des composants complémentaires peuvent être nécessaires, notamment pour préparer de futurs usages analytiques avancés et d'IA Agentique.
+Dominique a également expliqué que les environnements Cloud disposent de leur propre classification, distincte de celle des données, avec une logique de numérotation différente.
 
-- **Stockage et coûts :** les mécanismes de réplication des index peuvent augmenter les volumes de stockage nécessaires. Dominique a notamment évoqué l'exemple d'une réplication par trois, à prendre en compte dans le dimensionnement. Le coût global doit également être évalué au regard des fonctionnalités complémentaires à mettre en place.
+Il a notamment évoqué :
 
-### Implications pour Production Security
+- **Cloud Type 1 :** environnements on-premise.
+- **Cloud Type 2 :** catégorie dans laquelle il a notamment situé IBM Cloud Object Storage (COS).
+- **Cloud Type 3 :** catégorie envisagée pour l'Azure Landing Zone BNP Paribas, sur laquelle reposerait l'offre Databricks.
+- **Cloud Types 4 et 5 :** autres catégories d'environnements, avec des niveaux de contraintes différents, le Type 5 ayant été associé aux environnements publics.
 
-Dans le contexte de Production Security, les besoins envisagés dépassent le stockage et l'analyse de logs ou de métriques. Ils comprennent notamment la consolidation de référentiels IAM/PAM, le rapprochement de données issues de plusieurs systèmes, l'historisation et la mise à disposition de Data Products réutilisables pour différents cas d'usage.
+Le DMZR a également été mentionné parmi les environnements internes, mais son niveau exact de classification reste à confirmer.
 
-Au regard des contraintes évoquées, Elasticsearch / OpenSearch apparaissent davantage adaptés à des usages ciblés de recherche, de monitoring et d'analyse événementielle qu'au rôle de socle principal d'une plateforme Data transverse orientée Data Products.
+Dominique a indiqué qu'IBM COS et Azure Landing Zone ne présentent pas nécessairement les mêmes niveaux de classification et conditions d'éligibilité des données.
 
-**Dominique a ainsi recommandé d'évaluer prioritairement une architecture DataHub / Data Lakehouse, reposant sur Starburst et/ou Databricks, en fonction des besoins fonctionnels, des sources de données et de l'architecture cible.**
+Le choix de l'environnement d'hébergement doit donc tenir compte de la classification des données et des règles de sécurité applicables à chaque plateforme.
+
+### 5.3. Contraintes spécifiques aux données secrètes
+
+Pour les données classifiées **Type 4 – Secret**, Dominique a souligné l'existence d'exigences de sécurité supplémentaires.
+
+Il a notamment précisé que :
+
+- Leur hébergement peut être soumis à des restrictions importantes, y compris dans des environnements internes ou on-premise.
+- Un chiffrement côté applicatif peut être requis avant leur dépôt dans un espace de stockage, notamment un bucket.
+- Leur hébergement dans l'environnement Azure envisagé pour Databricks ne serait pas autorisé dans les conditions évoquées lors de l'échange.
+
+À l'inverse, les données confidentielles (Type 3) pourraient être hébergées dans certains environnements internes ou dans l'Azure Landing Zone BNP Paribas, sous réserve de respecter les exigences de sécurité et les règles d'éligibilité applicables.
+
+### 5.4. Implications pour le projet Production Security DataLakehouse
+
+Avant de retenir une solution technologique ou un environnement de stockage, il sera nécessaire de :
+
+- Identifier les données IAM/PAM et les autres données Production Security susceptibles d'être intégrées à la plateforme.
+- Déterminer leur niveau de confidentialité avec les responsables compétents et le CDO.
+- Vérifier la compatibilité de ces classifications avec les environnements envisagés, notamment IBM COS et Azure Landing Zone.
+- Identifier les éventuelles exigences complémentaires de chiffrement, de contrôle d'accès et d'hébergement.
+
+**La classification des données devra donc être réalisée en amont de la décision d'architecture, afin de garantir que la solution retenue respecte les exigences de sécurité du Groupe.**
+
+*Point à confirmer : la classification exacte des environnements DMZR et les règles d'éligibilité associées devront être vérifiées auprès des équipes compétentes.*
