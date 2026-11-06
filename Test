@@ -1,19 +1,175 @@
-在和 Anshu 及 GM 团队的会议上，你可以按照清晰的逻辑，用流畅且自然的英文表达如下：
-开会表达建议（可直接使用）
-1. 开场与 ETL 流程背景介绍
-> "Hi everyone, today we'd like to walk you through the Python scripts and SQL queries behind the data extracts we usually provide.
-> To give you some background, Thomas set up the whole ETL configuration for us. Previously, I had to generate these extracts manually one by one, but Thomas automated the entire pipeline. However, for the Orbit team, you probably won't need these config files, since Orbit already automatically fetches data directly from the reporting DB."
-> 
-2. 介绍具体 7 个 Extract 及处理逻辑
-> "In total, we are providing 7 extracts today.
-> The overall logic is quite straightforward: I first use SQL to fetch raw data from the reporting DB, and then run Python scripts for light post-processing—for example, splitting an Excel file into two sheets, or performing some more complex calculations."
-> 
-💡 核心词汇与表达解析（方便你自由发挥）：
- * Walk someone through...：带某人过一遍 / 看一下（非常地道的开会表达）
- * Data extracts / Raw data：数据提取 / 原始数据
- * ETL configuration / Automated pipeline：ETL 配置 / 自动化流程
- * Fetch data directly from the reporting DB：直接从 reporting 数据库抓取数据
- * Post-processing：二次加工 / 后续处理
- * Split an Excel file into two：把一个 Excel 文件拆分成两个
- * Perform complicated calculations：进行复杂的计算
-祝你会议顺畅！如果有其他需要补充的点，随时告诉我。
+# Compte rendu – Échange avec ITG Data Architecture
+
+**Interlocuteur :** Dominique – ITG Data Architecture  
+**Objet :** Évaluation des solutions Data pour le projet Production Security DataLakehouse
+
+*Voici les principaux éléments que j'ai retenus de notre échange. N'hésitez pas à me corriger ou à compléter si nécessaire.*
+
+## 1. Positionnement d'Elasticsearch / OpenSearch
+
+Elasticsearch et OpenSearch ont été présentés comme des solutions principalement adaptées aux usages de recherche, de stockage et d'analyse de logs, de métriques et de données événementielles.
+
+Ces solutions sont notamment pertinentes pour :
+- La conservation et la consultation de données peu modifiées après leur ingestion, telles que les logs, les pistes d'audit et les événements.
+- Le suivi d'indicateurs et l'analyse temporelle, notamment via Kibana dans le cas d'Elasticsearch.
+- Les besoins de recherche et de monitoring opérationnel.
+
+Plusieurs limites ont toutefois été évoquées dans le contexte d'une plateforme Data transverse :
+
+- **Gestion des mises à jour et des versions :** les données faisant l'objet de modifications fréquentes ou de multiples versions peuvent nécessiter une modélisation et des traitements supplémentaires.
+- **Croisement de données :** les requêtes fonctionnelles complexes et les rapprochements entre plusieurs index peuvent être difficiles à mettre en œuvre et à maintenir.
+- **Modélisation des données :** la nécessité de dénormaliser certaines données peut rendre les évolutions du modèle plus contraignantes.
+- **Data Management et Data Lineage :** ces capacités ne sont pas couvertes de manière équivalente à celles d'une plateforme Data Lakehouse intégrée et nécessitent une évaluation des composants complémentaires.
+- **Data Products :** la construction et la mise à disposition d'objets métiers réutilisables, tels que les référentiels d'utilisateurs, d'habilitations ou de recertifications, ne correspondent pas au positionnement principal de ces moteurs.
+
+Dans ce contexte, Elasticsearch / OpenSearch apparaissent davantage adaptés à des besoins ciblés de stockage, de recherche et de monitoring qu'à la constitution du socle Data transverse envisagé pour Production Security.
+
+## 2. Positionnement de Starburst et de Databricks
+
+### 2.1 Starburst – Fédération et accès aux données
+
+Starburst a été présenté comme une solution particulièrement adaptée à la fédération de données provenant de sources hétérogènes.
+
+Il permet notamment de :
+- Interroger plusieurs sources de données au travers d'une interface SQL.
+- Faciliter le rapprochement de données issues de différents systèmes.
+- Limiter certaines réplications de données grâce aux mécanismes de fédération.
+- Accompagner les architectures hybrides intégrant des systèmes existants, notamment on-premise.
+
+Starburst peut également jouer un rôle important pendant les phases de migration vers une nouvelle plateforme Data, lorsque certaines sources restent hébergées dans leurs systèmes d'origine.
+
+L'offre Starburst continuera d'être proposée par ITG, notamment pour les entités ayant des besoins de fédération de données et des environnements hybrides.
+
+### 2.2 Databricks – Plateforme Data Lakehouse intégrée
+
+Databricks a été présenté comme une plateforme intégrée couvrant un ensemble de capacités Data, notamment :
+
+- Data Ingestion et Data Preparation.
+- Traitements SQL et Data Warehouse.
+- Traitements distribués avec Spark et Python.
+- Data Management et Data Lineage.
+- Gestion des métadonnées et gouvernance via Unity Catalog.
+- Capacités analytiques et d'intelligence artificielle.
+
+Contrairement à une architecture reposant sur plusieurs composants complémentaires, Databricks propose une approche davantage intégrée.
+
+Pour une équipe démarrant la construction d'une plateforme Data à partir de zéro, Dominique a indiqué que Databricks pourrait constituer une option intéressante, notamment en raison de la diversité des fonctionnalités proposées au sein d'un même environnement.
+
+Pour les entités disposant déjà d'un DataHub ou de nombreuses sources on-premise, Starburst peut néanmoins conserver un rôle complémentaire pour la fédération des données.
+
+Les deux solutions ne sont donc pas nécessairement exclusives et leur pertinence dépend de l'architecture existante, des besoins et de la stratégie d'intégration des données.
+
+### 2.3 Disponibilité de Databricks au sein du Groupe
+
+Selon les informations partagées lors de l'échange, Databricks est actuellement en cours de validation et de préparation au sein d'ITG.
+
+Une mise à disposition progressive est envisagée au **second semestre 2027**, avec des environnements de développement et de qualification prévus en amont et une disponibilité en production évoquée autour de juillet 2027.
+
+Le déploiement s'appuierait sur une landing zone Azure BNP Paribas.
+
+Ces éléments correspondent au calendrier prévisionnel communiqué lors de l'échange et restent à confirmer auprès des équipes responsables de l'offre.
+
+## 3. Architecture Data et Data Products
+
+L'échange a mis en évidence l'importance de distinguer une plateforme destinée principalement au stockage ou à la recherche de données d'une architecture Data Lakehouse permettant de structurer, gouverner et exposer des données métiers.
+
+Dans le contexte de Production Security, plusieurs objets métiers ont été évoqués :
+
+- Identités et utilisateurs.
+- Comptes et habilitations.
+- Demandes d'accès et processus d'approbation.
+- Recertifications.
+- Données organisationnelles.
+
+La construction de Data Products autour de ces objets pourrait permettre de disposer de datasets consolidés, réutilisables par différents projets et équipes.
+
+Les capacités de Data Management, de Data Lineage et de gestion des métadonnées ont également été identifiées comme des éléments importants, notamment pour garantir la compréhension, la traçabilité et l'exploitation des données.
+
+Ces capacités pourraient également contribuer à préparer de futurs usages d'IA et d'agents, sous réserve de définir les mécanismes de contextualisation et de couche sémantique nécessaires.
+
+Le choix de l'architecture devra donc être guidé par les cas d'usage envisagés, la nature des données et les capacités attendues, plutôt que par le seul besoin de stockage.
+
+## 4. Modèles de stockage et considérations économiques
+
+### 4.1 Stockage
+
+Les environnements évoqués reposent sur des infrastructures de stockage différentes :
+
+- **Starburst / DataHub V2 :** possibilité de s'appuyer sur IBM Cloud Object Storage (COS), en complément des sources fédérées.
+- **Databricks :** stockage sur Azure Data Lake Storage Gen2 (ADLS Gen2).
+- **Elasticsearch / OpenSearch :** stockage et indexation des données, avec des mécanismes de réplication à prendre en compte dans le dimensionnement.
+
+### 4.2 Coûts
+
+Les modèles économiques diffèrent selon les solutions.
+
+Pour Databricks, Dominique a notamment évoqué un modèle de facturation lié à la consommation des ressources de calcul, ainsi qu'aux traitements et requêtes exécutés.
+
+L'utilisation des ressources peut varier en fonction de l'activité, avec la possibilité de réduire les ressources de calcul lorsqu'aucun traitement n'est nécessaire.
+
+Pour Starburst, un coût indicatif d'environ **250 € par vCPU** a été mentionné lors de l'échange, sans confirmation à ce stade de l'ensemble des paramètres de facturation.
+
+Concernant Elasticsearch, les coûts dépendent notamment du dimensionnement de l'infrastructure, du nombre de clusters et des mécanismes de réplication des données.
+
+Il a été souligné qu'une comparaison directe des coûts reste difficile sans connaître précisément les volumes, les traitements, les fréquences d'utilisation et les composants nécessaires à chaque architecture.
+
+Une estimation plus détaillée devra donc être réalisée sur la base des besoins de Production Security.
+
+Dominique a indiqué qu'il pourrait partager les coûts unitaires des services concernés, notamment pour Starburst.
+
+## 5. Classification et confidentialité des données
+
+La classification des données constitue un prérequis important avant le choix de l'environnement d'hébergement.
+
+Les échanges ont notamment porté sur :
+
+- La distinction entre les niveaux de confidentialité des données et les classifications des environnements Cloud.
+- Les conditions d'hébergement des données confidentielles dans les environnements internes ou Cloud du Groupe.
+- Les restrictions supplémentaires applicables aux données classifiées comme secrètes.
+- Les exigences de chiffrement pour certaines catégories de données sensibles.
+
+Dominique a indiqué que les environnements IBM COS et Azure Landing Zone ne présentent pas nécessairement les mêmes niveaux de classification et d'éligibilité.
+
+La compatibilité entre les données envisagées et l'environnement cible devra être vérifiée auprès des équipes compétentes.
+
+Le **Chief Data Office (CDO)** devra notamment être sollicité pour confirmer la classification des données et les conditions d'hébergement applicables.
+
+## 6. Points d'attention pour Production Security
+
+Plusieurs éléments devront être précisés avant de pouvoir recommander une architecture cible :
+
+- Les besoins fonctionnels IAM, PAM et des autres périmètres Production Security.
+- Les sources de données à intégrer, leurs formats et leurs modalités d'accès.
+- Les volumes de données et les fréquences de mise à jour.
+- Les besoins de rapprochement et d'analyse entre plusieurs systèmes.
+- Les besoins d'historisation et de conservation.
+- Les exigences de gouvernance, de Data Management et de Data Lineage.
+- Les futurs usages analytiques, de Data Science et d'IA.
+- Les classifications de confidentialité et les contraintes d'hébergement.
+- Les coûts d'infrastructure, de traitement et d'exploitation.
+
+Il a également été rappelé qu'une architecture Data Lakehouse n'est pas systématiquement nécessaire pour tous les besoins. Selon les volumes et les cas d'usage, une base de données relationnelle peut parfois constituer une solution suffisante.
+
+L'objectif est donc de définir une architecture proportionnée aux besoins réels du projet.
+
+## 7. Prochaines étapes
+
+| Action | Responsable |
+|---|---|
+| Consolider les besoins fonctionnels IAM / PAM / Production Security | Équipe projet Production Security |
+| Identifier les sources de données, les volumes, les formats et les fréquences de mise à jour | Équipe projet Production Security |
+| Transmettre à Dominique la synthèse des besoins et cas d'usage | Équipe projet Production Security |
+| Étudier les options d'architecture adaptées aux besoins identifiés | ITG Data Architecture / Équipe projet |
+| Partager les éléments de coûts unitaires des services, notamment Starburst | Dominique / ITG |
+| Confirmer le calendrier et les conditions de disponibilité de Databricks | ITG |
+| Vérifier la classification des données et l'éligibilité des environnements d'hébergement | Équipe projet / CDO |
+
+## 8. Synthèse
+
+Les échanges confirment l'importance d'orienter le choix technologique en fonction des besoins métiers, de la nature des données et des usages envisagés.
+
+Elasticsearch / OpenSearch apparaissent principalement adaptés aux usages de recherche, de logs et de métriques, tandis que Starburst et Databricks présentent des capacités davantage alignées avec des besoins de fédération, de structuration et d'exploitation de données métiers.
+
+Starburst constitue une solution pertinente pour les architectures hybrides et les besoins de fédération de sources hétérogènes. Databricks représente une alternative intégrée à examiner, notamment dans le cadre d'une nouvelle plateforme Data.
+
+À ce stade, **aucun choix technologique définitif n'a été arrêté**. L'analyse détaillée des besoins IAM/PAM, la classification des données, les contraintes d'architecture et l'évaluation des coûts permettront d'orienter les prochaines décisions.
