@@ -1,37 +1,33 @@
-D'après les échanges réalisés dans le cadre du benchmark, Starburst est déjà utilisé par plusieurs entités du Groupe, principalement comme couche d'accès SQL, de fédération et de partage des données.
+当然可以。我建议你用比较自然、口语化的英文，不需要太正式。作为 Project Manager，你主要负责明确会议目标，让 Innovation Lab 和 Ghassen 对齐技术进展，并确定 Sprint 2 的任务分工。
 
-**ITG PA3I – Fournisseur de la plateforme**
+英文会议发言稿（推荐直接使用）
 
-ITG PA3I propose DataHub V2, une plateforme Data mutualisée reposant notamment sur Starburst, Spark et Airflow. Starburst y est utilisé pour l'interrogation SQL et la fédération de données provenant de différentes sources, sans nécessiter systématiquement leur centralisation.
+1. Opening – Meeting Objective
 
-**ITG Open Data / Management Office – Data Products et reporting**
+Hi everyone, thanks for joining.I organized this meeting to align on Ghassen’s involvement in the MyIAM AI Agent development.As we discussed last week, Ghassen was busy preparing a demo for another project, but now that it’s done, he should be able to start contributing to our project.Innovation Lab has already started the Agent development, and we’re now reaching the end of the first sprint.So the idea is to bring Ghassen on board starting from Sprint 2 and make sure he has a clear understanding of what’s been done so far and what he can work on next.
 
-L'équipe ITG Open Data s'appuie sur DataHub V2 pour construire et publier des Data Products mutualisés, à partir de différentes sources de données.
+2. Ask Innovation Lab to Present the Progress
 
-Par exemple, un Data Product a été développé pour l'équipe ITG Management Office afin de consolider les informations relatives aux applications et aux assets du programme DMZR.
+Ignat, could you give us a quick overview of what you’ve achieved during the first sprint?Especially what’s already been implemented on Twin, the current Agent architecture, and the next development steps.I think it would be helpful for Ghassen to understand the technical setup before we discuss how he can contribute.
 
-Les utilisateurs accèdent aux datasets publiés via Starburst, puis les exploitent dans Dataiku pour réaliser des analyses, construire des indicateurs et produire des tableaux de bord.
+3. Define Ghassen’s Responsibilities for Sprint 2
 
-**Cardif – Data Lakehouse transverse**
+For Sprint 2, we’d like Ghassen to start taking on some development and API integration tasks.I’ll leave it to you both to discuss the technical details and how best to split the work, based on what’s already been developed and the upcoming priorities.Ideally, I’d like us to identify some concrete tasks that Ghassen can take ownership of during the next sprint.
 
-Le département IT Data & AI de Cardif a mis en place un Data Lakehouse mutualisé, utilisé par différents domaines métiers.
+4. Jira & Access Requirements
 
-Starburst constitue la couche d'accès SQL et de fédération des données, permettant notamment d'interroger des données stockées dans Iceberg, Oracle ou d'autres sources, sans duplication systématique.
+Wiola has already set up a dedicated Jira Board for our project, with two-week sprints.Once we’ve agreed on Ghassen’s tasks, we can add them to the backlog and plan them for Sprint 2.We should also check whether Ghassen has all the necessary access to Twin, the development environment, the code repository, and Jira.
 
-Les principaux usages couvrent l'intégration et la synchronisation de données, le reporting et les traitements analytiques. La plateforme évolue également vers les usages de Data Science et d'IA, notamment pour alimenter les environnements d'entraînement de modèles et les assistants conversationnels.
+5. Closing
 
-**BCEF – Partage de données et Data Products entre projets**
+So ideally, by the end of this meeting, we should have a clear understanding of what Ghassen will be working on, what access or support he needs, and how you’ll collaborate going forward.That way, we can start Sprint 2 with clear responsibilities and avoid any unnecessary delays.
 
-BCEF dispose d'un DataHub IV2 mutualisé, utilisé en production par une vingtaine de projets.
+如果你想一口气讲完（更推荐）
 
-Starburst y constitue la couche d'exposition des données stockées dans Iceberg/COS, permettant aux différents projets de partager et de consommer des données et des Data Products.
+这版大概一分钟，特别适合会议开场：
 
-Les principaux usages concernent le reporting, les tableaux de bord, les analyses métiers, ainsi que l'alimentation d'applications et de services opérationnels via des API ou des fichiers, notamment dans le cadre des initiatives Martech et CRM Corporate.
+Hi everyone, thanks for joining.I organized this meeting to align on Ghassen’s involvement in the MyIAM AI Agent development.As we discussed last week, Ghassen was busy preparing a demo for another project, but now that it’s done, he should be available to start working on ours.Innovation Lab has already started the Agent development, and we’re now at the end of the first sprint. So I’d like to bring Ghassen on board starting from Sprint 2.Ignat, could you first give us a quick overview of what’s been developed so far, what’s already in place on Twin, and what the next priorities are?Then we can discuss together how to split the development and integration tasks between you and Ghassen.Ideally, I’d like us to identify some concrete tasks for Ghassen in Sprint 2, as well as any access or technical prerequisites he might need.Once we’ve agreed on that, we can coordinate with Wiola to add the tasks to the Jira backlog.
 
-**CIB AI Platform – DataLake transverse**
+我最推荐最后这个版本。 它既能体现你作为 PM 对项目进度和资源安排的把握，也让两位 AI Engineers 自己讨论具体的技术分工。
 
-Enfin, au sein de CIB, l'équipe Data Analytics / AI Platform dispose d'un DataLake transverse destiné à répondre aux besoins de différents projets et équipes métiers, notamment pour le reporting, le monitoring et le suivi d'indicateurs dans les domaines du Risque, de l'activité/RH et de l'ESG.
-
-L'équipe fait évoluer son architecture vers Starburst afin de renforcer les capacités de fédération des données et de limiter les réplications entre systèmes. Cette évolution était encore en cours au moment de notre échange.
-
-En résumé, les retours d'expérience montrent que Starburst est principalement utilisé comme une couche d'accès, de fédération et d'exposition des données au sein de plateformes Data mutualisées, pour des usages analytiques, de reporting et de partage de Data Products. Il s'intègre généralement à d'autres composants, notamment Spark pour les transformations, Airflow pour l'orchestration et Iceberg/COS pour le stockage.
+还有一点：今天最好不要只停留在介绍项目背景。你最需要的会议结果，是 Ghassen 明确知道 Sprint 2 要做什么、由谁帮助他上手，以及有哪些技术前置条件。
