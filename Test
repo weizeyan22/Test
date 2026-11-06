@@ -1,11 +1,14 @@
-## 6. Prochaines étapes
+Ces éléments devront être confirmés au regard des règles de classification et d'hébergement applicables au sein du Groupe.
 
-- **Consolidation des besoins :** finaliser les besoins fonctionnels et les principaux cas d'usage IAM/PAM et Production Security, en précisant les sources de données concernées, leurs caractéristiques et les usages envisagés (reporting, analytics, Data Products, IA/Agents).
+Il sera donc nécessaire de se rapprocher du Chief Data Office (CDO) CIB afin d'identifier et de confirmer la classification des données IAM/PAM envisagées, puis de vérifier leur éligibilité aux environnements d'hébergement cibles (IBM COS / Azure Landing Zone), en lien avec les équipes de sécurité compétentes.
 
-- **Partage avec ITG Data Architecture :** transmettre à Dominique la synthèse des besoins et des données envisagées afin d'étudier les options d'architecture les plus adaptées (DataHub V2 / Starburst, Databricks ou autres solutions selon les besoins).
 
-- **Classification des données :** se rapprocher du Chief Data Office (CDO) pour confirmer la classification des données et leur éligibilité aux environnements d'hébergement envisagés.
+Les prochaines étapes envisagées sont les suivantes :
 
-- **Évaluation des coûts :** récupérer auprès de Dominique les éléments de tarification des services, notamment Starburst, afin de préparer une première estimation budgétaire.
+Finaliser les besoins fonctionnels et les principaux cas d'usage IAM/PAM, en précisant les sources de données concernées.
 
-- **Disponibilité de Databricks :** confirmer le calendrier prévisionnel de mise à disposition ainsi que les conditions d'accès aux environnements de développement, de qualification et de production.
+Se rapprocher du Chief Data Office CIB afin de confirmer la classification des données envisagées et leur éligibilité aux différents environnements d'hébergement.
+
+Transmettre à Dominique une synthèse des besoins et des données envisagées, afin d'approfondir l'évaluation des options d'architecture les plus adaptées (DataHub V2 / Starburst, Databricks ou autres solutions selon les besoins).
+
+Évaluer les coûts : recueillir les éléments de tarification des services et des composants complémentaires nécessaires afin de préparer une première estimation budgétaire.
