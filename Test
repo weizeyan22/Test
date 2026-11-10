@@ -1,7 +1,13 @@
-Oui bien sûr, je peux te donner un peu plus de contexte 🙂
+Bonjour [Prénom],
 
-L’objectif du projet est de mettre en place une plateforme de données transverse pour Production Security, afin de centraliser ou fédérer les données provenant de différents systèmes et de faciliter leur exploitation pour des besoins de reporting, d’analyse et, à terme, d’IA.
+Comme convenu, je te partage en pièce jointe les besoins fonctionnels identifiés côté IAM dans le cadre du projet DataLakehouse Production Security, afin de vous donner un premier aperçu des cas d’usage envisagés.
 
-Le projet couvre initialement le périmètre IAM, mais l’objectif est de l’étendre aux autres équipes de Production Security, notamment PAM.
+L’objectif est de recueillir également les besoins de l’équipe PAM, notamment en matière de données, de reporting, d’analyses et d’éventuels cas d’usage transverses, afin de les prendre en compte dans l’étude de l’architecture cible.
 
-On est actuellement en phase de recueil des besoins et d’étude des solutions techniques. L’idée serait donc d’échanger avec toi pour identifier les éventuels besoins et cas d’usage côté PAM, avant de définir l’architecture cible.
+N’hésitez pas à vous appuyer sur le document IAM comme référence pour formaliser vos propres besoins fonctionnels.
+
+Je reste disponible si vous souhaitez échanger sur le sujet.
+
+Merci d’avance pour votre contribution !
+
+Bonne journée,
