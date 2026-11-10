@@ -1,0 +1,7 @@
+Oui bien sûr, je peux te donner un peu plus de contexte 🙂
+
+L’objectif du projet est de mettre en place une plateforme de données transverse pour Production Security, afin de centraliser ou fédérer les données provenant de différents systèmes et de faciliter leur exploitation pour des besoins de reporting, d’analyse et, à terme, d’IA.
+
+Le projet couvre initialement le périmètre IAM, mais l’objectif est de l’étendre aux autres équipes de Production Security, notamment PAM.
+
+On est actuellement en phase de recueil des besoins et d’étude des solutions techniques. L’idée serait donc d’échanger avec toi pour identifier les éventuels besoins et cas d’usage côté PAM, avant de définir l’architecture cible.
