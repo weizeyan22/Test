@@ -1,0 +1,203 @@
+可以。我按照你现在 PPT 的 7 个栏目和 5 个 IAM Requirements，给你整理一份可以直接填写进去的完整英文版本。
+
+我建议保留你现在的结构，因为它既能帮助 PAM 团队理解如何填写需求，也能为后续 Dominique 的 Architecture Assessment 提供输入。
+
+不过，我会稍微调整第一项和最后一项的名称，让它们更像需求，而不是预先确定的技术解决方案。
+
+Requirements – IAM
+
+以下是完整内容。对于尚未确认的信息，我会明确标注 To be confirmed (TBC)，避免把假设写成已确定的需求。
+
+1. Reporting Database Decommissioning
+
+Technical driver
+
+原名称：Database technology sunset
+
+Description / Objective
+
+Ensure the continuity of existing reporting and data consumption services following the planned decommissioning of the current reporting database, while avoiding unnecessary intermediate migrations and aligning with the target enterprise data architecture.
+
+Sources de données
+
+Existing SQL Server reporting database and underlying IAM source systems (TBC).
+
+Résultat attendu
+
+Existing reporting datasets and dependent services migrated or made accessible through a supported target architecture, without loss of critical functionality or data continuity.
+
+Usage attendu
+
+Reporting, data access and migration.
+
+Fréquence de mise à jour
+
+To be defined based on existing reporting requirements.
+
+Priorité
+
+High — proposed, subject to validation.
+
+2. Access Recertification
+
+Description / Objective
+
+Consolidate MyIAM data with relevant data from other BNP Paribas systems to provide a unified view of identities, accounts and access rights, supporting access recertification processes.
+
+Sources de données
+
+MyIAM and other relevant identity and access repositories (TBC).
+
+Résultat attendu
+
+A consolidated and reliable dataset of identities and access rights, enabling recertification tools to retrieve the information required for access reviews.
+
+Usage attendu
+
+Data consolidation, recertification and access review.
+
+Fréquence de mise à jour
+
+To be defined according to recertification processes and data freshness requirements.
+
+Priorité
+
+To be confirmed with the business owner.
+
+3. IAM Bypass Detection
+
+Description / Objective
+
+Detect access rights potentially granted outside the standard MyIAM request and approval process by correlating access requests, approvals and actual entitlements across relevant systems.
+
+Sources de données
+
+MyIAM, ePassport and potentially SIEM / GSCD event data (TBC).
+
+Résultat attendu
+
+A list or report of potentially unauthorized or untraceable access rights, with supporting information to facilitate investigation and validation of exceptions.
+
+Usage attendu
+
+Cross-source reconciliation, anomaly detection and security analytics.
+
+Fréquence de mise à jour
+
+To be defined according to the expected detection frequency (periodic or near-real-time).
+
+Priorité
+
+To be confirmed with the business owner.
+
+4. MyIAM – ePassport Reconciliation
+
+Description / Objective
+
+Consolidate business-layer data from MyIAM and technical-layer data from ePassport to perform consistency and reconciliation checks between requested or approved access rights and those actually provisioned.
+
+Sources de données
+
+MyIAM and ePassport.
+
+Résultat attendu
+
+Reconciliation results identifying discrepancies between approved and provisioned access rights, with sufficient details to support investigation and remediation.
+
+Usage attendu
+
+Data reconciliation, data quality monitoring and reporting.
+
+Fréquence de mise à jour
+
+To be confirmed according to reconciliation requirements.
+
+Priorité
+
+To be confirmed with the business owner.
+
+5. AI Agent Data Access and Analytics
+
+Future capability
+
+原名称：Platform of Agentic AI
+
+Description / Objective
+
+Enable future AI Agents to securely access, query and analyze consolidated IAM and Production Security data, leveraging governed datasets and consistent business definitions.
+
+Sources de données
+
+Consolidated IAM/PAM datasets and future Data Products (TBC).
+
+Résultat attendu
+
+Secure and controlled access to trusted business data for AI Agents, enabling natural-language queries, contextualized analysis and support for future intelligent applications.
+
+Usage attendu
+
+Agentic AI, data analytics and intelligent data access.
+
+Fréquence de mise à jour
+
+To be defined according to the targeted AI use cases and required data freshness.
+
+Priorité
+
+Future / To be confirmed.
+
+二、你的 PPT 应该怎样安排？
+
+你现在的七列可以保留：
+
+Colonne	内容
+Besoin / Cas d’usage	需求名称
+Description / Objectif	业务问题及目标
+Sources de données	涉及的数据系统
+Résultat attendu	希望得到的具体结果
+Usage attendu	Reporting、Analytics、AI 等
+Fréquence de mise à jour	数据需要多频繁更新
+Priorité	High / Medium / Low
+
+不过，我建议你在 PPT 中不要把上面每个字段的完整文字全部放进去，否则表格会非常拥挤。
+
+例如，Bypass Detection 这一行可以压缩成：
+
+Champ	Version courte pour PPT
+Besoin	IAM Bypass Detection
+Description	Detect access rights granted outside the standard MyIAM approval process through cross-system data correlation.
+Sources	MyIAM, ePassport, SIEM (TBC)
+Résultat attendu	Report of potential bypass accesses with supporting evidence.
+Usage attendu	Reconciliation / Security Analytics
+Fréquence	TBC
+Priorité	TBC
+
+其他四项也可以采用同样的简洁写法。
+
+三、我还建议你做两个小调整
+
+第一，区分已确认需求与未来需求。
+
+你现在的五项中，Recertification、Bypass Detection 和 Reconciliation 是具体的业务 Use Cases。
+
+而 Reporting Database Decommissioning 是一个技术迁移约束，AI Agent Data Access 是未来目标能力。
+
+你可以在需求名称旁标注：
+
+* Technical driver
+* Business use case
+* Future capability
+
+这样 Dominique 就不会误以为这五项都是同一性质、同一成熟度的需求。
+
+第二，不要擅自给所有需求定 High Priority。
+
+目前你还在收集 IAM/PAM 的需求。除了 Reporting Database Decommissioning 可能存在明确的时间约束，其他需求的优先级最好由 Fred 或相关业务负责人确认。
+
+最后一个建议
+
+因为你准备把 IAM 的需求作为示例发给 PAM Manager，我建议你在 PPT 首页加一句：
+
+« Ce document présente les premiers besoins identifiés sur le périmètre IAM et sert de base au recueil des besoins des autres équipes Production Security. Les sources de données, fréquences de mise à jour et priorités restent à confirmer avec les équipes concernées. »
+
+这样就很清楚：这是一份用于需求收集和架构评估的工作文档，而不是已经确认的最终需求规格。
