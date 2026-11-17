@@ -1,0 +1,16 @@
+可以。我建议你直接转发 APS 的邮件给 Max，用简洁、自然的法语说明情况，不需要重复太多背景。
+
+Bonjour Max,
+
+Suite à mon échange avec l’équipe APS, ils m’ont conseillé de me rapprocher de toi pour les informations concernant la base de données ePassport.
+
+Pourrais-tu nous communiquer la volumétrie actuelle de la base (espace utilisé et alloué, en Go ou To), ainsi que la répartition entre les données et les index, si disponible ?
+
+Merci d’avance pour ton aide !
+
+Bonne journée,
+Weize
+
+我比较推荐这个版本，尤其是 « ils m’ont conseillé de me rapprocher de toi »，这是法国职场中很自然、礼貌的表达。
+
+另外，« volumétrie actuelle de la base » 很适合你的 DataLakehouse 项目，比单纯说 « taille physique » 更自然。后面已经明确了 espace utilisé et alloué，所以 Max 也能准确理解你需要什么信息。
