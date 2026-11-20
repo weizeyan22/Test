@@ -1,14 +1,5 @@
-Hi all,
-
-Thanks for the information provided.
-
-For our DataLake sizing assessment, what we are mainly looking for is the volume of the data itself (excluding indexes and including LOB data), rather than the overall database storage capacity.
-
-Could you please provide a breakdown of the database size by owner and segment type?
-
-I’ve attached the information provided by the ePassport team as a reference.
-
-Thanks again for your help!
-
-Best regards,
-Weize
+Volumétrie indicative des sources
+MyIAM – SailPoint Native DB; Existing Reporting DB Identities, accounts, applications, entitlements, access requests, approval workflows and reporting data MyIAM: ~8 TB; Reporting DB: TBC
+MyIAM; Other BNPP IAM systems (to be confirmed) Identities, accounts, access rights, application and entitlement metadata MyIAM: ~8 TB; Other sources: TBC
+MyIAM DB; ePassport DB; GSCD / SIEM Access requests, approval history, provisioned access rights, access-related events and audit logs MyIAM: ~8 TB; ePassport: ~6.4 TiB; GSCD: TBC
+MyIAM DB; ePassport DB Business roles, technical entitlements, identities, accounts, approved and provisioned access rights, role-to-entitlement mappings MyIAM: ~8 TB; ePassport: ~6.4 TiB
