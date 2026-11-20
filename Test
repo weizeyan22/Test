@@ -1,24 +1,22 @@
-Hi all,
+对，最好先引用这个 champ 的原名，再简单解释它的用途，这样 Adrien 就知道为什么你们希望填写他的名字。但不需要解释整个 IT SVC 流程。
 
-Please find below this week’s updates.
+我建议这样写，比较自然，也不会太正式：
 
-1. Agent Development & API Integration
+Bonjour Adrien,
 
-* Sprint 1 ended and Sprint 2 started, focusing on the integration of the second batch of APIs.
-* MCP development initiated by Ghassen and Satish.
-* Technical alignment meeting held to address open questions and blockers. API endpoints summary, including security controls, shared.
-* Authentication: Further clarification needed on how the Agent retrieves the authenticated user’s identity via the Twin JWT.
-* STG testing: Limited data available for Request Tracking. Broader test coverage expected with the integration of additional endpoints.
-* Third batch of APIs expected by the end of November.
-* Functional testing planned once the third batch of APIs has been integrated into the Agent and is ready for testing.
+On est en train de finaliser le formulaire de demande IT SVC pour le MyIAM AI Chatbot.
 
-2. IT SVC
+Dans ce formulaire, il y a un champ « Functional Architect Name Who Validated the Qualitative Criteria », qui correspond à la personne chargée de valider les critères qualitatifs de l’architecture fonctionnelle du Chatbot.
 
-* Application form nearly finalized.
-* Final review with Sibora.
-* Two remaining fields to be clarified with Sylvain.
+Fred et l’Inno Lab ont suggéré de renseigner ton nom dans ce champ. Est-ce que tu serais d’accord pour effectuer cette validation ?
 
-Best regards,
+Si besoin, je peux organiser un point pour te présenter l’architecture du Chatbot.
+
+Merci pour ton aide !
+
+Bonne journée,
 Weize
 
-这样就够了，不需要单独再写 Next Steps，因为每个 bullet point 已经包含了当前状态或下一步行动。IT SVC 部分可以根据你昨天和 Sibora 的会议结果再更新一下。
+这样既解释了这个 champ 是什么，也明确了你希望他做什么，而不是单纯征求他同意填写名字。
+
+不过，目前我们还没有确认 qualitative criteria 的具体评审范围，所以不建议在邮件里进一步定义他需要验证哪些技术内容。
