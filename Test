@@ -1,12 +1,51 @@
-ic
-MyIAM AI Chatbot – MCP Development & Integration
-Task 1
-MCP Server Setup & Configuration
-Task 2
-MCP Integration – Request Tracking APIs (Batch 1)
-Task 3
-MCP Integration – Identity APIs (Batch 2)
-Task 4
-MCP Integration – User Access APIs (Batch 3)
-Task 5
-Authentication & User Identity Propagation
+根据 Ghassen 的回复，他和 Satish 目前是并行开发，但 Ghassen 会提前探索技术方案，尤其是 Security、JWT 和 Authentication 的部分，然后指导 Satish 调整他的 MCP implementation。
+
+所以我建议先给 Ghassen assign 两个 Jira Tasks，而不是按照不同批次的 APIs 来划分他们的工作。
+
+Task 1 – MCP Server Development & Technical Coordination
+
+Assignee: Ghassen
+
+Description:
+
+* Develop the MCP server for MyIAM API integration.
+* Define and validate the technical implementation approach.
+* Review Satish’s MCP implementation and provide technical guidance.
+* Ensure consistency between MCP implementations.
+
+Status: In Progress
+
+Task 2 – MCP Security & Authentication Integration
+
+Assignee: Ghassen
+
+Description:
+
+* Clarify the authentication flow based on the Twin JWT.
+* Define how the authenticated user’s identity is retrieved and propagated to the MyIAM APIs.
+* Integrate the required security mechanisms into the MCP server.
+* Ensure alignment with MyIAM authorization rules and security requirements.
+
+Status: In Progress
+
+至于 Satish，可以给他创建一个对应的 Task：
+
+Task 3 – MCP Server Development & API Integration
+
+Assignee: Satish
+
+Description:
+
+* Develop the MCP server and implement MCP tools for MyIAM APIs.
+* Adapt the implementation based on technical feedback and agreed security requirements.
+* Perform technical integration tests.
+
+Status: In Progress
+
+我建议这三个 Tasks 都放在现有 Agentic AI Epic 下面。
+
+从 Ghassen 的回复来看，他目前实际上承担了一部分 Technical Guidance 的职责，但并没有正式被指定为 Tech Lead，所以你不需要在 Jira 里给他定义这个角色。
+
+另外，关于 JWT 的具体实现以及 Security Control 应该在哪一层执行，目前还没有完全确定。因此 Task 2 应该体现 Clarification + Implementation，而不是提前规定具体的技术实现方案。
+
+现阶段先创建这三个 Tickets 就够了，后面让他们根据实际开发进展自行补充 Sub-tasks。
