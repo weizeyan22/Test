@@ -1,0 +1,24 @@
+Hi all,
+
+Please find below this week’s updates.
+
+1. Agent Development & API Integration
+
+* Sprint 1 ended and Sprint 2 started, focusing on the integration of the second batch of APIs.
+* MCP development initiated by Ghassen and Satish.
+* Technical alignment meeting held to address open questions and blockers. API endpoints summary, including security controls, shared.
+* Authentication: Further clarification needed on how the Agent retrieves the authenticated user’s identity via the Twin JWT.
+* STG testing: Limited data available for Request Tracking. Broader test coverage expected with the integration of additional endpoints.
+* Third batch of APIs expected by the end of November.
+* Functional testing planned once the third batch of APIs has been integrated into the Agent and is ready for testing.
+
+2. IT SVC
+
+* Application form nearly finalized.
+* Final review with Sibora.
+* Two remaining fields to be clarified with Sylvain.
+
+Best regards,
+Weize
+
+这样就够了，不需要单独再写 Next Steps，因为每个 bullet point 已经包含了当前状态或下一步行动。IT SVC 部分可以根据你昨天和 Sibora 的会议结果再更新一下。
