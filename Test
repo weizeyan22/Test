@@ -1,36 +1,3 @@
-是的，我建议你单独增加一个关于 Data Products 的 requirement。因为你的 Data Platform 不仅需要集中、整合和处理数据，还需要将处理后的数据以可复用、可信且受治理的方式提供给不同的消费者。
+Pourrais-tu voir avec ton équipe quels seraient les besoins et cas d’usage côté PAM et compléter le tableau dédié dans le PPT, en précisant les objectifs, les résultats attendus, les sources et types de données, la volumétrie estimée ainsi que les priorités ?
 
-Data Products 不应该仅仅作为 AI Agent 的附属需求，它也可以服务于 Reporting、Recertification、Analytics 以及其他下游应用。
-
-建议新增的 Requirement
-
-Field	Content
-Requirement / Use Case	Data Product Creation and Consumption – Platform capability
-Description / Objective	Enable the creation, publication and consumption of reusable and governed IAM Data Products, based on consolidated data and standardized business definitions.
-Expected Outcome	Trusted, documented and reusable Data Products with clearly defined ownership, data quality standards and controlled access, supporting multiple business and technical use cases.
-Data Sources	Consolidated IAM datasets from multiple source systems.
-Data Types	Identities, accounts, access rights, applications, entitlements, access requests and other IAM business data.
-Estimated Source Volume	Depending on the scope of each Data Product (TBC).
-Priority	High / Medium (to be confirmed).
-
-为什么需要单独写这个 Requirement？
-
-因为它和 AI Agent Data Access and Analytics 属于不同层面的能力。
-
-目标架构的概念示意，Data Products 的具体划分尚待确定。
-
-这样，你目前的 Requirements 就可以分为四类：
-
-Category	Requirements
-Technical driver	Reporting DB Decommissioning, Replacement of Critical SSIS Extractions
-Business use case	Recertification Feed, IAM Bypass Detection, MyIAM/ePassport Reconciliation
-Platform capability	Data Product Creation and Consumption
-Future capability	AI Agent Data Access and Analytics
-
-关于 Priority
-
-我个人倾向于将 Data Products 标为 High，前提是可复用、受治理的数据交付已经被确认为项目的核心目标，而不仅仅是未来的附加功能。
-
-这也会成为你后续进行 Starburst、Databricks 和 OpenSearch 技术选型时的一项重要评估依据：平台能否支持 Data Products 的构建、发布、治理和消费，或者是否需要依赖额外组件来实现这些能力。
-
-我建议把这一项放在 AI Agent Data Access and Analytics 的前面。 因为 Data Products 是平台的基础能力之一，而 AI Agents 是未来可能消费这些 Data Products 的应用之一。
+Si certaines informations ne sont pas encore disponibles, elles pourront être complétées par la suite.
