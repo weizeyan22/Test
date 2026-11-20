@@ -1,22 +1,56 @@
-对，最好先引用这个 champ 的原名，再简单解释它的用途，这样 Adrien 就知道为什么你们希望填写他的名字。但不需要解释整个 IT SVC 流程。
+因为 Ghassen 和 Satish 目前主要负责 MCP Development & API Integration，我建议按照每批 APIs 的集成任务来创建 Jira tickets，而不是简单地按照人员创建两个大任务。这样更方便 Scrum Master 跟踪 Sprint 的进展。
 
-我建议这样写，比较自然，也不会太正式：
+Task 1 – MCP Server Development
 
-Bonjour Adrien,
+Summary: MyIAM – MCP Server Development
 
-On est en train de finaliser le formulaire de demande IT SVC pour le MyIAM AI Chatbot.
+Description:
 
-Dans ce formulaire, il y a un champ « Functional Architect Name Who Validated the Qualitative Criteria », qui correspond à la personne chargée de valider les critères qualitatifs de l’architecture fonctionnelle du Chatbot.
+* Set up the MCP server for MyIAM API integration.
+* Implement the common mechanisms for API invocation and response handling.
+* Implement error handling.
+* Align the MCP implementation with the Agent architecture.
 
-Fred et l’Inno Lab ont suggéré de renseigner ton nom dans ce champ. Est-ce que tu serais d’accord pour effectuer cette validation ?
+Task 2 – MCP Integration – Request Tracking APIs
 
-Si besoin, je peux organiser un point pour te présenter l’architecture du Chatbot.
+Summary: MyIAM – MCP Integration of Request Tracking APIs (Batch 1)
 
-Merci pour ton aide !
+Description:
 
-Bonne journée,
-Weize
+* Implement MCP tools for the following endpoints:
+    * searchRequestsByUser
+    * searchRequestsByAppEnt
+    * searchRequestByStatus
+    * getRequestDetails
+* Ensure compliance with the defined security controls.
+* Perform technical integration tests.
 
-这样既解释了这个 champ 是什么，也明确了你希望他做什么，而不是单纯征求他同意填写名字。
+Task 3 – MCP Integration – Identity APIs
 
-不过，目前我们还没有确认 qualitative criteria 的具体评审范围，所以不建议在邮件里进一步定义他需要验证哪些技术内容。
+Summary: MyIAM – MCP Integration of Identity APIs (Batch 2)
+
+Description:
+
+* Implement MCP tools for the following endpoints:
+    * searchIdentity
+    * getIdentityDetails
+    * getTeamDetails
+* Ensure compliance with the defined security controls.
+* Perform technical integration tests.
+
+Task 4 – Authentication & User Identity Propagation
+
+Summary: MyIAM – Authentication and Authenticated User Identity Propagation
+
+Description:
+
+* Clarify the authentication mechanism based on the Twin JWT.
+* Define how the authenticated user’s identity is retrieved and propagated to the MyIAM APIs.
+* Align the implementation with MyIAM authentication and authorization requirements.
+* Validate the end-to-end authentication flow.
+
+我建议目前先创建这四个 tickets。 第三批 APIs 可以等交付范围确认后再创建对应的 ticket。
+
+至于 Ghassen 和 Satish 分别负责哪些任务，以及 Authentication 由 Twin、Innovation Lab 还是 MCP Developers 负责，目前还没有完全明确，所以建议先和他们确认分工，再设置 Assignee。
+
+作为 PM，你需要定义的是 Scope、Expected Outcome 和 Acceptance Criteria，具体的技术实现细节可以让两位 Developers 自己补充。这样既能保证项目的可追踪性，也不会陷入 micromanagement。
