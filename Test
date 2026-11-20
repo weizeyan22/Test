@@ -1,5 +1,42 @@
-Volumétrie indicative des sources
-MyIAM – SailPoint Native DB; Existing Reporting DB Identities, accounts, applications, entitlements, access requests, approval workflows and reporting data MyIAM: ~8 TB; Reporting DB: TBC
-MyIAM; Other BNPP IAM systems (to be confirmed) Identities, accounts, access rights, application and entitlement metadata MyIAM: ~8 TB; Other sources: TBC
-MyIAM DB; ePassport DB; GSCD / SIEM Access requests, approval history, provisioned access rights, access-related events and audit logs MyIAM: ~8 TB; ePassport: ~6.4 TiB; GSCD: TBC
-MyIAM DB; ePassport DB Business roles, technical entitlements, identities, accounts, approved and provisioned access rights, role-to-entitlement mappings MyIAM: ~8 TB; ePassport: ~6.4 TiB
+是的，这两个 requirements 也建议稍微调整一下，尤其是第一个 Replace critical SSIS extractions，目前的 Description 主要描述了现状和问题，但没有明确目标。第二个 AI Agent 的需求则已经写得比较完整，只需要补充缺失的字段。
+
+1. Replacement of Critical SSIS Extractions
+
+建议将名称改成名词形式，与其他 requirements 保持一致。
+
+Field	Content
+Requirement / Use Case	Replacement of Critical SSIS Extractions – Technical driver
+Description / Objective	Replace critical data extraction processes currently relying on SSIS jobs, which have been identified by IT as difficult to maintain, while ensuring the continuity of regulatory reporting and application monitoring.
+Expected Outcome	Reliable and maintainable data extraction pipelines supported by the target data platform, ensuring the continuity of existing critical reporting and monitoring processes.
+Data Sources	To be confirmed.
+Data Types	To be confirmed.
+Estimated Source Volume	To be confirmed.
+Priority	Medium
+
+这里的 Expected Outcome 是我根据现有需求推导出来的，后续需要与需求提出者确认。暂时不指定使用 Airflow、Spark 或其他技术，因为现在还处于需求收集及架构评估阶段。
+
+2. AI Agent Data Access and Analytics
+
+这个需求我建议保留 Future capability 的定位，因为它并不是某个具体的业务 use case，而是未来 Data Platform 应具备的能力。
+
+Field	Content
+Requirement / Use Case	AI Agent Data Access and Analytics – Future capability
+Description / Objective	Enable future AI Agents to securely access, query and analyze consolidated IAM data, leveraging governed datasets and consistent business definitions.
+Expected Outcome	Secure and controlled access to trusted business data for AI Agents, enabling natural-language queries, contextualized analysis and support for future AI-powered applications.
+Data Sources	Consolidated IAM datasets and future Data Products (TBC).
+Data Types	Identities, accounts, access rights, entitlements, access requests and other IAM business data, depending on the AI use cases.
+Estimated Source Volume	Depending on future AI use cases and the scope of exposed Data Products (TBC).
+Priority	Low
+
+关于第二个需求的 Priority
+
+我建议你考虑一下是否将 Low 改成 Medium。
+
+这里需要区分两个概念：
+
+* AI Agent 的实际落地优先级可以是 Low。
+* Data Platform 对未来 AI usages 的支持能力，在架构选型时却不应该被忽略。
+
+因为你建立这个 Data Platform 不只是为了解决当前 reporting 和 reconciliation 的问题，还希望它成为未来 AI-ready data foundation。
+
+如果 Low 代表业务需求的实施优先级，你可以保留。但是在后续的 Technical Requirements 中，仍然应该评估平台是否具备 Data Governance、Data Products、Semantic Layer、Secure Data Access 等支撑未来 AI Agents 的能力。
